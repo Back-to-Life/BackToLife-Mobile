@@ -1,0 +1,44 @@
+{
+	"DART MAGIC NUMBER": {
+	  "scope": "dart",
+	  "prefix": "hwaMagicNumber",
+	  "body": "static const $1 = $2;",
+	  "description": "Create magic number"
+	},
+	"DART EGAER SINGLETON": {
+	  "scope": "dart",
+	  "prefix": "hwaSingletonEager",
+	  "body": [
+		"class $1 {",
+		" static $1 _instance;",
+		"  static $1 get instance {",
+		"  if (_instance == null)  _instance = $1._init();",
+		"return _instance; }",
+  
+		"  $1._init(); }"
+	  ],
+	  "description": "Create aeger singleton hwa"
+	},
+	"HWA BAse View": {
+	  "scope": "dart",
+	  "prefix": "hwaBaseView",
+	  "body": [
+		"BaseView<$1>(",
+		"  viewModel: $1(),",
+		"onModelReady: ($1 model) {",
+		"model.setContext(context);",
+		"model.init();",
+		"},",
+		"onPageBuilder: (context, value) => Scaffold()",
+		");"
+	  ]
+	},
+	"HWA BASE View model": {
+	  "scope": "dart",
+	  "prefix": "hwaBaseViewModel",
+	  "body": [
+		"void setContext(BuildContext context) => this.context = context;",
+		"void init() {}"
+	  ]
+	}
+  }
