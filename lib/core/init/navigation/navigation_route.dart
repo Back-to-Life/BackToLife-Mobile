@@ -13,7 +13,7 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.HOME_VIEW:
-        return simpleNavigate(Home());
+        return simpleNavigate(HomeView());
         break;
       default:
         return MaterialPageRoute(builder: (context) => NotFoundNavigation());

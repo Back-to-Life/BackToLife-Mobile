@@ -9,11 +9,7 @@ class LanguageManager {
 
   LanguageManager._init();
 
-  final enLocale = Locale("en", "US");
-  final trLocale = Locale("tr", "TR");
+  final enLocale = Locale('en', 'US');
 
-  List<Locale> get supportedLocales => [
-        enLocale,
-        trLocale,
-      ];
+  List<Locale> get supportedLocales => [enLocale];
 }

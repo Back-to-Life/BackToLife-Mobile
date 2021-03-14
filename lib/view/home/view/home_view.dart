@@ -9,6 +9,7 @@ import '../../../core/init/language/language_manager.dart';
 import '../../../core/init/language/locale_keys.g.dart';
 import '../viewModel/home_view_model.dart';
 
+/*
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
 
@@ -47,5 +48,42 @@ class _HomeState extends BaseState<Home> {
         onPressed: () {
           context.locale = LanguageManager.instance.enLocale;
         });
+  }
+}
+ */
+
+class HomeView extends StatelessWidget {
+  const HomeView({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+            width: double.infinity,
+            height: 150,
+            color: Colors.red,
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            width: double.infinity,
+            height: 100,
+            color: Colors.blue,
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            width: double.infinity,
+            height: 100,
+            color: Colors.white,
+          ),
+        ),
+      ],
+    );
   }
 }
