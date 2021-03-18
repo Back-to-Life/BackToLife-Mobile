@@ -1,0 +1,11 @@
+{
+    "welcome": "Uygulamamıza hoşgeldiniz.",
+    "onBoard":{
+        "page1":
+        {"title":"QR Code Taratın","desc":"Kolayca kodu taratın ve işlemlerinizi halledin."},
+        "page2":
+        {"title":"Puanları Toplayın","desc":"Puan toplayın"},
+        "page3":
+        {"title":"Doğayı birlikte koruyalım","desc":"Dünyanın kahramanları biziz. Hadi birlikte savaşalım."}
+    }
+}

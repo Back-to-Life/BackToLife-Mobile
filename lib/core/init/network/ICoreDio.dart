@@ -1,6 +1,6 @@
-import 'package:backtolife/core/base/model/base_model.dart';
-import 'package:backtolife/core/constants/enum/htpp_request_enum.dart';
-import 'package:backtolife/core/init/network/IResponseModel.dart';
+import '../../base/model/base_model.dart';
+import '../../constants/enum/htpp_request_enum.dart';
+import 'IResponseModel.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 

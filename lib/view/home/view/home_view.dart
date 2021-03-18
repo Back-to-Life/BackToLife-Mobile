@@ -80,7 +80,7 @@ class HomeView extends StatelessWidget {
           child: Container(
             width: double.infinity,
             height: 100,
-            color: Colors.white,
+            color: Colors.yellow,
           ),
         ),
       ],

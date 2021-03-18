@@ -1,3 +1,4 @@
+import 'package:backtolife/view/onboarding/view/on_board_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +10,6 @@ import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider.dart';
 import 'core/init/notifier/theme_notifier.dart';
-import 'view/home/view/home_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: HomeView(),
+      home: OnBoardView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

@@ -1,3 +1,4 @@
+import 'package:backtolife/view/onboarding/view/on_board_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -13,7 +14,7 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.HOME_VIEW:
-        return simpleNavigate(HomeView());
+        return simpleNavigate(OnBoardView());
         break;
       default:
         return MaterialPageRoute(builder: (context) => NotFoundNavigation());

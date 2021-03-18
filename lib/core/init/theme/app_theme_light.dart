@@ -1,4 +1,4 @@
-import 'package:backtolife/core/constants/app/app_constants.dart';
+import '../../constants/app/app_constants.dart';
 
 import 'app_theme.dart';
 import 'package:flutter/material.dart';
@@ -19,20 +19,21 @@ class AppThemeLight extends AppTheme with ILightTheme {
   //burda themedata koyup doldurmamız gerek
 
   ThemeData get theme => ThemeData(
-      colorScheme: _appColorScheme(),
-      fontFamily: ApplicationConstants.FONT_FAMILY,
-      textTheme: TextTheme(headline1: textThemeLight.headline1));
-
+        scaffoldBackgroundColor: colorSchemeLight.kPrimaryLight,
+        colorScheme: _appColorScheme(),
+        fontFamily: ApplicationConstants.FONT_FAMILY,
+        //   textTheme: TextTheme(headline1: textThemeLight.headline1
+      );
   ColorScheme _appColorScheme() {
     return ColorScheme(
-      primary: colorSchemeLight.black,
-      onSecondary: colorSchemeLight.brown,
-      primaryVariant: Colors.green,
+      primary: colorSchemeLight.kPrimaryLight,
+      onSecondary: colorSchemeLight.kSecendoryLight,
+      primaryVariant: colorSchemeLight.kThirdLight,
       secondaryVariant: Colors.amberAccent,
       onBackground: Colors.blueAccent,
       error: Colors.red,
-      surface: Colors.yellow,
-      onSurface: Colors.yellowAccent,
+      surface: colorSchemeLight.whiteText,
+      onSurface: colorSchemeLight.grey,
       onPrimary: Colors.grey,
       background: Colors.blue,
       brightness: Brightness.light,

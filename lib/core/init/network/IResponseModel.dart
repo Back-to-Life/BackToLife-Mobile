@@ -1,4 +1,4 @@
-import 'package:backtolife/core/base/model/base_error.dart';
+import '../../base/model/base_error.dart';
 
 abstract class IResponseModel<T> {
   T data;
