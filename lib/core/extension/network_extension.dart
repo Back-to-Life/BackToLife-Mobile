@@ -1,4 +1,4 @@
-import 'package:backtolife/core/constants/enum/htpp_request_enum.dart';
+import '../constants/enum/htpp_request_enum.dart';
 
 extension NetworkTypeExtension on HttpTypes {
   String get rawValue {

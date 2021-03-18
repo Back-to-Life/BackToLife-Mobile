@@ -39,6 +39,14 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
+  final _$getSampleRequestAsyncAction =
+      AsyncAction('_HomeViewModelBase.getSampleRequest');
+
+  @override
+  Future<void> getSampleRequest() {
+    return _$getSampleRequestAsyncAction.run(() => super.getSampleRequest());
+  }
+
   final _$_HomeViewModelBaseActionController =
       ActionController(name: '_HomeViewModelBase');
 

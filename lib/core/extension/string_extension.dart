@@ -1,4 +1,4 @@
-import 'package:backtolife/core/constants/app/app_constants.dart';
+import '../constants/app/app_constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 extension StringLocalization on String {
@@ -8,4 +8,8 @@ extension StringLocalization on String {
       this.contains(RegExp(ApplicationConstants.EMAIL_REGIEX))
           ? null
           : "Email does not valid";
+}
+
+extension ImagePathExtension on String {
+  String get toSVG => 'asset/svg/$this.svg';
 }

@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:backtolife/core/init/network/ICoreDio.dart';
-import 'package:backtolife/core/init/network/core_dio.dart';
+import 'ICoreDio.dart';
+import 'core_dio.dart';
 import 'package:dio/dio.dart';
 
 import '../../base/model/base_error.dart';
