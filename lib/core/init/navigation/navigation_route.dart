@@ -14,6 +14,9 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.HOME_VIEW:
+        return simpleNavigate(HomeView());
+        break;
+      case NavigationConstants.ON_BOARDING:
         return simpleNavigate(OnBoardView());
         break;
       default:

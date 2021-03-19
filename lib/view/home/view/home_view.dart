@@ -1,13 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-
-import '../../../core/base/state/base_state.dart';
-import '../../../core/base/view/base_view.dart';
-import '../../../core/extension/string_extension.dart';
-import '../../../core/init/language/language_manager.dart';
-import '../../../core/init/language/locale_keys.g.dart';
-import '../viewModel/home_view_model.dart';
 
 /*
 class Home extends StatefulWidget {
@@ -49,8 +40,7 @@ class _HomeState extends BaseState<Home> {
           context.locale = LanguageManager.instance.enLocale;
         });
   }
-}
- */
+}*/
 
 class HomeView extends StatelessWidget {
   const HomeView({Key key}) : super(key: key);

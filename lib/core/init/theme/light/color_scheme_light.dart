@@ -17,4 +17,6 @@ class ColorSchemeLight {
   final Color grey = Color(0xFFD3D0D0);
   final Color purpleLight = Color(0xFFC4C0FF);
   final Color whiteText = Color(0xFFFFFFFF);
+  final Color greyOnboard = Color(0xFF464343);
+  final Color buttonOnboard = Color(0xFFD0E07A);
 }

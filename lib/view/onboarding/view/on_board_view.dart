@@ -1,12 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:backtolife/core/base/view/base_view.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
-import 'package:backtolife/view/onboarding/viewModel/on_board_view_model.dart';
+import 'package:backtolife/view/widgets/Avatar/onboarding_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../core/base/view/base_view.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/init/svgPath/image_path_svg.dart';
+import '../viewModel/on_board_view_model.dart';
+
 class OnBoardView extends StatelessWidget {
+  final int onPage = 1;
   @override
   Widget build(BuildContext context) {
     return BaseView<OnBoardViewModel>(
@@ -16,13 +20,253 @@ class OnBoardView extends StatelessWidget {
         model.init();
       },
       onPageBuilder: (BuildContext context, OnBoardViewModel viewModel) =>
-          Scaffold(
-        body: Column(
+          Observer(builder: (_) {
+        return Scaffold(
+            backgroundColor: viewModel.currentIndex == onPage
+                ? context.colors.primaryVariant
+                : context.colors.primary,
+            body: Column(
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: PageView.builder(
+                    itemCount: viewModel.onBoardItems.length,
+                    onPageChanged: (value) {
+                      viewModel.changedCurrentIndex(value);
+                    },
+                    itemBuilder: (context, index) => Container(
+                      child: Padding(
+                        padding: (viewModel.currentIndex == 2 ||
+                                viewModel.currentIndex == 1)
+                            ? context.paddingMedium
+                            : context.paddingLow,
+                        child: Center(
+                          child: SvgPicture.asset(viewModel
+                              .onBoardItems[viewModel.currentIndex].imagePath),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Stack(
+                    children: [
+                      backGroundNotChangedStack(context),
+                      Observer(builder: (_) {
+                        return AnimatedContainer(
+                          duration: Duration(milliseconds: 500),
+                          width: double.infinity,
+                          margin: EdgeInsets.only(top: 30),
+                          decoration: BoxDecoration(
+                            color: viewModel.currentIndex == 1
+                                ? context.theme.colorScheme.primary
+                                : context.colors.primaryVariant,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(50),
+                                topRight: Radius.circular(50)),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Spacer(flex: 1),
+                              Expanded(
+                                flex: 2,
+                                child: Observer(builder: (_) {
+                                  return Text(
+                                      viewModel
+                                          .onBoardItems[viewModel.currentIndex]
+                                          .title,
+                                      style: context.textTheme.headline4
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold,
+                                              color: viewModel.currentIndex == 1
+                                                  ? context.theme.colorScheme
+                                                      .primaryVariant
+                                                  : context.colors.surface));
+                                }),
+                              ),
+                              Expanded(
+                                flex: 4,
+                                child: Observer(builder: (_) {
+                                  return Padding(
+                                    padding: context.paddingMedium,
+                                    child: Text(
+                                        viewModel
+                                            .onBoardItems[viewModel
+                                                .currentIndex]
+                                            .description,
+                                        textAlign: TextAlign.center,
+                                        style: context.textTheme.subtitle1
+                                            .copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color: viewModel.currentIndex ==
+                                                        1
+                                                    ? context.theme.colorScheme
+                                                        .primaryVariant
+                                                    : context.colors.surface)),
+                                  );
+                                }),
+                              ),
+                              Expanded(
+                                child: Padding(
+                                  padding: context.paddingMediumHorizontal,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      ListView.builder(
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount:
+                                            viewModel.onBoardItems.length,
+                                        shrinkWrap: true,
+                                        itemBuilder: (context, index) {
+                                          return OnBoardCircle(
+                                              index: viewModel.currentIndex,
+                                              isSelected:
+                                                  viewModel.currentIndex ==
+                                                      index);
+                                        },
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(boxShadow: [
+                                          BoxShadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.3),
+                                              blurRadius: 10,
+                                              offset: Offset(0, 3))
+                                        ]),
+                                        child: viewModel.isLoading
+                                            ? CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                            Color>(
+                                                        context.colors
+                                                            .secondaryVariant),
+                                                backgroundColor: Colors.white,
+                                              )
+                                            : RaisedButton(
+                                                color: viewModel.currentIndex ==
+                                                        1
+                                                    ? context.colors.onPrimary
+                                                    : context.colors.surface,
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    20),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    20),
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    20))),
+                                                onPressed: () {
+                                                  if (viewModel.currentIndex !=
+                                                      2) {
+                                                    viewModel.changedCurrentIndex(
+                                                        viewModel.currentIndex +
+                                                            1);
+                                                  } else {
+                                                    viewModel
+                                                        .completeToOnBoard();
+                                                  }
+                                                },
+                                                child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      viewModel.currentIndex ==
+                                                              2
+                                                          ? Text("Done   ")
+                                                          : Text("Next  "),
+                                                      SvgPicture.asset(
+                                                          SVGImagePaths.instance
+                                                              .arrowRight,
+                                                          width: context.width *
+                                                              0.05)
+                                                    ]),
+                                              ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Spacer(flex: 1),
+                            ],
+                          ),
+                        );
+                      })
+                    ],
+                  ),
+                )
+              ],
+            ));
+      }),
+    );
+  }
+
+  Container backGroundNotChangedStack(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: context.theme.colorScheme.onSecondary,
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(50), topRight: Radius.circular(50)),
+      ),
+    );
+  }
+}
+
+/* 
+
+Column(
+              children: [
+                Expanded(
+                  child: Container(
+                    width: double.infinity,
+                    color: viewModel.currentIndex == onPage
+                        ? context.colors.primary
+                        : context.colors.primaryVariant,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Expanded(
+                              flex: 1,
+                              child: PageView.builder(
+                                itemCount: viewModel.onBoardItems.length,
+                                onPageChanged: (value) {
+                                  viewModel.changedCurrentIndex(value);
+                                },
+                                itemBuilder: (context, index) => Container(
+                                  child: SvgPicture.asset(
+                                      viewModel.onBoardItems[index].imagePath),
+                                ),
+                              )),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Stack(
+                            children: [
+                              backGroundNotChangedStack(context),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+Column(
           children: [
             Expanded(
                 flex: 1,
                 child: Container(
-                  child: SvgPicture.asset(SVGImagePaths.instance.onboarding1),
+                  child:
+                      SvgPicture.asset(viewModel.onBoardItems[index].imagePath),
                 )),
             Expanded(
                 flex: 1,
@@ -49,74 +293,121 @@ class OnBoardView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Spacer(flex: 1),
-                          Text("Scan The QR Code",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 28,
-                                  color: context.theme.colorScheme.surface)),
-                          Spacer(flex: 2),
-                          Padding(
-                            padding: context.paddingLowHorizontal,
-                            child: AutoSizeText(
-                                "You can easy find this application and use it.",
-                                textAlign: TextAlign.center,
+                          Expanded(
+                            child: Text(viewModel.onBoardItems[index].title,
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 18,
+                                    fontSize: 28,
                                     color: context.theme.colorScheme.surface)),
                           ),
-                          Spacer(flex: 1),
-                          Padding(
-                            padding: context.paddingMedium,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [buildContainerDot(1, context)]),
-                                RaisedButton(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20),
-                                          topRight: Radius.circular(20),
-                                          bottomLeft: Radius.circular(20))),
-                                  onPressed: () {},
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("Next  "),
-                                        SvgPicture.asset(
-                                            SVGImagePaths.instance.arrowRight,
-                                            width: context.width * 0.05)
-                                      ]),
-                                )
-                              ],
+                          Spacer(flex: 2),
+                          Expanded(
+                            child: Padding(
+                              padding: context.paddingLowHorizontal,
+                              child: AutoSizeText(
+                                  viewModel.onBoardItems[index].description,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18,
+                                      color:
+                                          context.theme.colorScheme.surface)),
                             ),
-                          )
+                          ),
+                          Spacer(flex: 1),
+                          Expanded(
+                            child: Padding(
+                              padding: context.paddingLow,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  ListView.builder(
+                                      itemCount: 3,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                        return Observer(builder: (_) {
+                                          return OnBoardCircle(
+                                              isSelected:
+                                                  viewModel.currentIndex ==
+                                                      index);
+                                        });
+                                      }),
+                                  RaisedButton(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20),
+                                            topRight: Radius.circular(20),
+                                            bottomLeft: Radius.circular(20))),
+                                    onPressed: () {},
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text("Next  "),
+                                          SvgPicture.asset(
+                                              SVGImagePaths.instance.arrowRight,
+                                              width: context.width * 0.05)
+                                        ]),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
+                    Spacer(flex: 1),
                   ],
                 )),
           ],
         ),
-      ),
-    );
-  }
-}
-
-AnimatedContainer buildContainerDot(int index, BuildContext context) {
-  return AnimatedContainer(
-    duration: Duration(milliseconds: 300),
-    height: 23,
-    width: 1 == index ? 30 : 23,
-    margin: EdgeInsets.all(10),
-    decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: 1 == index
-            ? context.theme.colorScheme.primary
-            : context.theme.colorScheme.onSurface),
-  );
-}
+Padding(
+                        padding: context.paddingMedium,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: ListView.builder(
+                                  itemCount: 3,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) {
+                                    return CircleAvatar(
+                                      radius: 10,
+                                    );
+                                  }),
+                            ),
+                            RaisedButton(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20))),
+                              onPressed: () {},
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Next  "),
+                                    SvgPicture.asset(
+                                        SVGImagePaths.instance.arrowRight,
+                                        width: context.width * 0.05)
+                                  ]),
+                            )
+                          ],
+                        ),
+                      )
+                      PageView.builder(
+          itemCount: viewModel.onBoardItems.length,
+          onPageChanged: (value) {
+            print(value);
+            print(viewModel.currentIndex);
+            viewModel.changedCurrentIndex(value);
+          },
+          itemBuilder: (context, index) => Container(
+            color: viewModel.currentIndex == 2
+                ? context.colors.onError
+                : context.colors.background,
+                      
+                      */
