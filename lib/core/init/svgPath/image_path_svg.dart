@@ -11,5 +11,8 @@ class SVGImagePaths {
   final onboarding1 = 'onboarding1'.toSVG;
   final onboarding2 = 'onboarding2'.toSVG;
   final onboarding3 = 'onboarding3'.toSVG;
-  final arrowRight = 'arrow-right'.toSVG;
+  final arrowRight = 'arrowRight'.toSVG;
+  final arrowRightLogin = 'arrowRightLogin'.toSVG;
+  final facebookIcon = 'facebook'.toSVG;
+  final googleIcon = 'google'.toSVG;
 }

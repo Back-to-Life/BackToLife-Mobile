@@ -1,13 +1,26 @@
 {
   "welcome": "Welcome to My App",
-  "onBoard":{
-      "page1":
-      {"title":"Scan the QR Code","desc":"You can easy find this application and use it."},
-      "page2":
-      {"title":"Collect Points","desc":"Use application save the world and collect the point"},
-      "page3":
-      {"title":"Save The Nature","desc":"You are hero of the world please save the world. Let's fight together for our world!!"}
+  "onBoard": {
+    "page1": {
+      "title": "Scan the QR Code",
+      "desc": "You can easy find this application and use it."
+    },
+    "page2": {
+      "title": "Collect Points",
+      "desc": "Use application save the world and collect the point"
+    },
+    "page3": {
+      "title": "Save The Nature",
+      "desc": "You are hero of the world please save the world. Let's fight together for our world!!"
+    }
+  },
+  "login": {
+    "tab1": "Login",
+    "tab2": "Sign-Up",
+    "orLoginWith": "Or Login With",
+    "orSignUpWith": "Or Sign-Up With",
+    "email": "Email",
+    "password": "Password",
+    "forgotText": "Forgot Password"
   }
-
- 
 }

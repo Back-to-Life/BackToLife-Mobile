@@ -1,0 +1,18 @@
+<svg id="Component_2_1" data-name="Component 2 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33.35" height="33.35" viewBox="0 0 33.35 33.35">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.15" y1="0.15" x2="0.915" y2="0.915" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2aa4f4"/>
+      <stop offset="1" stop-color="#007ad9"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_10325" data-name="Group 10325" transform="translate(-108.65 -688.68)">
+    <g id="icons8-facebook" transform="translate(104.65 684.68)">
+      <g id="Group_2345" data-name="Group 2345" transform="translate(4 4)">
+        <g id="Group_10324" data-name="Group 10324">
+          <path id="Path_1032" data-name="Path 1032" d="M20.675,4A16.675,16.675,0,1,0,37.35,20.675,16.675,16.675,0,0,0,20.675,4Z" transform="translate(-4 -4)" fill="url(#linear-gradient)"/>
+          <path id="Path_1033" data-name="Path 1033" d="M25.559,27.459h4.618l.725-4.691H25.559V20.2c0-1.949.637-3.677,2.46-3.677h2.929V12.433a24.894,24.894,0,0,0-3.66-.221c-4.3,0-6.813,2.268-6.813,7.436v3.121H16.06V27.46h4.415V40.354a18.049,18.049,0,0,0,2.669.219,17.952,17.952,0,0,0,2.415-.182Z" transform="translate(-6.51 -7.223)" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

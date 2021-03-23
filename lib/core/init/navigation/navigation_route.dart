@@ -1,4 +1,4 @@
-import 'package:backtolife/view/onboarding/view/on_board_view.dart';
+import '../../../view/onboarding/view/on_board_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
