@@ -1,6 +1,6 @@
-import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
-import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
-import 'package:backtolife/core/extension/string_extension.dart';
+import '../../../core/constants/enum/locale_keys_enum.dart';
+import '../../../core/constants/navigation/navigation_constants.dart';
+import '../../../core/extension/string_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
@@ -57,3 +57,6 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
     }
   }
 }
+
+
+

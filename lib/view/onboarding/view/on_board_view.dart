@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:backtolife/view/widgets/Avatar/onboarding_avatar.dart';
+import '../../widgets/Avatar/onboarding_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,7 +10,6 @@ import '../../../core/init/svgPath/image_path_svg.dart';
 import '../viewModel/on_board_view_model.dart';
 
 class OnBoardView extends StatelessWidget {
-  final int onPage = 1;
   @override
   Widget build(BuildContext context) {
     return BaseView<OnBoardViewModel>(
@@ -22,7 +21,7 @@ class OnBoardView extends StatelessWidget {
       onPageBuilder: (BuildContext context, OnBoardViewModel viewModel) =>
           Observer(builder: (_) {
         return Scaffold(
-            backgroundColor: viewModel.currentIndex == onPage
+            backgroundColor: viewModel.currentIndex == 1
                 ? context.colors.primaryVariant
                 : context.colors.primary,
             body: Column(
@@ -32,7 +31,9 @@ class OnBoardView extends StatelessWidget {
                   child: PageView.builder(
                     itemCount: viewModel.onBoardItems.length,
                     onPageChanged: (value) {
-                      viewModel.changedCurrentIndex(value);
+                      if (value != 3) {
+                        viewModel.changedCurrentIndex(value);
+                      }
                     },
                     itemBuilder: (context, index) => Container(
                       child: Padding(
@@ -218,196 +219,3 @@ class OnBoardView extends StatelessWidget {
     );
   }
 }
-
-/* 
-
-Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    color: viewModel.currentIndex == onPage
-                        ? context.colors.primary
-                        : context.colors.primaryVariant,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Expanded(
-                              flex: 1,
-                              child: PageView.builder(
-                                itemCount: viewModel.onBoardItems.length,
-                                onPageChanged: (value) {
-                                  viewModel.changedCurrentIndex(value);
-                                },
-                                itemBuilder: (context, index) => Container(
-                                  child: SvgPicture.asset(
-                                      viewModel.onBoardItems[index].imagePath),
-                                ),
-                              )),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: Stack(
-                            children: [
-                              backGroundNotChangedStack(context),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-Column(
-          children: [
-            Expanded(
-                flex: 1,
-                child: Container(
-                  child:
-                      SvgPicture.asset(viewModel.onBoardItems[index].imagePath),
-                )),
-            Expanded(
-                flex: 1,
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: context.theme.colorScheme.onSecondary,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(50),
-                            topRight: Radius.circular(50)),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      margin: EdgeInsets.only(top: 30),
-                      decoration: BoxDecoration(
-                        color: context.theme.colorScheme.primaryVariant,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(50),
-                            topRight: Radius.circular(50)),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Spacer(flex: 1),
-                          Expanded(
-                            child: Text(viewModel.onBoardItems[index].title,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 28,
-                                    color: context.theme.colorScheme.surface)),
-                          ),
-                          Spacer(flex: 2),
-                          Expanded(
-                            child: Padding(
-                              padding: context.paddingLowHorizontal,
-                              child: AutoSizeText(
-                                  viewModel.onBoardItems[index].description,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
-                                      color:
-                                          context.theme.colorScheme.surface)),
-                            ),
-                          ),
-                          Spacer(flex: 1),
-                          Expanded(
-                            child: Padding(
-                              padding: context.paddingLow,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ListView.builder(
-                                      itemCount: 3,
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.horizontal,
-                                      itemBuilder: (context, index) {
-                                        return Observer(builder: (_) {
-                                          return OnBoardCircle(
-                                              isSelected:
-                                                  viewModel.currentIndex ==
-                                                      index);
-                                        });
-                                      }),
-                                  RaisedButton(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20),
-                                            bottomLeft: Radius.circular(20))),
-                                    onPressed: () {},
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text("Next  "),
-                                          SvgPicture.asset(
-                                              SVGImagePaths.instance.arrowRight,
-                                              width: context.width * 0.05)
-                                        ]),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Spacer(flex: 1),
-                  ],
-                )),
-          ],
-        ),
-Padding(
-                        padding: context.paddingMedium,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: ListView.builder(
-                                  itemCount: 3,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) {
-                                    return CircleAvatar(
-                                      radius: 10,
-                                    );
-                                  }),
-                            ),
-                            RaisedButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20),
-                                      topRight: Radius.circular(20),
-                                      bottomLeft: Radius.circular(20))),
-                              onPressed: () {},
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Next  "),
-                                    SvgPicture.asset(
-                                        SVGImagePaths.instance.arrowRight,
-                                        width: context.width * 0.05)
-                                  ]),
-                            )
-                          ],
-                        ),
-                      )
-                      PageView.builder(
-          itemCount: viewModel.onBoardItems.length,
-          onPageChanged: (value) {
-            print(value);
-            print(viewModel.currentIndex);
-            viewModel.changedCurrentIndex(value);
-          },
-          itemBuilder: (context, index) => Container(
-            color: viewModel.currentIndex == 2
-                ? context.colors.onError
-                : context.colors.background,
-                      
-                      */

@@ -1,4 +1,5 @@
-import 'package:backtolife/view/onboarding/view/on_board_view.dart';
+import 'core/init/lang/locale_keys_codegen.g.dart';
+import 'view/authentication/view/authentication_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ void main() {
     child: EasyLocalization(
         child: MyApp(),
         fallbackLocale: Locale('en', 'US'),
+        assetLoader: CodegenLoader(),
         supportedLocales: LanguageManager.instance.supportedLocales,
         path: ApplicationConstants.LANG_ASSET_PATH),
   ));
@@ -30,8 +32,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: OnBoardView(),
+      home: AuthenticationView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

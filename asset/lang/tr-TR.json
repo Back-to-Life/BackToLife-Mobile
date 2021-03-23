@@ -7,5 +7,14 @@
         {"title":"Puanları Toplayın","desc":"Puan toplayın"},
         "page3":
         {"title":"Doğayı birlikte koruyalım","desc":"Dünyanın kahramanları biziz. Hadi birlikte savaşalım."}
-    }
+    },
+    "login": {
+        "tab1": "Giriş",
+        "tab2": "Kayıt-Ol",
+        "orLoginWith": "Giriş yapın",
+        "orSignUpWith": "Kayıt Olun",
+        "email": "Email",
+        "password": "Şifre",
+        "forgotText": "Şifreyi Unuttum"
+      }
 }

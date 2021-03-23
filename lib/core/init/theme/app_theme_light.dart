@@ -22,7 +22,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
         scaffoldBackgroundColor: colorSchemeLight.kPrimaryLight,
         colorScheme: _appColorScheme(),
         fontFamily: ApplicationConstants.FONT_FAMILY,
-        //   textTheme: TextTheme(headline1: textThemeLight.headline1
+        // textTheme: TextTheme(headline1: textThemeLight.headline1,
       );
   ColorScheme _appColorScheme() {
     return ColorScheme(

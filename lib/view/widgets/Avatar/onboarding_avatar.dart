@@ -1,4 +1,4 @@
-import 'package:backtolife/core/extension/context_extension.dart';
+import '../../../core/extension/context_extension.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardCircle extends StatelessWidget {
