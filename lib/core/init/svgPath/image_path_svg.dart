@@ -15,4 +15,5 @@ class SVGImagePaths {
   final arrowRightLogin = 'arrowRightLogin'.toSVG;
   final facebookIcon = 'facebook'.toSVG;
   final googleIcon = 'google'.toSVG;
+  final loginpage = 'loginpage'.toSVG;
 }

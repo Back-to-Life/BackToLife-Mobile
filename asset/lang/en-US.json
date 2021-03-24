@@ -21,6 +21,7 @@
     "orSignUpWith": "Or Sign-Up With",
     "email": "Email",
     "password": "Password",
-    "forgotText": "Forgot Password"
+    "forgotText": "Forgot Password",
+    "name":"Name and Surname"
   }
 }

@@ -37,7 +37,8 @@ class CodegenLoader extends AssetLoader{
     "orSignUpWith": "Or Sign-Up With",
     "email": "Email",
     "password": "Password",
-    "forgotText": "Forgot Password"
+    "forgotText": "Forgot Password",
+    "name": "Name and Surname"
   }
 };
 static const Map<String,dynamic> tr_TR = {
@@ -63,7 +64,8 @@ static const Map<String,dynamic> tr_TR = {
     "orSignUpWith": "Kayıt Olun",
     "email": "Email",
     "password": "Şifre",
-    "forgotText": "Şifreyi Unuttum"
+    "forgotText": "Şifreyi Unuttum",
+    "name": "Adınız ve Soyadınız"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "tr_TR": tr_TR};

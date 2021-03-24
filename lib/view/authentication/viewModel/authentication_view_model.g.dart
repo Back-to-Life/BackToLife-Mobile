@@ -39,12 +39,52 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
     });
   }
 
+  final _$isLoginOrSignUpAtom =
+      Atom(name: '_AuthenticationViewModelBase.isLoginOrSignUp');
+
+  @override
+  bool get isLoginOrSignUp {
+    _$isLoginOrSignUpAtom.reportRead();
+    return super.isLoginOrSignUp;
+  }
+
+  @override
+  set isLoginOrSignUp(bool value) {
+    _$isLoginOrSignUpAtom.reportWrite(value, super.isLoginOrSignUp, () {
+      super.isLoginOrSignUp = value;
+    });
+  }
+
+  final _$isSuccessAtom = Atom(name: '_AuthenticationViewModelBase.isSuccess');
+
+  @override
+  bool get isSuccess {
+    _$isSuccessAtom.reportRead();
+    return super.isSuccess;
+  }
+
+  @override
+  set isSuccess(bool value) {
+    _$isSuccessAtom.reportWrite(value, super.isSuccess, () {
+      super.isSuccess = value;
+    });
+  }
+
   final _$fetchLoginServiceAsyncAction =
       AsyncAction('_AuthenticationViewModelBase.fetchLoginService');
 
   @override
   Future<void> fetchLoginService() {
     return _$fetchLoginServiceAsyncAction.run(() => super.fetchLoginService());
+  }
+
+  final _$fetchSignUpServiceAsyncAction =
+      AsyncAction('_AuthenticationViewModelBase.fetchSignUpService');
+
+  @override
+  Future<void> fetchSignUpService() {
+    return _$fetchSignUpServiceAsyncAction
+        .run(() => super.fetchSignUpService());
   }
 
   final _$_AuthenticationViewModelBaseActionController =
@@ -56,6 +96,28 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
         .startAction(name: '_AuthenticationViewModelBase.changedLoading');
     try {
       return super.changedLoading();
+    } finally {
+      _$_AuthenticationViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void successChanged() {
+    final _$actionInfo = _$_AuthenticationViewModelBaseActionController
+        .startAction(name: '_AuthenticationViewModelBase.successChanged');
+    try {
+      return super.successChanged();
+    } finally {
+      _$_AuthenticationViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changedTabBar() {
+    final _$actionInfo = _$_AuthenticationViewModelBaseActionController
+        .startAction(name: '_AuthenticationViewModelBase.changedTabBar');
+    try {
+      return super.changedTabBar();
     } finally {
       _$_AuthenticationViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -76,7 +138,9 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
   String toString() {
     return '''
 isEyeOpen: ${isEyeOpen},
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+isLoginOrSignUp: ${isLoginOrSignUp},
+isSuccess: ${isSuccess}
     ''';
   }
 }
