@@ -1,5 +1,5 @@
-import 'package:backtolife/core/init/image/lottie_constants.dart';
-import 'package:backtolife/view/widgets/loading/loading_page.dart';
+import '../../../core/init/image/lottie_constants.dart';
+import '../../widgets/loading/loading_page.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../core/extension/string_extension.dart';
@@ -14,8 +14,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 
-class AuthenticationView extends StatelessWidget {
+class AuthenticationView extends StatefulWidget {
   const AuthenticationView({Key key}) : super(key: key);
+
+  @override
+  _AuthenticationViewState createState() => _AuthenticationViewState();
+}
+
+class _AuthenticationViewState extends State<AuthenticationView>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  final List<Tab> myTabs = <Tab>[
+    Tab(
+      text: LocaleKeys.login_tab1.tr(),
+    ),
+    Tab(text: LocaleKeys.login_tab2.tr()),
+  ];
+
+  @override
+  void initState() {
+    _tabController = TabController(vsync: this, length: myTabs.length);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +93,8 @@ class AuthenticationView extends StatelessWidget {
                       : context.height * 0.4,
                   margin: EdgeInsets.only(bottom: context.mediumValue),
                   child: Center(
-                      child: Padding(
-                    padding: context.paddingMedium,
-                    child: SvgPicture.asset(SVGImagePaths.instance.onboarding1),
-                  )),
+                      child:
+                          Lottie.asset(LottiePaths.instance.loginPageLottie)),
                 ),
                 SingleChildScrollView(
                   child: Center(
@@ -91,29 +115,28 @@ class AuthenticationView extends StatelessWidget {
                       width: context.width * 0.9,
                       child: Padding(
                         padding: context.paddingMediumHorizontal,
-                        child: buildForm(viewModel, context),
+                        child: TabBarView(
+                          controller: _tabController,
+                          physics: NeverScrollableScrollPhysics(),
+                          children: [
+                            buildForm(viewModel, context),
+                            buildSignUpForm(viewModel, context)
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
                 buildLoginSignUpButton(context, viewModel),
-                Positioned(
-                  left: context.width * 0.4,
-                  bottom: context.height * 0.1,
-                  child: Visibility(
-                      visible: context.mediaQuery.viewInsets.bottom > 0
-                          ? false
-                          : true,
-                      child: Center(
-                          child: Text(LocaleKeys.login_orSignUpWith).tr())),
-                ),
+                buildOrSignUpWith(context, viewModel),
                 Positioned(
                     bottom: context.height * 0.04,
                     left: context.width * 0.25,
                     child: InkWell(
                       onTap: () async {
                         print("facebook");
-                        viewModel.context.locale = Locale('en', 'US');
+                        showAlertDialog(context, viewModel);
+                        //viewModel.context.locale = Locale('en', 'US');
                       },
                       child: Visibility(
                         visible: context.mediaQuery.viewInsets.bottom > 0
@@ -152,11 +175,61 @@ class AuthenticationView extends StatelessWidget {
     );
   }
 
-  showAlertDialog(BuildContext context) {
+  showAlertDialog(BuildContext context, AuthenticationViewModel viewModel) {
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("OK", style: TextStyle(color: context.colors.primaryVariant)),
+      onPressed: () {
+        print("ok success coming buttonu");
+        Navigator.of(context).pop();
+      },
+    );
+
+    Widget errorButton = FlatButton(
+      child: Observer(builder: (_) {
+        return Visibility(
+          visible: viewModel.isLoading ? false : true,
+          child: Text("Upps..",
+              style: TextStyle(color: context.colors.primaryVariant)),
+        );
+      }),
+      onPressed: () {
+        print("error coming buttonu");
+        Navigator.of(context).pop();
+      },
+    );
+
+    Widget listenerButton = Observer(
+      builder: (_) {
+        return (viewModel.isSuccess && !viewModel.isLoading)
+            ? okButton
+            : errorButton;
+      },
+    );
+
+    // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-        title: Text("My title"),
-        content: Lottie.asset(LottiePaths.instance.loadingPageContainer));
+      elevation: context.mediumValue,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(context.mediumValue)),
+      title: Observer(builder: (_) {
+        return viewModel.isLoading
+            ? Text("Loading")
+            : Text("Upps.. Something Went Wrong");
+      }),
+      content: Observer(builder: (_) {
+        return viewModel.isLoading
+            ? Lottie.asset(LottiePaths.instance.loadingPageContainer)
+            : Lottie.asset(LottiePaths.instance.errorLottie);
+      }),
+      actions: [
+        listenerButton,
+      ],
+    );
+
+    // show the dialog
     showDialog(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
         return alert;
@@ -164,38 +237,140 @@ class AuthenticationView extends StatelessWidget {
     );
   }
 
+  Positioned buildOrSignUpWith(
+      BuildContext context, AuthenticationViewModel viewModel) {
+    return Positioned(
+      left: context.width * 0.4,
+      bottom: context.height * 0.1,
+      child: InkWell(
+        onTap: () {
+          _tabController.animateTo((_tabController.index + 1) % 2);
+          viewModel.changedTabBar();
+        },
+        child: Visibility(
+            visible: context.mediaQuery.viewInsets.bottom > 0 ? false : true,
+            child: Center(child: Observer(builder: (_) {
+              return Text(
+                viewModel.isLoginOrSignUp
+                    ? LocaleKeys.login_orSignUpWith.tr()
+                    : LocaleKeys.login_orLoginWith.tr(),
+                style: context.textTheme.bodyText1.copyWith(
+                    color: context.colors.primaryVariant,
+                    fontWeight: FontWeight.bold),
+              );
+            }))),
+      ),
+    );
+  }
+
   Widget buildLoginSignUpButton(
       BuildContext context, AuthenticationViewModel viewModel) {
-    return Visibility(
-      visible: context.mediaQuery.viewInsets.bottom > 0 ? false : true,
-      child: GestureDetector(
-        onTap: () => viewModel.fetchLoginService(),
-        child: Center(
-          child: Container(
-            margin: EdgeInsets.only(top: context.height * 0.6),
-            decoration: BoxDecoration(
-                color: context.colors.secondaryVariant,
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.black.withOpacity(0.15),
-                      spreadRadius: context.lowValue,
-                      blurRadius: context.lowValue,
-                      offset: Offset(0, context.lowValue))
-                ],
-                borderRadius: BorderRadius.circular(context.highValue)),
-            height: context.height * 0.1,
-            width: context.width * 0.2,
-            child: Observer(builder: (_) {
-              return Center(
+    return Observer(builder: (_) {
+      return Visibility(
+        visible: context.mediaQuery.viewInsets.bottom > 0 ? false : true,
+        child: GestureDetector(
+          onTap: () {
+            showAlertDialog(context, viewModel);
+            viewModel.isLoginOrSignUp
+                ? viewModel.fetchLoginService()
+                : viewModel.fetchSignUpService();
+          },
+          child: Center(
+            child: Container(
+              margin: EdgeInsets.only(top: context.height * 0.6),
+              decoration: BoxDecoration(
+                  color: context.colors.secondaryVariant,
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.15),
+                        spreadRadius: context.lowValue,
+                        blurRadius: context.lowValue,
+                        offset: Offset(0, context.lowValue))
+                  ],
+                  borderRadius: BorderRadius.circular(context.highValue)),
+              height: context.height * 0.1,
+              width: context.width * 0.2,
+              child: Center(
                   child: viewModel.isLoading
                       ? LoadingPage()
                       : SvgPicture.asset(
                           SVGImagePaths.instance.arrowRightLogin,
-                        ));
-            }),
+                        )),
+            ),
           ),
         ),
+      );
+    });
+  }
+
+  Form buildSignUpForm(
+      AuthenticationViewModel viewModel, BuildContext context) {
+    return Form(
+      key: viewModel.formSignUpState,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Column(
+        children: [
+          Expanded(flex: 1, child: buildTabBar(viewModel, context)),
+          Spacer(flex: 1),
+          Expanded(flex: 2, child: buildNameSign(context, viewModel)),
+          Expanded(flex: 2, child: buildSignEmail(context, viewModel)),
+          Expanded(flex: 2, child: buildSignPassword(context, viewModel)),
+          Expanded(flex: 1, child: buildForgotPassword(context)),
+          Spacer(flex: 1),
+        ],
       ),
+    );
+  }
+
+  Widget buildSignPassword(
+      BuildContext context, AuthenticationViewModel viewModel) {
+    return Observer(builder: (_) {
+      return TextFormField(
+        controller: viewModel.passwordSignUpController,
+        obscureText: !viewModel.isEyeOpen,
+        validator: (value) => value.isEmpty ? "This field required" : null,
+        decoration: InputDecoration(
+            suffixIcon: GestureDetector(
+              onTap: () => viewModel.isEyeOpenFun(),
+              child: Observer(builder: (_) {
+                return Icon(
+                    viewModel.isEyeOpen
+                        ? Icons.remove_red_eye_sharp
+                        : Icons.visibility_off,
+                    color: context.colors.primaryVariant);
+              }),
+            ),
+            labelText: LocaleKeys.login_password.tr(),
+            labelStyle: context.textTheme.headline6
+                .copyWith(color: context.colors.primaryVariant),
+            icon: buildContainerIconField(context, Icons.lock)),
+      );
+    });
+  }
+
+  TextFormField buildSignEmail(
+      BuildContext context, AuthenticationViewModel viewModel) {
+    return TextFormField(
+      controller: viewModel.emailSignUpController,
+      validator: (value) => value.isValidEmail,
+      decoration: InputDecoration(
+          labelText: LocaleKeys.login_email.tr(),
+          labelStyle: context.textTheme.headline6
+              .copyWith(color: context.colors.primaryVariant),
+          icon: buildContainerIconField(context, Icons.email)),
+    );
+  }
+
+  TextFormField buildNameSign(
+      BuildContext context, AuthenticationViewModel viewModel) {
+    return TextFormField(
+      controller: viewModel.nameSurnameController,
+      validator: (value) => value.isEmpty ? 'This field is not empty' : null,
+      decoration: InputDecoration(
+          labelText: LocaleKeys.login_name.tr(),
+          labelStyle: context.textTheme.headline6
+              .copyWith(color: context.colors.primaryVariant),
+          icon: buildContainerIconField(context, Icons.person)),
     );
   }
 
@@ -205,7 +380,7 @@ class AuthenticationView extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: [
-          Expanded(flex: 1, child: buildTabBar(context)),
+          Expanded(flex: 1, child: buildTabBar(viewModel, context)),
           Spacer(flex: 1),
           Expanded(flex: 2, child: buildEmail(context, viewModel)),
           Expanded(flex: 2, child: buildPassword(context, viewModel)),
@@ -285,8 +460,9 @@ class AuthenticationView extends StatelessWidget {
     );
   }
 
-  TabBar buildTabBar(BuildContext context) {
+  TabBar buildTabBar(AuthenticationViewModel viewModel, BuildContext context) {
     return TabBar(
+      controller: _tabController,
       labelStyle: context.textTheme.bodyText1
           .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
       unselectedLabelStyle: context.textTheme.bodyText1
@@ -294,12 +470,9 @@ class AuthenticationView extends StatelessWidget {
       labelPadding: context.paddingLowHorizontal,
       labelColor: context.colors.primaryVariant,
       indicatorSize: TabBarIndicatorSize.tab,
-      tabs: [
-        Tab(
-          text: LocaleKeys.login_tab1.tr(),
-        ),
-        Tab(text: LocaleKeys.login_tab2.tr()),
-      ],
+      physics: NeverScrollableScrollPhysics(),
+      onTap: (index) => viewModel.changedTabBar(),
+      tabs: myTabs,
     );
   }
 }

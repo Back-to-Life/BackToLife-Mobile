@@ -1,7 +1,9 @@
+import 'package:backtolife/view/authentication/model/register/authentication_register_response_model.dart';
+import 'package:backtolife/view/authentication/model/register/authentication_register_model.dart';
 import 'package:vexana/vexana.dart';
 
-import '../model/authentication_model.dart';
-import '../model/authentication_response_model.dart';
+import '../model/login/authentication_model.dart';
+import '../model/login/authentication_response_model.dart';
 import 'IAuthentication_service.dart';
 
 class AuthenticationService extends IAuthenticationService {
@@ -18,6 +20,22 @@ class AuthenticationService extends IAuthenticationService {
             data: model);
 
     if (response.data is AuthenticationResponseModel) {
+      return response.data;
+    } else {
+      return null; //if something getting error we have to fix this null option on view data !! //TODO
+    }
+  }
+
+  @override
+  Future<AuthenticationRegisterResponseModel> registerUserControl(
+      AuthenticationRegisterModel model) async {
+    final response = await manager.fetch<AuthenticationRegisterResponseModel,
+            AuthenticationRegisterResponseModel>("register",
+        parseModel: AuthenticationRegisterResponseModel(),
+        method: RequestType.POST,
+        data: model);
+
+    if (response.data is AuthenticationRegisterResponseModel) {
       return response.data;
     } else {
       return null;

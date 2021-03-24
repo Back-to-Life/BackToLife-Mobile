@@ -9,5 +9,7 @@ class LottiePaths {
 
   LottiePaths._init();
 
-  final loadingPageContainer = 'loadingpage'.toLottie;
+  final loadingPageContainer = 'loadingpageLottie'.toLottie;
+  final loginPageLottie = 'loginPageLottie'.toLottie;
+  final errorLottie = 'errorLottie'.toLottie;
 }

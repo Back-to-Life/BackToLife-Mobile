@@ -1,5 +1,5 @@
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/init/image/lottie_constants.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/init/image/lottie_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
