@@ -16,4 +16,6 @@ class SVGImagePaths {
   final facebookIcon = 'facebook'.toSVG;
   final googleIcon = 'google'.toSVG;
   final loginpage = 'loginpage'.toSVG;
+  final world = 'world'.toSVG;
+  final changedBack = 'changedBack'.toSVG;
 }

@@ -44,6 +44,7 @@ dependencies:
   shimmer: ^1.1.2
   vexana: ^1.2.2
   lottie: any
+  avatars: any
 
 
 dev_dependencies:

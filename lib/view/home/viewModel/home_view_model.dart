@@ -21,6 +21,9 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
 
   void init() {}
 
+  @observable
+  bool isSelectedToggle = true;
+
   void changeTheme() {
     Provider.of<ThemeNotifier>(context, listen: false)
         .changeValue(AppThemes.DARK);
@@ -43,5 +46,3 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
     isLoading = false;
   }
 }
-
-
