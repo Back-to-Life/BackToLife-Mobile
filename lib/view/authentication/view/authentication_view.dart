@@ -1,3 +1,6 @@
+import '../../../core/constants/navigation/navigation_constants.dart';
+import '../../../core/init/navigation/navigation_service.dart';
+
 import '../../../core/init/image/lottie_constants.dart';
 import '../../widgets/loading/loading_page.dart';
 import 'package:lottie/lottie.dart';
@@ -62,7 +65,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
                 AnimatedContainer(
                   duration: Duration(milliseconds: 400),
                   height: context.mediaQuery.viewInsets.bottom > 0
-                      ? context.height * 0.25
+                      ? context.height * 0.3
                       : context.height * 0.4,
                   margin: EdgeInsets.only(bottom: context.mediumValue),
                   decoration: BoxDecoration(
@@ -78,7 +81,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
                 AnimatedContainer(
                   duration: Duration(milliseconds: 400),
                   height: context.mediaQuery.viewInsets.bottom > 0
-                      ? context.height * 0.3
+                      ? context.height * 0.27
                       : context.height * 0.35,
                   decoration: BoxDecoration(
                       color: context.colors.primaryVariant,
@@ -89,7 +92,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
                 AnimatedContainer(
                   duration: Duration(milliseconds: 400),
                   height: context.mediaQuery.viewInsets.bottom > 0
-                      ? context.height * 0.27
+                      ? context.height * 0.35
                       : context.height * 0.4,
                   margin: EdgeInsets.only(bottom: context.mediumValue),
                   child: Center(

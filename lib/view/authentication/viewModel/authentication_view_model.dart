@@ -1,4 +1,5 @@
-import 'package:backtolife/view/authentication/model/register/authentication_register_model.dart';
+import '../../../core/constants/navigation/navigation_constants.dart';
+import '../model/register/authentication_register_model.dart';
 
 import '../model/login/authentication_model.dart';
 
@@ -103,6 +104,8 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
       print(passwordSignUpController.text);
       if (response != null) {
         successChanged();
+        changedLoading();
+        navigation.navigateToPageClear(path: NavigationConstants.HOME_VIEW);
       }
     }
     changedLoading();
