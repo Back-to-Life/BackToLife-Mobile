@@ -1,3 +1,5 @@
+import 'package:backtolife/view/home/view/home_view.dart';
+
 import 'core/init/lang/locale_keys_codegen.g.dart';
 import 'view/authentication/view/authentication_view.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: AuthenticationView(),
+      home: HomeView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );
