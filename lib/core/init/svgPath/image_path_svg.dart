@@ -18,4 +18,5 @@ class SVGImagePaths {
   final loginpage = 'loginpage'.toSVG;
   final world = 'world'.toSVG;
   final changedBack = 'changedBack'.toSVG;
+  final scanBarcode = 'scanbarcode'.toSVG;
 }

@@ -22,11 +22,18 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   void init() {}
 
   @observable
-  bool isSelectedToggle = true;
+  bool isSelectedToggle = false;
 
-  void changeTheme() {
-    Provider.of<ThemeNotifier>(context, listen: false)
-        .changeValue(AppThemes.DARK);
+  @action
+  void changedToggle() {
+    isSelectedToggle = !isSelectedToggle;
+    if (isSelectedToggle == true) {
+      Provider.of<ThemeNotifier>(context, listen: false)
+          .changeValue(AppThemes.DARK);
+    } else if (isSelectedToggle == false) {
+      Provider.of<ThemeNotifier>(context, listen: false)
+          .changeValue(AppThemes.LIGHT);
+    }
   }
 
   @observable

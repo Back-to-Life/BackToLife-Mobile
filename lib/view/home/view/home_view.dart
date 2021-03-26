@@ -1,11 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:backtolife/core/base/view/base_view.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
-import 'package:backtolife/view/home/viewModel/home_view_model.dart';
+import '../../../core/base/view/base_view.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/init/svgPath/image_path_svg.dart';
+import '../viewModel/home_view_model.dart';
+import '../../widgets/ImageContainer/image_container.dart';
+import '../../widgets/ToggleButton/toggle_button_container.dart';
 import 'package:flutter/material.dart';
 
 import 'package:avatars/avatars.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 /*
@@ -69,7 +72,7 @@ class HomeView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: Padding(
                         padding: context.paddingLowHorizontal,
                         child: Row(
@@ -81,7 +84,7 @@ class HomeView extends StatelessWidget {
                                 context.colors.primaryVariant
                               ],
                               name: "Fatih Kurçenli",
-                              elevation: 5,
+                              elevation: 10,
                               border: Border.all(
                                   color: Colors.green,
                                   width: context.lowValue * 0.35),
@@ -99,32 +102,23 @@ class HomeView extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      flex: 1,
-                      child: Padding(
-                        padding: EdgeInsets.only(top: context.lowValue),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Hello!\nFatih Kurçenli",
-                              style: context.textTheme.headline4.copyWith(
-                                  color: context.colors.primaryVariant),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                        flex: 2,
+                        flex: 3,
                         child: Stack(
                           children: [
+                            Positioned(
+                              left: context.width * 0.05,
+                              child: Text(
+                                "Hello!\nFatih Kurçenli",
+                                style: context.textTheme.headline4.copyWith(
+                                    color: context.colors.primaryVariant),
+                              ),
+                            ),
                             Padding(
-                              padding:
-                                  EdgeInsets.only(top: context.mediumValue),
+                              // padding: context.paddingNormal,
+                              padding: EdgeInsets.only(top: 100),
                               child: Container(
                                 width: double.infinity,
-                                height: double.infinity,
+                                // height: double.infinity,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(
                                         context.mediumValue),
@@ -132,178 +126,113 @@ class HomeView extends StatelessWidget {
                                         .withOpacity(0.8)),
                                 child: Padding(
                                   padding: context.paddingMedium,
-                                  child: Text(
-                                    "Let's Make\nMoney\nBy Recycling",
-                                    style: context.textTheme.headline5
-                                        .copyWith(color: Colors.white),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "Let's Make\nMoney\nBy Recycling",
+                                        style: context.textTheme.headline5
+                                            .copyWith(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
                             Positioned(
-                                right: context.lowValue * 0.5,
-                                bottom: context.lowValue * 0.05,
-                                child: Padding(
-                                  padding:
-                                      EdgeInsets.only(top: context.highValue),
-                                  child: SvgPicture.asset(
-                                      SVGImagePaths.instance.world),
-                                ))
+                                right: context.lowValue * 0.2,
+                                // bottom: context.lowValue * 0.1,
+                                child: SvgPicture.asset(
+                                    SVGImagePaths.instance.world)),
                           ],
                         )),
-                    // Expanded(
-                    //   flex: 4,
-                    //   child: Padding(
-                    //     padding: context.paddingNormal,
-                    //     child: GridView.builder(
-                    //         gridDelegate:
-                    //             SliverGridDelegateWithMaxCrossAxisExtent(
-                    //                 maxCrossAxisExtent: context.highValue * 3,
-                    //                 childAspectRatio: 2 / 2,
-                    //                 crossAxisSpacing: context.highValue,
-                    //                 mainAxisSpacing: context.mediumValue),
-                    //         itemCount: myProducts.length,
-                    //         itemBuilder: (BuildContext context, index) {
-                    //           return Container(
-                    //             alignment: Alignment.center,
-                    //             child: Column(
-                    //               children: [
-                    //                 Expanded(
-                    //                     flex: 4,
-                    //                     child: SvgPicture.asset(
-                    //                         SVGImagePaths.instance.world)),
-                    //                 Expanded(
-                    //                   flex: 1,
-                    //                   child: Text(myProducts[index]["name"]),
-                    //                 )
-                    //               ],
-                    //             ),
-                    //             decoration: BoxDecoration(
-                    //                 color: context.colors.primaryVariant,
-                    //                 borderRadius: BorderRadius.circular(30)),
-                    //           );
-                    //         }),
-                    //   ),
-                    // ),
-                    Expanded(
-                        flex: 3,
-                        child: Column(children: [
-                          Expanded(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                            flex: 4,
-                                            child: SvgPicture.asset(
-                                                SVGImagePaths.instance.world)),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text("name"),
-                                        )
-                                      ],
-                                    ),
-                                    decoration: BoxDecoration(
-                                        color: context.colors.primaryVariant,
-                                        borderRadius:
-                                            BorderRadius.circular(30)),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                            flex: 4,
-                                            child: SvgPicture.asset(
-                                                SVGImagePaths.instance.world)),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text("name"),
-                                        )
-                                      ],
-                                    ),
-                                    decoration: BoxDecoration(
-                                        color: context.colors.primaryVariant,
-                                        borderRadius:
-                                            BorderRadius.circular(30)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                            flex: 4,
-                                            child: SvgPicture.asset(
-                                                SVGImagePaths.instance.world)),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text("name"),
-                                        )
-                                      ],
-                                    ),
-                                    decoration: BoxDecoration(
-                                        color: context.colors.primaryVariant,
-                                        borderRadius:
-                                            BorderRadius.circular(30)),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Column(
-                                      children: [
-                                        Expanded(
-                                            flex: 4,
-                                            child: SvgPicture.asset(
-                                                SVGImagePaths.instance.world)),
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text("name"),
-                                        )
-                                      ],
-                                    ),
-                                    decoration: BoxDecoration(
-                                        color: context.colors.primaryVariant,
-                                        borderRadius:
-                                            BorderRadius.circular(30)),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                    color: context.colors.secondaryVariant,
-                                    borderRadius: BorderRadius.circular(
-                                        context.mediumValue)),
-                              ),
-                            ],
-                          ),
-                        ])),
+                    build4Container(context, viewModel),
                   ],
                 ),
               ),
             ));
   }
+
+  Expanded build4Container(BuildContext context, HomeViewModel viewModel) {
+    return Expanded(
+      flex: 4,
+      child: Column(
+        children: [
+          Spacer(flex: 1),
+          Expanded(
+            flex: 4,
+            child: Row(
+              children: [
+                Expanded(child: ImageContainerCustom()),
+                Expanded(child: ImageContainerCustom()),
+              ],
+            ),
+          ),
+          Spacer(flex: 1),
+          Expanded(
+            flex: 4,
+            child: Row(
+              children: [
+                Expanded(child: ImageContainerCustom()),
+                Expanded(child: ImageContainerCustom()),
+              ],
+            ),
+          ),
+          Spacer(flex: 1),
+          Row(
+            children: [
+              Observer(builder: (_) {
+                return ToggleButtonContainer(
+                  callback: viewModel.changedToggle,
+                  isSelected: viewModel.isSelectedToggle,
+                );
+              }),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
 }
 
+/*
+TODO gridviewBuilder learnning
+  Expanded(
+                      flex: 4,
+                      child: Padding(
+                        padding: context.paddingNormal,
+                        child: GridView.builder(
+                            gridDelegate:
+                                SliverGridDelegateWithMaxCrossAxisExtent(
+                                    maxCrossAxisExtent: context.highValue * 3,
+                                    childAspectRatio: 2 / 2,
+                                    crossAxisSpacing: context.highValue,
+                                    mainAxisSpacing: context.mediumValue),
+                            itemCount: myProducts.length,
+                            itemBuilder: (BuildContext context, index) {
+                              return Container(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                        flex: 4,
+                                        child: SvgPicture.asset(
+                                            SVGImagePaths.instance.world)),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Text(myProducts[index]["name"]),
+                                    )
+                                  ],
+                                ),
+                                decoration: BoxDecoration(
+                                    color: context.colors.primaryVariant,
+                                    borderRadius: BorderRadius.circular(30)),
+                              );
+                            }),
+                      ),
+                    ),
+*/
 /*
  Padding(
           padding: context.paddingLow,
