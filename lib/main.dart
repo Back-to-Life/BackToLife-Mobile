@@ -1,4 +1,5 @@
-import 'package:backtolife/view/home/view/home_view.dart';
+import 'core/init/theme/app_theme_dark.dart';
+import 'view/home/view/home_view.dart';
 
 import 'core/init/lang/locale_keys_codegen.g.dart';
 import 'view/authentication/view/authentication_view.dart';
@@ -32,15 +33,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      theme: Provider.of<ThemeNotifier>(context, listen: false).currentTheme,
-      home: HomeView(),
-      onGenerateRoute: NavigationRoute.instance.generateRoute,
-      navigatorKey: NavigationService.instance.navigatorKey,
+    return ChangeNotifierProvider(
+      create: (context) => ThemeNotifier(),
+      builder: (context, _) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        darkTheme: AppThemeDark.instance.theme,
+        theme: Provider.of<ThemeNotifier>(context).currentTheme,
+        home: HomeView(),
+        onGenerateRoute: NavigationRoute.instance.generateRoute,
+        navigatorKey: NavigationService.instance.navigatorKey,
+      ),
     );
   }
 }
