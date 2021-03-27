@@ -1,7 +1,6 @@
 import '../../base/model/base_model.dart';
 import '../../constants/enum/htpp_request_enum.dart';
 import 'IResponseModel.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 abstract class ICoreDio {

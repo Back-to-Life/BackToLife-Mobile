@@ -14,6 +14,7 @@ part 'on_board_view_model.g.dart';
 class OnBoardViewModel = _OnBoardViewModelBase with _$OnBoardViewModel;
 
 abstract class _OnBoardViewModelBase with Store, BaseViewModel {
+  @override
   void setContext(BuildContext context) => this.context = context;
   List<OnBoardModel> onBoardItems = [];
 
@@ -23,6 +24,7 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
   @observable
   bool isLoading = false;
 
+  @override
   void init() {
     onBoardItems.add(OnBoardModel(
         LocaleKeys.onBoard_page1_title.locale,
@@ -53,10 +55,7 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
       changeLoading();
       await localeManager.setBooleanValue(PreferencesKeys.IS_FIRST_APP, true);
       changeLoading();
-      navigation.navigateToPageClear(path: NavigationConstants.HOME_VIEW);
+      await navigation.navigateToPageClear(path: NavigationConstants.HOME_VIEW);
     }
   }
 }
-
-
-

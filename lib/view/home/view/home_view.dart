@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import '../../../core/base/view/base_view.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/init/svgPath/image_path_svg.dart';
@@ -10,48 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:avatars/avatars.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-/*
-class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends BaseState<Home> {
-  HomeViewModel viewModel;
-
-  @override
-  Widget build(BuildContext context) {
-    return BaseView<HomeViewModel>(
-      viewModel: HomeViewModel(),
-      onModelReady: (model) {
-        viewModel = model;
-      },
-      onPageBuilder: (context, value) => Text("data"),
-    );
-  }
-
-  Widget get scaffoldBody => Scaffold(
-        appBar: AppBar(
-          title: Text(LocaleKeys.welcome.locale),
-          actions: [changeLanguage()],
-        ),
-        floatingActionButton: FloatingActionButton(onPressed: () {
-          viewModel.increment();
-        }),
-        body: Observer(builder: (context) => Text(viewModel.number.toString())),
-      );
-
-  IconButton changeLanguage() {
-    return IconButton(
-        icon: Icon(Icons.change_history),
-        onPressed: () {
-          context.locale = LanguageManager.instance.enLocale;
-        });
-  }
-}*/
 
 class HomeView extends StatelessWidget {
   const HomeView({Key key}) : super(key: key);
@@ -83,7 +40,7 @@ class HomeView extends StatelessWidget {
                               placeholderColors: [
                                 context.colors.primaryVariant
                               ],
-                              name: "Fatih Kurçenli",
+                              name: 'Fatih Kurçenli',
                               elevation: 10,
                               border: Border.all(
                                   color: Colors.green,
@@ -92,7 +49,7 @@ class HomeView extends StatelessWidget {
                                   TextStyle(fontSize: context.mediumValue),
                             ),
                             Text(
-                              "Back TO LIFE",
+                              'Back TO LIFE',
                               style: context.textTheme.headline6.copyWith(
                                   fontWeight: FontWeight.bold,
                                   color: context.colors.primaryVariant),
@@ -108,7 +65,7 @@ class HomeView extends StatelessWidget {
                             Positioned(
                               left: context.width * 0.05,
                               child: Text(
-                                "Hello!\nFatih Kurçenli",
+                                'Hello!\nFatih Kurçenli',
                                 style: context.textTheme.headline4.copyWith(
                                     color: context.colors.primaryVariant),
                               ),

@@ -8,9 +8,8 @@ import 'light/light_theme_interface.dart';
 class AppThemeLight extends AppTheme with ILightTheme {
   static AppThemeLight _instance;
   static AppThemeLight get instance {
-    if (_instance == null) {
-      _instance = AppThemeLight._init();
-    }
+    _instance ??= AppThemeLight._init();
+
     return _instance;
   }
 
@@ -18,6 +17,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
 
   //burda themedata koyup doldurmamız gerek
 
+  @override
   ThemeData get theme => ThemeData(
         scaffoldBackgroundColor: colorSchemeLight.kPrimaryLight,
         colorScheme: _appColorScheme(),

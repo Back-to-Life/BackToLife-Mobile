@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TextThemeLight {
   static TextThemeLight _instace;
   static TextThemeLight get instance {
-    if (_instace == null) _instace = TextThemeLight._init();
+    _instace ??= TextThemeLight._init();
     return _instace;
   }
 

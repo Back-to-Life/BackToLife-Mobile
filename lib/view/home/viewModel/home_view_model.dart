@@ -4,21 +4,19 @@ import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/constants/enum/app_theme_enum.dart';
-import '../../../core/init/network/network_manager.dart';
 import '../../../core/init/notifier/theme_notifier.dart';
-import '../model/home_model.dart';
 
 part 'home_view_model.g.dart';
 
 class HomeViewModel = _HomeViewModelBase with _$HomeViewModel;
 
 abstract class _HomeViewModelBase with Store, BaseViewModel {
-  BuildContext context;
-
+  @override
   void setContext(BuildContext context) {
     this.context = context;
   }
 
+  @override
   void init() {}
 
   @observable
@@ -44,12 +42,5 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   @action
   void increment() {
     number++;
-  }
-
-  @action
-  Future<void> getSampleRequest() async {
-    isLoading = true;
-    await NetworkManager.instance.dioGet<HomeModel>("x", HomeModel());
-    isLoading = false;
   }
 }

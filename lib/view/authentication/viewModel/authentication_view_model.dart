@@ -25,6 +25,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   TextEditingController emailSignUpController;
   TextEditingController passwordSignUpController;
 
+  @override
   void setContext(BuildContext context) {
     this.context = context;
     authenticationService =
@@ -48,6 +49,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   @observable
   bool isSuccess = false;
 
+  @override
   void init() {}
 
   @action
@@ -83,7 +85,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
               email: emailController.text, password: passwordController.text));
       if (response != null) {
         scaffoldState.currentState.showSnackBar(SnackBar(
-          content: Text("Giriş Başarılı"),
+          content: Text('Giriş Başarılı'),
         ));
       }
     }
@@ -105,7 +107,8 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
       if (response != null) {
         successChanged();
         changedLoading();
-        navigation.navigateToPageClear(path: NavigationConstants.HOME_VIEW);
+        await navigation.navigateToPageClear(
+            path: NavigationConstants.HOME_VIEW);
       }
     }
     changedLoading();

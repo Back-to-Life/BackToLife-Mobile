@@ -6,9 +6,8 @@ import 'package:flutter/material.dart';
 class AppThemeDark extends AppTheme {
   static AppThemeDark _instance;
   static AppThemeDark get instance {
-    if (_instance == null) {
-      _instance = AppThemeDark._init();
-    }
+    _instance ??= AppThemeDark._init();
+
     return _instance;
   }
 
@@ -16,6 +15,7 @@ class AppThemeDark extends AppTheme {
 
   //burda themedata koyup doldurmamız gerek
 
+  @override
   ThemeData get theme => ThemeData(
         scaffoldBackgroundColor: Colors.red,
         colorScheme: _appColorScheme(),

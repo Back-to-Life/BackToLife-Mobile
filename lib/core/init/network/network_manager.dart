@@ -10,9 +10,8 @@ import '../../base/model/base_model.dart';
 class NetworkManager {
   static NetworkManager _instance;
   static NetworkManager get instance {
-    if (_instance == null) {
-      _instance = NetworkManager._init();
-    }
+    _instance ??= NetworkManager._init();
+
     return _instance;
   }
 
@@ -20,7 +19,7 @@ class NetworkManager {
 
   NetworkManager._init() {
     final baseOptions = BaseOptions(
-      baseUrl: "https://jsonplaceholder.typicode.com/",
+      baseUrl: 'https://jsonplaceholder.typicode.com/',
       /*  headers: {
         "val": LocaleManager.instance.getStringValue(PreferencesKeys.TOKEN)
       }, */
@@ -30,7 +29,7 @@ class NetworkManager {
 
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options) {
-        options.path += "fatih";
+        options.path += 'fatih';
       },
       onError: (e) {
         return BaseError(e.message);

@@ -13,12 +13,13 @@ class HomeModel extends BaseModel {
 
   HomeModel({this.userId, this.id, this.title, this.completed});
 
+  @override
   Map<String, dynamic> toJson() {
     return _$HomeModelToJson(this);
   }
 
   @override
-  fromJson(Map<String, Object> json) {
+  HomeModel fromJson(Map<String, Object> json) {
     return _$HomeModelFromJson(json);
   }
 }

@@ -1,6 +1,3 @@
-import '../../../core/constants/navigation/navigation_constants.dart';
-import '../../../core/init/navigation/navigation_service.dart';
-
 import '../../../core/init/image/lottie_constants.dart';
 import '../../widgets/loading/loading_page.dart';
 import 'package:lottie/lottie.dart';
@@ -137,7 +134,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
                     left: context.width * 0.25,
                     child: InkWell(
                       onTap: () async {
-                        print("facebook");
+                        print('facebook');
                         showAlertDialog(context, viewModel);
                         //viewModel.context.locale = Locale('en', 'US');
                       },
@@ -158,7 +155,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
                     right: context.width * 0.25,
                     child: InkWell(
                       onTap: () {
-                        print("google");
+                        print('google');
                       },
                       child: Visibility(
                         visible: context.mediaQuery.viewInsets.bottom > 0
@@ -181,9 +178,9 @@ class _AuthenticationViewState extends State<AuthenticationView>
   showAlertDialog(BuildContext context, AuthenticationViewModel viewModel) {
     // set up the button
     Widget okButton = FlatButton(
-      child: Text("OK", style: TextStyle(color: context.colors.primaryVariant)),
+      child: Text('OK', style: TextStyle(color: context.colors.primaryVariant)),
       onPressed: () {
-        print("ok success coming buttonu");
+        print('ok success coming buttonu');
         Navigator.of(context).pop();
       },
     );
@@ -192,12 +189,12 @@ class _AuthenticationViewState extends State<AuthenticationView>
       child: Observer(builder: (_) {
         return Visibility(
           visible: viewModel.isLoading ? false : true,
-          child: Text("Upps..",
+          child: Text('Upps..',
               style: TextStyle(color: context.colors.primaryVariant)),
         );
       }),
       onPressed: () {
-        print("error coming buttonu");
+        print('error coming buttonu');
         Navigator.of(context).pop();
       },
     );
@@ -217,8 +214,8 @@ class _AuthenticationViewState extends State<AuthenticationView>
           borderRadius: BorderRadius.circular(context.mediumValue)),
       title: Observer(builder: (_) {
         return viewModel.isLoading
-            ? Text("Loading")
-            : Text("Upps.. Something Went Wrong");
+            ? Text('Loading')
+            : Text('Upps.. Something Went Wrong');
       }),
       content: Observer(builder: (_) {
         return viewModel.isLoading
@@ -331,7 +328,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
       return TextFormField(
         controller: viewModel.passwordSignUpController,
         obscureText: !viewModel.isEyeOpen,
-        validator: (value) => value.isEmpty ? "This field required" : null,
+        validator: (value) => value.isEmpty ? 'This field required' : null,
         decoration: InputDecoration(
             suffixIcon: GestureDetector(
               onTap: () => viewModel.isEyeOpenFun(),
@@ -399,7 +396,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
       children: [
         GestureDetector(
             onTap: () {
-              print("forgat password Button");
+              print('forgat password Button');
             },
             child: Align(
               alignment: Alignment.centerRight,
@@ -420,7 +417,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
       return TextFormField(
         controller: viewModel.passwordController,
         obscureText: !viewModel.isEyeOpen,
-        validator: (value) => value.isEmpty ? "This field required" : null,
+        validator: (value) => value.isEmpty ? 'This field required' : null,
         decoration: InputDecoration(
             suffixIcon: GestureDetector(
               onTap: () => viewModel.isEyeOpenFun(),
