@@ -177,7 +177,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
 
   showAlertDialog(BuildContext context, AuthenticationViewModel viewModel) {
     // set up the button
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
       child: Text('OK', style: TextStyle(color: context.colors.primaryVariant)),
       onPressed: () {
         print('ok success coming buttonu');
@@ -185,7 +185,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
       },
     );
 
-    Widget errorButton = FlatButton(
+    Widget errorButton = TextButton(
       child: Observer(builder: (_) {
         return Visibility(
           visible: viewModel.isLoading ? false : true,

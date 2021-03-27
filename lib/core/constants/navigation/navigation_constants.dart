@@ -1,4 +1,5 @@
 class NavigationConstants {
   static const HOME_VIEW = '/home';
+  static const AUTHENTICATION_VIEW = '/authentication';
   static const ON_BOARDING = '/onboarding';
 }

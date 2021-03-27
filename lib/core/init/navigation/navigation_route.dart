@@ -1,3 +1,5 @@
+import 'package:backtolife/view/authentication/view/authentication_view.dart';
+
 import '../../../view/onboarding/view/on_board_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,12 +15,16 @@ class NavigationRoute {
 
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
-      case NavigationConstants.HOME_VIEW:
-        return simpleNavigate(HomeView());
-        break;
       case NavigationConstants.ON_BOARDING:
         return simpleNavigate(OnBoardView());
         break;
+      case NavigationConstants.AUTHENTICATION_VIEW:
+        return simpleNavigate(AuthenticationView());
+        break;
+      case NavigationConstants.HOME_VIEW:
+        return simpleNavigate(HomeView());
+        break;
+
       default:
         return MaterialPageRoute(builder: (context) => NotFoundNavigation());
     }
