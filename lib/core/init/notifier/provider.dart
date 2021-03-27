@@ -6,9 +6,8 @@ import 'package:provider/single_child_widget.dart';
 class ApplicationProvider {
   static ApplicationProvider _instance;
   static ApplicationProvider get instance {
-    if (_instance == null) {
-      _instance = ApplicationProvider._init();
-    }
+    _instance ??= ApplicationProvider._init();
+
     return _instance;
   }
 

@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import '../../widgets/Avatar/onboarding_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -181,8 +180,8 @@ class OnBoardView extends StatelessWidget {
                                                     children: [
                                                       viewModel.currentIndex ==
                                                               2
-                                                          ? Text("Done   ")
-                                                          : Text("Next  "),
+                                                          ? Text('Done   ')
+                                                          : Text('Next  '),
                                                       SvgPicture.asset(
                                                           SVGImagePaths.instance
                                                               .arrowRight,

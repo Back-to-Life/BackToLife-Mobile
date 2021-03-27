@@ -14,14 +14,16 @@ import 'IResponseModel.dart';
 part './network_core/core_operations.dart';
 
 class CoreDio with DioMixin implements Dio, ICoreDio {
+  @override
   final BaseOptions options;
 
   CoreDio(this.options) {
-    this.options = options;
-    this.interceptors.add(InterceptorsWrapper());
-    this.httpClientAdapter = DefaultHttpClientAdapter();
+    options = options;
+    interceptors.add(InterceptorsWrapper());
+    httpClientAdapter = DefaultHttpClientAdapter();
   }
 
+  @override
   Future<IResponseModel<R>> fetch<R, T extends BaseModel>(String path,
       {@required HttpTypes type,
       @required T parseModel,
@@ -36,7 +38,7 @@ class CoreDio with DioMixin implements Dio, ICoreDio {
         final model = _responseParser(parseModel, response.data);
         return ResponseModel<R>(data: model);
       default:
-        return ResponseModel(error: BaseError("message"));
+        return ResponseModel(error: BaseError('message'));
     }
   }
 }

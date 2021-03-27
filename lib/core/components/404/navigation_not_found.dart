@@ -6,7 +6,7 @@ class NotFoundNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("this page not found!!"),
+      body: Text('this page not found!!'),
     );
   }
 }

@@ -14,7 +14,7 @@ class AuthenticationService extends IAuthenticationService {
       AuthenticationModel model) async {
     final response = await manager
         .fetch<AuthenticationResponseModel, AuthenticationResponseModel>(
-            "login",
+            'login',
             parseModel: AuthenticationResponseModel(),
             method: RequestType.POST,
             data: model);
@@ -22,7 +22,7 @@ class AuthenticationService extends IAuthenticationService {
     if (response.data is AuthenticationResponseModel) {
       return response.data;
     } else {
-      return null; //if something getting error we have to fix this null option on view data !! //TODO
+      return null; //if something getting error we have to fix this null option on view data !!
     }
   }
 
@@ -30,7 +30,7 @@ class AuthenticationService extends IAuthenticationService {
   Future<AuthenticationRegisterResponseModel> registerUserControl(
       AuthenticationRegisterModel model) async {
     final response = await manager.fetch<AuthenticationRegisterResponseModel,
-            AuthenticationRegisterResponseModel>("register",
+            AuthenticationRegisterResponseModel>('register',
         parseModel: AuthenticationRegisterResponseModel(),
         method: RequestType.POST,
         data: model);

@@ -20,7 +20,7 @@ class ImageContainerCustom extends StatelessWidget {
             Spacer(flex: 1),
             Expanded(
               flex: 1,
-              child: Text("name"),
+              child: Text('name'),
             )
           ],
         ),
