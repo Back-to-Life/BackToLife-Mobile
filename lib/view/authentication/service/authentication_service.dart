@@ -12,17 +12,18 @@ class AuthenticationService extends IAuthenticationService {
   @override
   Future<AuthenticationResponseModel> fetchUserControl(
       AuthenticationModel model) async {
-    final response = await manager
-        .fetch<AuthenticationResponseModel, AuthenticationResponseModel>(
-            'login',
-            parseModel: AuthenticationResponseModel(),
-            method: RequestType.POST,
-            data: model);
-
-    if (response.data is AuthenticationResponseModel) {
-      return response.data;
-    } else {
-      return null; //if something getting error we have to fix this null option on view data !!
+    try {
+      final response = await manager
+          .fetch<AuthenticationResponseModel, AuthenticationResponseModel>(
+              'login',
+              parseModel: AuthenticationResponseModel(),
+              method: RequestType.POST,
+              data: model);
+      if (response.data is AuthenticationResponseModel) {
+        return response.data;
+      }
+    } catch (e) {
+      return e;
     }
   }
 

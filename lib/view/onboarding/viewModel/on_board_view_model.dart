@@ -55,7 +55,8 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
       changeLoading();
       await localeManager.setBooleanValue(PreferencesKeys.IS_FIRST_APP, true);
       changeLoading();
-      await navigation.navigateToPageClear(path: NavigationConstants.HOME_VIEW);
+      await navigation.navigateToPageClear(
+          path: NavigationConstants.AUTHENTICATION_VIEW);
     }
   }
 }

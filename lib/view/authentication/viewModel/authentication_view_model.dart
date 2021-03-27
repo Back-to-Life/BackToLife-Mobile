@@ -17,7 +17,8 @@ class AuthenticationViewModel = _AuthenticationViewModelBase
 abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   GlobalKey<FormState> formState = GlobalKey();
   GlobalKey<FormState> formSignUpState = GlobalKey();
-  GlobalKey<ScaffoldState> scaffoldState = GlobalKey();
+  GlobalKey<ScaffoldMessengerState> scaffoldState =
+      GlobalKey<ScaffoldMessengerState>();
   TextEditingController emailController;
   TextEditingController passwordController;
   IAuthenticationService authenticationService;
@@ -83,10 +84,9 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
       final response = await authenticationService.fetchUserControl(
           AuthenticationModel(
               email: emailController.text, password: passwordController.text));
-      if (response != null) {
-        scaffoldState.currentState.showSnackBar(SnackBar(
-          content: Text('Giriş Başarılı'),
-        ));
+      if (response != null && response.success == true) {
+        await navigation.navigateToPageClear(
+            path: NavigationConstants.HOME_VIEW);
       }
     }
     changedLoading();
