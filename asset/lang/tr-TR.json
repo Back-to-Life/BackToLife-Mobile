@@ -1,12 +1,18 @@
 {
     "welcome": "Uygulamamıza hoşgeldiniz.",
-    "onBoard":{
-        "page1":
-        {"title":"QR Code Taratın","desc":"Kolayca kodu taratın ve işlemlerinizi halledin."},
-        "page2":
-        {"title":"Puanları Toplayın","desc":"Puan toplayın"},
-        "page3":
-        {"title":"Doğayı birlikte koruyalım","desc":"Dünyanın kahramanları biziz. Hadi birlikte savaşalım."}
+    "onBoard": {
+        "page1": {
+            "title": "QR Code Taratın",
+            "desc": "Kolayca kodu taratın ve işlemlerinizi halledin."
+        },
+        "page2": {
+            "title": "Puanları Toplayın",
+            "desc": "Puan toplayın"
+        },
+        "page3": {
+            "title": "Doğayı birlikte koruyalım",
+            "desc": "Dünyanın kahramanları biziz. Hadi birlikte savaşalım."
+        }
     },
     "login": {
         "tab1": "Giriş",
@@ -16,6 +22,14 @@
         "email": "Email",
         "password": "Şifre",
         "forgotText": "Şifreyi Unuttum",
-        "name":"Adınız ve Soyadınız"
-      }
+        "name": "Adınız ve Soyadınız"
+    },
+    "home": {
+        "hello": "Merhaba!",
+        "homedescription": "Birlikte Doğayı\nKoruyalım\nVe Para Kazanalım",
+        "scancode": "QR Code Okutucu",
+        "profile": "Profil",
+        "heroes": "Kahramanlar",
+        "settings": "Ayarlar"
+    }
 }

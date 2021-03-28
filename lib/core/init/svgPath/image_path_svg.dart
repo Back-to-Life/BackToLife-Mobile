@@ -19,4 +19,7 @@ class SVGImagePaths {
   final world = 'world'.toSVG;
   final changedBack = 'changedBack'.toSVG;
   final scanBarcode = 'scanbarcode'.toSVG;
+  final profile = 'profile'.toSVG;
+  final heroes = 'heroes'.toSVG;
+  final settings = 'settings'.toSVG;
 }
