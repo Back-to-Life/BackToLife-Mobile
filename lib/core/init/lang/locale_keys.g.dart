@@ -21,5 +21,12 @@ abstract class  LocaleKeys {
   static const login_forgotText = 'login.forgotText';
   static const login_name = 'login.name';
   static const login = 'login';
+  static const home_hello = 'home.hello';
+  static const home_homedescription = 'home.homedescription';
+  static const home_scancode = 'home.scancode';
+  static const home_profile = 'home.profile';
+  static const home_heroes = 'home.heroes';
+  static const home_settings = 'home.settings';
+  static const home = 'home';
 
 }

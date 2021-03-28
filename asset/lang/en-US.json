@@ -22,6 +22,14 @@
     "email": "Email",
     "password": "Password",
     "forgotText": "Forgot Password",
-    "name":"Name and Surname"
+    "name": "Name and Surname"
+  },
+  "home": {
+    "hello": "Hello!",
+    "homedescription": "Let's Make\nMoney\nBy Recycling",
+    "scancode": "Scan The QR Code",
+    "profile": "Profile",
+    "heroes": "Heroes",
+    "settings": "Settings"
   }
 }

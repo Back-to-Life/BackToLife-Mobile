@@ -39,6 +39,14 @@ class CodegenLoader extends AssetLoader{
     "password": "Password",
     "forgotText": "Forgot Password",
     "name": "Name and Surname"
+  },
+  "home": {
+    "hello": "Hello!",
+    "homedescription": "Let's Make\nMoney\nBy Recycling",
+    "scancode": "Scan The QR Code",
+    "profile": "Profile",
+    "heroes": "Heroes",
+    "settings": "Settings"
   }
 };
 static const Map<String,dynamic> tr_TR = {
@@ -66,6 +74,14 @@ static const Map<String,dynamic> tr_TR = {
     "password": "Şifre",
     "forgotText": "Şifreyi Unuttum",
     "name": "Adınız ve Soyadınız"
+  },
+  "home": {
+    "hello": "Merhaba!",
+    "homedescription": "Birlikte Doğayı\nKoruyalım\nVe Para Kazanalım",
+    "scancode": "QR Code Okutucu",
+    "profile": "Profil",
+    "heroes": "Kahramanlar",
+    "settings": "Ayarlar"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "tr_TR": tr_TR};
