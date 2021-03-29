@@ -1,4 +1,5 @@
 import 'package:backtolife/view/authentication/view/authentication_view.dart';
+import 'package:backtolife/view/profile/view/profile_view.dart';
 
 import '../../../view/onboarding/view/on_board_view.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,9 @@ class NavigationRoute {
         break;
       case NavigationConstants.HOME_VIEW:
         return simpleNavigate(HomeView());
+        break;
+      case NavigationConstants.PROFILE:
+        return simpleNavigate(ProfileView());
         break;
 
       default:
