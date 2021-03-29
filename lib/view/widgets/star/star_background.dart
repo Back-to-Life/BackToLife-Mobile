@@ -58,10 +58,10 @@ class _StarBackGroundState extends State<StarBackGround>
       setState(() {});
     });
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 200; i++) {
       listStar.add(WhereStar(
           left: Random().nextDouble() * 500,
-          bottom: Random().nextDouble() * 500,
+          bottom: Random().nextDouble() * 200,
           top: Random().nextDouble() * 500,
           extraSize: Random().nextDouble() * 4,
           angle: Random().nextDouble(),
@@ -98,11 +98,11 @@ class _StarBackGroundState extends State<StarBackGround>
       child: Container(
         child: Transform.rotate(
           child: Transform.translate(
-            offset: Offset(_animation.value, 100.0),
+            offset: Offset(_animation.value, 10.0),
             child: Opacity(
               child: Icon(
                 Icons.star,
-                color: Colors.black,
+                color: Colors.white,
                 size: _animation.value * 1.5 + extraSize,
               ),
               opacity: (typeFade == 1)
@@ -126,7 +126,7 @@ class _StarBackGroundState extends State<StarBackGround>
 
   Widget buildGroupStar() {
     List<Widget> list = [];
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 200; i++) {
       list.add(buildStar(
         listStar[i].left,
         listStar[i].top,
