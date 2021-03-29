@@ -1,5 +1,7 @@
 import 'package:backtolife/view/authentication/view/authentication_view.dart';
 import 'package:backtolife/view/home/view/home_view.dart';
+import 'package:backtolife/view/onboarding/view/on_board_view.dart';
+import 'package:backtolife/view/profile/view/profile_view.dart';
 
 import 'core/init/theme/app_theme_dark.dart';
 
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         darkTheme: AppThemeDark.instance.theme,
         theme: Provider.of<ThemeNotifier>(context).currentTheme,
-        home: HomeView(),
+        home: ProfileView(),
         onGenerateRoute: NavigationRoute.instance.generateRoute,
         navigatorKey: NavigationService.instance.navigatorKey,
       ),

@@ -22,4 +22,5 @@ class SVGImagePaths {
   final profile = 'profile'.toSVG;
   final heroes = 'heroes'.toSVG;
   final settings = 'settings'.toSVG;
+  final pencil = 'pencil'.toSVG;
 }
