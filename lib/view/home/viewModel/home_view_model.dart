@@ -1,3 +1,5 @@
+import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
+
 import '../../../core/base/model/base_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
@@ -42,5 +44,9 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   @action
   void increment() {
     number++;
+  }
+
+  Future<void> goToProfile() async {
+    await navigation.navigateToPage(path: NavigationConstants.PROFILE);
   }
 }
