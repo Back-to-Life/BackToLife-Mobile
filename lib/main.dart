@@ -1,3 +1,5 @@
+import 'package:backtolife/view/profile/view/profile_view.dart';
+
 import 'view/home/view/home_view.dart';
 import 'core/init/theme/app_theme_dark.dart';
 
@@ -26,7 +28,7 @@ Future<void> main() async {
         child: MyApp(),
         fallbackLocale: Locale('en', 'US'),
         assetLoader: CodegenLoader(),
-        supportedLocales: LanguageManager.instance!.supportedLocales,
+        supportedLocales: LanguageManager.instance.supportedLocales,
         path: ApplicationConstants.LANG_ASSET_PATH),
   ));
 }
@@ -42,9 +44,9 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        darkTheme: AppThemeDark.instance!.theme,
+        darkTheme: AppThemeDark.instance.theme,
         theme: Provider.of<ThemeNotifier>(context).currentTheme,
-        home: HomeView(),
+        home: ProfileView(),
         onGenerateRoute: NavigationRoute.instance.generateRoute,
         navigatorKey: NavigationService.instance.navigatorKey,
       ),

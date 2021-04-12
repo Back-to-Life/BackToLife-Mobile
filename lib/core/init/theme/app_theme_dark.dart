@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 class AppThemeDark extends AppTheme {
   static AppThemeDark? _instance;
-  static AppThemeDark? get instance {
+  static AppThemeDark get instance {
     _instance ??= AppThemeDark._init();
 
-    return _instance;
+    return _instance!;
   }
 
   AppThemeDark._init();

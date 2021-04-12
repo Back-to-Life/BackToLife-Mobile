@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 
 class ColorSchemeLight {
   static ColorSchemeLight? _instace;
-  static ColorSchemeLight? get instance {
+  static ColorSchemeLight get instance {
     _instace ??= ColorSchemeLight._init();
-    return _instace;
+    return _instace!;
   }
 
   ColorSchemeLight._init();
@@ -19,4 +19,6 @@ class ColorSchemeLight {
   final Color whiteText = Color(0xFFFFFFFF);
   final Color greyOnboard = Color(0xFF464343);
   final Color buttonOnboard = Color(0xFFD0E07A);
+  final Color starColor = Color(0xFFFFC107);
+  final Color darkGreen = Color(0xFF4E5F49);
 }
