@@ -58,7 +58,7 @@ class _HomeViewState extends State<HomeView>
         CurvedAnimation(
             parent: _animationController,
             curve: Interval(0.25, 1, curve: Curves.fastOutSlowIn)));
-    ;
+    
     _rightSecondSlidingAnimation = Tween(begin: -1.0, end: 0.0).animate(
         CurvedAnimation(
             parent: _animationController,
