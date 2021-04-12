@@ -77,7 +77,7 @@ class OnBoardView extends StatelessWidget {
                                       viewModel
                                           .onBoardItems[viewModel.currentIndex]
                                           .title,
-                                      style: context.textTheme.headline4
+                                      style: context.textTheme.headline4!
                                           .copyWith(
                                               fontWeight: FontWeight.bold,
                                               color: viewModel.currentIndex == 1
@@ -97,7 +97,7 @@ class OnBoardView extends StatelessWidget {
                                                 .currentIndex]
                                             .description,
                                         textAlign: TextAlign.center,
-                                        style: context.textTheme.subtitle1
+                                        style: context.textTheme.subtitle1!
                                             .copyWith(
                                                 fontWeight: FontWeight.bold,
                                                 color: viewModel.currentIndex ==

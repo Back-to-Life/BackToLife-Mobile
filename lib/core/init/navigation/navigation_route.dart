@@ -1,5 +1,5 @@
-import 'package:backtolife/view/authentication/view/authentication_view.dart';
-import 'package:backtolife/view/profile/view/profile_view.dart';
+import '../../../view/authentication/view/authentication_view.dart';
+import '../../../view/profile/view/profile_view.dart';
 
 import '../../../view/onboarding/view/on_board_view.dart';
 import 'package:flutter/material.dart';

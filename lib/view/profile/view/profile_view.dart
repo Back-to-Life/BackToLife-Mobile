@@ -1,16 +1,16 @@
-import 'package:backtolife/core/base/view/base_view.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
-import 'package:backtolife/view/profile/viewModel/profile_view_model.dart';
-import 'package:backtolife/view/widgets/loading/loading_page.dart';
-import 'package:backtolife/view/widgets/star/star_background.dart';
+import '../../../core/base/view/base_view.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/init/svgPath/image_path_svg.dart';
+import '../viewModel/profile_view_model.dart';
+import '../../widgets/loading/loading_page.dart';
+import '../../widgets/star/star_background.dart';
 import 'package:flutter/material.dart';
 
 import 'package:avatars/avatars.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileView extends StatelessWidget {
-  const ProfileView({Key key}) : super(key: key);
+  const ProfileView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

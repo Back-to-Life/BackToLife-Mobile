@@ -19,18 +19,18 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   GlobalKey<FormState> formSignUpState = GlobalKey();
   GlobalKey<ScaffoldMessengerState> scaffoldState =
       GlobalKey<ScaffoldMessengerState>();
-  TextEditingController emailController;
-  TextEditingController passwordController;
-  IAuthenticationService authenticationService;
-  TextEditingController nameSurnameController;
-  TextEditingController emailSignUpController;
-  TextEditingController passwordSignUpController;
+  TextEditingController? emailController;
+  TextEditingController? passwordController;
+  late IAuthenticationService authenticationService;
+  TextEditingController? nameSurnameController;
+  TextEditingController? emailSignUpController;
+  TextEditingController? passwordSignUpController;
 
   @override
   void setContext(BuildContext context) {
     this.context = context;
     authenticationService =
-        AuthenticationService(VexanaManager.instance.networkManager);
+        AuthenticationService(VexanaManager.instance!.networkManager);
     emailController = TextEditingController();
     passwordController = TextEditingController();
     nameSurnameController = TextEditingController();
@@ -80,10 +80,10 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   @action
   Future<void> fetchLoginService() async {
     changedLoading();
-    if (formState.currentState.validate() && isLoginOrSignUp) {
+    if (formState.currentState!.validate() && isLoginOrSignUp) {
       final response = await authenticationService.fetchUserControl(
           AuthenticationModel(
-              email: emailController.text, password: passwordController.text));
+              email: emailController!.text, password: passwordController!.text));
       if (response != null && response.success == true) {
         await navigation.navigateToPageClear(
             path: NavigationConstants.HOME_VIEW);
@@ -95,15 +95,15 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   @action
   Future<void> fetchSignUpService() async {
     changedLoading();
-    if (formSignUpState.currentState.validate() && !isLoginOrSignUp) {
+    if (formSignUpState.currentState!.validate() && !isLoginOrSignUp) {
       final response = await authenticationService.registerUserControl(
           AuthenticationRegisterModel(
-              firstName: nameSurnameController.text,
-              email: emailSignUpController.text,
-              password: passwordSignUpController.text));
-      print(nameSurnameController.text);
-      print(emailSignUpController.text);
-      print(passwordSignUpController.text);
+              firstName: nameSurnameController!.text,
+              email: emailSignUpController!.text,
+              password: passwordSignUpController!.text));
+      print(nameSurnameController!.text);
+      print(emailSignUpController!.text);
+      print(passwordSignUpController!.text);
       if (response != null) {
         successChanged();
         changedLoading();

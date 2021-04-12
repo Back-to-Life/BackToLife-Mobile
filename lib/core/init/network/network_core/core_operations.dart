@@ -1,6 +1,6 @@
 part of '../core_dio.dart';
 
-extension CoreDioOperations on CoreDio {
+/* extension CoreDioOperations on CoreDio {
   R _responseParser<R>(BaseModel model, dynamic data) {
     if (data is List) {
       return data.map((e) => model.fromJson(e)).toList() as R;
@@ -10,3 +10,4 @@ extension CoreDioOperations on CoreDio {
     return data as R;
   }
 }
+ */

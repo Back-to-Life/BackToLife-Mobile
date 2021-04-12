@@ -15,7 +15,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 
 class AuthenticationView extends StatefulWidget {
-  const AuthenticationView({Key key}) : super(key: key);
+  const AuthenticationView({Key? key}) : super(key: key);
 
   @override
   _AuthenticationViewState createState() => _AuthenticationViewState();
@@ -23,7 +23,7 @@ class AuthenticationView extends StatefulWidget {
 
 class _AuthenticationViewState extends State<AuthenticationView>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  TabController? _tabController;
   final List<Tab> myTabs = <Tab>[
     Tab(
       text: LocaleKeys.login_tab1.tr(),
@@ -39,8 +39,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
 
   @override
   void dispose() {
-    _tabController.dispose();
-    
+    _tabController!.dispose();
     super.dispose();
   }
 
@@ -95,7 +94,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
                   margin: EdgeInsets.only(bottom: context.mediumValue),
                   child: Center(
                       child:
-                          Lottie.asset(LottiePaths.instance.loginPageLottie)),
+                          Lottie.asset(LottiePaths.instance!.loginPageLottie)),
                 ),
                 SingleChildScrollView(
                   child: Center(
@@ -220,8 +219,8 @@ class _AuthenticationViewState extends State<AuthenticationView>
       }),
       content: Observer(builder: (_) {
         return viewModel.isLoading
-            ? Lottie.asset(LottiePaths.instance.loadingPageContainer)
-            : Lottie.asset(LottiePaths.instance.errorLottie);
+            ? Lottie.asset(LottiePaths.instance!.loadingPageContainer)
+            : Lottie.asset(LottiePaths.instance!.errorLottie);
       }),
       actions: [
         listenerButton,
@@ -245,7 +244,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
       bottom: context.height * 0.1,
       child: InkWell(
         onTap: () {
-          _tabController.animateTo((_tabController.index + 1) % 2);
+          _tabController!.animateTo((_tabController!.index + 1) % 2);
           viewModel.changedTabBar();
         },
         child: Visibility(
@@ -255,7 +254,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
                 viewModel.isLoginOrSignUp
                     ? LocaleKeys.login_orSignUpWith.tr()
                     : LocaleKeys.login_orLoginWith.tr(),
-                style: context.textTheme.bodyText1.copyWith(
+                style: context.textTheme.bodyText1!.copyWith(
                     color: context.colors.primaryVariant,
                     fontWeight: FontWeight.bold),
               );
@@ -329,7 +328,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
       return TextFormField(
         controller: viewModel.passwordSignUpController,
         obscureText: !viewModel.isEyeOpen,
-        validator: (value) => value.isEmpty ? 'This field required' : null,
+        validator: (value) => value!.isEmpty ? 'This field required' : null,
         decoration: InputDecoration(
             suffixIcon: GestureDetector(
               onTap: () => viewModel.isEyeOpenFun(),
@@ -342,7 +341,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
               }),
             ),
             labelText: LocaleKeys.login_password.tr(),
-            labelStyle: context.textTheme.headline6
+            labelStyle: context.textTheme.headline6!
                 .copyWith(color: context.colors.primaryVariant),
             icon: buildContainerIconField(context, Icons.lock)),
       );
@@ -353,10 +352,10 @@ class _AuthenticationViewState extends State<AuthenticationView>
       BuildContext context, AuthenticationViewModel viewModel) {
     return TextFormField(
       controller: viewModel.emailSignUpController,
-      validator: (value) => value.isValidEmail,
+      validator: (value) => value!.isValidEmail,
       decoration: InputDecoration(
           labelText: LocaleKeys.login_email.tr(),
-          labelStyle: context.textTheme.headline6
+          labelStyle: context.textTheme.headline6!
               .copyWith(color: context.colors.primaryVariant),
           icon: buildContainerIconField(context, Icons.email)),
     );
@@ -366,10 +365,10 @@ class _AuthenticationViewState extends State<AuthenticationView>
       BuildContext context, AuthenticationViewModel viewModel) {
     return TextFormField(
       controller: viewModel.nameSurnameController,
-      validator: (value) => value.isEmpty ? 'This field is not empty' : null,
+      validator: (value) => value!.isEmpty ? 'This field is not empty' : null,
       decoration: InputDecoration(
           labelText: LocaleKeys.login_name.tr(),
-          labelStyle: context.textTheme.headline6
+          labelStyle: context.textTheme.headline6!
               .copyWith(color: context.colors.primaryVariant),
           icon: buildContainerIconField(context, Icons.person)),
     );
@@ -403,7 +402,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
               alignment: Alignment.centerRight,
               child: Text(
                 LocaleKeys.login_forgotText.tr(),
-                style: context.textTheme.bodyText1.copyWith(
+                style: context.textTheme.bodyText1!.copyWith(
                     color: context.colors.primaryVariant,
                     fontWeight: FontWeight.bold),
               ),
@@ -418,7 +417,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
       return TextFormField(
         controller: viewModel.passwordController,
         obscureText: !viewModel.isEyeOpen,
-        validator: (value) => value.isEmpty ? 'This field required' : null,
+        validator: (value) => value!.isEmpty ? 'This field required' : null,
         decoration: InputDecoration(
             suffixIcon: GestureDetector(
               onTap: () => viewModel.isEyeOpenFun(),
@@ -431,7 +430,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
               }),
             ),
             labelText: LocaleKeys.login_password.tr(),
-            labelStyle: context.textTheme.headline6
+            labelStyle: context.textTheme.headline6!
                 .copyWith(color: context.colors.primaryVariant),
             icon: buildContainerIconField(context, Icons.lock)),
       );
@@ -452,10 +451,10 @@ class _AuthenticationViewState extends State<AuthenticationView>
       BuildContext context, AuthenticationViewModel viewModel) {
     return TextFormField(
       controller: viewModel.emailController,
-      validator: (value) => value.isValidEmail,
+      validator: (value) => value!.isValidEmail,
       decoration: InputDecoration(
           labelText: LocaleKeys.login_email.tr(),
-          labelStyle: context.textTheme.headline6
+          labelStyle: context.textTheme.headline6!
               .copyWith(color: context.colors.primaryVariant),
           icon: buildContainerIconField(context, Icons.email)),
     );
@@ -464,9 +463,9 @@ class _AuthenticationViewState extends State<AuthenticationView>
   TabBar buildTabBar(AuthenticationViewModel viewModel, BuildContext context) {
     return TabBar(
       controller: _tabController,
-      labelStyle: context.textTheme.bodyText1
+      labelStyle: context.textTheme.bodyText1!
           .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
-      unselectedLabelStyle: context.textTheme.bodyText1
+      unselectedLabelStyle: context.textTheme.bodyText1!
           .copyWith(fontSize: 15, fontWeight: FontWeight.bold),
       labelPadding: context.paddingLowHorizontal,
       labelColor: context.colors.primaryVariant,

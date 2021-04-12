@@ -10,11 +10,11 @@ class AuthenticationService extends IAuthenticationService {
   AuthenticationService(INetworkManager manager) : super(manager);
 
   @override
-  Future<AuthenticationResponseModel> fetchUserControl(
+  Future<AuthenticationResponseModel?> fetchUserControl(
       AuthenticationModel model) async {
     try {
       final response = await manager
-          .fetch<AuthenticationResponseModel, AuthenticationResponseModel>(
+          .send<AuthenticationResponseModel, AuthenticationResponseModel>(
               'login',
               parseModel: AuthenticationResponseModel(),
               method: RequestType.POST,
@@ -23,14 +23,14 @@ class AuthenticationService extends IAuthenticationService {
         return response.data;
       }
     } catch (e) {
-      return e;
+      throw Exception();
     }
   }
 
   @override
-  Future<AuthenticationRegisterResponseModel> registerUserControl(
+  Future<AuthenticationRegisterResponseModel?> registerUserControl(
       AuthenticationRegisterModel model) async {
-    final response = await manager.fetch<AuthenticationRegisterResponseModel,
+    final response = await manager.send<AuthenticationRegisterResponseModel,
             AuthenticationRegisterResponseModel>('register',
         parseModel: AuthenticationRegisterResponseModel(),
         method: RequestType.POST,
