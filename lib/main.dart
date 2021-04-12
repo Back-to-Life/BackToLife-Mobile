@@ -21,6 +21,8 @@ import 'core/init/notifier/theme_notifier.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   LocaleManager.preferencesInit();
+
+  // await EasyLocalization.ensureInitialized();// easylocalization init yapmak gerekiyor
   runApp(MultiProvider(
     providers: [...ApplicationProvider.instance.dependItems],
     child: EasyLocalization(
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         darkTheme: AppThemeDark.instance.theme,
         theme: Provider.of<ThemeNotifier>(context).currentTheme,
-        home: ProfileView(),
+        home: HomeView(),
         onGenerateRoute: NavigationRoute.instance.generateRoute,
         navigatorKey: NavigationService.instance.navigatorKey,
       ),

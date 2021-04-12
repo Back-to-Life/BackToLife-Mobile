@@ -40,6 +40,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
   @override
   void dispose() {
     _tabController.dispose();
+    
     super.dispose();
   }
 
