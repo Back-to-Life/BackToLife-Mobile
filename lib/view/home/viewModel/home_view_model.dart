@@ -1,4 +1,4 @@
-import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
+import '../../../core/constants/navigation/navigation_constants.dart';
 
 import '../../../core/base/model/base_view_model.dart';
 import 'package:flutter/cupertino.dart';

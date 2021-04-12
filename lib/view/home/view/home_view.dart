@@ -1,4 +1,4 @@
-import 'package:backtolife/view/widgets/star/star_background.dart';
+import '../../widgets/star/star_background.dart';
 
 import '../../../core/init/lang/locale_keys.g.dart';
 
@@ -19,7 +19,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key key}) : super(key: key);
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   _HomeViewState createState() => _HomeViewState();
@@ -27,12 +27,12 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView>
     with SingleTickerProviderStateMixin {
-  Animation _worldAnimation;
-  Animation _leftOneSlidingAnimation;
-  Animation _leftSecondSlidingAnimation;
-  Animation _rightOneSlidingAnimation;
-  Animation _rightSecondSlidingAnimation;
-  AnimationController _animationController;
+  late Animation _worldAnimation;
+  late Animation _leftOneSlidingAnimation;
+  late Animation _leftSecondSlidingAnimation;
+  late Animation _rightOneSlidingAnimation;
+  late Animation _rightSecondSlidingAnimation;
+  late AnimationController _animationController;
 
   @override
   void initState() {
@@ -121,21 +121,21 @@ class _HomeViewState extends State<HomeView>
                                   animatedTexts: [
                                     TypewriterAnimatedText('We are building',
                                         speed: Duration(milliseconds: 150),
-                                        textStyle: context.textTheme.headline6
+                                        textStyle: context.textTheme.headline6!
                                             .copyWith(
                                                 fontWeight: FontWeight.bold,
                                                 color: context
                                                     .colors.primaryVariant)),
                                     TypewriterAnimatedText('We are the best',
                                         speed: Duration(milliseconds: 150),
-                                        textStyle: context.textTheme.headline6
+                                        textStyle: context.textTheme.headline6!
                                             .copyWith(
                                                 fontWeight: FontWeight.bold,
                                                 color: context
                                                     .colors.primaryVariant)),
                                     TypewriterAnimatedText('Back TO LIFE',
                                         speed: Duration(milliseconds: 150),
-                                        textStyle: context.textTheme.headline6
+                                        textStyle: context.textTheme.headline6!
                                             .copyWith(
                                                 fontWeight: FontWeight.bold,
                                                 color: context
@@ -159,7 +159,7 @@ class _HomeViewState extends State<HomeView>
                               left: context.width * 0.05,
                               child: AnimatedBuilder(
                                 animation: _worldAnimation,
-                                builder: (BuildContext context, Widget child) {
+                                builder: (BuildContext context, Widget? child) {
                                   return Transform(
                                     transform: Matrix4.translationValues(
                                         0,
@@ -169,7 +169,7 @@ class _HomeViewState extends State<HomeView>
                                     child: Text(
                                       LocaleKeys.home_hello.tr() +
                                           '\nFatih Kurçenli',
-                                      style: context.textTheme.headline4
+                                      style: context.textTheme.headline4!
                                           .copyWith(
                                               color: context
                                                   .colors.primaryVariant),
@@ -184,7 +184,7 @@ class _HomeViewState extends State<HomeView>
                               child: AnimatedBuilder(
                                   animation: _worldAnimation,
                                   builder:
-                                      (BuildContext context, Widget child) {
+                                      (BuildContext context, Widget? child) {
                                     return Transform(
                                       transform: Matrix4.translationValues(
                                         _worldAnimation.value * context.width,
@@ -228,7 +228,7 @@ class _HomeViewState extends State<HomeView>
             children: [
               Text(
                 LocaleKeys.home_homedescription.tr(),
-                style: context.textTheme.headline5
+                style: context.textTheme.headline5!
                     .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ],
@@ -251,7 +251,7 @@ class _HomeViewState extends State<HomeView>
                 Expanded(
                     child: AnimatedBuilder(
                   animation: _rightOneSlidingAnimation,
-                  builder: (BuildContext context, Widget child) {
+                  builder: (BuildContext context, Widget? child) {
                     return Transform(
                       transform: Matrix4.translationValues(
                           _rightOneSlidingAnimation.value * context.width,
@@ -267,7 +267,7 @@ class _HomeViewState extends State<HomeView>
                 Expanded(
                     child: AnimatedBuilder(
                   animation: _leftOneSlidingAnimation,
-                  builder: (BuildContext context, Widget child) {
+                  builder: (BuildContext context, Widget? child) {
                     return Transform(
                       transform: Matrix4.translationValues(
                           _leftOneSlidingAnimation.value * context.width, 0, 0),
@@ -290,7 +290,7 @@ class _HomeViewState extends State<HomeView>
                 Expanded(
                     child: AnimatedBuilder(
                   animation: _rightSecondSlidingAnimation,
-                  builder: (BuildContext context, Widget child) {
+                  builder: (BuildContext context, Widget? child) {
                     return Transform(
                       transform: Matrix4.translationValues(
                           _rightSecondSlidingAnimation.value * context.width,
@@ -307,7 +307,7 @@ class _HomeViewState extends State<HomeView>
                 Expanded(
                     child: AnimatedBuilder(
                   animation: _leftSecondSlidingAnimation,
-                  builder: (BuildContext context, Widget child) {
+                  builder: (BuildContext context, Widget? child) {
                     return Transform(
                       transform: Matrix4.translationValues(
                           _leftSecondSlidingAnimation.value * context.width,

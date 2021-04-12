@@ -1,8 +1,4 @@
-import 'package:backtolife/view/authentication/view/authentication_view.dart';
-import 'package:backtolife/view/home/view/home_view.dart';
-import 'package:backtolife/view/onboarding/view/on_board_view.dart';
-import 'package:backtolife/view/profile/view/profile_view.dart';
-
+import 'view/home/view/home_view.dart';
 import 'core/init/theme/app_theme_dark.dart';
 
 import 'core/init/lang/locale_keys_codegen.g.dart';
@@ -18,18 +14,19 @@ import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider.dart';
 import 'core/init/notifier/theme_notifier.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  LocaleManager.preferencesInit();
+  await LocaleManager.preferencesInit();
 
-  // await EasyLocalization.ensureInitialized();// easylocalization init yapmak gerekiyor
+  await EasyLocalization
+      .ensureInitialized(); // easylocalization init yapmak gerekiyor
   runApp(MultiProvider(
-    providers: [...ApplicationProvider.instance.dependItems],
+    providers: [...ApplicationProvider.instance!.dependItems],
     child: EasyLocalization(
         child: MyApp(),
         fallbackLocale: Locale('en', 'US'),
         assetLoader: CodegenLoader(),
-        supportedLocales: LanguageManager.instance.supportedLocales,
+        supportedLocales: LanguageManager.instance!.supportedLocales,
         path: ApplicationConstants.LANG_ASSET_PATH),
   ));
 }
@@ -45,7 +42,7 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        darkTheme: AppThemeDark.instance.theme,
+        darkTheme: AppThemeDark.instance!.theme,
         theme: Provider.of<ThemeNotifier>(context).currentTheme,
         home: HomeView(),
         onGenerateRoute: NavigationRoute.instance.generateRoute,

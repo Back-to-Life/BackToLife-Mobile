@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 abstract class ICoreDio {
  Future<IResponseModel<R>> fetch<R, T extends BaseModel>(String path,
-      {@required HttpTypes type,
-      @required T parseModel,
+      {required HttpTypes type,
+      required T parseModel,
       dynamic data,
-      Map<String, Object> queryParameters,
-      void Function(int, int) onReceiveProgress});
+      Map<String, Object>? queryParameters,
+      void Function(int, int)? onReceiveProgress});
 }

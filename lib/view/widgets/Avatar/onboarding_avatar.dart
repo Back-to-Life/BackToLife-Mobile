@@ -6,7 +6,7 @@ class OnBoardCircle extends StatelessWidget {
   final int index;
 
   const OnBoardCircle(
-      {Key key, @required this.isSelected, @required this.index})
+      {Key? key, required this.isSelected, required this.index})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

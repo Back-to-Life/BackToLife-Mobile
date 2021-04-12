@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class StarBackGround extends StatefulWidget {
-  StarBackGround({Key key}) : super(key: key);
+  StarBackGround({Key? key}) : super(key: key);
 
   @override
   _StarBackGroundState createState() => _StarBackGroundState();
@@ -11,9 +11,9 @@ class StarBackGround extends StatefulWidget {
 
 class _StarBackGroundState extends State<StarBackGround>
     with SingleTickerProviderStateMixin {
-  Animation _animation;
-  Animation fadeAnimStar1, fadeAnimStar2, fadeAnimStar3, fadeAnimStar4;
-  AnimationController _animationController;
+  late Animation _animation;
+  late Animation fadeAnimStar1, fadeAnimStar2, fadeAnimStar3, fadeAnimStar4;
+  late AnimationController _animationController;
   List<WhereStar> listStar = [];
 
   @override
@@ -149,11 +149,11 @@ class WhereStar {
   int typeFade;
 
   WhereStar({
-    @required this.left,
-    @required this.top,
-    @required this.extraSize,
-    @required this.angle,
-    @required this.bottom,
-    @required this.typeFade,
+    required this.left,
+    required this.top,
+    required this.extraSize,
+    required this.angle,
+    required this.bottom,
+    required this.typeFade,
   });
 }

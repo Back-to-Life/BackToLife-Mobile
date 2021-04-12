@@ -8,8 +8,8 @@ part of 'authentication_model.dart';
 
 AuthenticationModel _$AuthenticationModelFromJson(Map<String, dynamic> json) {
   return AuthenticationModel(
-    email: json['email'] as String,
-    password: json['password'] as String,
+    email: json['email'] as String?,
+    password: json['password'] as String?,
   );
 }
 

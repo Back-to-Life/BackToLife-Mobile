@@ -9,7 +9,7 @@ part of 'authentication_response_model.dart';
 AuthenticationResponseModel _$AuthenticationResponseModelFromJson(
     Map<String, dynamic> json) {
   return AuthenticationResponseModel(
-    success: json['success'] as bool,
+    success: json['success'] as bool?,
   );
 }
 

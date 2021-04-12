@@ -9,9 +9,9 @@ part of 'authentication_register_response_model.dart';
 AuthenticationRegisterResponseModel
     _$AuthenticationRegisterResponseModelFromJson(Map<String, dynamic> json) {
   return AuthenticationRegisterResponseModel(
-    success: json['success'] as bool,
-    token: json['token'] as String,
-    unicId: json['unicId'] as String,
+    success: json['success'] as bool?,
+    token: json['token'] as String?,
+    unicId: json['unicId'] as String?,
   );
 }
 

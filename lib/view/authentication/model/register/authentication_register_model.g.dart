@@ -9,9 +9,9 @@ part of 'authentication_register_model.dart';
 AuthenticationRegisterModel _$AuthenticationRegisterModelFromJson(
     Map<String, dynamic> json) {
   return AuthenticationRegisterModel(
-    firstName: json['firstName'] as String,
-    email: json['email'] as String,
-    password: json['password'] as String,
+    firstName: json['firstName'] as String?,
+    email: json['email'] as String?,
+    password: json['password'] as String?,
   );
 }
 

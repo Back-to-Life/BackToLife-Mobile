@@ -8,10 +8,10 @@ part of 'home_model.dart';
 
 HomeModel _$HomeModelFromJson(Map<String, dynamic> json) {
   return HomeModel(
-    userId: json['userId'] as int,
-    id: json['id'] as int,
-    title: json['title'] as String,
-    completed: json['completed'] as bool,
+    userId: json['userId'] as int?,
+    id: json['id'] as int?,
+    title: json['title'] as String?,
+    completed: json['completed'] as bool?,
   );
 }
 

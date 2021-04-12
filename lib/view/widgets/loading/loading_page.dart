@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class LoadingPage extends StatelessWidget {
-  const LoadingPage({Key key}) : super(key: key);
+  const LoadingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,6 @@ class LoadingPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(context.highValue)),
             height: context.height * 0.1,
             width: context.width * 0.2,
-            child: Lottie.asset(LottiePaths.instance.loadingPageContainer)));
+            child: Lottie.asset(LottiePaths.instance!.loadingPageContainer)));
   }
 }

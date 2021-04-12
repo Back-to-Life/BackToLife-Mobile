@@ -6,19 +6,19 @@ part 'authentication_register_model.g.dart';
 @JsonSerializable()
 class AuthenticationRegisterModel
     extends INetworkModel<AuthenticationRegisterModel> {
-  final String firstName;
-  final String email;
-  final String password;
+  final String? firstName;
+  final String? email;
+  final String? password;
 
   AuthenticationRegisterModel({this.firstName, this.email, this.password});
 
   @override
-  AuthenticationRegisterModel fromJson(Map<String, Object> json) {
+  AuthenticationRegisterModel fromJson(Map<String, Object?> json) {
     return _$AuthenticationRegisterModelFromJson(json);
   }
 
   @override
-  Map<String, Object> toJson() {
+  Map<String, Object?> toJson() {
     return _$AuthenticationRegisterModelToJson(this);
   }
 }
