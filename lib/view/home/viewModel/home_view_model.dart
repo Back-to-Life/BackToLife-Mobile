@@ -49,4 +49,8 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   Future<void> goToProfile() async {
     await navigation.navigateToPage(path: NavigationConstants.PROFILE);
   }
+
+  Future<void> goToQrCode() async {
+    await navigation.navigateToPage(path: NavigationConstants.QRCODE);
+  }
 }

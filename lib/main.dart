@@ -1,3 +1,6 @@
+import 'package:backtolife/view/profile/view/profile_view.dart';
+
+import 'view/barcode/view/scan_barcode_view.dart';
 import 'view/home/view/home_view.dart';
 import 'core/init/theme/app_theme_dark.dart';
 
@@ -13,6 +16,7 @@ import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider.dart';
 import 'core/init/notifier/theme_notifier.dart';
+import 'view/scancode/view/scan_code.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +30,7 @@ Future<void> main() async {
         child: MyApp(),
         fallbackLocale: Locale('en', 'US'),
         assetLoader: CodegenLoader(),
-        supportedLocales: LanguageManager.instance!.supportedLocales,
+        supportedLocales: LanguageManager.instance.supportedLocales,
         path: ApplicationConstants.LANG_ASSET_PATH),
   ));
 }
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
-        darkTheme: AppThemeDark.instance!.theme,
+        darkTheme: AppThemeDark.instance.theme,
         theme: Provider.of<ThemeNotifier>(context).currentTheme,
         home: HomeView(),
         onGenerateRoute: NavigationRoute.instance.generateRoute,
