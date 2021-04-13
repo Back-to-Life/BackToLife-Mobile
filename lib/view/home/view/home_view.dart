@@ -58,7 +58,7 @@ class _HomeViewState extends State<HomeView>
         CurvedAnimation(
             parent: _animationController,
             curve: Interval(0.25, 1, curve: Curves.fastOutSlowIn)));
-    
+
     _rightSecondSlidingAnimation = Tween(begin: -1.0, end: 0.0).animate(
         CurvedAnimation(
             parent: _animationController,
@@ -258,6 +258,7 @@ class _HomeViewState extends State<HomeView>
                           0,
                           0),
                       child: ImageContainerCustom(
+                        onPress: viewModel.goToQrCode,
                         path: SVGImagePaths.instance.scanBarcode,
                         title: LocaleKeys.home_scancode.tr(),
                       ),

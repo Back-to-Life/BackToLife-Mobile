@@ -1,5 +1,6 @@
 import 'package:backtolife/view/profile/view/profile_view.dart';
 
+import 'view/barcode/view/scan_barcode_view.dart';
 import 'view/home/view/home_view.dart';
 import 'core/init/theme/app_theme_dark.dart';
 
@@ -15,6 +16,7 @@ import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider.dart';
 import 'core/init/notifier/theme_notifier.dart';
+import 'view/scancode/view/scan_code.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,7 +48,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         darkTheme: AppThemeDark.instance.theme,
         theme: Provider.of<ThemeNotifier>(context).currentTheme,
-        home: ProfileView(),
+        home: HomeView(),
         onGenerateRoute: NavigationRoute.instance.generateRoute,
         navigatorKey: NavigationService.instance.navigatorKey,
       ),

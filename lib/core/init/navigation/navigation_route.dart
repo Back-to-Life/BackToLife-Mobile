@@ -1,3 +1,5 @@
+import 'package:backtolife/view/barcode/view/scan_barcode_view.dart';
+
 import '../../../view/authentication/view/authentication_view.dart';
 import '../../../view/profile/view/profile_view.dart';
 
@@ -18,16 +20,14 @@ class NavigationRoute {
     switch (args.name) {
       case NavigationConstants.ON_BOARDING:
         return simpleNavigate(OnBoardView());
-        break;
       case NavigationConstants.AUTHENTICATION_VIEW:
         return simpleNavigate(AuthenticationView());
-        break;
       case NavigationConstants.HOME_VIEW:
         return simpleNavigate(HomeView());
-        break;
       case NavigationConstants.PROFILE:
         return simpleNavigate(ProfileView());
-        break;
+      case NavigationConstants.QRCODE:
+        return simpleNavigate(ScanBarcodeView());
 
       default:
         return MaterialPageRoute(builder: (context) => NotFoundNavigation());
