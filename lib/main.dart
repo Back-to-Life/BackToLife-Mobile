@@ -16,7 +16,6 @@ import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider.dart';
 import 'core/init/notifier/theme_notifier.dart';
-import 'view/scancode/view/scan_code.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +24,7 @@ Future<void> main() async {
   await EasyLocalization
       .ensureInitialized(); // easylocalization init yapmak gerekiyor
   runApp(MultiProvider(
-    providers: [...ApplicationProvider.instance!.dependItems],
+    providers: [...ApplicationProvider.instance.dependItems],
     child: EasyLocalization(
         child: MyApp(),
         fallbackLocale: Locale('en', 'US'),
