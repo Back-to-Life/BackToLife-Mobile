@@ -20,9 +20,7 @@ import 'core/init/notifier/theme_notifier.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocaleManager.preferencesInit();
-
-  await EasyLocalization
-      .ensureInitialized(); // easylocalization init yapmak gerekiyor
+  await EasyLocalization.ensureInitialized();
   runApp(MultiProvider(
     providers: [...ApplicationProvider.instance.dependItems],
     child: EasyLocalization(
@@ -35,7 +33,6 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

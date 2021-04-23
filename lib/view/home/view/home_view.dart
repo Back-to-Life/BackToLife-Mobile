@@ -1,3 +1,7 @@
+import 'package:animations/animations.dart';
+import 'package:backtolife/view/barcode/view/scan_barcode_view.dart';
+import 'package:backtolife/view/profile/view/profile_view.dart';
+
 import '../../widgets/star/star_background.dart';
 
 import '../../../core/init/lang/locale_keys.g.dart';
@@ -151,58 +155,52 @@ class _HomeViewState extends State<HomeView>
                         ),
                       ),
                     ),
-                    Expanded(
-                        flex: 3,
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              left: context.width * 0.05,
-                              child: AnimatedBuilder(
-                                animation: _worldAnimation,
-                                builder: (BuildContext context, Widget? child) {
-                                  return Transform(
-                                    transform: Matrix4.translationValues(
-                                        0,
-                                        _rightSecondSlidingAnimation.value *
-                                            context.height,
-                                        0),
-                                    child: Text(
-                                      LocaleKeys.home_hello.tr() +
-                                          '\nFatih Kurçenli',
-                                      style: context.textTheme.headline4!
-                                          .copyWith(
-                                              color: context
-                                                  .colors.primaryVariant),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                            buildWorldContainer(context),
-                            Positioned(
-                              right: context.lowValue * 0.2,
-                              child: AnimatedBuilder(
-                                  animation: _worldAnimation,
-                                  builder:
-                                      (BuildContext context, Widget? child) {
-                                    return Transform(
-                                      transform: Matrix4.translationValues(
-                                        _worldAnimation.value * context.width,
-                                        0.0,
-                                        0.0,
-                                      ),
-                                      child: SvgPicture.asset(
-                                          SVGImagePaths.instance.world),
-                                    );
-                                  }),
-                            )
-                          ],
-                        )),
+                    Expanded(flex: 3, child: helloName(context)),
                     build4Container(context, viewModel),
                   ],
                 ),
               ),
             ));
+  }
+
+  Stack helloName(BuildContext context) {
+    return Stack(
+      children: [
+        Positioned(
+          left: context.width * 0.05,
+          child: AnimatedBuilder(
+            animation: _worldAnimation,
+            builder: (BuildContext context, Widget? child) {
+              return Transform(
+                transform: Matrix4.translationValues(
+                    0, _rightSecondSlidingAnimation.value * context.height, 0),
+                child: Text(
+                  LocaleKeys.home_hello.tr() + '\nFatih Kurçenli',
+                  style: context.textTheme.headline4!
+                      .copyWith(color: context.colors.primaryVariant),
+                ),
+              );
+            },
+          ),
+        ),
+        buildWorldContainer(context),
+        Positioned(
+          right: context.lowValue * 0.2,
+          child: AnimatedBuilder(
+              animation: _worldAnimation,
+              builder: (BuildContext context, Widget? child) {
+                return Transform(
+                  transform: Matrix4.translationValues(
+                    _worldAnimation.value * context.width,
+                    0.0,
+                    0.0,
+                  ),
+                  child: SvgPicture.asset(SVGImagePaths.instance.world),
+                );
+              }),
+        )
+      ],
+    );
   }
 
   Padding buildWorldContainer(BuildContext context) {
@@ -248,38 +246,8 @@ class _HomeViewState extends State<HomeView>
             flex: 4,
             child: Row(
               children: [
-                Expanded(
-                    child: AnimatedBuilder(
-                  animation: _rightOneSlidingAnimation,
-                  builder: (BuildContext context, Widget? child) {
-                    return Transform(
-                      transform: Matrix4.translationValues(
-                          _rightOneSlidingAnimation.value * context.width,
-                          0,
-                          0),
-                      child: ImageContainerCustom(
-                        onPress: viewModel.goToQrCode,
-                        path: SVGImagePaths.instance.scanBarcode,
-                        title: LocaleKeys.home_scancode.tr(),
-                      ),
-                    );
-                  },
-                )),
-                Expanded(
-                    child: AnimatedBuilder(
-                  animation: _leftOneSlidingAnimation,
-                  builder: (BuildContext context, Widget? child) {
-                    return Transform(
-                      transform: Matrix4.translationValues(
-                          _leftOneSlidingAnimation.value * context.width, 0, 0),
-                      child: ImageContainerCustom(
-                        onPress: viewModel.goToProfile,
-                        path: SVGImagePaths.instance.profile,
-                        title: LocaleKeys.home_profile.tr(),
-                      ),
-                    );
-                  },
-                )),
+                Expanded(child: scanBarcode(context)),
+                Expanded(child: profileView(context)),
               ],
             ),
           ),
@@ -288,40 +256,8 @@ class _HomeViewState extends State<HomeView>
             flex: 4,
             child: Row(
               children: [
-                Expanded(
-                    child: AnimatedBuilder(
-                  animation: _rightSecondSlidingAnimation,
-                  builder: (BuildContext context, Widget? child) {
-                    return Transform(
-                      transform: Matrix4.translationValues(
-                          _rightSecondSlidingAnimation.value * context.width,
-                          0,
-                          0),
-                      child: ImageContainerCustom(
-                        onPress: () => print('press heroes'),
-                        path: SVGImagePaths.instance.heroes,
-                        title: LocaleKeys.home_heroes.tr(),
-                      ),
-                    );
-                  },
-                )),
-                Expanded(
-                    child: AnimatedBuilder(
-                  animation: _leftSecondSlidingAnimation,
-                  builder: (BuildContext context, Widget? child) {
-                    return Transform(
-                      transform: Matrix4.translationValues(
-                          _leftSecondSlidingAnimation.value * context.width,
-                          0,
-                          0),
-                      child: ImageContainerCustom(
-                        onPress: () => print('press heroes'),
-                        path: SVGImagePaths.instance.settings,
-                        title: LocaleKeys.home_settings.tr(),
-                      ),
-                    );
-                  },
-                )),
+                Expanded(child: heroesView(context)),
+                Expanded(child: settingsView(context)),
               ],
             ),
           ),
@@ -338,6 +274,106 @@ class _HomeViewState extends State<HomeView>
           ),
         ],
       ),
+    );
+  }
+
+  AnimatedBuilder scanBarcode(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _rightOneSlidingAnimation,
+      child: OpenContainer(
+        transitionType: ContainerTransitionType.fade,
+        transitionDuration: Duration(seconds: 3),
+        closedColor: context.colors.primary,
+        closedElevation: 0,
+        openBuilder: (context, _) => ScanBarcodeView(),
+        closedBuilder: (context, VoidCallback openContainer) =>
+            ImageContainerCustom(
+          onPress: openContainer,
+          path: SVGImagePaths.instance.scanBarcode,
+          title: LocaleKeys.home_scancode.tr(),
+        ),
+      ),
+      builder: (BuildContext context, Widget? child) {
+        return Transform(
+            transform: Matrix4.translationValues(
+                _rightOneSlidingAnimation.value * context.width, 0, 0),
+            child: child);
+      },
+    );
+  }
+
+  AnimatedBuilder profileView(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _leftOneSlidingAnimation,
+      child: OpenContainer(
+        transitionType: ContainerTransitionType.fade,
+        transitionDuration: Duration(seconds: 3),
+        closedColor: context.colors.primary,
+        closedElevation: 0,
+        openBuilder: (context, _) => ProfileView(),
+        closedBuilder: (context, VoidCallback openContainer) =>
+            ImageContainerCustom(
+          onPress: openContainer,
+          path: SVGImagePaths.instance.profile,
+          title: LocaleKeys.home_profile.tr(),
+        ),
+      ),
+      builder: (BuildContext context, Widget? child) {
+        return Transform(
+            transform: Matrix4.translationValues(
+                _leftOneSlidingAnimation.value * context.width, 0, 0),
+            child: child);
+      },
+    );
+  }
+
+  AnimatedBuilder heroesView(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _rightSecondSlidingAnimation,
+      child: OpenContainer(
+        transitionType: ContainerTransitionType.fade,
+        transitionDuration: Duration(seconds: 3),
+        closedColor: context.colors.primary,
+        closedElevation: 0,
+        openBuilder: (context, _) => ProfileView(), //added heroes page.
+        closedBuilder: (context, VoidCallback openContainer) =>
+            ImageContainerCustom(
+          onPress: openContainer,
+          path: SVGImagePaths.instance.heroes,
+          title: LocaleKeys.home_heroes.tr(),
+        ),
+      ),
+      builder: (BuildContext context, Widget? child) {
+        return Transform(
+            transform: Matrix4.translationValues(
+                _rightSecondSlidingAnimation.value * context.width, 0, 0),
+            child: child);
+      },
+    );
+  }
+
+  AnimatedBuilder settingsView(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _leftSecondSlidingAnimation,
+      child: OpenContainer(
+        transitionType: ContainerTransitionType.fade,
+        transitionDuration: Duration(seconds: 3),
+        closedColor: context.colors.primary,
+        closedElevation: 0,
+        openBuilder: (context, _) => ProfileView(), //added settings page.
+        closedBuilder: (context, VoidCallback openContainer) =>
+            ImageContainerCustom(
+          onPress: openContainer,
+          path: SVGImagePaths.instance.settings,
+          title: LocaleKeys.home_settings.tr(),
+        ),
+      ),
+      builder: (BuildContext context, Widget? child) {
+        return Transform(
+            transform: Matrix4.translationValues(
+                _leftSecondSlidingAnimation.value * context.width, 0, 0),
+            child: child);
+      },
     );
   }
 }
