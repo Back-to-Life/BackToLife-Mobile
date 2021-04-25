@@ -1,4 +1,4 @@
-import 'package:backtolife/view/home/view/home_view.dart';
+import '../../../view/home/view/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

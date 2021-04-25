@@ -19,9 +19,9 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   GlobalKey<FormState> formSignUpState = GlobalKey();
   GlobalKey<ScaffoldMessengerState> scaffoldState =
       GlobalKey<ScaffoldMessengerState>();
+  late IAuthenticationService authenticationService;
   TextEditingController? emailController;
   TextEditingController? passwordController;
-  late IAuthenticationService authenticationService;
   TextEditingController? nameSurnameController;
   TextEditingController? emailSignUpController;
   TextEditingController? passwordSignUpController;
@@ -77,13 +77,22 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     Locale('tr', 'TR');
   }
 
+  void disposeMethod() {
+    emailController!.dispose();
+    passwordController!.dispose();
+    nameSurnameController!.dispose();
+    emailSignUpController!.dispose();
+    passwordSignUpController!.dispose();
+  }
+
   @action
   Future<void> fetchLoginService() async {
     changedLoading();
     if (formState.currentState!.validate() && isLoginOrSignUp) {
       final response = await authenticationService.fetchUserControl(
           AuthenticationModel(
-              email: emailController!.text, password: passwordController!.text));
+              email: emailController!.text,
+              password: passwordController!.text));
       if (response != null && response.success == true) {
         await navigation.navigateToPageClear(
             path: NavigationConstants.HOME_VIEW);
@@ -101,9 +110,6 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
               firstName: nameSurnameController!.text,
               email: emailSignUpController!.text,
               password: passwordSignUpController!.text));
-      print(nameSurnameController!.text);
-      print(emailSignUpController!.text);
-      print(passwordSignUpController!.text);
       if (response != null) {
         successChanged();
         changedLoading();

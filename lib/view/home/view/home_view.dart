@@ -1,6 +1,6 @@
 import 'package:animations/animations.dart';
-import 'package:backtolife/view/barcode/view/scan_barcode_view.dart';
-import 'package:backtolife/view/profile/view/profile_view.dart';
+import '../../barcode/view/scan_barcode_view.dart';
+import '../../profile/view/profile_view.dart';
 
 import '../../widgets/star/star_background.dart';
 
@@ -116,7 +116,7 @@ class _HomeViewState extends State<HomeView>
                             Expanded(
                               child: DefaultTextStyle(
                                 textAlign: TextAlign.right,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 30.0,
                                   fontFamily: 'Agne',
                                 ),

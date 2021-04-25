@@ -23,7 +23,7 @@ class AuthenticationView extends StatefulWidget {
 
 class _AuthenticationViewState extends State<AuthenticationView>
     with SingleTickerProviderStateMixin {
-  TabController? _tabController;
+  late TabController _tabController;
   final List<Tab> myTabs = <Tab>[
     Tab(
       text: LocaleKeys.login_tab1.tr(),
@@ -39,9 +39,11 @@ class _AuthenticationViewState extends State<AuthenticationView>
 
   @override
   void dispose() {
-    _tabController!.dispose();
+    _tabController.dispose();
     super.dispose();
   }
+
+  late final _viewModel = AuthenticationViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
         model.setContext(context);
         model.init();
       },
+      onDispose: () => _viewModel.disposeMethod(),
       onPageBuilder:
           (BuildContext context, AuthenticationViewModel viewModel) =>
               DefaultTabController(
@@ -244,7 +247,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
       bottom: context.height * 0.1,
       child: InkWell(
         onTap: () {
-          _tabController!.animateTo((_tabController!.index + 1) % 2);
+          _tabController.animateTo((_tabController.index + 1) % 2);
           viewModel.changedTabBar();
         },
         child: Visibility(

@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:backtolife/view/widgets/star/star_rating.dart';
+import '../../widgets/star/star_rating.dart';
 
 import '../../../core/base/view/base_view.dart';
 import '../../../core/extension/context_extension.dart';
@@ -127,7 +127,7 @@ class ProfileView extends StatelessWidget {
                         color: Colors.white,
                         size: context.mediumValue * 0.8,
                       ),
-                      onPressed: () {})),
+                      onPressed: () => Navigator.pop(context))),
             ],
           ),
         ),
@@ -140,9 +140,7 @@ class ProfileView extends StatelessWidget {
               placeholderColors: [context.colors.primaryVariant],
               sources: [
                 // NetworkSource('https://picsum.photos/200/300')
-                // GitHubSource('fatihkurcenli')
-                // GitHubSource('senakbulut')
-                InstagramSource('senakbulut_') //My Love <3
+                GitHubSource('fatihkurcenli')
               ],
               loader: LoadingPage(),
               name: 'Fatih Kurçenli',
