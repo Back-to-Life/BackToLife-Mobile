@@ -21,4 +21,12 @@ class NavigationService implements INavigationService {
     await navigatorKey.currentState!
         .pushNamedAndRemoveUntil(path!, removeAllOldRoutes, arguments: data);
   }
+
+  Future<void> navigateWave({required Widget child, Object? data}) async {
+    await navigatorKey.currentState!.push(PageRouteBuilder(
+        pageBuilder: (context, animation, _) {
+          return child;
+        },
+        opaque: false));
+  }
 }

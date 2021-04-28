@@ -94,66 +94,7 @@ class _HomeViewState extends State<HomeView>
                   children: [
                     Expanded(
                       flex: 2,
-                      child: Padding(
-                        padding: context.paddingLowHorizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Avatar(
-                              shape: AvatarShape.circle(context.mediumValue),
-                              placeholderColors: [
-                                context.colors.primaryVariant
-                              ],
-                              name: 'Fatih Kurçenli',
-                              elevation: 10,
-                              border: Border.all(
-                                  color: Colors.green,
-                                  width: context.lowValue * 0.35),
-                              textStyle:
-                                  TextStyle(fontSize: context.mediumValue),
-                            ),
-                            Spacer(flex: 1),
-                            Expanded(
-                              child: DefaultTextStyle(
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  fontSize: 30.0,
-                                  fontFamily: 'Agne',
-                                ),
-                                child: AnimatedTextKit(
-                                  stopPauseOnTap: true,
-                                  animatedTexts: [
-                                    TypewriterAnimatedText('We are building',
-                                        speed: Duration(milliseconds: 150),
-                                        textStyle: context.textTheme.headline6!
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold,
-                                                color: context
-                                                    .colors.primaryVariant)),
-                                    TypewriterAnimatedText('We are the best',
-                                        speed: Duration(milliseconds: 150),
-                                        textStyle: context.textTheme.headline6!
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold,
-                                                color: context
-                                                    .colors.primaryVariant)),
-                                    TypewriterAnimatedText('Back TO LIFE',
-                                        speed: Duration(milliseconds: 150),
-                                        textStyle: context.textTheme.headline6!
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold,
-                                                color: context
-                                                    .colors.primaryVariant)),
-                                  ],
-                                  onTap: () {
-                                    print('Tap Event');
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      child: _profileAvatar(context),
                     ),
                     Expanded(flex: 3, child: helloName(context)),
                     build4Container(context, viewModel),
@@ -161,6 +102,59 @@ class _HomeViewState extends State<HomeView>
                 ),
               ),
             ));
+  }
+
+  Padding _profileAvatar(BuildContext context) {
+    return Padding(
+      padding: context.paddingLowHorizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Avatar(
+            shape: AvatarShape.circle(context.mediumValue),
+            placeholderColors: [context.colors.primaryVariant],
+            name: 'Fatih Kurçenli',
+            elevation: 10,
+            border:
+                Border.all(color: Colors.green, width: context.lowValue * 0.35),
+            textStyle: TextStyle(fontSize: context.mediumValue),
+          ),
+          Spacer(flex: 1),
+          Expanded(
+            child: DefaultTextStyle(
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                fontSize: 30.0,
+                fontFamily: 'Agne',
+              ),
+              child: AnimatedTextKit(
+                stopPauseOnTap: true,
+                animatedTexts: [
+                  TypewriterAnimatedText('We are building',
+                      speed: Duration(milliseconds: 150),
+                      textStyle: context.textTheme.headline6!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: context.colors.primaryVariant)),
+                  TypewriterAnimatedText('We are the best',
+                      speed: Duration(milliseconds: 150),
+                      textStyle: context.textTheme.headline6!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: context.colors.primaryVariant)),
+                  TypewriterAnimatedText('Back TO LIFE',
+                      speed: Duration(milliseconds: 150),
+                      textStyle: context.textTheme.headline6!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: context.colors.primaryVariant)),
+                ],
+                onTap: () {
+                  print('Tap Event');
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Stack helloName(BuildContext context) {

@@ -45,6 +45,15 @@ extension BorderExtension on BuildContext {
   BorderRadius get highBorderRadius =>
       BorderRadius.all(Radius.circular(width * 0.1));
 
+  BorderRadius get normalOnlyBottomRadius =>
+      BorderRadius.vertical(bottom: Radius.circular(width * 0.05));
+
+  BorderRadius get lowOnlyBottomRadius =>
+      BorderRadius.vertical(bottom: Radius.circular(width * 0.02));
+
+  BorderRadius get highOnlyBottomRadius =>
+      BorderRadius.vertical(bottom: Radius.circular(width * 0.1));
+
   RoundedRectangleBorder get roundedRectangleBorderLow =>
       RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(lowValue)));
@@ -65,4 +74,19 @@ extension BorderExtension on BuildContext {
   RoundedRectangleBorder get roundedRectangleBorderHigh =>
       RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(highValue)));
+
+  RoundedRectangleBorder get bottomRectangleBorderNormal =>
+      RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.vertical(bottom: Radius.circular(normalValue)));
+
+  RoundedRectangleBorder get bottomRectangleBorderMedium =>
+      RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.vertical(bottom: Radius.circular(mediumValue)));
+
+  RoundedRectangleBorder get bottomRectangleBorderHigh =>
+      RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.vertical(bottom: Radius.circular(highValue)));
 }

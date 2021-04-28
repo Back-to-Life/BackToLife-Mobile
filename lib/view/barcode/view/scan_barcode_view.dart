@@ -26,13 +26,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
         },
         onPageBuilder: (BuildContext context, ScanBarcodeViewModel viewModel) =>
             Scaffold(
-              appBar: AppBar(
-                iconTheme: IconThemeData(
-                  color: Colors.black,
-                ),
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-              ),
+              appBar: AppBar(),
               body: Padding(
                 padding: EdgeInsets.only(top: context.mediumValue),
                 child: Column(

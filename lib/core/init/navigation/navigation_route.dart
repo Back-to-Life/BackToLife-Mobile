@@ -37,4 +37,5 @@ class NavigationRoute {
   MaterialPageRoute simpleNavigate(Widget widget) {
     return MaterialPageRoute(builder: (context) => widget);
   }
+  
 }

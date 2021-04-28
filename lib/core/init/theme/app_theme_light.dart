@@ -19,10 +19,14 @@ class AppThemeLight extends AppTheme with ILightTheme {
 
   @override
   ThemeData get theme => ThemeData(
-        scaffoldBackgroundColor: colorSchemeLight.kPrimaryLight,
-        colorScheme: _appColorScheme(),
-        fontFamily: ApplicationConstants.FONT_FAMILY,
-        // textTheme: TextTheme(headline1: textThemeLight.headline1,
+      scaffoldBackgroundColor: colorSchemeLight.kPrimaryLight,
+      colorScheme: _appColorScheme(),
+      fontFamily: ApplicationConstants.FONT_FAMILY,
+      appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.black),
+          elevation: 0,
+          backgroundColor: Colors.transparent)
+      // textTheme: TextTheme(headline1: textThemeLight.headline1,
       );
   ColorScheme _appColorScheme() {
     return ColorScheme(
@@ -32,7 +36,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
       secondaryVariant: colorSchemeLight.purpleLight,
       onBackground: colorSchemeLight.greyOnboard,
       error: Colors.red,
-      surface: colorSchemeLight.whiteText,
+      surface: colorSchemeLight.whiteText, //beyaz
       onSurface: colorSchemeLight.grey,
       onPrimary: colorSchemeLight.buttonOnboard,
       background: Colors.blue,
