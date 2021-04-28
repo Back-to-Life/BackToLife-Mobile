@@ -24,4 +24,5 @@ class SVGImagePaths {
   final settings = 'settings'.toSVG;
   final pencil = 'pencil'.toSVG;
   final konfeti = 'konfeti'.toSVG;
+  final settingsHeader = 'settingsheader'.toSVG;
 }

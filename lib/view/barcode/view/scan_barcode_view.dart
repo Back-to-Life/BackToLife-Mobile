@@ -1,7 +1,7 @@
-import 'package:backtolife/core/base/view/base_view.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
-import 'package:backtolife/view/barcode/viewModel/scan_barcode_view_model.dart';
+import '../../../core/base/view/base_view.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/init/svgPath/image_path_svg.dart';
+import '../viewModel/scan_barcode_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,13 +26,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
         },
         onPageBuilder: (BuildContext context, ScanBarcodeViewModel viewModel) =>
             Scaffold(
-              appBar: AppBar(
-                iconTheme: IconThemeData(
-                  color: Colors.black,
-                ),
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-              ),
+              appBar: AppBar(),
               body: Padding(
                 padding: EdgeInsets.only(top: context.mediumValue),
                 child: Column(

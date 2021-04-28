@@ -73,7 +73,6 @@ class _StarBackGroundState extends State<StarBackGround>
   @override
   void dispose() {
     _animationController.dispose();
-
     super.dispose();
   }
 

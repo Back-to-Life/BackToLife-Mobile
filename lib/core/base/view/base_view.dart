@@ -1,6 +1,6 @@
-import 'package:backtolife/core/base/model/base_view_model.dart';
-import 'package:backtolife/core/init/internet_connection/connectivity_provider.dart';
-import 'package:backtolife/core/init/internet_connection/no_internet_connection.dart';
+import '../model/base_view_model.dart';
+import '../../init/internet_connection/connectivity_provider.dart';
+import '../../init/internet_connection/no_internet_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
@@ -37,7 +37,9 @@ class _BaseViewState<T extends Store> extends State<BaseView<T>> {
   @override
   void dispose() {
     super.dispose();
-    if (widget.onDispose != null) widget.onDispose!();
+    if (widget.onDispose != null) {
+      widget.onDispose!();
+    }
   }
 
   @override

@@ -1,4 +1,4 @@
-import 'package:backtolife/core/init/internet_connection/connectivity_provider.dart';
+import '../internet_connection/connectivity_provider.dart';
 
 import '../navigation/navigation_service.dart';
 import 'theme_notifier.dart';

@@ -1,5 +1,8 @@
-import 'package:backtolife/view/profile/view/profile_view.dart';
+import 'package:backtolife/view/settings/view/settings_view.dart';
 
+import 'view/profile/view/profile_view.dart';
+
+import 'view/authentication/view/authentication_view.dart';
 import 'view/barcode/view/scan_barcode_view.dart';
 import 'view/home/view/home_view.dart';
 import 'core/init/theme/app_theme_dark.dart';
@@ -35,19 +38,16 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ThemeNotifier(),
-      builder: (context, _) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        darkTheme: AppThemeDark.instance.theme,
-        theme: Provider.of<ThemeNotifier>(context).currentTheme,
-        home: HomeView(),
-        onGenerateRoute: NavigationRoute.instance.generateRoute,
-        navigatorKey: NavigationService.instance.navigatorKey,
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      darkTheme: AppThemeDark.instance.theme,
+      theme: Provider.of<ThemeNotifier>(context).currentTheme,
+      home: SettingsView(),
+      onGenerateRoute: NavigationRoute.instance.generateRoute,
+      navigatorKey: NavigationService.instance.navigatorKey,
     );
   }
 }

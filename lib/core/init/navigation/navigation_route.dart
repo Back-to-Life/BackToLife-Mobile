@@ -1,4 +1,4 @@
-import 'package:backtolife/view/barcode/view/scan_barcode_view.dart';
+import '../../../view/barcode/view/scan_barcode_view.dart';
 
 import '../../../view/authentication/view/authentication_view.dart';
 import '../../../view/profile/view/profile_view.dart';
@@ -37,4 +37,5 @@ class NavigationRoute {
   MaterialPageRoute simpleNavigate(Widget widget) {
     return MaterialPageRoute(builder: (context) => widget);
   }
+  
 }

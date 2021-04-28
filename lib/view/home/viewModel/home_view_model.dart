@@ -1,3 +1,5 @@
+import 'package:backtolife/view/profile/view/profile_view.dart';
+
 import '../../../core/constants/navigation/navigation_constants.dart';
 
 import '../../../core/base/model/base_view_model.dart';
@@ -48,6 +50,10 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
 
   Future<void> goToProfile() async {
     await navigation.navigateToPage(path: NavigationConstants.PROFILE);
+  }
+
+  Future<void> goToProfileWave() async {
+    await navigation.navigateWave(child: ProfileView());
   }
 
   Future<void> goToQrCode() async {

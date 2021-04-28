@@ -1,4 +1,4 @@
-import 'package:backtolife/core/base/model/base_view_model.dart';
+import '../../../core/base/model/base_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
