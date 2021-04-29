@@ -1,3 +1,5 @@
+import 'package:backtolife/view/settings/subsettings/language_settings/view/language_settings_view.dart';
+
 import '../../../view/barcode/view/scan_barcode_view.dart';
 
 import '../../../view/authentication/view/authentication_view.dart';
@@ -28,6 +30,8 @@ class NavigationRoute {
         return simpleNavigate(ProfileView());
       case NavigationConstants.QRCODE:
         return simpleNavigate(ScanBarcodeView());
+      case NavigationConstants.LANGUAGE_SETTINGS:
+        return simpleNavigate(LanguageSettingsView());
 
       default:
         return MaterialPageRoute(builder: (context) => NotFoundNavigation());
@@ -37,5 +41,4 @@ class NavigationRoute {
   MaterialPageRoute simpleNavigate(Widget widget) {
     return MaterialPageRoute(builder: (context) => widget);
   }
-  
 }

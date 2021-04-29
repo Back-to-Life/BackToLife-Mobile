@@ -47,6 +47,16 @@ class CodegenLoader extends AssetLoader{
     "profile": "Profile",
     "heroes": "Heroes",
     "settings": "Settings"
+  },
+  "settings": {
+    "settings": "Settings",
+    "account": "Account",
+    "language": "Language",
+    "notifications": "Notifications",
+    "permissions": "Permissions",
+    "theme": "Theme Mode",
+    "about": "About",
+    "logout": "Log out"
   }
 };
 static const Map<String,dynamic> tr_TR = {
@@ -82,6 +92,16 @@ static const Map<String,dynamic> tr_TR = {
     "profile": "Profil",
     "heroes": "Kahramanlar",
     "settings": "Ayarlar"
+  },
+  "settings": {
+    "settings": "Ayarlar",
+    "account": "Hesap",
+    "language": "Dil Seçeneği",
+    "notifications": "Bildirim ayarı",
+    "permissions": "İzinler",
+    "theme": "Tema Modu",
+    "about": "Hakkımızda",
+    "logout": "Çıkış Yap"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "tr_TR": tr_TR};

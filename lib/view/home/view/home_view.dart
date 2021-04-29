@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:backtolife/view/settings/view/settings_view.dart';
 import '../../barcode/view/scan_barcode_view.dart';
 import '../../profile/view/profile_view.dart';
 
@@ -111,22 +112,18 @@ class _HomeViewState extends State<HomeView>
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Avatar(
-            shape: AvatarShape.circle(context.mediumValue),
-            placeholderColors: [context.colors.primaryVariant],
-            name: 'Fatih Kurçenli',
-            elevation: 10,
-            border:
-                Border.all(color: Colors.green, width: context.lowValue * 0.35),
-            textStyle: TextStyle(fontSize: context.mediumValue),
-          ),
+              shape: AvatarShape.circle(context.mediumValue),
+              placeholderColors: [context.colors.primaryVariant],
+              name: 'Fatih Kurçenli',
+              elevation: 10,
+              border: Border.all(
+                  color: Colors.green, width: context.lowValue * 0.35),
+              textStyle: TextStyle(fontSize: context.mediumValue)),
           Spacer(flex: 1),
           Expanded(
             child: DefaultTextStyle(
               textAlign: TextAlign.right,
-              style: TextStyle(
-                fontSize: 30.0,
-                fontFamily: 'Agne',
-              ),
+              style: TextStyle(fontSize: 30.0, fontFamily: 'Agne'),
               child: AnimatedTextKit(
                 stopPauseOnTap: true,
                 animatedTexts: [
@@ -354,7 +351,7 @@ class _HomeViewState extends State<HomeView>
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
         closedElevation: 0,
-        openBuilder: (context, _) => ProfileView(), //added settings page.
+        openBuilder: (context, _) => SettingsView(), //added settings page.
         closedBuilder: (context, VoidCallback openContainer) =>
             ImageContainerCustom(
           onPress: openContainer,
