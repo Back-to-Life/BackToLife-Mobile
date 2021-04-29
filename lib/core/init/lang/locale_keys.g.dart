@@ -28,5 +28,14 @@ abstract class  LocaleKeys {
   static const home_heroes = 'home.heroes';
   static const home_settings = 'home.settings';
   static const home = 'home';
+  static const settings_settings = 'settings.settings';
+  static const settings_account = 'settings.account';
+  static const settings_language = 'settings.language';
+  static const settings_notifications = 'settings.notifications';
+  static const settings_permissions = 'settings.permissions';
+  static const settings_theme = 'settings.theme';
+  static const settings_about = 'settings.about';
+  static const settings_logout = 'settings.logout';
+  static const settings = 'settings';
 
 }

@@ -1,9 +1,12 @@
-import 'package:backtolife/core/base/view/base_view.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
-import 'package:backtolife/view/settings/viewModel/settings_view_model.dart';
-import 'package:backtolife/view/widgets/settingsArgumans/settings_argumans.dart';
-import 'package:backtolife/view/widgets/slideAnimation/slide_animation_list.dart';
+import '../../../core/base/view/base_view.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/init/svgPath/image_path_svg.dart';
+import '../viewModel/settings_view_model.dart';
+import '../../widgets/settingsArgumans/settings_argumans.dart';
+import '../../widgets/slideAnimation/slide_animation_list.dart';
+
+import '../../../core/init/language/locale_keys.g.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -53,7 +56,7 @@ class _SettingsViewState extends State<SettingsView>
                                     onPressed: () {})),
                             Expanded(
                                 flex: 3,
-                                child: Text('Setting',
+                                child: Text(LocaleKeys.settings_settings.tr(),
                                     style: context.textTheme.headline5!
                                         .copyWith(
                                             color: context.colors.surface))),
@@ -66,29 +69,42 @@ class _SettingsViewState extends State<SettingsView>
                       )),
                   Expanded(
                     flex: 7,
-                    child: ListView.builder(
-                      itemCount: _viewModel.settingArgumans.length,
-                      itemBuilder: (context, _position) {
-                        return SlideAnimation(
-                          itemCount: _viewModel.settingArgumans.length,
-                          position: _position,
-                          slideDirection: SlideDirection.fromTop,
-                          animationController: _animationController,
-                          child: Column(
-                            children: [
-                              SettingsArgumansWidget(
-                                  title: _viewModel
-                                      .settingArgumans[_position].title,
-                                  imagePath: SVGImagePaths.instance.arrowRight),
-                              Divider(height: 10),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                    child: _buildListViewBuilder(_viewModel),
                   ),
                 ],
               ),
             ));
+  }
+
+  ListView _buildListViewBuilder(SettingsViewModel _viewModel) {
+    return ListView.builder(
+      itemCount: _viewModel.settingArgumans.length,
+      itemBuilder: (context, _position) {
+        return SlideAnimation(
+          itemCount: _viewModel.settingArgumans.length,
+          position: _position,
+          slideDirection: SlideDirection.fromTop,
+          animationController: _animationController,
+          child: Column(
+            children: [
+              Container(
+                  width: double.infinity,
+                  height: context.height * 0.09,
+                  child: ListTile(
+                    onTap: () => _viewModel.selectedItem(_position),
+                    leading: CircleAvatar(
+                        radius: 50,
+                        backgroundColor: Colors.transparent,
+                        child: SvgPicture.asset(
+                            _viewModel.settingArgumans[_position].imagePath)),
+                    title: Text(_viewModel.settingArgumans[_position].title),
+                    trailing: Icon(Icons.arrow_forward_ios_outlined),
+                  )),
+              Divider(height: 10),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

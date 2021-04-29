@@ -31,5 +31,15 @@
     "profile": "Profile",
     "heroes": "Heroes",
     "settings": "Settings"
+  },
+  "settings": {
+    "settings": "Settings",
+    "account": "Account",
+    "language": "Language",
+    "notifications": "Notifications",
+    "permissions": "Permissions",
+    "theme": "Theme Mode",
+    "about": "About",
+    "logout": "Log out"
   }
 }

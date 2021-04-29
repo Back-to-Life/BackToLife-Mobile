@@ -25,4 +25,11 @@ class SVGImagePaths {
   final pencil = 'pencil'.toSVG;
   final konfeti = 'konfeti'.toSVG;
   final settingsHeader = 'settingsheader'.toSVG;
+  final accountSettings = 'account'.toSVG;
+  final languagesettings = 'languagesettings'.toSVG;
+  final notificationsettings = 'notificationsettings'.toSVG;
+  final permissionssettings = 'permissionssettings'.toSVG;
+  final themesettings = 'themesettings'.toSVG;
+  final aboutsettings = 'aboutsettings'.toSVG;
+  final logoutsettings = 'logoutsettings'.toSVG;
 }
