@@ -1,4 +1,3 @@
-import '../model/base_view_model.dart';
 import '../../init/internet_connection/connectivity_provider.dart';
 import '../../init/internet_connection/no_internet_connection.dart';
 import 'package:flutter/material.dart';

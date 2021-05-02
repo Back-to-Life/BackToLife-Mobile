@@ -40,6 +40,8 @@
         "permissions": "İzinler",
         "theme": "Tema Modu",
         "about": "Hakkımızda",
-        "logout": "Çıkış Yap"
+        "logout": "Çıkış Yap",
+        "english": "İngilizce",
+        "turkish": "Türkçe"
     }
 }

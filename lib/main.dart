@@ -1,10 +1,5 @@
 import 'package:backtolife/view/settings/view/settings_view.dart';
 
-import 'view/profile/view/profile_view.dart';
-
-import 'view/authentication/view/authentication_view.dart';
-import 'view/barcode/view/scan_barcode_view.dart';
-import 'view/home/view/home_view.dart';
 import 'core/init/theme/app_theme_dark.dart';
 
 import 'core/init/lang/locale_keys_codegen.g.dart';
@@ -19,6 +14,7 @@ import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider.dart';
 import 'core/init/notifier/theme_notifier.dart';
+import 'view/settings/subsettings/language_settings/view/language_settings_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

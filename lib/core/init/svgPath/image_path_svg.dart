@@ -32,4 +32,7 @@ class SVGImagePaths {
   final themesettings = 'themesettings'.toSVG;
   final aboutsettings = 'aboutsettings'.toSVG;
   final logoutsettings = 'logoutsettings'.toSVG;
+  final englishSettingsLanguage = 'englishlanguage'.toSVG;
+  final turkishSettingsLanguage = 'turkishlanguage'.toSVG;
+  final selectedLanguage = 'selectedlanguage'.toSVG;
 }

@@ -40,6 +40,8 @@
     "permissions": "Permissions",
     "theme": "Theme Mode",
     "about": "About",
-    "logout": "Log out"
+    "logout": "Log out",
+    "english":"English",
+    "turkish":"Turkish"
   }
 }

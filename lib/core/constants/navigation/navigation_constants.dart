@@ -4,5 +4,6 @@ class NavigationConstants {
   static const ON_BOARDING = '/onboarding';
   static const PROFILE = '/profile';
   static const QRCODE = '/qrcode';
+  static const SETTINGS = '/settings';
   static const LANGUAGE_SETTINGS = '/language_settings';
 }
