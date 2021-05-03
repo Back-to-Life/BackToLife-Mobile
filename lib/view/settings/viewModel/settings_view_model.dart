@@ -49,4 +49,8 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
       default:
     }
   }
+
+  void backButtonLanguage() {
+    navigation.navigateToPage(path: NavigationConstants.HOME_VIEW);
+  }
 }

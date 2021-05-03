@@ -12,14 +12,10 @@ part 'language_settings_view_model.g.dart';
 class LanguageViewModel = _LanguageViewModelBase with _$LanguageViewModel;
 
 abstract class _LanguageViewModelBase with Store, BaseViewModel {
-  @observable
-  bool isTurkishLanguage = false;
-
   @override
   void setContext(BuildContext context) => this.context = context;
   @override
-  void init() {
-  }
+  void init() {}
 
   @action
   void changeLanguage(int index) {
@@ -29,7 +25,6 @@ abstract class _LanguageViewModelBase with Store, BaseViewModel {
     }
     if (index == 1) {
       context.setLocale(Locale('tr', 'TR'));
-      isTurkishLanguage = true;
       Provider.of<LanguageNotifier>(context, listen: false).changeLanguage(1);
     }
   }
@@ -38,3 +33,5 @@ abstract class _LanguageViewModelBase with Store, BaseViewModel {
     navigation.navigateToPage(path: NavigationConstants.SETTINGS);
   }
 }
+
+

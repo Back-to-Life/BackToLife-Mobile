@@ -9,22 +9,6 @@ part of 'language_settings_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LanguageViewModel on _LanguageViewModelBase, Store {
-  final _$isTurkishLanguageAtom =
-      Atom(name: '_LanguageViewModelBase.isTurkishLanguage');
-
-  @override
-  bool get isTurkishLanguage {
-    _$isTurkishLanguageAtom.reportRead();
-    return super.isTurkishLanguage;
-  }
-
-  @override
-  set isTurkishLanguage(bool value) {
-    _$isTurkishLanguageAtom.reportWrite(value, super.isTurkishLanguage, () {
-      super.isTurkishLanguage = value;
-    });
-  }
-
   final _$_LanguageViewModelBaseActionController =
       ActionController(name: '_LanguageViewModelBase');
 
@@ -42,7 +26,7 @@ mixin _$LanguageViewModel on _LanguageViewModelBase, Store {
   @override
   String toString() {
     return '''
-isTurkishLanguage: ${isTurkishLanguage}
+
     ''';
   }
 }

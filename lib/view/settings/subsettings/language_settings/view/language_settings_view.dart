@@ -74,7 +74,7 @@ class _LanguageSettingsViewState extends State<LanguageSettingsView>
               flex: 1,
               child: IconButton(
                   icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                  onPressed: _viewModel.backButtonLanguage)),
+                  onPressed: () => Navigator.pop(context))),
           Expanded(
               flex: 3,
               child: Text(LocaleKeys.settings_language.tr(),

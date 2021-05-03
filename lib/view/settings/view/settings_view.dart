@@ -53,7 +53,7 @@ class _SettingsViewState extends State<SettingsView>
                                 child: IconButton(
                                     icon: Icon(Icons.arrow_back_ios,
                                         color: Colors.white),
-                                    onPressed: () {})),
+                                    onPressed: () => Navigator.pop(context))),
                             Expanded(
                                 flex: 3,
                                 child: Text(LocaleKeys.settings_settings.tr(),
