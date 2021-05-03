@@ -1,3 +1,5 @@
+import 'package:backtolife/core/init/notifier/language_notifier.dart';
+
 import '../internet_connection/connectivity_provider.dart';
 
 import '../navigation/navigation_service.dart';
@@ -17,9 +19,12 @@ class ApplicationProvider {
 
   List<SingleChildWidget> singleItems = [];
   List<SingleChildWidget> dependItems = [
-    ChangeNotifierProvider<ThemeNotifier>(create: (context) => ThemeNotifier()),
+    ChangeNotifierProvider<ThemeNotifier>(
+        create: (context) => ThemeNotifier(), lazy: true),
     ChangeNotifierProvider<ConnectivityProvider>(
-        create: (context) => ConnectivityProvider()),
+        create: (context) => ConnectivityProvider(), lazy: true),
+    ChangeNotifierProvider<LanguageNotifier>(
+        create: (context) => LanguageNotifier(), lazy: true),
     Provider.value(value: NavigationService.instance)
   ];
   List<SingleChildWidget> uiChangesItems = [];
