@@ -38,6 +38,8 @@ abstract class  LocaleKeys {
   static const settings_logout = 'settings.logout';
   static const settings_english = 'settings.english';
   static const settings_turkish = 'settings.turkish';
+  static const settings_light = 'settings.light';
+  static const settings_dark = 'settings.dark';
   static const settings = 'settings';
 
 }

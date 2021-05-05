@@ -35,4 +35,6 @@ class SVGImagePaths {
   final englishSettingsLanguage = 'englishlanguage'.toSVG;
   final turkishSettingsLanguage = 'turkishlanguage'.toSVG;
   final selectedLanguage = 'selectedlanguage'.toSVG;
+  final themelight = 'themelight'.toSVG;
+  final themedark = 'themedark'.toSVG;
 }

@@ -58,7 +58,9 @@ class CodegenLoader extends AssetLoader{
     "about": "About",
     "logout": "Log out",
     "english": "English",
-    "turkish": "Turkish"
+    "turkish": "Turkish",
+    "light": "Light",
+    "dark": "Dark"
   }
 };
 static const Map<String,dynamic> tr_TR = {
@@ -105,7 +107,9 @@ static const Map<String,dynamic> tr_TR = {
     "about": "Hakkımızda",
     "logout": "Çıkış Yap",
     "english": "İngilizce",
-    "turkish": "Türkçe"
+    "turkish": "Türkçe",
+    "light": "Açık Tema",
+    "dark": "Koyu Tema"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "tr_TR": tr_TR};

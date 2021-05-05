@@ -41,7 +41,9 @@
     "theme": "Theme Mode",
     "about": "About",
     "logout": "Log out",
-    "english":"English",
-    "turkish":"Turkish"
+    "english": "English",
+    "turkish": "Turkish",
+    "light": "Light",
+    "dark": "Dark"
   }
 }

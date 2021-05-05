@@ -42,6 +42,8 @@
         "about": "Hakkımızda",
         "logout": "Çıkış Yap",
         "english": "İngilizce",
-        "turkish": "Türkçe"
+        "turkish": "Türkçe",
+        "light": "Açık Tema",
+        "dark": "Koyu Tema"
     }
 }
