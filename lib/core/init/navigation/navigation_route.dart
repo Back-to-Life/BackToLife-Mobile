@@ -1,4 +1,6 @@
-import 'package:backtolife/view/settings/subsettings/language_settings/view/language_settings_view.dart';
+import 'package:backtolife/view/settings/view/settings_view.dart';
+
+import '../../../view/settings/subsettings/language_settings/view/language_settings_view.dart';
 
 import '../../../view/barcode/view/scan_barcode_view.dart';
 
@@ -30,6 +32,8 @@ class NavigationRoute {
         return simpleNavigate(ProfileView());
       case NavigationConstants.QRCODE:
         return simpleNavigate(ScanBarcodeView());
+      case NavigationConstants.SETTINGS:
+        return simpleNavigate(SettingsView());
       case NavigationConstants.LANGUAGE_SETTINGS:
         return simpleNavigate(LanguageSettingsView());
 

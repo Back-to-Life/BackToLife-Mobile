@@ -35,4 +35,13 @@ class LocaleManager {
 
   bool getBoolValue(PreferencesKeys key) =>
       _preferences!.getBool(key.toString()) ?? false;
+
+  //Saved Locale English-Turkish Language Manager
+  Future<void> setLanguageManager(PreferencesKeys key, bool value) async {
+    await _preferences!.setBool(key.toString(), value);
+  }
+
+  //Get locale english-turkish language Manager
+  bool getLnaguageManager(PreferencesKeys key) =>
+      _preferences!.getBool(key.toString()) ?? false;
 }

@@ -1,4 +1,4 @@
-import 'package:backtolife/view/profile/view/profile_view.dart';
+import '../../profile/view/profile_view.dart';
 
 import '../../../core/constants/navigation/navigation_constants.dart';
 

@@ -39,7 +39,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
       surface: colorSchemeLight.whiteText, //beyaz
       onSurface: colorSchemeLight.grey,
       onPrimary: colorSchemeLight.buttonOnboard,
-      background: Colors.blue,
+      background: Color(0xFF72A863),
       brightness: Brightness.light,
       secondary: colorSchemeLight.starColor,
       onError: colorSchemeLight.darkGreen,

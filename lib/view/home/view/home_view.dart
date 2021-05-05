@@ -1,5 +1,5 @@
 import 'package:animations/animations.dart';
-import 'package:backtolife/view/settings/view/settings_view.dart';
+import '../../settings/view/settings_view.dart';
 import '../../barcode/view/scan_barcode_view.dart';
 import '../../profile/view/profile_view.dart';
 
