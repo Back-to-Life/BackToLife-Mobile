@@ -1,4 +1,4 @@
-import 'package:backtolife/core/init/notifier/language_notifier.dart';
+import 'language_notifier.dart';
 
 import '../internet_connection/connectivity_provider.dart';
 

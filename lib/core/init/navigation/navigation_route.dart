@@ -1,7 +1,7 @@
-import 'package:backtolife/view/settings/subsettings/notifications_settings/view/notifications_view.dart';
-import 'package:backtolife/view/settings/subsettings/permissions_settings/view/permissions_settings_view.dart';
-import 'package:backtolife/view/settings/subsettings/theme_mode_settings/view/theme_settings_view.dart';
-import 'package:backtolife/view/settings/view/settings_view.dart';
+import '../../../view/settings/subsettings/notifications_settings/view/notifications_view.dart';
+import '../../../view/settings/subsettings/permissions_settings/view/permissions_settings_view.dart';
+import '../../../view/settings/subsettings/theme_mode_settings/view/theme_settings_view.dart';
+import '../../../view/settings/view/settings_view.dart';
 
 import '../../../view/settings/subsettings/language_settings/view/language_settings_view.dart';
 

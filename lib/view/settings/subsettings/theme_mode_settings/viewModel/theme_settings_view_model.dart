@@ -1,6 +1,6 @@
-import 'package:backtolife/core/base/model/base_view_model.dart';
-import 'package:backtolife/core/constants/enum/app_theme_enum.dart';
-import 'package:backtolife/core/init/notifier/theme_notifier.dart';
+import '../../../../../core/base/model/base_view_model.dart';
+import '../../../../../core/constants/enum/app_theme_enum.dart';
+import '../../../../../core/init/notifier/theme_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';

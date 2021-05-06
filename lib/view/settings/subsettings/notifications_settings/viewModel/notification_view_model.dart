@@ -1,4 +1,4 @@
-import 'package:backtolife/core/base/model/base_view_model.dart';
+import '../../../../../core/base/model/base_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 part 'notification_view_model.g.dart';

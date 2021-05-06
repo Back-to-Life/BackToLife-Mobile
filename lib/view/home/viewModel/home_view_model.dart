@@ -1,5 +1,5 @@
-import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
-import 'package:backtolife/core/init/cache/locale_manager.dart';
+import '../../../core/constants/enum/locale_keys_enum.dart';
+import '../../../core/init/cache/locale_manager.dart';
 
 import '../../profile/view/profile_view.dart';
 

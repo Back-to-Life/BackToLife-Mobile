@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:backtolife/core/init/notifier/language_notifier.dart';
-import 'package:backtolife/view/widgets/upperSettingsContainer/upper_settings_container.dart';
+import '../../../../../core/init/notifier/language_notifier.dart';
+import '../../../../widgets/upperSettingsContainer/upper_settings_container.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../core/init/lang/locale_keys.g.dart';
