@@ -41,4 +41,5 @@ class SVGImagePaths {
   final notifacationsettingsview = 'notifacationsettingview'.toSVG;
   final locationpermission = 'locationpermission'.toSVG;
   final camerapermission = 'camerapermission'.toSVG;
+  final profilesettingsview = 'profilepsettingsview'.toSVG;
 }

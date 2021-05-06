@@ -40,9 +40,9 @@ class ToggleButtonContainer extends StatelessWidget {
                 },
                 child: isSelected!
                     ? Icon(Icons.nights_stay_rounded,
-                        color: Colors.black, key: UniqueKey())
+                        color: Colors.black54, key: UniqueKey())
                     : Icon(Icons.wb_sunny_rounded,
-                        color: Colors.black, key: UniqueKey()),
+                        color: Colors.yellow.shade600, key: UniqueKey()),
               ),
             ),
           )

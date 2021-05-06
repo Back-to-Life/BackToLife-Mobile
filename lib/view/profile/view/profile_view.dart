@@ -117,7 +117,20 @@ class ProfileView extends StatelessWidget {
                   bottomRight: Radius.circular(context.width * 0.15))),
           child: Stack(
             children: [
-              StarBackGround(),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: context.height * 0.02, left: context.width * 0.08),
+                child: Container(
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: SvgPicture.asset(
+                              SVGImagePaths.instance.profilesettingsview),
+                        ),
+                      ],
+                    )),
+              ),
               Positioned(
                   left: context.width * 0.05,
                   top: context.height * 0.05,
