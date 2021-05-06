@@ -2,6 +2,7 @@ import 'package:backtolife/core/extension/context_extension.dart';
 import 'package:backtolife/core/init/lang/locale_keys.g.dart';
 import 'package:backtolife/core/init/notifier/theme_notifier.dart';
 import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
+import 'package:backtolife/view/widgets/upperSettingsContainer/upper_settings_container.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,7 +26,9 @@ class ThemeSettingsView extends StatelessWidget {
               body: Column(
                 children: [
                   Expanded(
-                      flex: 2, child: _upperContainer(context, _viewModel)),
+                      flex: 2,
+                      child: UpperContainerSettings(
+                          title: LocaleKeys.settings_theme.tr())),
                   Expanded(
                     flex: 8,
                     child: Center(
@@ -110,29 +113,6 @@ class ThemeSettingsView extends StatelessWidget {
                         .copyWith(color: Colors.black54))),
           ],
         ),
-      ),
-    );
-  }
-
-  Container _upperContainer(
-      BuildContext context, ThemeSettingsViewModel _viewModel) {
-    return Container(
-      decoration: BoxDecoration(
-          color: context.colors.background,
-          borderRadius: context.highOnlyBottomRadius),
-      child: Row(
-        children: [
-          Expanded(
-              flex: 1,
-              child: IconButton(
-                  icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                  onPressed: () => Navigator.pop(context))),
-          Expanded(
-              flex: 3,
-              child: Text(LocaleKeys.settings_theme.tr(),
-                  style: context.textTheme.headline5!
-                      .copyWith(color: context.colors.surface))),
-        ],
       ),
     );
   }

@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:backtolife/core/init/notifier/language_notifier.dart';
+import 'package:backtolife/view/widgets/upperSettingsContainer/upper_settings_container.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../core/init/lang/locale_keys.g.dart';
@@ -44,44 +47,23 @@ class _LanguageSettingsViewState extends State<LanguageSettingsView>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                      flex: 2, child: _upperContainer(context, _viewModel)),
+                      flex: 2,
+                      child: UpperContainerSettings(
+                          title: LocaleKeys.settings_language.tr())),
                   Expanded(
-                    flex: 8,
+                    flex: 9,
                     child: Column(
                       children: [
                         _englishLanguage(context, _viewModel),
                         Divider(height: 10, color: context.colors.surface),
                         _turkishLanguage(context, _viewModel),
-                        Divider(height: 10, color: context.colors.surface)
+                        Divider(height: 10, color: context.colors.surface),
                       ],
                     ),
                   ),
                 ],
               ),
             ));
-  }
-
-  Container _upperContainer(
-      BuildContext context, LanguageViewModel _viewModel) {
-    return Container(
-      decoration: BoxDecoration(
-          color: context.colors.background,
-          borderRadius: context.highOnlyBottomRadius),
-      child: Row(
-        children: [
-          Expanded(
-              flex: 1,
-              child: IconButton(
-                  icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                  onPressed: () => Navigator.pop(context))),
-          Expanded(
-              flex: 3,
-              child: Text(LocaleKeys.settings_language.tr(),
-                  style: context.textTheme.headline5!
-                      .copyWith(color: context.colors.surface))),
-        ],
-      ),
-    );
   }
 
   Container _englishLanguage(
@@ -104,7 +86,9 @@ class _LanguageSettingsViewState extends State<LanguageSettingsView>
                       : null);
             },
           ),
-          title: Text(LocaleKeys.settings_english.tr()),
+          title: Text(LocaleKeys.settings_english.tr(),
+              style: context.textTheme.headline5!
+                  .copyWith(color: context.colors.surface, fontSize: 17)),
           trailing: CircleAvatar(
               radius: 50,
               backgroundColor: Colors.transparent,
@@ -132,7 +116,9 @@ class _LanguageSettingsViewState extends State<LanguageSettingsView>
                       : null);
             },
           ),
-          title: Text(LocaleKeys.settings_turkish.tr()),
+          title: Text(LocaleKeys.settings_turkish.tr(),
+              style: context.textTheme.headline5!
+                  .copyWith(color: context.colors.surface, fontSize: 17)),
           trailing: CircleAvatar(
               radius: 50,
               backgroundColor: Colors.transparent,
