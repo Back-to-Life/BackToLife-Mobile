@@ -18,7 +18,10 @@ class ToggleButtonContainer extends StatelessWidget {
           color: isSelected!
               ? context.colors.secondaryVariant.withOpacity(0.5)
               : context.colors.secondaryVariant,
-          borderRadius: BorderRadius.circular(context.mediumValue)),
+          borderRadius: BorderRadius.circular(context.mediumValue),
+          border: Border.all(
+              width: 1.5,
+              color: context.colors.secondaryVariant.withOpacity(0.3))),
       child: Stack(
         alignment: Alignment.center,
         children: [

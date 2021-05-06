@@ -1,3 +1,6 @@
+import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
+import 'package:backtolife/core/init/cache/locale_manager.dart';
+
 import '../../constants/app/app_constants.dart';
 
 import 'app_theme.dart';
@@ -19,7 +22,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
 
   @override
   ThemeData get theme => ThemeData(
-      scaffoldBackgroundColor: colorSchemeLight.kPrimaryLight,
+      scaffoldBackgroundColor: Color(0xffFCFCEC),
       colorScheme: _appColorScheme(),
       fontFamily: ApplicationConstants.FONT_FAMILY,
       appBarTheme: AppBarTheme(
@@ -30,13 +33,14 @@ class AppThemeLight extends AppTheme with ILightTheme {
       );
   ColorScheme _appColorScheme() {
     return ColorScheme(
-      primary: colorSchemeLight.kPrimaryLight,
+      primary: Color(0xffFCFCEC),
       onSecondary: colorSchemeLight.kSecendoryLight,
-      primaryVariant: colorSchemeLight.kThirdLight,
+      primaryVariant:
+          colorSchemeLight.kThirdLight, //container glassmorpihsm for
       secondaryVariant: colorSchemeLight.purpleLight,
       onBackground: colorSchemeLight.greyOnboard,
       error: Colors.red,
-      surface: colorSchemeLight.whiteText, //beyaz
+      surface: Color(0xff578B49), //yeşil yazı
       onSurface: colorSchemeLight.grey,
       onPrimary: colorSchemeLight.buttonOnboard,
       background: Color(0xFF72A863),

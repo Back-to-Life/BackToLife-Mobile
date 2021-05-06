@@ -17,7 +17,7 @@ class AppThemeDark extends AppTheme {
 
   @override
   ThemeData get theme => ThemeData(
-        scaffoldBackgroundColor: Colors.red,
+        scaffoldBackgroundColor: Color(0xFF4E5F49),
         colorScheme: _appColorScheme(),
         fontFamily: ApplicationConstants.FONT_FAMILY,
         // textTheme: TextTheme(headline1: textThemeLight.headline1,
@@ -26,11 +26,11 @@ class AppThemeDark extends AppTheme {
     return ColorScheme(
       primary: Color(0xFF4E5F49),
       onSecondary: Colors.black,
-      primaryVariant: Colors.white,
-      secondaryVariant: Colors.white24,
-      onBackground: Colors.yellow,
+      primaryVariant: Colors.white.withOpacity(0.3),
+      secondaryVariant: Colors.white,
+      onBackground: Colors.white,
       error: Colors.red,
-      surface: Colors.yellow,
+      surface: Colors.white,
       onSurface: Colors.yellow,
       onPrimary: Colors.yellow,
       background: Colors.blue,

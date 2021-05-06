@@ -6,4 +6,9 @@ class NavigationConstants {
   static const QRCODE = '/qrcode';
   static const SETTINGS = '/settings';
   static const LANGUAGE_SETTINGS = '/language_settings';
+  static const NOTIFICATION_SETTINGS = '/nottification_setting';
+  static const PERMISSIONS_SETTINGS = '/permissions_setting';
+  static const THEMEMODE_SETTINGS = '/theme_mode_setting';
+  static const ABOUT_SETTINGS = '/about_settings';
+  static const LOGOUT_SETTINGS = '/logout_setting';
 }

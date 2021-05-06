@@ -46,6 +46,23 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
       case 1:
         navigation.navigateToPage(path: NavigationConstants.LANGUAGE_SETTINGS);
         break;
+      case 2:
+        navigation.navigateToPage(
+            path: NavigationConstants.NOTIFICATION_SETTINGS);
+        break;
+      case 3:
+        navigation.navigateToPage(
+            path: NavigationConstants.PERMISSIONS_SETTINGS);
+        break;
+      case 4:
+        navigation.navigateToPage(path: NavigationConstants.THEMEMODE_SETTINGS);
+        break;
+      case 5:
+        navigation.navigateToPage(path: NavigationConstants.ABOUT_SETTINGS);
+        break;
+      case 6:
+        navigation.navigateToPage(path: NavigationConstants.LOGOUT_SETTINGS);
+        break;
       default:
     }
   }

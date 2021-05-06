@@ -9,7 +9,7 @@ class LanguageNotifier extends ChangeNotifier {
   bool? get isLanguageTurkis => _isLanguageTurkish;
   bool? get isLanguageEnglish => _isLanguageEnglish;
 
-  void initLanguage() {
+  LanguageNotifier() {
     var isLocaleCheck =
         LocaleManager.instance.getLnaguageManager(PreferencesKeys.LANGUAGE);
     if (isLocaleCheck) {

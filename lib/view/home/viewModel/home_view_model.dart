@@ -1,3 +1,6 @@
+import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
+import 'package:backtolife/core/init/cache/locale_manager.dart';
+
 import '../../profile/view/profile_view.dart';
 
 import '../../../core/constants/navigation/navigation_constants.dart';
@@ -21,7 +24,9 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   }
 
   @override
-  void init() {}
+  void init() {
+    changeToggleButtonInit();
+  }
 
   @observable
   bool isSelectedToggle = false;
@@ -46,6 +51,16 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   @action
   void increment() {
     number++;
+  }
+
+  void changeToggleButtonInit() {
+    var isThemeChange =
+        LocaleManager.instance.getThemeManager(PreferencesKeys.THEME);
+    if (isThemeChange) {
+      isSelectedToggle = false;
+    } else {
+      isSelectedToggle = true;
+    }
   }
 
   Future<void> goToProfile() async {

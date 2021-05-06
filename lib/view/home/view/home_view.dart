@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:animations/animations.dart';
 import '../../settings/view/settings_view.dart';
 import '../../barcode/view/scan_barcode_view.dart';
@@ -131,17 +133,17 @@ class _HomeViewState extends State<HomeView>
                       speed: Duration(milliseconds: 150),
                       textStyle: context.textTheme.headline6!.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: context.colors.primaryVariant)),
+                          color: context.colors.surface)),
                   TypewriterAnimatedText('We are the best',
                       speed: Duration(milliseconds: 150),
                       textStyle: context.textTheme.headline6!.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: context.colors.primaryVariant)),
+                          color: context.colors.surface)),
                   TypewriterAnimatedText('Back TO LIFE',
                       speed: Duration(milliseconds: 150),
                       textStyle: context.textTheme.headline6!.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: context.colors.primaryVariant)),
+                          color: context.colors.surface)),
                 ],
                 onTap: () {
                   print('Tap Event');
@@ -168,7 +170,7 @@ class _HomeViewState extends State<HomeView>
                 child: Text(
                   LocaleKeys.home_hello.tr() + '\nFatih Kurçenli',
                   style: context.textTheme.headline4!
-                      .copyWith(color: context.colors.primaryVariant),
+                      .copyWith(color: context.colors.surface),
                 ),
               );
             },
@@ -197,30 +199,35 @@ class _HomeViewState extends State<HomeView>
   Padding buildWorldContainer(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 100),
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(context.mediumValue),
-          color: context.colors.secondaryVariant.withOpacity(0.8),
-          boxShadow: [
-            BoxShadow(
-              color: context.colors.secondaryVariant.withOpacity(0.3),
-              spreadRadius: 3,
-              blurRadius: 1,
-              offset: Offset(0, 10),
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: context.paddingMedium,
-          child: Row(
-            children: [
-              Text(
-                LocaleKeys.home_homedescription.tr(),
-                style: context.textTheme.headline5!
-                    .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16.0),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 16.0, sigmaY: 16.0),
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(context.mediumValue),
+                color: context.colors.secondaryVariant.withOpacity(0.3),
+                boxShadow: [
+                  BoxShadow(
+                    color: context.colors.secondaryVariant.withOpacity(0.3),
+                  ),
+                ],
+                border: Border.all(
+                    width: 1.5,
+                    color: context.colors.secondaryVariant.withOpacity(0.3))),
+            child: Padding(
+              padding: context.paddingMedium,
+              child: Row(
+                children: [
+                  Text(
+                    LocaleKeys.home_homedescription.tr(),
+                    style: context.textTheme.headline5!.copyWith(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),

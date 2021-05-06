@@ -29,7 +29,6 @@ class _LanguageSettingsViewState extends State<LanguageSettingsView>
     super.initState();
     _animationController =
         AnimationController(vsync: this, duration: Duration(seconds: 3));
-    Provider.of<LanguageNotifier>(context, listen: false).initLanguage();
   }
 
   @override
@@ -51,9 +50,9 @@ class _LanguageSettingsViewState extends State<LanguageSettingsView>
                     child: Column(
                       children: [
                         _englishLanguage(context, _viewModel),
-                        Divider(height: 10),
+                        Divider(height: 10, color: context.colors.surface),
                         _turkishLanguage(context, _viewModel),
-                        Divider(height: 10)
+                        Divider(height: 10, color: context.colors.surface)
                       ],
                     ),
                   ),

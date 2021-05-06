@@ -1,3 +1,6 @@
+import 'package:backtolife/view/settings/subsettings/notifications_settings/view/notifications_view.dart';
+import 'package:backtolife/view/settings/subsettings/permissions_settings/view/permissions_settings_view.dart';
+import 'package:backtolife/view/settings/subsettings/theme_mode_settings/view/theme_settings_view.dart';
 import 'package:backtolife/view/settings/view/settings_view.dart';
 
 import '../../../view/settings/subsettings/language_settings/view/language_settings_view.dart';
@@ -35,6 +38,16 @@ class NavigationRoute {
       case NavigationConstants.SETTINGS:
         return simpleNavigate(SettingsView());
       case NavigationConstants.LANGUAGE_SETTINGS:
+        return simpleNavigate(LanguageSettingsView());
+      case NavigationConstants.NOTIFICATION_SETTINGS:
+        return simpleNavigate(NotificationsSettingsView());
+      case NavigationConstants.PERMISSIONS_SETTINGS:
+        return simpleNavigate(PermissionsSettingView());
+      case NavigationConstants.THEMEMODE_SETTINGS:
+        return simpleNavigate(ThemeSettingsView());
+      case NavigationConstants.ABOUT_SETTINGS:
+        return simpleNavigate(LanguageSettingsView());
+      case NavigationConstants.LOGOUT_SETTINGS:
         return simpleNavigate(LanguageSettingsView());
 
       default:
