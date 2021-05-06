@@ -28,10 +28,4 @@ abstract class _LanguageViewModelBase with Store, BaseViewModel {
       Provider.of<LanguageNotifier>(context, listen: false).changeLanguage(1);
     }
   }
-
-  void backButtonLanguage() {
-    navigation.navigateToPage(path: NavigationConstants.SETTINGS);
-  }
 }
-
-
