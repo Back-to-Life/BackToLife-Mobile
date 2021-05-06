@@ -24,7 +24,7 @@ class AppThemeDark extends AppTheme {
       );
   ColorScheme _appColorScheme() {
     return ColorScheme(
-      primary: Colors.red,
+      primary: Color(0xFF4E5F49),
       onSecondary: Colors.black,
       primaryVariant: Colors.white,
       secondaryVariant: Colors.white24,

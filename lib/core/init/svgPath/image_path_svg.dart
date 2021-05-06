@@ -37,4 +37,6 @@ class SVGImagePaths {
   final selectedLanguage = 'selectedlanguage'.toSVG;
   final themelight = 'themelight'.toSVG;
   final themedark = 'themedark'.toSVG;
+  final emailnotificationssettings = 'emailnotificationssettings'.toSVG;
+  final notifacationsettingsview = 'notifacationsettingview'.toSVG;
 }

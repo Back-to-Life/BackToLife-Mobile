@@ -44,4 +44,13 @@ class LocaleManager {
   //Get locale english-turkish language Manager
   bool getLnaguageManager(PreferencesKeys key) =>
       _preferences!.getBool(key.toString()) ?? false;
+
+  //sharedManager theme mode
+  Future<void> setThemeManager(PreferencesKeys key, bool value) async {
+    await _preferences!.setBool(key.toString(), value);
+  }
+
+  //Get locale theme  Manager
+  bool getThemeManager(PreferencesKeys key) =>
+      _preferences!.getBool(key.toString()) ?? true;
 }

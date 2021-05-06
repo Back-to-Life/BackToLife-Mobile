@@ -44,6 +44,8 @@
         "english": "İngilizce",
         "turkish": "Türkçe",
         "light": "Açık Tema",
-        "dark": "Koyu Tema"
+        "dark": "Koyu Tema",
+        "pushnotification": "Bildirim Gönderme İzni",
+        "emailnotification": "Email Gönderme İzni"
     }
 }

@@ -44,6 +44,8 @@
     "english": "English",
     "turkish": "Turkish",
     "light": "Light",
-    "dark": "Dark"
+    "dark": "Dark",
+    "pushnotification": "Push Notification",
+    "emailnotification": "Email Notification"
   }
 }
