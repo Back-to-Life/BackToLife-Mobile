@@ -39,4 +39,6 @@ class SVGImagePaths {
   final themedark = 'themedark'.toSVG;
   final emailnotificationssettings = 'emailnotificationssettings'.toSVG;
   final notifacationsettingsview = 'notifacationsettingview'.toSVG;
+  final locationpermission = 'locationpermission'.toSVG;
+  final camerapermission = 'camerapermission'.toSVG;
 }

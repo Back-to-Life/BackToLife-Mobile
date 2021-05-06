@@ -42,6 +42,8 @@ abstract class  LocaleKeys {
   static const settings_dark = 'settings.dark';
   static const settings_pushnotification = 'settings.pushnotification';
   static const settings_emailnotification = 'settings.emailnotification';
+  static const settings_camerapermissons = 'settings.camerapermissons';
+  static const settings_locationpermissons = 'settings.locationpermissons';
   static const settings = 'settings';
 
 }

@@ -46,6 +46,8 @@
         "light": "Açık Tema",
         "dark": "Koyu Tema",
         "pushnotification": "Bildirim Gönderme İzni",
-        "emailnotification": "Email Gönderme İzni"
+        "emailnotification": "Email Gönderme İzni",
+        "camerapermissons": "Kamera İzni",
+        "locationpermissons": "Konum İzni"
     }
 }

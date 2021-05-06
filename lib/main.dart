@@ -1,3 +1,5 @@
+import 'package:backtolife/view/settings/subsettings/permissions_settings/view/permissions_settings_view.dart';
+
 import 'core/init/theme/app_theme_dark.dart';
 
 import 'core/init/lang/locale_keys_codegen.g.dart';
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: NotificationsSettingsView(),
+      home: PermissionsSettingView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

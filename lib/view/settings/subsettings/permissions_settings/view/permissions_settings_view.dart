@@ -1,23 +1,22 @@
+import 'package:backtolife/core/extension/context_extension.dart';
+import 'package:backtolife/core/init/lang/locale_keys.g.dart';
 import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
-import 'package:backtolife/view/widgets/ToggleButton/toggle_button_container.dart';
 import 'package:backtolife/view/widgets/ToggleButton/toggle_button_notifications_container.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/base/view/base_view.dart';
-import '../../../../../core/extension/context_extension.dart';
-import '../../../../../core/init/lang/locale_keys.g.dart';
-import '../viewModel/notification_view_model.dart';
+import '../viewModel/permissions_setting_view_model.dart';
 
-class NotificationsSettingsView extends StatelessWidget {
-  const NotificationsSettingsView({Key? key}) : super(key: key);
+class PermissionsSettingView extends StatelessWidget {
+  const PermissionsSettingView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BaseView<NotificationsViewModel>(
-        viewModel: NotificationsViewModel(),
-        onModelReady: (NotificationsViewModel model) {
+    return BaseView<PermissonsSettingsViewModel>(
+        viewModel: PermissonsSettingsViewModel(),
+        onModelReady: (PermissonsSettingsViewModel model) {
           model.setContext(context);
           model.init();
         },
@@ -43,11 +42,11 @@ class NotificationsSettingsView extends StatelessWidget {
                                 leading: CircleAvatar(
                                   radius: 20.0,
                                   backgroundColor: Colors.transparent,
-                                  child: SvgPicture.asset(SVGImagePaths
-                                      .instance.notifacationsettingsview),
+                                  child: SvgPicture.asset(
+                                      SVGImagePaths.instance.camerapermission),
                                 ),
                                 title: Text(
-                                    LocaleKeys.settings_pushnotification.tr()),
+                                    LocaleKeys.settings_camerapermissons.tr()),
                                 trailing: ToggleButtonNotificationContainer(
                                   callback: () {},
                                   isSelected: false,
@@ -67,10 +66,11 @@ class NotificationsSettingsView extends StatelessWidget {
                                   radius: 25.0,
                                   backgroundColor: Colors.transparent,
                                   child: SvgPicture.asset(SVGImagePaths
-                                      .instance.emailnotificationssettings),
+                                      .instance.locationpermission),
                                 ),
-                                title: Text(
-                                    LocaleKeys.settings_emailnotification.tr()),
+                                title: Text(LocaleKeys
+                                    .settings_locationpermissons
+                                    .tr()),
                                 trailing: ToggleButtonNotificationContainer(
                                   callback: () {},
                                   isSelected: false,
@@ -86,9 +86,8 @@ class NotificationsSettingsView extends StatelessWidget {
             ));
   }
 
-
   Container _upperContainer(
-      BuildContext context, NotificationsViewModel _viewModel) {
+      BuildContext context, PermissonsSettingsViewModel _viewModel) {
     return Container(
       decoration: BoxDecoration(
           color: context.colors.background,
@@ -102,7 +101,7 @@ class NotificationsSettingsView extends StatelessWidget {
                   onPressed: () => Navigator.pop(context))),
           Expanded(
               flex: 3,
-              child: Text(LocaleKeys.settings_notifications.tr(),
+              child: Text(LocaleKeys.settings_permissions.tr(),
                   style: context.textTheme.headline5!
                       .copyWith(color: context.colors.surface))),
         ],

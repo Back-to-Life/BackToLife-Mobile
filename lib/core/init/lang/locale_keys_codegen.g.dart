@@ -62,7 +62,9 @@ class CodegenLoader extends AssetLoader{
     "light": "Light",
     "dark": "Dark",
     "pushnotification": "Push Notification",
-    "emailnotification": "Email Notification"
+    "emailnotification": "Email Notification",
+    "camerapermissons": "Camera",
+    "locationpermissons": "Location"
   }
 };
 static const Map<String,dynamic> tr_TR = {
@@ -113,7 +115,9 @@ static const Map<String,dynamic> tr_TR = {
     "light": "Açık Tema",
     "dark": "Koyu Tema",
     "pushnotification": "Bildirim Gönderme İzni",
-    "emailnotification": "Email Gönderme İzni"
+    "emailnotification": "Email Gönderme İzni",
+    "camerapermissons": "Kamera İzni",
+    "locationpermissons": "Konum İzni"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "tr_TR": tr_TR};

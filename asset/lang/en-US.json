@@ -46,6 +46,8 @@
     "light": "Light",
     "dark": "Dark",
     "pushnotification": "Push Notification",
-    "emailnotification": "Email Notification"
+    "emailnotification": "Email Notification",
+    "camerapermissons":"Camera",
+    "locationpermissons":"Location"
   }
 }
