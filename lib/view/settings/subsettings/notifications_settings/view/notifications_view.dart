@@ -1,6 +1,9 @@
-import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
-import 'package:backtolife/view/widgets/ToggleButton/toggle_button_container.dart';
-import 'package:backtolife/view/widgets/ToggleButton/toggle_button_notifications_container.dart';
+import 'dart:ui';
+
+import '../../../../../core/init/svgPath/image_path_svg.dart';
+import '../../../../widgets/ToggleButton/toggle_button_container.dart';
+import '../../../../widgets/ToggleButton/toggle_button_notifications_container.dart';
+import '../../../../widgets/upperSettingsContainer/upper_settings_container.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,7 +28,9 @@ class NotificationsSettingsView extends StatelessWidget {
               body: Column(
                 children: [
                   Expanded(
-                      flex: 2, child: _upperContainer(context, _viewModel)),
+                      flex: 2,
+                      child: UpperContainerSettings(
+                          title: LocaleKeys.settings_notifications.tr())),
                   Expanded(
                     flex: 8,
                     child: Column(
@@ -86,27 +91,5 @@ class NotificationsSettingsView extends StatelessWidget {
             ));
   }
 
-
-  Container _upperContainer(
-      BuildContext context, NotificationsViewModel _viewModel) {
-    return Container(
-      decoration: BoxDecoration(
-          color: context.colors.background,
-          borderRadius: context.highOnlyBottomRadius),
-      child: Row(
-        children: [
-          Expanded(
-              flex: 1,
-              child: IconButton(
-                  icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-                  onPressed: () => Navigator.pop(context))),
-          Expanded(
-              flex: 3,
-              child: Text(LocaleKeys.settings_notifications.tr(),
-                  style: context.textTheme.headline5!
-                      .copyWith(color: context.colors.surface))),
-        ],
-      ),
-    );
-  }
+ 
 }

@@ -18,7 +18,10 @@ class ToggleButtonContainer extends StatelessWidget {
           color: isSelected!
               ? context.colors.secondaryVariant.withOpacity(0.5)
               : context.colors.secondaryVariant,
-          borderRadius: BorderRadius.circular(context.mediumValue)),
+          borderRadius: BorderRadius.circular(context.mediumValue),
+          border: Border.all(
+              width: 1.5,
+              color: context.colors.secondaryVariant.withOpacity(0.3))),
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -37,9 +40,9 @@ class ToggleButtonContainer extends StatelessWidget {
                 },
                 child: isSelected!
                     ? Icon(Icons.nights_stay_rounded,
-                        color: Colors.black, key: UniqueKey())
+                        color: Colors.black54, key: UniqueKey())
                     : Icon(Icons.wb_sunny_rounded,
-                        color: Colors.black, key: UniqueKey()),
+                        color: Colors.yellow.shade600, key: UniqueKey()),
               ),
             ),
           )

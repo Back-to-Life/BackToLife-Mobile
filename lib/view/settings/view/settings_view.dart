@@ -97,10 +97,17 @@ class _SettingsViewState extends State<SettingsView>
                         backgroundColor: Colors.transparent,
                         child: SvgPicture.asset(
                             _viewModel.settingArgumans[_position].imagePath)),
-                    title: Text(_viewModel.settingArgumans[_position].title),
-                    trailing: Icon(Icons.arrow_forward_ios_outlined),
+                    title: Text(
+                      _viewModel.settingArgumans[_position].title,
+                      style: context.textTheme.bodyText1!.copyWith(
+                          color: context.colors.surface, fontSize: 17),
+                    ),
+                    trailing: Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      color: context.colors.surface,
+                    ),
                   )),
-              Divider(height: 10),
+              Divider(height: 10, color: context.colors.surface),
             ],
           ),
         );

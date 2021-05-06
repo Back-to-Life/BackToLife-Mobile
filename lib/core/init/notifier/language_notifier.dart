@@ -1,5 +1,5 @@
-import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
-import 'package:backtolife/core/init/cache/locale_manager.dart';
+import '../../constants/enum/locale_keys_enum.dart';
+import '../cache/locale_manager.dart';
 import 'package:flutter/widgets.dart';
 
 class LanguageNotifier extends ChangeNotifier {
@@ -9,7 +9,7 @@ class LanguageNotifier extends ChangeNotifier {
   bool? get isLanguageTurkis => _isLanguageTurkish;
   bool? get isLanguageEnglish => _isLanguageEnglish;
 
-  void initLanguage() {
+  LanguageNotifier() {
     var isLocaleCheck =
         LocaleManager.instance.getLnaguageManager(PreferencesKeys.LANGUAGE);
     if (isLocaleCheck) {
