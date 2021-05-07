@@ -17,10 +17,14 @@ class AppThemeDark extends AppTheme {
 
   @override
   ThemeData get theme => ThemeData(
-        scaffoldBackgroundColor: Color(0xFF4E5F49),
-        colorScheme: _appColorScheme(),
-        fontFamily: ApplicationConstants.FONT_FAMILY,
-        // textTheme: TextTheme(headline1: textThemeLight.headline1,
+      scaffoldBackgroundColor: Color(0xFF4E5F49),
+      colorScheme: _appColorScheme(),
+      fontFamily: ApplicationConstants.FONT_FAMILY,
+      appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.white),
+          elevation: 0,
+          backgroundColor: Colors.transparent)
+      // textTheme: TextTheme(headline1: textThemeLight.headline1,
       );
   ColorScheme _appColorScheme() {
     return ColorScheme(

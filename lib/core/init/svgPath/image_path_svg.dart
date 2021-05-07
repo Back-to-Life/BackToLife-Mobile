@@ -42,4 +42,5 @@ class SVGImagePaths {
   final locationpermission = 'locationpermission'.toSVG;
   final camerapermission = 'camerapermission'.toSVG;
   final profilesettingsview = 'profilepsettingsview'.toSVG;
+  final heroesofworld = 'heroesofworld'.toSVG;
 }

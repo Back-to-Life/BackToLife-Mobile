@@ -35,8 +35,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
     return ColorScheme(
       primary: Color(0xffFCFCEC),
       onSecondary: colorSchemeLight.kSecendoryLight,
-      primaryVariant:
-          colorSchemeLight.kThirdLight, //container glassmorpihsm for
+      primaryVariant: Color(0xFF72A863), //container glassmorpihsm for
       secondaryVariant: colorSchemeLight.purpleLight,
       onBackground: colorSchemeLight.greyOnboard,
       error: Colors.red,
@@ -45,7 +44,7 @@ class AppThemeLight extends AppTheme with ILightTheme {
       onPrimary: colorSchemeLight.buttonOnboard,
       background: Color(0xFF72A863),
       brightness: Brightness.light,
-      secondary: colorSchemeLight.starColor,
+      secondary: Color(0xFF4E5F49),
       onError: colorSchemeLight.darkGreen,
     );
   }

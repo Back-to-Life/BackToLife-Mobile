@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:animations/animations.dart';
+import 'package:backtolife/view/heroes/view/heroes_view.dart';
 import '../../settings/view/settings_view.dart';
 import '../../barcode/view/scan_barcode_view.dart';
 import '../../profile/view/profile_view.dart';
@@ -97,7 +98,7 @@ class _HomeViewState extends State<HomeView>
                   children: [
                     Expanded(
                       flex: 2,
-                      child: _profileAvatar(context),
+                      child: _profileAvatar(context, viewModel),
                     ),
                     Expanded(flex: 3, child: helloName(context)),
                     build4Container(context, viewModel),
@@ -107,20 +108,26 @@ class _HomeViewState extends State<HomeView>
             ));
   }
 
-  Padding _profileAvatar(BuildContext context) {
+  Padding _profileAvatar(BuildContext context, HomeViewModel _viewModel) {
     return Padding(
       padding: context.paddingLowHorizontal,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Avatar(
-              shape: AvatarShape.circle(context.mediumValue),
-              placeholderColors: [context.colors.primaryVariant],
-              name: 'Fatih Kurçenli',
-              elevation: 10,
-              border: Border.all(
-                  color: Colors.green, width: context.lowValue * 0.35),
-              textStyle: TextStyle(fontSize: context.mediumValue)),
+          OpenContainer(
+              transitionType: ContainerTransitionType.fade,
+              transitionDuration: Duration(seconds: 3),
+              closedColor: context.colors.primary,
+              closedElevation: 0,
+              openBuilder: (context, _) => ProfileView(),
+              closedBuilder: (context, VoidCallback openContainer) => Avatar(
+                  shape: AvatarShape.circle(context.mediumValue),
+                  placeholderColors: [context.colors.primaryVariant],
+                  name: 'Fatih Kurçenli',
+                  elevation: 10,
+                  border: Border.all(
+                      color: Colors.green, width: context.lowValue * 0.35),
+                  textStyle: TextStyle(fontSize: context.mediumValue))),
           Spacer(flex: 1),
           Expanded(
             child: DefaultTextStyle(
@@ -333,7 +340,7 @@ class _HomeViewState extends State<HomeView>
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
         closedElevation: 0,
-        openBuilder: (context, _) => ProfileView(), //added heroes page.
+        openBuilder: (context, _) => HeroesView(), //added heroes page.
         closedBuilder: (context, VoidCallback openContainer) =>
             ImageContainerCustom(
           onPress: openContainer,

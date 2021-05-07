@@ -1,3 +1,5 @@
+import 'package:backtolife/core/extension/sized-box/space_sized_height_box.dart';
+import 'package:backtolife/core/extension/sized-box/space_sized_width_box.dart';
 import 'package:flutter/material.dart';
 
 extension ContextExtension on BuildContext {
@@ -89,4 +91,16 @@ extension BorderExtension on BuildContext {
       RoundedRectangleBorder(
           borderRadius:
               BorderRadius.vertical(bottom: Radius.circular(highValue)));
+}
+
+extension SizedBoxExtension on BuildContext {
+  Widget get emptySizedWidthBoxLow => SpaceSizedWidthBox(width: 0.03);
+  Widget get emptySizedWidthBoxLow3x => SpaceSizedWidthBox(width: 0.03);
+  Widget get emptySizedWidthBoxNormal => SpaceSizedWidthBox(width: 0.53);
+  Widget get emptySizedWidthBoxHigh => SpaceSizedWidthBox(width: 0.1);
+
+  Widget get emptySizedHeightBoxLow => SpaceSizedHeightBox(height: 0.01);
+  Widget get emptySizedHeightBoxLow3x => SpaceSizedHeightBox(height: 0.03);
+  Widget get emptySizedHeightBoxNormal => SpaceSizedHeightBox(height: 0.05);
+  Widget get emptySizedHeightBoxHigh => SpaceSizedHeightBox(height: 0.1);
 }
