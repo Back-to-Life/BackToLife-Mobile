@@ -39,7 +39,7 @@ class AppThemeDark extends AppTheme {
       onPrimary: Colors.yellow,
       background: Colors.blue,
       brightness: Brightness.light,
-      secondary: Colors.black12,
+      secondary: Color(0xFFFCFCEC),
       onError: Colors.redAccent,
     );
   }
