@@ -1,6 +1,10 @@
+import 'package:backtolife/core/init/notification/firebase_notification_handler.dart';
 import 'package:backtolife/view/heroes/view/heroes_view.dart';
 import 'package:backtolife/view/home/view/home_view.dart';
 import 'package:backtolife/view/profile/view/profile_view.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'core/init/notifier/theme_notifier.dart';
 import 'core/init/theme/app_theme_dark.dart';
@@ -21,6 +25,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocaleManager.preferencesInit();
   await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
   runApp(MultiProvider(
     providers: [...ApplicationProvider.instance.dependItems],
     child: EasyLocalization(
@@ -32,7 +38,21 @@ Future<void> main() async {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  FirebaseNotifications firebaseNotifications = FirebaseNotifications();
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      firebaseNotifications.setupFirebase(context);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,4 +67,78 @@ class MyApp extends StatelessWidget {
       navigatorKey: NavigationService.instance.navigatorKey,
     );
   }
+
+  getToken() async {
+    var token = await FirebaseMessaging.instance.getToken();
+    print(token);
+  }
 }
+
+Future<void> _backgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('Handle Background Service $message');
+  dynamic data = message.data['data'];
+  FirebaseNotifications.showNotification(data['title'], data['body']);
+}
+
+/*
+ FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackGroundHandler);
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+init(){
+
+  var initialzationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initialzationSettings =
+        InitializationSettings(android: initialzationSettingsAndroid);
+    flutterLocalNotificationsPlugin.initialize(initialzationSettings);
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      RemoteNotification notification = message.notification!;
+      AndroidNotification? android = message.notification!.android;
+      if (notification != null && android != null) {
+        flutterLocalNotificationsPlugin.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+                android: AndroidNotificationDetails(
+                    channel.id, channel.name, channel.description,
+                    icon: 'launch_background')));
+      }
+    });
+
+    getToken();
+}
+
+
+Future<void> _firebaseMessagingBackGroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  // print('handling a background message ${message.messageId}');
+  print('Handling a background message ${message.messageId}');
+  print(message.data);
+  await flutterLocalNotificationsPlugin.show(
+      message.data.hashCode,
+      message.data['title'],
+      message.data['body'],
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          channel.id,
+          channel.name,
+          channel.description,
+        ),
+      ));
+}
+
+const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel',
+    'High Importance Notifications',
+    'this channel is used for important notifications',
+    importance: Importance.max);
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+*/

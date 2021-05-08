@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "254434159177",
+    "project_id": "backtolife-recycling",
+    "storage_bucket": "backtolife-recycling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254434159177:android:1e906f4b42bb1ef3d06d98",
+        "android_client_info": {
+          "package_name": "com.amazingengineerskt.backtolife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254434159177-gj6756a8il24dhql804i1d1rdhru8kf9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amazingengineerskt.backtolife",
+            "certificate_hash": "c60795486ff75b0aca91e76916b8e87f3ecd81f2"
+          }
+        },
+        {
+          "client_id": "254434159177-o9sdpskrt01ss9spt5ov5ksbgarjph7g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJAzSdUlC9aAQrOC2k9pgxue1ZXKFvy6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254434159177-o9sdpskrt01ss9spt5ov5ksbgarjph7g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
