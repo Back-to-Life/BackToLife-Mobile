@@ -58,8 +58,7 @@ class _SettingsViewState extends State<SettingsView>
                                 flex: 3,
                                 child: Text(LocaleKeys.settings_settings.tr(),
                                     style: context.textTheme.headline5!
-                                        .copyWith(
-                                            color: context.colors.surface))),
+                                        .copyWith(color: Colors.white))),
                             Expanded(
                                 flex: 4,
                                 child: SvgPicture.asset(

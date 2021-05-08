@@ -19,7 +19,9 @@ class HeroesView extends StatelessWidget {
           model.init();
         },
         onPageBuilder: (context, _viewModel) => Scaffold(
-              appBar: AppBar(),
+              appBar: AppBar(
+                iconTheme: IconThemeData(color: context.colors.surface),
+              ),
               body: Column(
                 children: [
                   Expanded(
@@ -57,9 +59,9 @@ class HeroesView extends StatelessWidget {
                                   borderRadius: context.highBorderRadius,
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.grey.shade300,
+                                      color: Color(0xFFE2DFDF).withOpacity(0.6),
                                       blurRadius: 4,
-                                      offset: Offset(4, 8),
+                                      offset: Offset(-10, -10),
                                     ),
                                   ],
                                   border: Border.all(
@@ -73,8 +75,7 @@ class HeroesView extends StatelessWidget {
                                         child: Text('Top 3 Heroes',
                                             style: context.textTheme.headline6!
                                                 .copyWith(
-                                                    color: context
-                                                        .colors.secondary)),
+                                                    color: Color(0xFF4E5F49))),
                                       )),
                                   Expanded(
                                     flex: 4,
@@ -95,8 +96,8 @@ class HeroesView extends StatelessWidget {
                                                       .textTheme.headline6!
                                                       .copyWith(
                                                           fontSize: 14,
-                                                          color: context.colors
-                                                              .secondary),
+                                                          color: Color(
+                                                              0xFF4E5F49)),
                                                 ),
                                                 trailing: Text('+100p',
                                                     style: context
@@ -128,14 +129,13 @@ class HeroesView extends StatelessWidget {
                                               style: context
                                                   .textTheme.bodyText1!
                                                   .copyWith(
-                                                      color: context
-                                                          .colors.secondary),
+                                                      color: Color(0xFF4E5F49)),
                                               textAlign: TextAlign.end,
                                             ),
                                             Icon(Icons.arrow_forward_ios,
                                                 size: 13,
-                                                color:
-                                                    context.colors.secondary),
+                                                color: Color(0xFF4E5F49)),
+                                            context.emptySizedWidthBoxLow3x,
                                             context.emptySizedWidthBoxLow3x
                                           ],
                                         ),

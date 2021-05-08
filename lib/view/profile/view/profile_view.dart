@@ -1,4 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:backtolife/core/init/notifier/theme_notifier.dart';
+import 'package:provider/provider.dart';
 import '../../widgets/star/star_rating.dart';
 
 import '../../../core/base/view/base_view.dart';
@@ -37,18 +39,22 @@ class ProfileView extends StatelessWidget {
                           child: Text(
                             'Fatih Kurçenli',
                             style: context.textTheme.headline4!.copyWith(
-                                color: context.colors.onError,
-                                fontWeight: FontWeight.bold),
+                              color: context.colors.secondary,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         ),
                         Spacer(flex: 1),
                         Expanded(
                           child: StarDisplayWidget(
-                            value: 5,
+                            value: 4,
                             filledStar: Icon(Icons.star,
-                                color: context.colors.secondary,
+                                color: Color(0xFFFFC107),
                                 size: context.mediumValue),
                             unfilledStar: Icon(Icons.star_border_rounded,
+                                color: context.read<ThemeNotifier>().isLight
+                                    ? Color(0xFF989B9B)
+                                    : Color(0xFFFCFCEC).withOpacity(0.9),
                                 size: context.mediumValue),
                           ),
                         ),
@@ -62,13 +68,13 @@ class ProfileView extends StatelessWidget {
                       Text(
                         'Scorboard',
                         style: context.textTheme.headline4!.copyWith(
-                            color: context.colors.onError,
+                            color: context.colors.secondary,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
                         'Your Recycling Score',
                         style: context.textTheme.headline5!.copyWith(
-                            color: context.colors.secondary,
+                            color: Color(0xFFFFCD00),
                             fontWeight: FontWeight.bold),
                       ),
                     ],
@@ -79,9 +85,14 @@ class ProfileView extends StatelessWidget {
                     percent: 0.7,
                     center: Text('+60',
                         style: context.textTheme.headline3!.copyWith(
-                            color: context.colors.secondaryVariant,
+                            color: Color(0xFFC4C0FF),
                             fontWeight: FontWeight.bold)),
-                    progressColor: context.colors.secondaryVariant,
+                    progressColor: Color(0xFFC4C0FF),
+                    animation: true,
+                    animationDuration: 3,
+                    backgroundColor: context.read<ThemeNotifier>().isLight
+                        ? Color(0xFF908F8F)
+                        : Color(0xFFD3D3D3),
                   ),
                   Expanded(
                     child: GestureDetector(
@@ -94,7 +105,7 @@ class ProfileView extends StatelessWidget {
                             'To find out the equivalent of your score,\n please visit our website',
                             maxLines: 2,
                             style: context.textTheme.headline2!.copyWith(
-                                color: context.colors.onError.withOpacity(0.5),
+                                color: context.colors.surface.withOpacity(0.6),
                                 fontWeight: FontWeight.w500),
                             textAlign: TextAlign.center,
                           )),
@@ -159,7 +170,8 @@ class ProfileView extends StatelessWidget {
               name: 'Fatih Kurçenli',
               elevation: 20,
               border: Border.all(
-                  color: Colors.green, width: context.lowValue * 0.6),
+                  color: context.colors.secondary,
+                  width: context.lowValue * 0.6),
               textStyle: TextStyle(fontSize: context.mediumValue),
             ),
           ),
@@ -173,12 +185,16 @@ class ProfileView extends StatelessWidget {
               child: CircleAvatar(
                 radius: context.mediumValue,
                 backgroundColor: context.colors.primary,
-                child: SvgPicture.asset(SVGImagePaths.instance.pencil),
+                child: SvgPicture.asset(
+                  SVGImagePaths.instance.pencil,
+                  color: context.colors.secondary,
+                ),
               ),
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                      color: Colors.green, width: context.lowValue * 0.3)),
+                      color: context.colors.secondary,
+                      width: context.lowValue * 0.3)),
             ),
           ),
         )
