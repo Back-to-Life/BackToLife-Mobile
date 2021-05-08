@@ -26,7 +26,9 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
         },
         onPageBuilder: (BuildContext context, ScanBarcodeViewModel viewModel) =>
             Scaffold(
-              appBar: AppBar(),
+              appBar: AppBar(
+                iconTheme: IconThemeData(color: context.colors.surface),
+              ),
               body: Padding(
                 padding: EdgeInsets.only(top: context.mediumValue),
                 child: Column(
@@ -45,8 +47,8 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                             child: Text(
                               "Let's recycle in\n a few steps.",
                               textAlign: TextAlign.start,
-                              style: context.textTheme.headline3!.copyWith(
-                                  color: context.colors.primaryVariant),
+                              style: context.textTheme.headline3!
+                                  .copyWith(color: context.colors.surface),
                             ),
                           ),
                         ],
@@ -120,12 +122,13 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
       Step(
         title: Text(
           'Step 1',
-          style: context.textTheme.headline4!
-              .copyWith(fontWeight: FontWeight.bold),
+          style: context.textTheme.headline4!.copyWith(
+              fontWeight: FontWeight.bold, color: context.colors.surface),
         ),
         subtitle: Text(
           'Scan recycling waste',
-          style: context.textTheme.headline6,
+          style: context.textTheme.headline6!
+              .copyWith(color: context.colors.surface),
         ),
         content: Container(
           alignment: Alignment.centerLeft,
@@ -137,7 +140,8 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
               Expanded(
                 child: Text(
                   'Scan the QR code of the \n recycling waste',
-                  style: context.textTheme.subtitle1,
+                  style: context.textTheme.subtitle1!
+                      .copyWith(color: context.colors.surface),
                 ),
               ),
               Spacer(flex: 1),
@@ -174,12 +178,13 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
       Step(
         title: Text(
           'Step 2',
-          style: context.textTheme.headline4!
-              .copyWith(fontWeight: FontWeight.bold),
+          style: context.textTheme.headline4!.copyWith(
+              fontWeight: FontWeight.bold, color: context.colors.surface),
         ),
         subtitle: Text(
           'Scan the recycle bin',
-          style: context.textTheme.headline6,
+          style: context.textTheme.headline6!
+              .copyWith(color: context.colors.surface),
         ),
         content: Container(
           alignment: Alignment.centerLeft,
@@ -191,7 +196,8 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
               Expanded(
                 child: Text(
                   'Now scan the QR code of the\n recycling bin that matches\n the type of recycling waste',
-                  style: context.textTheme.subtitle1,
+                  style: context.textTheme.subtitle1!
+                      .copyWith(color: context.colors.surface),
                 ),
               ),
               Spacer(flex: 1),
@@ -228,12 +234,13 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
       Step(
         title: Text(
           'Step 3',
-          style: context.textTheme.headline4!
-              .copyWith(fontWeight: FontWeight.bold),
+          style: context.textTheme.headline4!.copyWith(
+              fontWeight: FontWeight.bold, color: context.colors.surface),
         ),
         subtitle: Text(
           'Throw in recycle bin',
-          style: context.textTheme.headline6,
+          style: context.textTheme.headline6!
+              .copyWith(color: context.colors.surface),
         ),
         content: Container(
           alignment: Alignment.centerLeft,
@@ -245,7 +252,8 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
               Expanded(
                 child: Text(
                   'Now you can put your recycling waste in the box \n and your points will be loaded on your card',
-                  style: context.textTheme.subtitle1,
+                  style: context.textTheme.subtitle1!
+                      .copyWith(color: context.colors.surface),
                 ),
               ),
               Spacer(flex: 1),

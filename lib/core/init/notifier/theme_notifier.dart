@@ -16,7 +16,7 @@ class ThemeNotifier extends ChangeNotifier {
 
   ThemeNotifier() {
     var isLocaleCheck =
-        LocaleManager.instance.getLnaguageManager(PreferencesKeys.THEME);
+        LocaleManager.instance.getThemeManager(PreferencesKeys.THEME);
     if (isLocaleCheck) {
       _currentTheme = AppThemeLight.instance.theme;
       isLight = true;

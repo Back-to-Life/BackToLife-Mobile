@@ -119,6 +119,7 @@ class _HomeViewState extends State<HomeView>
               transitionDuration: Duration(seconds: 3),
               closedColor: context.colors.primary,
               closedElevation: 0,
+              closedShape: CircleBorder(),
               openBuilder: (context, _) => ProfileView(),
               closedBuilder: (context, VoidCallback openContainer) => Avatar(
                   shape: AvatarShape.circle(context.mediumValue),
@@ -290,6 +291,8 @@ class _HomeViewState extends State<HomeView>
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
         closedElevation: 0,
+        closedShape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         openBuilder: (context, _) => ScanBarcodeView(),
         closedBuilder: (context, VoidCallback openContainer) =>
             ImageContainerCustom(
@@ -315,6 +318,8 @@ class _HomeViewState extends State<HomeView>
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
         closedElevation: 0,
+        closedShape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         openBuilder: (context, _) => ProfileView(),
         closedBuilder: (context, VoidCallback openContainer) =>
             ImageContainerCustom(
@@ -340,6 +345,8 @@ class _HomeViewState extends State<HomeView>
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
         closedElevation: 0,
+        closedShape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         openBuilder: (context, _) => HeroesView(), //added heroes page.
         closedBuilder: (context, VoidCallback openContainer) =>
             ImageContainerCustom(
@@ -365,6 +372,9 @@ class _HomeViewState extends State<HomeView>
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
         closedElevation: 0,
+
+        closedShape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         openBuilder: (context, _) => SettingsView(), //added settings page.
         closedBuilder: (context, VoidCallback openContainer) =>
             ImageContainerCustom(

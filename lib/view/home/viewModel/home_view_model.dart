@@ -53,6 +53,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
     number++;
   }
 
+  @action
   void changeToggleButtonInit() {
     var isThemeChange =
         LocaleManager.instance.getThemeManager(PreferencesKeys.THEME);
@@ -73,6 +74,5 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
 
   Future<void> goToQrCode() async {
     await navigation.navigateToPage(path: NavigationConstants.QRCODE);
-  } 
-  
+  }
 }
