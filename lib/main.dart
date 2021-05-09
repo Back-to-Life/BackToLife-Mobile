@@ -2,6 +2,7 @@ import 'package:backtolife/core/init/notification/firebase_notification_handler.
 import 'package:backtolife/view/heroes/view/heroes_view.dart';
 import 'package:backtolife/view/home/view/home_view.dart';
 import 'package:backtolife/view/profile/view/profile_view.dart';
+import 'package:backtolife/view/settings/subsettings/notifications_settings/view/notifications_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -60,7 +61,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: HomeView(),
+      home: NotificationsSettingsView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

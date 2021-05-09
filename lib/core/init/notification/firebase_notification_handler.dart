@@ -50,9 +50,6 @@ class FirebaseNotifications {
                   'com.amazingengineerskt.backtolife',
                   'Back To Life',
                   'Geri Dönüşüm Uygulamsı',
-                  autoCancel: true,
-                  // icon: 'launch_background',
-                  ongoing: true,
                   importance: Importance.max,
                   priority: Priority.high)));
       var gelenMesaj = remoteMessage.data;

@@ -77,11 +77,15 @@ class NotificationsSettingsView extends StatelessWidget {
                                 title: Text(
                                     LocaleKeys.settings_emailnotification.tr()),
                                 trailing: ToggleButtonNotificationContainer(
-                                  callback: () {},
+                                  callback: _viewModel.subscribeToNotification,
                                   isSelected: false,
                                 ),
                               )),
                         ),
+                        ElevatedButton(
+                            onPressed: () =>
+                                _viewModel.subscribeToNotification(),
+                            child: Text('okey')),
                         Spacer(flex: 4),
                       ],
                     ),
@@ -90,6 +94,4 @@ class NotificationsSettingsView extends StatelessWidget {
               ),
             ));
   }
-
- 
 }
