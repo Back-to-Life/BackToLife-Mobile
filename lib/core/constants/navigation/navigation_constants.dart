@@ -11,4 +11,5 @@ class NavigationConstants {
   static const THEMEMODE_SETTINGS = '/theme_mode_setting';
   static const ABOUT_SETTINGS = '/about_settings';
   static const LOGOUT_SETTINGS = '/logout_setting';
+  static const HEROES = '/heroes';
 }
