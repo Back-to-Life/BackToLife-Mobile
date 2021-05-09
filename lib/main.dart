@@ -48,9 +48,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      firebaseNotifications.setupFirebase(context);
-    });
+    firebaseNotifications.setupFirebase(context);
   }
 
   @override
@@ -77,8 +75,8 @@ class _MyAppState extends State<MyApp> {
 Future<void> _backgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
   print('Handle Background Service $message');
-  dynamic data = message.data['data'];
-  FirebaseNotifications.showNotification(data['title'], data['body']);
+  // dynamic data = message.data['data'];
+  // FirebaseNotifications.showNotification(message);
 }
 
 /*

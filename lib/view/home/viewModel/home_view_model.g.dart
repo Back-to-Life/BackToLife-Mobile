@@ -81,6 +81,17 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
   }
 
   @override
+  void changeToggleButtonInit() {
+    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
+        name: '_HomeViewModelBase.changeToggleButtonInit');
+    try {
+      return super.changeToggleButtonInit();
+    } finally {
+      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 isSelectedToggle: ${isSelectedToggle},

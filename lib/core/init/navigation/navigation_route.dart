@@ -1,3 +1,5 @@
+import 'package:backtolife/view/heroes/view/heroes_view.dart';
+
 import '../../../view/settings/subsettings/notifications_settings/view/notifications_view.dart';
 import '../../../view/settings/subsettings/permissions_settings/view/permissions_settings_view.dart';
 import '../../../view/settings/subsettings/theme_mode_settings/view/theme_settings_view.dart';
@@ -49,6 +51,8 @@ class NavigationRoute {
         return simpleNavigate(LanguageSettingsView());
       case NavigationConstants.LOGOUT_SETTINGS:
         return simpleNavigate(LanguageSettingsView());
+      case NavigationConstants.HEROES:
+        return simpleNavigate(HeroesView());
 
       default:
         return MaterialPageRoute(builder: (context) => NotFoundNavigation());
