@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:animations/animations.dart';
 import 'package:backtolife/view/heroes/view/heroes_view.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../settings/view/settings_view.dart';
 import '../../barcode/view/scan_barcode_view.dart';
 import '../../profile/view/profile_view.dart';
@@ -126,6 +127,14 @@ class _HomeViewState extends State<HomeView>
                   placeholderColors: [context.colors.primaryVariant],
                   name: 'Fatih Kurçenli',
                   elevation: 10,
+                  sources: [
+                    // NetworkSource('https://picsum.photos/200/300')
+                    GitHubSource('fatihkurcenli')
+                  ],
+                  loader: Shimmer.fromColors(
+                      child: CircleAvatar(radius: context.mediumValue),
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!),
                   border: Border.all(
                       color: Colors.green, width: context.lowValue * 0.35),
                   textStyle: TextStyle(fontSize: context.mediumValue))),

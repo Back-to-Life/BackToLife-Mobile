@@ -18,7 +18,7 @@ class FirebaseNotifications {
   void setupFirebase(BuildContext context) {
     _messaging = FirebaseMessaging.instance;
     firebaseCloudMessageListener(context);
-    var initAndroid = AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initAndroid = AndroidInitializationSettings('@mipmap/ic_notification');
     var initSettings = InitializationSettings(android: initAndroid);
     flutterNotificationPlugin.initialize(initSettings);
     myContext = context;
@@ -50,6 +50,9 @@ class FirebaseNotifications {
                   'com.amazingengineerskt.backtolife',
                   'Back To Life',
                   'Geri Dönüşüm Uygulamsı',
+                  icon: 'icon_notification',
+                  color: Color(0xFF72A863),
+                  largeIcon: DrawableResourceAndroidBitmap('icon_notification'),
                   importance: Importance.max,
                   priority: Priority.high)));
       var gelenMesaj = remoteMessage.data;
