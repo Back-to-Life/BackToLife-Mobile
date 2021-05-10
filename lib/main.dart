@@ -22,6 +22,7 @@ import 'core/init/language/language_manager.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider.dart';
+import 'view/widgets/deneme_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
