@@ -1,11 +1,13 @@
 import 'dart:ui';
 
+import 'package:avatars/avatars.dart';
 import 'package:backtolife/core/base/view/base_view.dart';
 import 'package:backtolife/core/extension/context_extension.dart';
 import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
 import 'package:backtolife/view/heroes/viewModel/heroes_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HeroesView extends StatelessWidget {
   const HeroesView({Key? key}) : super(key: key);
@@ -86,10 +88,8 @@ class HeroesView extends StatelessWidget {
                                             children: [
                                               context.emptySizedHeightBoxLow,
                                               ListTile(
-                                                leading: CircleAvatar(
-                                                  backgroundImage: NetworkImage(
-                                                      'https://picsum.photos/200/300'),
-                                                ),
+                                                leading:
+                                                    _avatarPicture(context),
                                                 title: Text(
                                                   'dada',
                                                   style: context
@@ -149,6 +149,22 @@ class HeroesView extends StatelessWidget {
                 ],
               ),
             ));
+  }
+
+  Avatar _avatarPicture(BuildContext context) {
+    return Avatar(
+        shape: AvatarShape.circle(context.mediumValue * 0.7),
+        placeholderColors: [context.colors.primaryVariant],
+        name: 'Fatih Kurçenli',
+        sources: [
+          // NetworkSource('https://picsum.photos/200/300')
+          GitHubSource('fatihkurcenli')
+        ],
+        loader: Shimmer.fromColors(
+            child: CircleAvatar(radius: context.mediumValue * 0.7),
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.grey[100]!),
+        textStyle: TextStyle(fontSize: context.mediumValue));
   }
 
   Positioned _heroesSvgImage(BuildContext context) {

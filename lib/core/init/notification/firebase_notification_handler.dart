@@ -50,6 +50,8 @@ class FirebaseNotifications {
                   'com.amazingengineerskt.backtolife',
                   'Back To Life',
                   'Geri Dönüşüm Uygulamsı',
+                  icon: 'icon',
+                  largeIcon: DrawableResourceAndroidBitmap('icon'),
                   importance: Importance.max,
                   priority: Priority.high)));
       var gelenMesaj = remoteMessage.data;

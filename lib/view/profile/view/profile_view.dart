@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:backtolife/core/init/notifier/theme_notifier.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../widgets/star/star_rating.dart';
 
 import '../../../core/base/view/base_view.dart';
@@ -166,7 +167,10 @@ class ProfileView extends StatelessWidget {
                 // NetworkSource('https://picsum.photos/200/300')
                 GitHubSource('fatihkurcenli')
               ],
-              loader: LoadingPage(),
+              loader: Shimmer.fromColors(
+                  child: CircleAvatar(radius: context.highValue),
+                  baseColor: Colors.grey[300]!,
+                  highlightColor: Colors.grey[100]!),
               name: 'Fatih Kurçenli',
               elevation: 20,
               border: Border.all(
