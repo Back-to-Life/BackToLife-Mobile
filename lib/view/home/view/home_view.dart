@@ -62,7 +62,7 @@ class _HomeViewState extends State<HomeView>
   @override
   void initState() {
     super.initState();
-    initTargets();
+    initTargets(context);
     WidgetsBinding.instance!.addPostFrameCallback(_layout);
     _animationController = AnimationController(
       duration: Duration(seconds: 5),
@@ -145,6 +145,7 @@ class _HomeViewState extends State<HomeView>
                   placeholderColors: [context.colors.primaryVariant],
                   name: 'Fatih Kurçenli',
                   elevation: 10,
+                  onTap: showTutorial,
                   sources: [
                     // NetworkSource('https://picsum.photos/200/300')
                     GitHubSource('fatihkurcenli')
@@ -424,11 +425,12 @@ class _HomeViewState extends State<HomeView>
     );
   }
 
-  void initTargets() {
+  void initTargets(BuildContext context) {
     targets.add(
       TargetFocus(
         identify: 'AvatarProfile',
         keyTarget: _key1,
+        color: Color(0xFF72A863),
         contents: [
           TargetContent(
               align: ContentAlign.bottom,
@@ -438,20 +440,31 @@ class _HomeViewState extends State<HomeView>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      'Profil Fotorağfınız',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 20.0),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10.0),
+                      child: Text(
+                        'Profil Fotorağfınız',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 20.0),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Text(
                         'Profil fotoğrafınızı burdan görebilir ve profil sayafasına gidip değiştirebilirsiniz.',
-                        style: TextStyle(color: Colors.black),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.0),
                       ),
-                    )
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Lottie.asset('asset/lottie/profile-tutorial.json'),
+                    ),
                   ],
                 ),
               ))
@@ -462,29 +475,39 @@ class _HomeViewState extends State<HomeView>
       TargetFocus(
         identify: 'ScanBarcode',
         keyTarget: _key2,
-        color: Colors.red,
+        color: Color(0xFFC4C0FF),
         contents: [
           TargetContent(
-            align: ContentAlign.bottom,
+            align: ContentAlign.top,
             child: Container(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    'Barcode Okutma',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Lottie.asset('asset/lottie/barcode-scan.json'),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: Text(
+                      'Barcode Okutma',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 20.0),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
                     child: Text(
                       'Barcode okutun ve kontrol aşamasından geçtikten sonra puanınıza kavuşun',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                          fontSize: 20.0),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -498,29 +521,40 @@ class _HomeViewState extends State<HomeView>
       TargetFocus(
         identify: 'Profile',
         keyTarget: _key3,
-        color: Colors.red,
+        color: Color(0xFFC4C0FF),
         contents: [
           TargetContent(
-            align: ContentAlign.bottom,
+            align: ContentAlign.top,
             child: Container(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    'Profil Sayfanız',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child:
+                        Lottie.asset('asset/lottie/profile-user-tutorial.json'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: Text(
+                      'Profil Sayfanız',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 22.0),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(
                       'Profil Sayfanızda Kazandığınız puanları görüntüleyebilirsiniz.',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          fontSize: 18.0),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
@@ -534,28 +568,47 @@ class _HomeViewState extends State<HomeView>
       TargetFocus(
         identify: 'Heroues',
         keyTarget: _key4,
-        color: Colors.red,
+        color: Color(0xFFC4C0FF),
         contents: [
           TargetContent(
-            align: ContentAlign.bottom,
+            align: ContentAlign.top,
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    'Kahramanlar Sayfası',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(50.0),
+                      child: Lottie.asset('asset/lottie/hero-tutorial.json'),
+                    ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      'Her hafta düzenlenen top listesini görüntüleyin',
-                      style: TextStyle(color: Colors.white),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 5.0),
+                      child: Text(
+                        'Kahramanlar Sayfası',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF4E5F49),
+                            fontSize: 20.0),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Text(
+                        'Her hafta düzenlenen top listesini görüntüleyin',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 16.0,
+                          color: Color(0xFF4E5F49),
+                        ),
+                      ),
                     ),
                   )
                 ],
@@ -571,28 +624,38 @@ class _HomeViewState extends State<HomeView>
       TargetFocus(
         identify: 'Settings',
         keyTarget: _key5,
-        color: Colors.red,
+        color: Color(0xFFC4C0FF),
         contents: [
           TargetContent(
-            align: ContentAlign.bottom,
+            align: ContentAlign.top,
             child: Container(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    'Settings Sayfası',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Lottie.asset('asset/lottie/settings-tutorial.json'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: Text(
+                      'Settings Sayfası',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF4E5F49),
+                          fontSize: 20.0),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(
                       'Ayarlar sayfasından uygulama ayarlarını ve hesap ayarlarınızı yönetebilirsiniz.',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(
+                          color: Color(0xFF4E5F49),
+                          fontWeight: FontWeight.w300,
+                          fontSize: 16.0),
                     ),
                   )
                 ],
@@ -631,7 +694,10 @@ class _HomeViewState extends State<HomeView>
                   ),
                   Text(
                     'Açık ve Koyu modunu ayarlar kısmına gitmeden alt taraftan basit bir şekilde ayarlayabilirsiniz.',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16.0),
                   ),
                 ],
               ),
@@ -773,8 +839,7 @@ class _HomeViewState extends State<HomeView>
     tutorialCoachMark = TutorialCoachMark(
       context,
       targets: targets,
-      colorShadow: Colors.pink,
-      textSkip: "SKIP",
+      textSkip: 'SKIP',
       paddingFocus: 10,
       opacityShadow: 0.8,
       onFinish: () {
