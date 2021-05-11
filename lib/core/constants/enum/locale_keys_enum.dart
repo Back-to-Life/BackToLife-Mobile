@@ -1,1 +1,1 @@
-enum PreferencesKeys { TOKEN, IS_FIRST_APP,LANGUAGE, THEME }
+enum PreferencesKeys { TOKEN, IS_FIRST_APP,LANGUAGE, THEME,TUTORIAL }

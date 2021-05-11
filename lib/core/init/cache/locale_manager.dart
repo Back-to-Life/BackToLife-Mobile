@@ -53,4 +53,13 @@ class LocaleManager {
   //Get locale theme  Manager
   bool getThemeManager(PreferencesKeys key) =>
       _preferences!.getBool(key.toString()) ?? true;
+
+  //set the tutorial screen
+  Future<void> setTutorialManager(PreferencesKeys key, bool value) async {
+    await _preferences!.setBool(key.toString(), value);
+  }
+
+  //get the tutorial screen
+  bool getTutorialManager() =>
+      _preferences!.getBool(PreferencesKeys.TUTORIAL.toString()) ?? false;
 }

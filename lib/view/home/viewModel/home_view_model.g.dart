@@ -9,6 +9,36 @@ part of 'home_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HomeViewModel on _HomeViewModelBase, Store {
+  final _$targetsAtom = Atom(name: '_HomeViewModelBase.targets');
+
+  @override
+  List<TargetFocus> get targets {
+    _$targetsAtom.reportRead();
+    return super.targets;
+  }
+
+  @override
+  set targets(List<TargetFocus> value) {
+    _$targetsAtom.reportWrite(value, super.targets, () {
+      super.targets = value;
+    });
+  }
+
+  final _$_localeValueAtom = Atom(name: '_HomeViewModelBase._localeValue');
+
+  @override
+  bool? get _localeValue {
+    _$_localeValueAtom.reportRead();
+    return super._localeValue;
+  }
+
+  @override
+  set _localeValue(bool? value) {
+    _$_localeValueAtom.reportWrite(value, super._localeValue, () {
+      super._localeValue = value;
+    });
+  }
+
   final _$isSelectedToggleAtom =
       Atom(name: '_HomeViewModelBase.isSelectedToggle');
 
@@ -55,6 +85,15 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
+  final _$getTutorialSuccessAsyncAction =
+      AsyncAction('_HomeViewModelBase.getTutorialSuccess');
+
+  @override
+  Future<void> getTutorialSuccess() {
+    return _$getTutorialSuccessAsyncAction
+        .run(() => super.getTutorialSuccess());
+  }
+
   final _$_HomeViewModelBaseActionController =
       ActionController(name: '_HomeViewModelBase');
 
@@ -92,8 +131,42 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
   }
 
   @override
+  void initTargets() {
+    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
+        name: '_HomeViewModelBase.initTargets');
+    try {
+      return super.initTargets();
+    } finally {
+      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void _layout(dynamic _) {
+    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
+        name: '_HomeViewModelBase._layout');
+    try {
+      return super._layout(_);
+    } finally {
+      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void showTutorial() {
+    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
+        name: '_HomeViewModelBase.showTutorial');
+    try {
+      return super.showTutorial();
+    } finally {
+      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+targets: ${targets},
 isSelectedToggle: ${isSelectedToggle},
 isLoading: ${isLoading},
 number: ${number}

@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:animations/animations.dart';
+import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
+import 'package:backtolife/core/init/cache/locale_manager.dart';
 import 'package:backtolife/view/heroes/view/heroes_view.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shimmer/shimmer.dart';
@@ -44,26 +46,11 @@ class _HomeViewState extends State<HomeView>
   late Animation _rightOneSlidingAnimation;
   late Animation _rightSecondSlidingAnimation;
   late AnimationController _animationController;
-  late TutorialCoachMark tutorialCoachMark;
-  List<TargetFocus> targets = [];
-
-  final GlobalKey _key1 = GlobalKey();
-  final GlobalKey _key2 = GlobalKey();
-  final GlobalKey _key3 = GlobalKey();
-  final GlobalKey _key4 = GlobalKey();
-  final GlobalKey _key5 = GlobalKey();
-  final GlobalKey _key6 = GlobalKey();
-
-  void _layout(_) {
-    Future.delayed(Duration(seconds: 3));
-    showTutorial();
-  }
 
   @override
   void initState() {
     super.initState();
-    initTargets();
-    WidgetsBinding.instance!.addPostFrameCallback(_layout);
+
     _animationController = AnimationController(
       duration: Duration(seconds: 5),
       vsync: this,
@@ -91,6 +78,11 @@ class _HomeViewState extends State<HomeView>
             curve: Interval(0.5, 1, curve: Curves.fastOutSlowIn)));
 
     _animationController.forward();
+   /*  WidgetsBinding.instance!.addPostFrameCallback((_) {
+      Future.delayed(const Duration(seconds: 3), () {
+        _layout(_);
+      });
+    }); */
   }
 
   @override
@@ -133,7 +125,7 @@ class _HomeViewState extends State<HomeView>
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           OpenContainer(
-              key: _key1,
+              key: _viewModel.key1,
               transitionType: ContainerTransitionType.fade,
               transitionDuration: Duration(seconds: 3),
               closedColor: context.colors.primary,
@@ -145,9 +137,11 @@ class _HomeViewState extends State<HomeView>
                   placeholderColors: [context.colors.primaryVariant],
                   name: 'Fatih Kurçenli',
                   elevation: 10,
+                  // onTap: showTutorial,
                   sources: [
-                    // NetworkSource('https://picsum.photos/200/300')
-                    GitHubSource('fatihkurcenli')
+                    // NetworkSource(
+                    // 'https://firebasestorage.googleapis.com/v0/b/backtolife-recycling.appspot.com/o/A-binary-input-image-size-40X40-px.png?alt=media&token=0173d664-fa76-46d1-bf70-574584c01284')
+                    GitHubSource('fatihkurcenli'),
                   ],
                   loader: Shimmer.fromColors(
                       child: CircleAvatar(radius: context.mediumValue),
@@ -269,7 +263,7 @@ class _HomeViewState extends State<HomeView>
     );
   }
 
-  Expanded build4Container(BuildContext context, HomeViewModel viewModel) {
+  Expanded build4Container(BuildContext context, HomeViewModel _viewModel) {
     return Expanded(
       flex: 4,
       child: Column(
@@ -279,8 +273,8 @@ class _HomeViewState extends State<HomeView>
             flex: 4,
             child: Row(
               children: [
-                Expanded(child: scanBarcode(context)),
-                Expanded(child: profileView(context)),
+                Expanded(child: scanBarcode(context, _viewModel)),
+                Expanded(child: profileView(context, _viewModel)),
               ],
             ),
           ),
@@ -289,8 +283,8 @@ class _HomeViewState extends State<HomeView>
             flex: 4,
             child: Row(
               children: [
-                Expanded(child: heroesView(context)),
-                Expanded(child: settingsView(context)),
+                Expanded(child: heroesView(context, _viewModel)),
+                Expanded(child: settingsView(context, _viewModel)),
               ],
             ),
           ),
@@ -299,9 +293,9 @@ class _HomeViewState extends State<HomeView>
             children: [
               Observer(builder: (_) {
                 return ToggleButtonContainer(
-                  key: _key6,
-                  callback: viewModel.changedToggle,
-                  isSelected: viewModel.isSelectedToggle,
+                  key: _viewModel.key6,
+                  callback: _viewModel.changedToggle,
+                  isSelected: _viewModel.isSelectedToggle,
                 );
               }),
             ],
@@ -311,11 +305,11 @@ class _HomeViewState extends State<HomeView>
     );
   }
 
-  AnimatedBuilder scanBarcode(BuildContext context) {
+  AnimatedBuilder scanBarcode(BuildContext context, HomeViewModel _viewModel) {
     return AnimatedBuilder(
       animation: _rightOneSlidingAnimation,
       child: OpenContainer(
-        key: _key2,
+        key: _viewModel.key2,
         transitionType: ContainerTransitionType.fade,
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
@@ -339,11 +333,11 @@ class _HomeViewState extends State<HomeView>
     );
   }
 
-  AnimatedBuilder profileView(BuildContext context) {
+  AnimatedBuilder profileView(BuildContext context, HomeViewModel _viewModel) {
     return AnimatedBuilder(
       animation: _leftOneSlidingAnimation,
       child: OpenContainer(
-        key: _key3,
+        key: _viewModel.key3,
         transitionType: ContainerTransitionType.fade,
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
@@ -367,11 +361,11 @@ class _HomeViewState extends State<HomeView>
     );
   }
 
-  AnimatedBuilder heroesView(BuildContext context) {
+  AnimatedBuilder heroesView(BuildContext context, HomeViewModel _viewModel) {
     return AnimatedBuilder(
       animation: _rightSecondSlidingAnimation,
       child: OpenContainer(
-        key: _key4,
+        key: _viewModel.key4,
         transitionType: ContainerTransitionType.fade,
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
@@ -395,11 +389,11 @@ class _HomeViewState extends State<HomeView>
     );
   }
 
-  AnimatedBuilder settingsView(BuildContext context) {
+  AnimatedBuilder settingsView(BuildContext context, HomeViewModel _viewModel) {
     return AnimatedBuilder(
       animation: _leftSecondSlidingAnimation,
       child: OpenContainer(
-        key: _key5,
+        key: _viewModel.key5,
         transitionType: ContainerTransitionType.fade,
         transitionDuration: Duration(seconds: 3),
         closedColor: context.colors.primary,
@@ -422,373 +416,5 @@ class _HomeViewState extends State<HomeView>
             child: child);
       },
     );
-  }
-
-  void initTargets() {
-    targets.add(
-      TargetFocus(
-        identify: 'AvatarProfile',
-        keyTarget: _key1,
-        contents: [
-          TargetContent(
-              align: ContentAlign.bottom,
-              child: Container(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'Profil Fotorağfınız',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 20.0),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Text(
-                        'Profil fotoğrafınızı burdan görebilir ve profil sayafasına gidip değiştirebilirsiniz.',
-                        style: TextStyle(color: Colors.black),
-                      ),
-                    )
-                  ],
-                ),
-              ))
-        ],
-      ),
-    );
-    targets.add(
-      TargetFocus(
-        identify: 'ScanBarcode',
-        keyTarget: _key2,
-        color: Colors.red,
-        contents: [
-          TargetContent(
-            align: ContentAlign.bottom,
-            child: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Barcode Okutma',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      'Barcode okutun ve kontrol aşamasından geçtikten sonra puanınıza kavuşun',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
-        shape: ShapeLightFocus.RRect,
-        radius: 5,
-      ),
-    );
-    targets.add(
-      TargetFocus(
-        identify: 'Profile',
-        keyTarget: _key3,
-        color: Colors.red,
-        contents: [
-          TargetContent(
-            align: ContentAlign.bottom,
-            child: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Profil Sayfanız',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      'Profil Sayfanızda Kazandığınız puanları görüntüleyebilirsiniz.',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
-        shape: ShapeLightFocus.RRect,
-        radius: 5,
-      ),
-    );
-    targets.add(
-      TargetFocus(
-        identify: 'Heroues',
-        keyTarget: _key4,
-        color: Colors.red,
-        contents: [
-          TargetContent(
-            align: ContentAlign.bottom,
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Kahramanlar Sayfası',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      'Her hafta düzenlenen top listesini görüntüleyin',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
-        shape: ShapeLightFocus.RRect,
-        radius: 5,
-      ),
-    );
-    targets.add(
-      TargetFocus(
-        identify: 'Settings',
-        keyTarget: _key5,
-        color: Colors.red,
-        contents: [
-          TargetContent(
-            align: ContentAlign.bottom,
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Settings Sayfası',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      'Ayarlar sayfasından uygulama ayarlarını ve hesap ayarlarınızı yönetebilirsiniz.',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
-        shape: ShapeLightFocus.RRect,
-        radius: 5,
-      ),
-    );
-    targets.add(TargetFocus(
-      identify: 'ThemeMode',
-      keyTarget: _key6,
-      color: Colors.red,
-      contents: [
-        TargetContent(
-            align: ContentAlign.top,
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child:
-                        Lottie.asset('asset/lottie/dark-mode-first-open.json'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Text(
-                      'Açık ve Koyu Tema Modu Ayarlama',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
-                    ),
-                  ),
-                  Text(
-                    'Açık ve Koyu modunu ayarlar kısmına gitmeden alt taraftan basit bir şekilde ayarlayabilirsiniz.',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-            ))
-      ],
-      shape: ShapeLightFocus.Circle,
-    ));
-    /*   targets.add(
-      TargetFocus(
-        identify: 'Profile',
-        keyTarget: _key3,
-        color: Colors.red,
-        contents: [
-          TargetContent(
-            align: ContentAlign.bottom,
-            child: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'Titulo lorem ipsum',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: 20.0),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar tortor eget maximus iaculis.",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          )
-        ],
-        shape: ShapeLightFocus.RRect,
-        radius: 5,
-      ),
-    ); */
-/* 
-    targets.add(TargetFocus(
-      identify: "Target 2",
-      keyTarget: _key3,
-      contents: [
-        TargetContent(
-            align: ContentAlign.top,
-            child: Container(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Text(
-                      "Multiples contents",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
-                    ),
-                  ),
-                  Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar tortor eget maximus iaculis.",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-            )),
-        TargetContent(
-            align: ContentAlign.bottom,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20.0),
-                  child: Text(
-                    "Multiples contents",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20.0),
-                  ),
-                ),
-                Container(
-                  child: Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar tortor eget maximus iaculis.",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
-            ))
-      ],
-      shape: ShapeLightFocus.Circle,
-    ));
-    targets.add(TargetFocus(
-      identify: "Target 3",
-      keyTarget: _key4,
-      color: Colors.red,
-      contents: [
-        TargetContent(
-            align: ContentAlign.top,
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Image.network(
-                      "https://flutterdevs.com/wp-content/uploads/2020/10/logog.png",
-                      fit: BoxFit.contain,
-                      height: 120,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Text(
-                      "Image Load network",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0),
-                    ),
-                  ),
-                  Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar tortor eget maximus iaculis.",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-            ))
-      ],
-      shape: ShapeLightFocus.Circle,
-    )); */
-  }
-
-  void showTutorial() {
-    tutorialCoachMark = TutorialCoachMark(
-      context,
-      targets: targets,
-      colorShadow: Colors.pink,
-      textSkip: "SKIP",
-      paddingFocus: 10,
-      opacityShadow: 0.8,
-      onFinish: () {
-        print("finish");
-      },
-      onClickTarget: (target) {
-        print('onClickTarget: $target');
-      },
-      onSkip: () {
-        print("skip");
-      },
-      onClickOverlay: (target) {
-        print('onClickOverlay: $target');
-      },
-    )..show();
   }
 }
