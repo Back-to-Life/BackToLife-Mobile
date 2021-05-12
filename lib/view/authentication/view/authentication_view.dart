@@ -23,11 +23,10 @@ class AuthenticationView extends StatefulWidget {
 
 class _AuthenticationViewState extends State<AuthenticationView>
     with SingleTickerProviderStateMixin {
+  late final _viewModel = AuthenticationViewModel();
   late TabController _tabController;
   final List<Tab> myTabs = <Tab>[
-    Tab(
-      text: LocaleKeys.login_tab1.tr(),
-    ),
+    Tab(text: LocaleKeys.login_tab1.tr()),
     Tab(text: LocaleKeys.login_tab2.tr()),
   ];
 
@@ -42,8 +41,6 @@ class _AuthenticationViewState extends State<AuthenticationView>
     _tabController.dispose();
     super.dispose();
   }
-
-  late final _viewModel = AuthenticationViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -62,43 +59,9 @@ class _AuthenticationViewState extends State<AuthenticationView>
             key: viewModel.scaffoldState,
             body: Stack(
               children: [
-                AnimatedContainer(
-                  duration: Duration(milliseconds: 400),
-                  height: context.mediaQuery.viewInsets.bottom > 0
-                      ? context.height * 0.3
-                      : context.height * 0.4,
-                  margin: EdgeInsets.only(bottom: context.mediumValue),
-                  decoration: BoxDecoration(
-                      color: context.colors.onSecondary,
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(context.mediumValue),
-                          bottomRight: Radius.circular(context.mediumValue))),
-                  child: Center(
-                      child: Padding(
-                    padding: context.paddingMedium,
-                  )),
-                ),
-                AnimatedContainer(
-                  duration: Duration(milliseconds: 400),
-                  height: context.mediaQuery.viewInsets.bottom > 0
-                      ? context.height * 0.27
-                      : context.height * 0.35,
-                  decoration: BoxDecoration(
-                      color: context.colors.primaryVariant,
-                      borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(context.mediumValue),
-                          bottomRight: Radius.circular(context.mediumValue))),
-                ),
-                AnimatedContainer(
-                  duration: Duration(milliseconds: 400),
-                  height: context.mediaQuery.viewInsets.bottom > 0
-                      ? context.height * 0.35
-                      : context.height * 0.4,
-                  margin: EdgeInsets.only(bottom: context.mediumValue),
-                  child: Center(
-                      child:
-                          Lottie.asset(LottiePaths.instance!.loginPageLottie)),
-                ),
+                _animatedContainer1(context),
+                _animatedContainer2(context),
+                _animatedContainer3(context),
                 SingleChildScrollView(
                   child: Center(
                     child: Container(
@@ -175,6 +138,50 @@ class _AuthenticationViewState extends State<AuthenticationView>
               ],
             )),
       ),
+    );
+  }
+
+  AnimatedContainer _animatedContainer3(BuildContext context) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 400),
+      height: context.mediaQuery.viewInsets.bottom > 0
+          ? context.height * 0.35
+          : context.height * 0.4,
+      margin: EdgeInsets.only(bottom: context.mediumValue),
+      child: Center(child: Lottie.asset(LottiePaths.instance!.loginPageLottie)),
+    );
+  }
+
+  AnimatedContainer _animatedContainer2(BuildContext context) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 400),
+      height: context.mediaQuery.viewInsets.bottom > 0
+          ? context.height * 0.27
+          : context.height * 0.35,
+      decoration: BoxDecoration(
+          color: context.colors.primaryVariant,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(context.mediumValue),
+              bottomRight: Radius.circular(context.mediumValue))),
+    );
+  }
+
+  AnimatedContainer _animatedContainer1(BuildContext context) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 400),
+      height: context.mediaQuery.viewInsets.bottom > 0
+          ? context.height * 0.3
+          : context.height * 0.4,
+      margin: EdgeInsets.only(bottom: context.mediumValue),
+      decoration: BoxDecoration(
+          color: context.colors.onSecondary,
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(context.mediumValue),
+              bottomRight: Radius.circular(context.mediumValue))),
+      child: Center(
+          child: Padding(
+        padding: context.paddingMedium,
+      )),
     );
   }
 

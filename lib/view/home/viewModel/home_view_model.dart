@@ -378,7 +378,6 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
       ],
       shape: ShapeLightFocus.Circle,
     ));
-    
   }
 
   @action
@@ -417,7 +416,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
             .setTutorialManager(PreferencesKeys.TUTORIAL, true);
       },
       onClickOverlay: (target) {
-        print('onClickOverlay: $target');
+        // print('onClickOverlay: $target');
       },
     )..show();
   }

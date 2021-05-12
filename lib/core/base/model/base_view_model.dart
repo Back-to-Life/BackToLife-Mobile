@@ -7,7 +7,6 @@ import '../../init/network/network_manager.dart';
 
 abstract class BaseViewModel {
   late BuildContext context;
-
   ICoreDio? coreDio = NetworkManager.instance!.coreDio;
   LocaleManager localeManager = LocaleManager.instance;
   NavigationService navigation = NavigationService.instance;
