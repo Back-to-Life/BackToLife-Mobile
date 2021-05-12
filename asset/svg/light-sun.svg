@@ -1,0 +1,10 @@
+<svg id="Component_2_1" data-name="Component 2 – 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="220.354" height="187.512" viewBox="0 0 220.354 187.512">
+  <defs>
+    <clipPath id="clip-path">
+      <rect x="58" y="79" width="220.354" height="187.512" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Scroll_Group_2" data-name="Scroll Group 2" transform="translate(-58 -79)" clip-path="url(#clip-path)" style="isolation: isolate">
+    <ellipse id="Ellipse_85" data-name="Ellipse 85" cx="101" cy="99" rx="101" ry="99" transform="matrix(-0.899, -0.438, 0.438, -0.899, 181.556, 266.512)" fill="#ffcf31"/>
+  </g>
+</svg>
