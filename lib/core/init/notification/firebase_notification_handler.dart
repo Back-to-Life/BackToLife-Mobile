@@ -52,6 +52,7 @@ class FirebaseNotifications {
                   'Geri Dönüşüm Uygulamsı',
                   icon: 'icon_notification',
                   color: Color(0xFF72A863),
+                  playSound: true,
                   largeIcon: DrawableResourceAndroidBitmap('icon_notification'),
                   importance: Importance.max,
                   priority: Priority.high)));

@@ -4,6 +4,7 @@ import 'package:backtolife/view/heroes/view/heroes_view.dart';
 import 'package:backtolife/view/home/view/home_view.dart';
 import 'package:backtolife/view/profile/view/profile_view.dart';
 import 'package:backtolife/view/settings/subsettings/notifications_settings/view/notifications_view.dart';
+import 'package:backtolife/view/splash/view/splash_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -22,6 +23,7 @@ import 'core/init/language/language_manager.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notifier/provider.dart';
+import 'view/authentication/view/authentication_view.dart';
 import 'view/widgets/deneme_page.dart';
 
 Future<void> main() async {
@@ -63,7 +65,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: HomeView(),
+      home: SplashView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );
