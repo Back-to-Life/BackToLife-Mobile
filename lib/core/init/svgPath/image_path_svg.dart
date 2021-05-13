@@ -45,8 +45,5 @@ class SVGImagePaths {
   final heroesofworld = 'heroesofworld'.toSVG;
   final upperstack = 'upperstack'.toSVG;
   final bottomStack = 'boottom-stack'.toSVG;
-  final lightSun1 = 'light-sun'.toSVG;
-  final lightSun2 = 'light-sun2'.toSVG;
   final splashIcon = 'icon'.toSVG;
-  final hahaha = 'hahaha'.toSVG;
 }

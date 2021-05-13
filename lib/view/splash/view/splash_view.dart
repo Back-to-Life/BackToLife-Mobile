@@ -23,41 +23,55 @@ class _SplashViewState extends State<SplashView>
           model.init();
         },
         onPageBuilder: (context, value) => Scaffold(
-                body: Stack(
-              children: [
-                Positioned(
-                  top: 0,
-                  child: Container(
-                    width: context.width * 1,
-                    height: context.height * 0.2,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.fitWidth,
-                        image: AssetImage(
-                          'asset/images/upperStack.png',
-                        ),
-                      ),
-                    ),
-                    // color: Colors.red,
-                  ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  child: Container(
-                    width: context.width * 1,
-                    height: context.height * 0.47,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.fitWidth,
-                        image: AssetImage(
-                          'asset/images/bottomStack.png',
-                        ),
-                      ),
-                    ),
-                    // color: Colors.red,
-                  ),
-                ),
-              ],
-            )));
+                body: Stack(children: [
+              _bottomUpper(context),
+              Center(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    Spacer(),
+                    Expanded(
+                        child: Center(
+                            child: Text('BACK TO LIFE',
+                                style: context.textTheme.headline4!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF72A863))))),
+                    Expanded(
+                        child: Center(
+                            child: SvgPicture.asset(
+                                SVGImagePaths.instance.splashIcon))),
+                    Spacer(flex: 2),
+                  ])),
+              _bottomStack(context)
+            ])));
+  }
+
+  Positioned _bottomUpper(BuildContext context) {
+    return Positioned(
+        top: 0,
+        child: Container(
+            width: context.width * 1,
+            height: context.height * 0.2,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.fitWidth,
+                    image: AssetImage(
+                      'asset/images/upperStack.png',
+                    )))));
+  }
+
+  Positioned _bottomStack(BuildContext context) {
+    return Positioned(
+        bottom: 0,
+        child: Container(
+            width: context.width * 1,
+            height: context.height * 0.47,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.fitWidth,
+                    image: AssetImage(
+                      'asset/images/bottomStack.png',
+                    )))));
   }
 }
