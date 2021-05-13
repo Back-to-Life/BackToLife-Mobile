@@ -43,4 +43,7 @@ class SVGImagePaths {
   final camerapermission = 'camerapermission'.toSVG;
   final profilesettingsview = 'profilepsettingsview'.toSVG;
   final heroesofworld = 'heroesofworld'.toSVG;
+  final upperstack = 'upperstack'.toSVG;
+  final bottomStack = 'boottom-stack'.toSVG;
+  final splashIcon = 'icon'.toSVG;
 }

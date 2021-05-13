@@ -1,0 +1,16 @@
+<svg id="Component_3_5" data-name="Component 3 – 5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360.052" height="139.091" viewBox="0 0 360.052 139.091">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="359.654" height="139.091" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect width="191.685" height="73.92" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Scroll_Group_1" data-name="Scroll Group 1" clip-path="url(#clip-path)" style="isolation: isolate">
+    <path id="Path_942" data-name="Path 942" d="M1341,130s11.145,58.025,44.523,77.367,81.131-25.793,125.027-10.842,50.22,66.754,116.317,71.554,67.584-7.22,112.032-41.513,0-96.565,0-96.565Z" transform="translate(-1341 -130)" fill="#72a863"/>
+  </g>
+  <g id="Scroll_Group_3" data-name="Scroll Group 3" transform="translate(168.366)" clip-path="url(#clip-path-2)" style="isolation: isolate">
+    <path id="Path_943" data-name="Path 943" d="M1539.366,130s17.368,38.56,42.788,46.025,31.782-23.048,58.893-16.164,26.55,39.66,49.551,43.7,42.453-27.537,42.453-27.537V130Z" transform="translate(-1539.366 -130)" fill="#98d089"/>
+  </g>
+</svg>
