@@ -101,7 +101,9 @@ class _AuthenticationViewState extends State<AuthenticationView>
                     child: InkWell(
                       onTap: () async {
                         print('facebook');
-                        showAlertDialog(context, viewModel);
+                        //showAlertDialog(context, viewModel);
+                        _viewModel.showLoginNumberCode(context);
+                        _viewModel.timerFunction();
                         //viewModel.context.locale = Locale('en', 'US');
                       },
                       child: Visibility(
@@ -427,7 +429,9 @@ class _AuthenticationViewState extends State<AuthenticationView>
       return TextFormField(
         controller: viewModel.passwordController,
         obscureText: !viewModel.isEyeOpen,
-        validator: (value) => value!.isEmpty ? 'This field required' : null,
+        validator: (value) => value!.isEmpty && value.length < 6
+            ? 'This field required and more 6 characters'
+            : null,
         decoration: InputDecoration(
             suffixIcon: GestureDetector(
               onTap: () => viewModel.isEyeOpenFun(),
