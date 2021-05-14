@@ -9,6 +9,38 @@ part of 'authentication_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
+  final _$randomCodeGetUserAtom =
+      Atom(name: '_AuthenticationViewModelBase.randomCodeGetUser');
+
+  @override
+  TextEditingController get randomCodeGetUser {
+    _$randomCodeGetUserAtom.reportRead();
+    return super.randomCodeGetUser;
+  }
+
+  @override
+  set randomCodeGetUser(TextEditingController value) {
+    _$randomCodeGetUserAtom.reportWrite(value, super.randomCodeGetUser, () {
+      super.randomCodeGetUser = value;
+    });
+  }
+
+  final _$randomCodeInputAtom =
+      Atom(name: '_AuthenticationViewModelBase.randomCodeInput');
+
+  @override
+  String get randomCodeInput {
+    _$randomCodeInputAtom.reportRead();
+    return super.randomCodeInput;
+  }
+
+  @override
+  set randomCodeInput(String value) {
+    _$randomCodeInputAtom.reportWrite(value, super.randomCodeInput, () {
+      super.randomCodeInput = value;
+    });
+  }
+
   final _$isEyeOpenAtom = Atom(name: '_AuthenticationViewModelBase.isEyeOpen');
 
   @override
@@ -67,6 +99,22 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
   set isSuccess(bool value) {
     _$isSuccessAtom.reportWrite(value, super.isSuccess, () {
       super.isSuccess = value;
+    });
+  }
+
+  final _$_timerCountAtom =
+      Atom(name: '_AuthenticationViewModelBase._timerCount');
+
+  @override
+  int get _timerCount {
+    _$_timerCountAtom.reportRead();
+    return super._timerCount;
+  }
+
+  @override
+  set _timerCount(int value) {
+    _$_timerCountAtom.reportWrite(value, super._timerCount, () {
+      super._timerCount = value;
     });
   }
 
@@ -135,8 +183,43 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
   }
 
   @override
+  dynamic showLoginNumberCode(BuildContext context) {
+    final _$actionInfo = _$_AuthenticationViewModelBaseActionController
+        .startAction(name: '_AuthenticationViewModelBase.showLoginNumberCode');
+    try {
+      return super.showLoginNumberCode(context);
+    } finally {
+      _$_AuthenticationViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void nextField(String value, FocusNode focusNode) {
+    final _$actionInfo = _$_AuthenticationViewModelBaseActionController
+        .startAction(name: '_AuthenticationViewModelBase.nextField');
+    try {
+      return super.nextField(value, focusNode);
+    } finally {
+      _$_AuthenticationViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void timerFunction() {
+    final _$actionInfo = _$_AuthenticationViewModelBaseActionController
+        .startAction(name: '_AuthenticationViewModelBase.timerFunction');
+    try {
+      return super.timerFunction();
+    } finally {
+      _$_AuthenticationViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+randomCodeGetUser: ${randomCodeGetUser},
+randomCodeInput: ${randomCodeInput},
 isEyeOpen: ${isEyeOpen},
 isLoading: ${isLoading},
 isLoginOrSignUp: ${isLoginOrSignUp},
