@@ -13,6 +13,7 @@ abstract class IAuthenticationService {
   final INetworkManager manager;
 
   IAuthenticationService(this.manager);
+  
   Future<AuthenticationResponseModel?> fetchUserControl(
       AuthenticationModel model);
 

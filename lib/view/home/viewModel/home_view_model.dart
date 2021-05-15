@@ -47,6 +47,8 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
         _layout(_);
       });
     });
+    print(localeManager.getToken());
+    print(localeManager.getUnicId());
   }
 
   @observable

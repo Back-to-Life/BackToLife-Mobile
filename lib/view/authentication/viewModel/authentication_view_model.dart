@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
 import 'package:backtolife/core/extension/context_extension.dart';
+import 'package:backtolife/core/init/cache/locale_manager.dart';
 import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_model.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -146,6 +148,13 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
               email: emailController!.text,
               password: passwordController!.text));
       if (response != null && response.success == true) {
+        await localeManager.setTokenManager(
+            PreferencesKeys.TOKEN, response.token.toString());
+        await localeManager.setTokenManager(
+            PreferencesKeys.ID, response.id.toString());
+
+        print(localeManager.getToken());
+        print(localeManager.getUnicId());
         await navigation.navigateToPageClear(
             path: NavigationConstants.HOME_VIEW);
       }
