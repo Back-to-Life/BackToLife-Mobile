@@ -1,3 +1,6 @@
+import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_model.dart';
+import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_response_model.dart';
+
 import '../model/register/authentication_register_model.dart';
 import '../model/register/authentication_register_response_model.dart';
 
@@ -14,5 +17,8 @@ abstract class IAuthenticationService {
       AuthenticationModel model);
 
   Future<AuthenticationRegisterResponseModel?> registerUserControl(
-      AuthenticationRegisterModel model);
+      AuthenticationRegisterModel model); 
+      
+   Future<RegisterCodeResponseModel?> registerSuccessWithCodeControl(
+      RegisterCode model);
 }

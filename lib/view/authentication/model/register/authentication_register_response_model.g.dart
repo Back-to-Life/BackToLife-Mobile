@@ -9,16 +9,14 @@ part of 'authentication_register_response_model.dart';
 AuthenticationRegisterResponseModel
     _$AuthenticationRegisterResponseModelFromJson(Map<String, dynamic> json) {
   return AuthenticationRegisterResponseModel(
-    success: json['success'] as bool?,
-    token: json['token'] as String?,
-    unicId: json['unicId'] as String?,
+    message: json['message'] as String?,
+    register: json['register'] as bool?,
   );
 }
 
 Map<String, dynamic> _$AuthenticationRegisterResponseModelToJson(
         AuthenticationRegisterResponseModel instance) =>
     <String, dynamic>{
-      'success': instance.success,
-      'token': instance.token,
-      'unicId': instance.unicId,
+      'message': instance.message,
+      'register': instance.register,
     };

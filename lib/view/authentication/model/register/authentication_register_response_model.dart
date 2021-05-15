@@ -6,11 +6,10 @@ part 'authentication_register_response_model.g.dart';
 @JsonSerializable()
 class AuthenticationRegisterResponseModel
     extends INetworkModel<AuthenticationRegisterResponseModel> {
-  final bool? success;
-  final String? token;
-  final String? unicId;
+  final String? message;
+  final bool? register;
 
-  AuthenticationRegisterResponseModel({this.success, this.token, this.unicId});
+  AuthenticationRegisterResponseModel({this.message, this.register});
 
   @override
   AuthenticationRegisterResponseModel fromJson(Map<String, Object?> json) {

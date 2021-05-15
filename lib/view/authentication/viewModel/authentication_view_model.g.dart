@@ -102,19 +102,19 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
     });
   }
 
-  final _$_timerCountAtom =
-      Atom(name: '_AuthenticationViewModelBase._timerCount');
+  final _$timerCountAtom =
+      Atom(name: '_AuthenticationViewModelBase.timerCount');
 
   @override
-  int get _timerCount {
-    _$_timerCountAtom.reportRead();
-    return super._timerCount;
+  int get timerCount {
+    _$timerCountAtom.reportRead();
+    return super.timerCount;
   }
 
   @override
-  set _timerCount(int value) {
-    _$_timerCountAtom.reportWrite(value, super._timerCount, () {
-      super._timerCount = value;
+  set timerCount(int value) {
+    _$timerCountAtom.reportWrite(value, super.timerCount, () {
+      super.timerCount = value;
     });
   }
 
@@ -133,6 +133,14 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
   Future<void> fetchSignUpService() {
     return _$fetchSignUpServiceAsyncAction
         .run(() => super.fetchSignUpService());
+  }
+
+  final _$codeWithSuccessAsyncAction =
+      AsyncAction('_AuthenticationViewModelBase.codeWithSuccess');
+
+  @override
+  Future<void> codeWithSuccess() {
+    return _$codeWithSuccessAsyncAction.run(() => super.codeWithSuccess());
   }
 
   final _$_AuthenticationViewModelBaseActionController =
@@ -223,7 +231,8 @@ randomCodeInput: ${randomCodeInput},
 isEyeOpen: ${isEyeOpen},
 isLoading: ${isLoading},
 isLoginOrSignUp: ${isLoginOrSignUp},
-isSuccess: ${isSuccess}
+isSuccess: ${isSuccess},
+timerCount: ${timerCount}
     ''';
   }
 }
