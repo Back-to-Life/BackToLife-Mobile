@@ -62,4 +62,22 @@ class LocaleManager {
   //get the tutorial screen
   bool getTutorialManager() =>
       _preferences!.getBool(PreferencesKeys.TUTORIAL.toString()) ?? false;
+
+  //set the unicId profile him
+  Future<void> setUnicId(PreferencesKeys key, String value) async {
+    await _preferences!.setString(key.toString(), value);
+  }
+
+  //get the unicId wit String
+  String getUnicId() =>
+      _preferences!.getString(PreferencesKeys.ID.toString()) ?? '';
+
+  //set the String token value
+  Future<void> setTokenManager(PreferencesKeys key, String value) async {
+    await _preferences!.setString(key.toString(), value);
+  }
+
+  //get the token string
+  String getToken() =>
+      _preferences!.getString(PreferencesKeys.TOKEN.toString()) ?? '';
 }

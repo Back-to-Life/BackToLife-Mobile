@@ -7,9 +7,10 @@ part 'authentication_response_model.g.dart';
 class AuthenticationResponseModel
     extends INetworkModel<AuthenticationResponseModel> {
   final bool? success;
-  //final String token;
+  final String? token;
+  final String? id;
 
-  AuthenticationResponseModel({this.success});
+  AuthenticationResponseModel({this.success, this.token, this.id});
 
   @override
   AuthenticationResponseModel fromJson(Map<String, Object?> json) {

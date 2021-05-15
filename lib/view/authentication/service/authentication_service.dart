@@ -16,18 +16,13 @@ class AuthenticationService extends IAuthenticationService {
   @override
   Future<AuthenticationResponseModel?> fetchUserControl(
       AuthenticationModel model) async {
-    try {
-      final response = await manager
-          .send<AuthenticationResponseModel, AuthenticationResponseModel>(
-              'login',
-              parseModel: AuthenticationResponseModel(),
-              method: RequestType.POST,
-              data: model);
-      if (response.data is AuthenticationResponseModel) {
-        return response.data;
-      }
-    } catch (e) {
-      throw Exception();
+    final response = await manager
+        .send<AuthenticationResponseModel, AuthenticationResponseModel>('login',
+            parseModel: AuthenticationResponseModel(),
+            method: RequestType.POST,
+            data: model);
+    if (response.data is AuthenticationResponseModel) {
+      return response.data;
     }
   }
 
