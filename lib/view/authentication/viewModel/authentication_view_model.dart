@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:backtolife/core/extension/context_extension.dart';
+import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_model.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../core/constants/navigation/navigation_constants.dart';
@@ -45,7 +46,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   late FocusNode pin4FocusNode = FocusNode();
   late FocusNode pin5FocusNode = FocusNode();
   late FocusNode pin6FocusNode = FocusNode();
-  late Timer _timer;
+  Timer? _timer;
 
   late final otpInputDecoration = InputDecoration(
     contentPadding: EdgeInsets.symmetric(vertical: 15),
@@ -116,11 +117,11 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   }
 
   void disposeMethod() {
-    emailController!.dispose();
-    passwordController!.dispose();
-    nameSurnameController!.dispose();
-    emailSignUpController!.dispose();
-    passwordSignUpController!.dispose();
+    emailController?.dispose();
+    passwordController?.dispose();
+    nameSurnameController?.dispose();
+    emailSignUpController?.dispose();
+    passwordSignUpController?.dispose();
     randomCodeGetUser.dispose();
     pin2FocusNode.dispose();
     pin3FocusNode.dispose();
@@ -133,7 +134,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     controller3.dispose();
     controller4.dispose();
     controller5.dispose();
-    _timer.cancel();
+    _timer?.cancel();
   }
 
   @action
@@ -158,15 +159,49 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     if (formSignUpState.currentState!.validate() && !isLoginOrSignUp) {
       final response = await authenticationService.registerUserControl(
           AuthenticationRegisterModel(
-              firstName: nameSurnameController!.text,
+              name: nameSurnameController!.text,
               email: emailSignUpController!.text,
               password: passwordSignUpController!.text));
       if (response != null) {
         successChanged();
         changedLoading();
-        await navigation.navigateToPageClear(
-            path: NavigationConstants.HOME_VIEW);
+        timerCount = 60;
+        if (response.register!) {
+          showLoginNumberCode(context);
+          // await codeWithSuccess();
+        }
+
+        /*  await navigation.navigateToPageClear(
+            path: NavigationConstants.HOME_VIEW); */
       }
+    }
+    changedLoading();
+  }
+
+  @action
+  Future<void> codeWithSuccess() async {
+    if (codeFormState.currentState!.validate()) {
+      final response = await authenticationService
+          .registerSuccessWithCodeControl(RegisterCode(
+              name: nameSurnameController!.text,
+              email: emailSignUpController!.text,
+              password: passwordSignUpController!.text,
+              randomCodeReq: int.parse(randomCodeInput)));
+      print(nameSurnameController!.text);
+      print(emailSignUpController!.text);
+      print(passwordSignUpController!.text);
+      print(int.parse(randomCodeInput));
+      if (response != null) {
+        successChanged();
+        changedLoading();
+        print(response.success);
+        if (response.success!) {
+          await navigation.navigateToPageClear(
+              path: NavigationConstants.HOME_VIEW);
+        }
+      }
+    } else {
+      Navigator.pop(context);
     }
     changedLoading();
   }
@@ -176,18 +211,43 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     // set up the button
     Widget okButton = FlatButton(
       child: Text('OK', style: TextStyle(color: Colors.black)),
+      onPressed: () async {
+        Navigator.pop(context);
+        changedLoading();
+        await codeWithSuccess();
+        _timer?.cancel();
+        timerCount = 0;
+        controller.clear();
+        controller1.clear();
+        controller2.clear();
+        controller3.clear();
+        controller4.clear();
+        controller5.clear();
+      },
+    );
+    Widget ok2Button = FlatButton(
+      child: Text('OK', style: TextStyle(color: Colors.black)),
       onPressed: () {
         Navigator.pop(context);
+        changedLoading();
+        _timer?.cancel();
+        timerCount = 0;
+        controller.clear();
+        controller1.clear();
+        controller2.clear();
+        controller3.clear();
+        controller4.clear();
+        controller5.clear();
       },
     );
 
     // set up the AlertDialog
     // ignore: omit_local_variable_types
     AlertDialog alertBasaramadik = AlertDialog(
-      title: Text('BAŞARAMADIK'),
-      content: Text('NEYİ BAŞARAMADIN ABİ'),
+      title: Text('Başarısız oldu.'),
+      content: Text('Lütfen tekrar deneyin.'),
       actions: [
-        okButton,
+        ok2Button,
       ],
     );
 
@@ -197,11 +257,11 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
       title: Text('Lütfen Gelen Kodu Giriniz'),
       content: Form(
         child: Container(
-          height: context.height * 0.25,
+          height: context.height * 0.15,
           child: Column(
             children: [
               Observer(builder: (_) {
-                return Text(_timerCount.toString());
+                return Text(timerCount.toString());
               }),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -307,7 +367,6 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
                               controller4.text +
                               controller5.text;
                           print(randomCodeInput);
-                          // controller.clear();
                         }
                       },
                     ),
@@ -328,8 +387,9 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
       barrierDismissible: false,
       context: context,
       builder: (BuildContext context) {
+        timerFunction();
         return Observer(builder: (_) {
-          return _timerCount == 0
+          return timerCount == 0
               ? alertBasaramadik
               : Form(
                   key: codeFormState,
@@ -341,23 +401,6 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     );
   }
 
-  Row buildTimer() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('This code will expired in '),
-        TweenAnimationBuilder(
-          tween: Tween(begin: 30.0, end: 0.0),
-          duration: Duration(seconds: 30),
-          builder: (_, value, child) => Text(
-            '00:${value}',
-            style: TextStyle(color: Colors.orange),
-          ),
-        ),
-      ],
-    );
-  }
-
   @action
   void nextField(String value, FocusNode focusNode) {
     if (value.length == 1) {
@@ -366,18 +409,18 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   }
 
   @observable
-  int _timerCount = 15;
+  int timerCount = 60;
 
   @action
   void timerFunction() {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       // ignore: unrelated_type_equality_checks
-      if (_timerCount == 0) {
+      if (timerCount == 0) {
         print('bitti');
-        _timer.cancel();
+        _timer?.cancel();
       } else {
-        print(timer.tick);
-        _timerCount--;
+        // print(timer.tick);
+        timerCount--;
       }
     });
   }

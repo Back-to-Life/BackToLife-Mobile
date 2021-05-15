@@ -104,6 +104,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
                         //showAlertDialog(context, viewModel);
                         _viewModel.showLoginNumberCode(context);
                         _viewModel.timerFunction();
+                        _viewModel.timerCount = 200;
                         //viewModel.context.locale = Locale('en', 'US');
                       },
                       child: Visibility(
@@ -187,7 +188,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
     );
   }
 
-  showAlertDialog(BuildContext context, AuthenticationViewModel viewModel) {
+  /*  showAlertDialog(BuildContext context, AuthenticationViewModel viewModel) {
     // set up the button
     Widget okButton = TextButton(
       child: Text('OK', style: TextStyle(color: context.colors.primaryVariant)),
@@ -247,7 +248,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
         return alert;
       },
     );
-  }
+  } */
 
   Positioned buildOrSignUpWith(
       BuildContext context, AuthenticationViewModel viewModel) {
@@ -282,7 +283,6 @@ class _AuthenticationViewState extends State<AuthenticationView>
         visible: context.mediaQuery.viewInsets.bottom > 0 ? false : true,
         child: GestureDetector(
           onTap: () {
-            showAlertDialog(context, viewModel);
             viewModel.isLoginOrSignUp
                 ? viewModel.fetchLoginService()
                 : viewModel.fetchSignUpService();

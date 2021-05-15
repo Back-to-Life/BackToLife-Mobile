@@ -1,3 +1,7 @@
+import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_response_model.dart';
+
+import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_model.dart';
+
 import '../model/register/authentication_register_response_model.dart';
 import '../model/register/authentication_register_model.dart';
 import 'package:vexana/vexana.dart';
@@ -31,7 +35,7 @@ class AuthenticationService extends IAuthenticationService {
   Future<AuthenticationRegisterResponseModel?> registerUserControl(
       AuthenticationRegisterModel model) async {
     final response = await manager.send<AuthenticationRegisterResponseModel,
-            AuthenticationRegisterResponseModel>('register',
+            AuthenticationRegisterResponseModel>('signup',
         parseModel: AuthenticationRegisterResponseModel(),
         method: RequestType.POST,
         data: model);
@@ -40,6 +44,27 @@ class AuthenticationService extends IAuthenticationService {
       return response.data;
     } else {
       return null;
+    }
+  }
+
+  @override
+  Future<RegisterCodeResponseModel?> registerSuccessWithCodeControl(
+      RegisterCode model) async {
+    try {
+      final response = await manager
+          .send<RegisterCodeResponseModel, RegisterCodeResponseModel>(
+              'email-activate',
+              parseModel: RegisterCodeResponseModel(),
+              method: RequestType.POST,
+              data: model);
+
+      if (response.data is RegisterCodeResponseModel) {
+        return response.data;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      throw Exception();
     }
   }
 }
