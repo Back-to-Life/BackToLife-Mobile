@@ -9,8 +9,23 @@ class ScanBarcodeViewModel = _ScanBarcodeViewModelBase
     with _$ScanBarcodeViewModel;
 
 abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
+  @observable
+  String? barcodeScanRes;
+
+  @observable
+  int stepNumber = 0;
+
   @override
   void setContext(BuildContext context) => this.context = context;
   @override
   void init() {}
+
+  @action
+  Future<void> setBarcodeScan() async {
+    // ignore: omit_local_variable_types
+    barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+        '#ff6666', 'Cancel', false, ScanMode.DEFAULT);
+    stepNumber += 1;
+    print(barcodeScanRes);
+  }
 }

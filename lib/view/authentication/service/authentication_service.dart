@@ -1,6 +1,9 @@
 import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_response_model.dart';
 
 import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_model.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../model/register/authentication_register_response_model.dart';
 import '../model/register/authentication_register_model.dart';
@@ -11,7 +14,8 @@ import '../model/login/authentication_response_model.dart';
 import 'IAuthentication_service.dart';
 
 class AuthenticationService extends IAuthenticationService {
-  AuthenticationService(INetworkManager manager) : super(manager);
+  AuthenticationService(INetworkManager manager, BuildContext context)
+      : super(manager, context);
 
   @override
   Future<AuthenticationResponseModel?> fetchUserControl(
@@ -29,17 +33,37 @@ class AuthenticationService extends IAuthenticationService {
   @override
   Future<AuthenticationRegisterResponseModel?> registerUserControl(
       AuthenticationRegisterModel model) async {
-    final response = await manager.send<AuthenticationRegisterResponseModel,
-            AuthenticationRegisterResponseModel>('signup',
-        parseModel: AuthenticationRegisterResponseModel(),
-        method: RequestType.POST,
-        data: model);
+    try {
+      final response = await manager.send<AuthenticationRegisterResponseModel,
+              AuthenticationRegisterResponseModel>('signup',
+          parseModel: AuthenticationRegisterResponseModel(),
+          method: RequestType.POST,
+          data: model);
 
-    if (response.data is AuthenticationRegisterResponseModel) {
-      return response.data;
-    } else {
-      return null;
+      if (response.data is AuthenticationRegisterResponseModel) {
+        return response.data;
+      } else {
+        print(response);
+        return null;
+      }
+    } on DioError catch (e) {
+      if (e.response!.statusCode == 401) {
+        print('işte geliyor erorr ${e.response!.statusCode}');
+      }
     }
+    /*  var dio = Dio();
+    
+    try {
+      final response =
+          await dio.post('http://10.0.2.2:5000/signup', data: model);
+      print(response.data);
+      print(response);
+    } on DioError catch (e) {
+      if (e.response!.statusCode == 401) {
+        print('işte geliyor erorr $e.response!.statusCode');
+      }
+      return 
+    } */
   }
 
   @override
