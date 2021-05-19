@@ -24,7 +24,8 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
           model.setContext(context);
           model.init();
         },
-        onPageBuilder: (BuildContext context, ScanBarcodeViewModel viewModel) =>
+        onPageBuilder: (BuildContext context,
+                ScanBarcodeViewModel _viewModel) =>
             Scaffold(
               appBar: AppBar(
                 iconTheme: IconThemeData(color: context.colors.surface),
@@ -41,15 +42,11 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding:
-                                EdgeInsets.only(left: context.width * 0.05),
-                            child: Text(
-                              "Let's recycle in\n a few steps.",
-                              textAlign: TextAlign.start,
-                              style: context.textTheme.headline3!
-                                  .copyWith(color: context.colors.surface),
-                            ),
+                          Text(
+                            "Let's recycle in\n a few steps.",
+                            textAlign: TextAlign.start,
+                            style: context.textTheme.headline4!
+                                .copyWith(color: context.colors.surface),
                           ),
                         ],
                       ),
@@ -64,31 +61,62 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                                 ColorScheme.light(primary: Colors.orange),
                             iconTheme: theme.iconTheme.copyWith(size: 30)),
                         child: Center(
-                          child: Stepper(
-                            controlsBuilder: (BuildContext context,
-                                {VoidCallback? onStepContinue,
-                                VoidCallback? onStepCancel}) {
-                              return Row(
-                                children: <Widget>[],
-                              );
-                            },
-                            steps: _mySteps(),
-                            currentStep: _currentStep,
-                            onStepTapped: (step) {
-                              setState(() {
-                                _currentStep = step;
-                              });
-                            },
-                            onStepContinue: () {
-                              setState(() {
-                                if (_currentStep < _mySteps().length - 1) {
-                                  _currentStep = _currentStep + 1;
-                                } else {
-                                  print('Completed, check fields.');
+                          child: Observer(builder: (_) {
+                            return Stepper(
+                              controlsBuilder: (BuildContext context,
+                                  {VoidCallback? onStepContinue,
+                                  VoidCallback? onStepCancel}) {
+                                return Row(
+                                  children: <Widget>[],
+                                );
+                              },
+                              steps: _mySteps(_viewModel),
+                              currentStep: _viewModel.stepNumber,
+                              /*    onStepTapped: (step) {
+                                    setState(() {
+                                      _currentStep = step;
+                                      _viewModel.stepNumber = step;
+                                    });
+                                  }, */
+                              onStepContinue: () {
+                                switch (_viewModel.stepNumber) {
+                                  case 0:
+                                    setState(() {
+                                      if (_viewModel.stepNumber <
+                                          _mySteps(_viewModel).length - 1) {
+                                        _currentStep = _currentStep + 1;
+                                        _currentStep = _viewModel.stepNumber;
+                                      } else {
+                                        print('Completed, check fields.');
+                                      }
+                                    });
+                                    break;
+                                  case 1:
+                                    setState(() {
+                                      if (_viewModel.stepNumber <
+                                          _mySteps(_viewModel).length - 1) {
+                                        _currentStep = _currentStep + 1;
+                                        _currentStep = _viewModel.stepNumber;
+                                      } else {
+                                        print('Completed, check fields.');
+                                      }
+                                    });
+                                    break;
+                                  case 2:
+                                    setState(() {
+                                      if (_viewModel.stepNumber <
+                                          _mySteps(_viewModel).length - 1) {
+                                        _currentStep = _currentStep + 1;
+                                        _currentStep = _viewModel.stepNumber;
+                                      } else {
+                                        print('Completed, check fields.');
+                                      }
+                                    });
+                                    break;
+                                  default:
                                 }
-                              });
-                            },
-                            /*  onStepCancel: () {
+                              },
+                              /*  onStepCancel: () {
                               setState(() {
                                 if (_currentStep > 0) {
                                   _currentStep = _currentStep - 1;
@@ -97,7 +125,8 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                                 }
                               });
                             }, */
-                          ),
+                            );
+                          }),
                         ),
                       ),
                     ),
@@ -117,12 +146,12 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
             ));
   }
 
-  List<Step> _mySteps() {
+  List<Step> _mySteps(ScanBarcodeViewModel _viewModel) {
     var _steps = <Step>[
       Step(
         title: Text(
           'Step 1',
-          style: context.textTheme.headline4!.copyWith(
+          style: context.textTheme.headline5!.copyWith(
               fontWeight: FontWeight.bold, color: context.colors.surface),
         ),
         subtitle: Text(
@@ -132,24 +161,24 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
         ),
         content: Container(
           alignment: Alignment.centerLeft,
-          height: context.height * 0.2,
+          height: context.height * 0.15,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Spacer(flex: 1),
               Expanded(
+                flex: 3,
                 child: Text(
                   'Scan the QR code of the \n recycling waste',
                   style: context.textTheme.subtitle1!
                       .copyWith(color: context.colors.surface),
                 ),
               ),
-              Spacer(flex: 1),
               Expanded(
                   child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Spacer(),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           onPrimary: Colors.black87,
@@ -161,7 +190,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                           ),
                           elevation: 10,
                           animationDuration: const Duration(seconds: 2)),
-                      onPressed: () {},
+                      onPressed: () => _viewModel.setBarcodeScan(),
                       child: Text(
                         'SCAN',
                         style: context.textTheme.headline6!
@@ -178,7 +207,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
       Step(
         title: Text(
           'Step 2',
-          style: context.textTheme.headline4!.copyWith(
+          style: context.textTheme.headline5!.copyWith(
               fontWeight: FontWeight.bold, color: context.colors.surface),
         ),
         subtitle: Text(
@@ -188,7 +217,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
         ),
         content: Container(
           alignment: Alignment.centerLeft,
-          height: context.height * 0.2,
+          height: context.height * 0.15,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -234,7 +263,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
       Step(
         title: Text(
           'Step 3',
-          style: context.textTheme.headline4!.copyWith(
+          style: context.textTheme.headline5!.copyWith(
               fontWeight: FontWeight.bold, color: context.colors.surface),
         ),
         subtitle: Text(
@@ -244,7 +273,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
         ),
         content: Container(
           alignment: Alignment.centerLeft,
-          height: context.height * 0.2,
+          height: context.height * 0.15,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

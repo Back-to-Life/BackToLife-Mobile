@@ -5,6 +5,7 @@ import 'package:backtolife/core/extension/context_extension.dart';
 import 'package:backtolife/core/init/cache/locale_manager.dart';
 import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_model.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../core/constants/navigation/navigation_constants.dart';
 import '../model/register/authentication_register_model.dart';
@@ -68,7 +69,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) {
     this.context = context;
     authenticationService =
-        AuthenticationService(VexanaManager.instance!.networkManager);
+        AuthenticationService(VexanaManager.instance!.networkManager, context);
     emailController = TextEditingController();
     passwordController = TextEditingController();
     nameSurnameController = TextEditingController();
@@ -152,9 +153,6 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
             PreferencesKeys.TOKEN, response.token.toString());
         await localeManager.setTokenManager(
             PreferencesKeys.ID, response.id.toString());
-
-        print(localeManager.getToken());
-        print(localeManager.getUnicId());
         await navigation.navigateToPageClear(
             path: NavigationConstants.HOME_VIEW);
       }
@@ -177,11 +175,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
         timerCount = 60;
         if (response.register!) {
           showLoginNumberCode(context);
-          // await codeWithSuccess();
         }
-
-        /*  await navigation.navigateToPageClear(
-            path: NavigationConstants.HOME_VIEW); */
       }
     }
     changedLoading();
@@ -254,7 +248,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     // ignore: omit_local_variable_types
     AlertDialog alertBasaramadik = AlertDialog(
       title: Text('Başarısız oldu.'),
-      content: Text('Lütfen tekrar deneyin.'),
+      content: Lottie.asset('asset/lottie/try-again-opps.json'),
       actions: [
         ok2Button,
       ],

@@ -4,8 +4,10 @@ import 'package:avatars/avatars.dart';
 import 'package:backtolife/core/base/view/base_view.dart';
 import 'package:backtolife/core/extension/context_extension.dart';
 import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
+import 'package:backtolife/view/heroes/service/heroes_service.dart';
 import 'package:backtolife/view/heroes/viewModel/heroes_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -80,40 +82,103 @@ class HeroesView extends StatelessWidget {
                                                     color: Color(0xFF4E5F49))),
                                       )),
                                   Expanded(
-                                    flex: 4,
-                                    child: ListView.builder(
-                                        itemCount: 3,
-                                        itemBuilder: (context, index) {
-                                          return Column(
-                                            children: [
-                                              context.emptySizedHeightBoxLow,
-                                              ListTile(
-                                                leading:
-                                                    _avatarPicture(context),
-                                                title: Text(
-                                                  'dada',
-                                                  style: context
-                                                      .textTheme.headline6!
-                                                      .copyWith(
-                                                          fontSize: 14,
+                                      flex: 4,
+                                      child: Observer(builder: (_) {
+                                        return _viewModel.heroes.isEmpty
+                                            ? Center(
+                                                child: CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                                Color>(
+                                                            Color(0xFF4E5F49))))
+                                            : ListView.builder(
+                                                itemCount: 3,
+                                                itemBuilder: (context, index) {
+                                                  return Column(
+                                                    children: [
+                                                      context
+                                                          .emptySizedHeightBoxLow,
+                                                      ListTile(
+                                                        leading: Avatar(
+                                                            shape: AvatarShape.circle(
+                                                                context.mediumValue *
+                                                                    0.7),
+                                                            placeholderColors: [
+                                                              context.colors
+                                                                  .primaryVariant
+                                                            ],
+                                                            // name: _viewModel
+                                                            //     .heroes[index].imageUrl == '' ? _viewModel.heroes[index].name :'',
+                                                            sources: [
+                                                              // // NetworkSource('https://picsum.photos/200/300')
+                                                              // GitHubSource(
+                                                              //     'fatihkurcenli')
+                                                              NetworkSource(_viewModel
+                                                                      .heroes
+                                                                      .elementAt(
+                                                                          index)
+                                                                      .imageUrl ??
+                                                                  '')
+                                                            ],
+                                                            loader: Shimmer.fromColors(
+                                                                child: CircleAvatar(
+                                                                    radius: context
+                                                                            .mediumValue *
+                                                                        0.7),
+                                                                baseColor: Colors
+                                                                    .grey[300]!,
+                                                                highlightColor:
+                                                                    Colors.grey[
+                                                                        100]!),
+                                                            textStyle: TextStyle(
+                                                                fontSize: context
+                                                                    .mediumValue)),
+                                                        title: _viewModel
+                                                                .isLoading
+                                                            ? Center(
+                                                                child:
+                                                                    CircularProgressIndicator())
+                                                            : Text(
+                                                                _viewModel
+                                                                        .heroes
+                                                                        .elementAt(
+                                                                            index)
+                                                                        .name ??
+                                                                    'Null',
+                                                                style: context
+                                                                    .textTheme
+                                                                    .headline6!
+                                                                    .copyWith(
+                                                                        fontSize:
+                                                                            14,
+                                                                        color: Color(
+                                                                            0xFF4E5F49)),
+                                                              ),
+                                                        trailing: Text(
+                                                            ('+' +
+                                                                _viewModel
+                                                                    .heroes
+                                                                    .elementAt(
+                                                                        index)
+                                                                    .point!
+                                                                    .toString()),
+                                                            style: context
+                                                                .textTheme
+                                                                .headline6!
+                                                                .copyWith(
+                                                                    color: Color(
+                                                                        0xFFC4C0FF))),
+                                                      ),
+                                                      Divider(
+                                                          height: 1.5,
                                                           color: Color(
-                                                              0xFF4E5F49)),
-                                                ),
-                                                trailing: Text('+100p',
-                                                    style: context
-                                                        .textTheme.headline6!
-                                                        .copyWith(
-                                                            color: Color(
-                                                                0xFFC4C0FF))),
-                                              ),
-                                              Divider(
-                                                  height: 1.5,
-                                                  color: Color(0xFFC4C6C3)),
-                                              context.emptySizedHeightBoxLow,
-                                            ],
-                                          );
-                                        }),
-                                  ),
+                                                              0xFFC4C6C3)),
+                                                      context
+                                                          .emptySizedHeightBoxLow,
+                                                    ],
+                                                  );
+                                                });
+                                      })),
                                   Expanded(
                                       flex: 1,
                                       child: GestureDetector(
@@ -149,22 +214,6 @@ class HeroesView extends StatelessWidget {
                 ],
               ),
             ));
-  }
-
-  Avatar _avatarPicture(BuildContext context) {
-    return Avatar(
-        shape: AvatarShape.circle(context.mediumValue * 0.7),
-        placeholderColors: [context.colors.primaryVariant],
-        name: 'Fatih Kurçenli',
-        sources: [
-          // NetworkSource('https://picsum.photos/200/300')
-          GitHubSource('fatihkurcenli')
-        ],
-        loader: Shimmer.fromColors(
-            child: CircleAvatar(radius: context.mediumValue * 0.7),
-            baseColor: Colors.grey[300]!,
-            highlightColor: Colors.grey[100]!),
-        textStyle: TextStyle(fontSize: context.mediumValue));
   }
 
   Positioned _heroesSvgImage(BuildContext context) {
