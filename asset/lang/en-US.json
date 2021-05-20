@@ -57,5 +57,20 @@
     "error2Description": "Your score could not be transferred due to an error in the service. Please try again.",
     "error3": "The QR Code not Same",
     "error3Description": "The name and garbage container QR Code is not equal !!"
+  },
+  "scanBarcodeView": {
+    "mainName": "Let's recycle in a few steps.",
+    "step1": "Step 1",
+    "step1Title": "Scan recycling waste",
+    "step1Description": "Scan the QR code of the recycling waste",
+    "step1Button": "SCAN",
+    "step2": "Step 2",
+    "step2Title": "Scan recycling bin",
+    "step2Description": "Now scan the QR Code of the recycling bin that matches",
+    "step2Button": "SCAN",
+    "step3": "Step 3",
+    "step3Title": "Throw in recycle bin",
+    "step3Description": "Now you can put your recycling waste in the box and your points will be loaded on your card",
+    "step3Button": "COMPLETE"
   }
 }

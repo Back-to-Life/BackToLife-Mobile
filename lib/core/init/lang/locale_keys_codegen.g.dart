@@ -73,6 +73,21 @@ class CodegenLoader extends AssetLoader{
     "error2Description": "Your score could not be transferred due to an error in the service. Please try again.",
     "error3": "The QR Code not Same",
     "error3Description": "The name and garbage container QR Code is not equal !!"
+  },
+  "scanBarcodeView": {
+    "mainName": "Let's recycle in a few steps.",
+    "step1": "Step 1",
+    "step1Title": "Scan recycling waste",
+    "step1Description": "Scan the QR code of the recycling waste",
+    "step1Button": "SCAN",
+    "step2": "Step 2",
+    "step2Title": "Scan recycling bin",
+    "step2Description": "Now scan the QR Code of the recycling bin that matches",
+    "step2Button": "SCAN",
+    "step3": "Step 3",
+    "step3Title": "Throw in recycle bin",
+    "step3Description": "Now you can put your recycling waste in the box and your points will be loaded on your card",
+    "step3Button": "COMPLETE"
   }
 };
 static const Map<String,dynamic> tr_TR = {
@@ -134,6 +149,21 @@ static const Map<String,dynamic> tr_TR = {
     "error2Description": "Serviste oluşan bir hata dolayısıyla puanınız eklenemedi.\n Lütfen Tekrar deneyiniz.",
     "error3": "QR Kodlar Aynı Değil !!",
     "error3Description": "Çöp kutusu ile atığın QR kodları aynı değil !!"
+  },
+  "scanBarcodeView": {
+    "mainName": "Hadi ! Birkaç adımla geri dönüşümü sağlayalım.",
+    "step1": "Adım 1",
+    "step1Title": "Çöpü Taratın",
+    "step1Description": "Çöp kutusu üzerindeki QR kodu taratın",
+    "step1Button": "TARAT",
+    "step2": "Adım 2",
+    "step2Title": "Çöp Kutusundaki QR kodu",
+    "step2Description": "Çöp kutusu üzerindeki QR kodu taratın",
+    "step2Button": "TARAT",
+    "step3": "Adım 3",
+    "step3Title": "Çöp kutusuna atın ve Bekleyin",
+    "step3Description": "Çöp kutusuna atın ve birkaç saniye bekleyin, sonrasında tamamla diyerek puanı kazanın.",
+    "step3Button": "TAMAMLA"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "tr_TR": tr_TR};
