@@ -27,10 +27,10 @@ class ProfileView extends StatelessWidget {
           model.setContext(context);
           model.init();
         },
-        onPageBuilder: (context, value) => Scaffold(
+        onPageBuilder: (context, _viewModel) => Scaffold(
               body: Column(
                 children: [
-                  upperStack(context),
+                  upperStack(context, _viewModel),
                   Expanded(
                     child: Column(
                       children: [
@@ -117,7 +117,7 @@ class ProfileView extends StatelessWidget {
             ));
   }
 
-  Stack upperStack(BuildContext context) {
+  Stack upperStack(BuildContext context, ProfileViewModel _viewModel) {
     return Stack(
       children: [
         Container(
@@ -180,25 +180,28 @@ class ProfileView extends StatelessWidget {
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: EdgeInsets.only(
-                top: context.height * 0.2, left: context.width * 0.6),
-            child: Container(
-              child: CircleAvatar(
-                radius: context.mediumValue,
-                backgroundColor: context.colors.primary,
-                child: SvgPicture.asset(
-                  SVGImagePaths.instance.pencil,
-                  color: context.colors.secondary,
+        GestureDetector(
+          onTap: () => _viewModel.uploadImageFirebase(),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: context.height * 0.2, left: context.width * 0.6),
+              child: Container(
+                child: CircleAvatar(
+                  radius: context.mediumValue,
+                  backgroundColor: context.colors.primary,
+                  child: SvgPicture.asset(
+                    SVGImagePaths.instance.pencil,
+                    color: context.colors.secondary,
+                  ),
                 ),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: context.colors.secondary,
+                        width: context.lowValue * 0.3)),
               ),
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                      color: context.colors.secondary,
-                      width: context.lowValue * 0.3)),
             ),
           ),
         )
