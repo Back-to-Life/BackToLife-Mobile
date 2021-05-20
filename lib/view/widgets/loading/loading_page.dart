@@ -1,5 +1,7 @@
+import 'package:backtolife/core/init/svgPath/lottie_path.dart';
+
 import '../../../core/extension/context_extension.dart';
-import '../../../core/init/image/lottie_constants.dart';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -22,6 +24,6 @@ class LoadingPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(context.highValue)),
             height: context.height * 0.1,
             width: context.width * 0.2,
-            child: Lottie.asset(LottiePaths.instance!.loadingPageContainer)));
+            child: Lottie.asset(LottiePaths.instance.loadingPageContainer)));
   }
 }

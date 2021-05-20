@@ -47,7 +47,15 @@
     "dark": "Dark",
     "pushnotification": "Push Notification",
     "emailnotification": "Email Notification",
-    "camerapermissons":"Camera",
-    "locationpermissons":"Location"
+    "camerapermissons": "Camera",
+    "locationpermissons": "Location"
+  },
+  "errorDialog": {
+    "error1": "QR Code couldn't be Read !!",
+    "error1Description": "The QR Code could not be read. \n Please try again.",
+    "eror2": "Could Not Add Point",
+    "error2Description": "Your score could not be transferred due to an error in the service. Please try again.",
+    "error3": "The QR Code not Same",
+    "error3Description": "The name and garbage container QR Code is not equal !!"
   }
 }

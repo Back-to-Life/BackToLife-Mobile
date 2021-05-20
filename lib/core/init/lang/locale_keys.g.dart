@@ -45,5 +45,12 @@ abstract class  LocaleKeys {
   static const settings_camerapermissons = 'settings.camerapermissons';
   static const settings_locationpermissons = 'settings.locationpermissons';
   static const settings = 'settings';
+  static const errorDialog_error1 = 'errorDialog.error1';
+  static const errorDialog_error1Description = 'errorDialog.error1Description';
+  static const errorDialog_eror2 = 'errorDialog.eror2';
+  static const errorDialog_error2Description = 'errorDialog.error2Description';
+  static const errorDialog_error3 = 'errorDialog.error3';
+  static const errorDialog_error3Description = 'errorDialog.error3Description';
+  static const errorDialog = 'errorDialog';
 
 }

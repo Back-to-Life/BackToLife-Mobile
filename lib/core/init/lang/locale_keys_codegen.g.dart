@@ -65,6 +65,14 @@ class CodegenLoader extends AssetLoader{
     "emailnotification": "Email Notification",
     "camerapermissons": "Camera",
     "locationpermissons": "Location"
+  },
+  "errorDialog": {
+    "error1": "QR Code couldn't be Read !!",
+    "error1Description": "The QR Code could not be read. \n Please try again.",
+    "eror2": "Could Not Add Point",
+    "error2Description": "Your score could not be transferred due to an error in the service. Please try again.",
+    "error3": "The QR Code not Same",
+    "error3Description": "The name and garbage container QR Code is not equal !!"
   }
 };
 static const Map<String,dynamic> tr_TR = {
@@ -118,6 +126,14 @@ static const Map<String,dynamic> tr_TR = {
     "emailnotification": "Email Gönderme İzni",
     "camerapermissons": "Kamera İzni",
     "locationpermissons": "Konum İzni"
+  },
+  "errorDialog": {
+    "error1": "QR Code Okunamadı !!",
+    "error1Description": "Qr Code okunamadı. \n Lütfen Tekrar Deneyin.",
+    "eror2": "Puan Eklenemedi",
+    "error2Description": "Serviste oluşan bir hata dolayısıyla puanınız eklenemedi.\n Lütfen Tekrar deneyiniz.",
+    "error3": "QR Kodlar Aynı Değil !!",
+    "error3Description": "Çöp kutusu ile atığın QR kodları aynı değil !!"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "tr_TR": tr_TR};

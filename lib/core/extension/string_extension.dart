@@ -17,3 +17,4 @@ extension ImagePathExtension on String {
 extension LottieExtension on String {
   String get toLottie => 'asset/lottie/$this.json';
 }
+

@@ -42,11 +42,14 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            "Let's recycle in\n a few steps.",
-                            textAlign: TextAlign.start,
-                            style: context.textTheme.headline4!
-                                .copyWith(color: context.colors.surface),
+                          Padding(
+                            padding: EdgeInsets.only(left: context.mediumValue),
+                            child: Text(
+                              "Let's recycle in\n a few steps.",
+                              textAlign: TextAlign.start,
+                              style: context.textTheme.headline4!
+                                  .copyWith(color: context.colors.surface),
+                            ),
                           ),
                         ],
                       ),
@@ -72,12 +75,12 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                               },
                               steps: _mySteps(_viewModel),
                               currentStep: _viewModel.stepNumber,
-                              /*    onStepTapped: (step) {
-                                    setState(() {
-                                      _currentStep = step;
-                                      _viewModel.stepNumber = step;
-                                    });
-                                  }, */
+                              onStepTapped: (step) {
+                                setState(() {
+                                  _currentStep = step;
+                                  _viewModel.stepNumber = step;
+                                });
+                              },
                               onStepContinue: () {
                                 switch (_viewModel.stepNumber) {
                                   case 0:
@@ -148,218 +151,185 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
 
   List<Step> _mySteps(ScanBarcodeViewModel _viewModel) {
     var _steps = <Step>[
-      Step(
-        title: Text(
-          'Step 1',
-          style: context.textTheme.headline5!.copyWith(
-              fontWeight: FontWeight.bold, color: context.colors.surface),
-        ),
-        subtitle: Text(
-          'Scan recycling waste',
-          style: context.textTheme.headline6!
-              .copyWith(color: context.colors.surface),
-        ),
-        content: Container(
-          alignment: Alignment.centerLeft,
-          height: context.height * 0.15,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 3,
-                child: Text(
-                  'Scan the QR code of the \n recycling waste',
-                  style: context.textTheme.subtitle1!
-                      .copyWith(color: context.colors.surface),
-                ),
-              ),
-              Expanded(
-                  child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Spacer(),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          onPrimary: Colors.black87,
-                          primary: context.colors.primaryVariant,
-                          minimumSize:
-                              Size(context.width * 0.1, context.height * 0.5),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: context.normalBorderRadius,
-                          ),
-                          elevation: 10,
-                          animationDuration: const Duration(seconds: 2)),
-                      onPressed: () => _viewModel.setBarcodeScan(),
-                      child: Text(
-                        'SCAN',
-                        style: context.textTheme.headline6!
-                            .copyWith(color: Colors.white),
-                      )),
-                ],
-              ))
-            ],
-          ),
-        ),
-        isActive: _currentStep >= 0,
-        state: _currentStep <= 0 ? StepState.indexed : StepState.complete,
-      ),
-      Step(
-        title: Text(
-          'Step 2',
-          style: context.textTheme.headline5!.copyWith(
-              fontWeight: FontWeight.bold, color: context.colors.surface),
-        ),
-        subtitle: Text(
-          'Scan the recycle bin',
-          style: context.textTheme.headline6!
-              .copyWith(color: context.colors.surface),
-        ),
-        content: Container(
-          alignment: Alignment.centerLeft,
-          height: context.height * 0.15,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Spacer(flex: 1),
-              Expanded(
-                child: Text(
-                  'Now scan the QR code of the\n recycling bin that matches\n the type of recycling waste',
-                  style: context.textTheme.subtitle1!
-                      .copyWith(color: context.colors.surface),
-                ),
-              ),
-              Spacer(flex: 1),
-              Expanded(
-                  child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          onPrimary: Colors.black87,
-                          primary: context.colors.primaryVariant,
-                          minimumSize:
-                              Size(context.width * 0.1, context.height * 0.5),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: context.normalBorderRadius,
-                          ),
-                          elevation: 10,
-                          animationDuration: const Duration(seconds: 2)),
-                      onPressed: () {},
-                      child: Text(
-                        'SCAN',
-                        style: context.textTheme.headline6!
-                            .copyWith(color: Colors.white),
-                      )),
-                ],
-              ))
-            ],
-          ),
-        ),
-        isActive: _currentStep >= 1,
-        state: _currentStep <= 1 ? StepState.indexed : StepState.complete,
-      ),
-      Step(
-        title: Text(
-          'Step 3',
-          style: context.textTheme.headline5!.copyWith(
-              fontWeight: FontWeight.bold, color: context.colors.surface),
-        ),
-        subtitle: Text(
-          'Throw in recycle bin',
-          style: context.textTheme.headline6!
-              .copyWith(color: context.colors.surface),
-        ),
-        content: Container(
-          alignment: Alignment.centerLeft,
-          height: context.height * 0.15,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Spacer(flex: 1),
-              Expanded(
-                child: Text(
-                  'Now you can put your recycling waste in the box \n and your points will be loaded on your card',
-                  style: context.textTheme.subtitle1!
-                      .copyWith(color: context.colors.surface),
-                ),
-              ),
-              Spacer(flex: 1),
-              Expanded(
-                  child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          onPrimary: Colors.black87,
-                          primary: context.colors.primaryVariant,
-                          minimumSize:
-                              Size(context.width * 0.1, context.height * 0.5),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: context.normalBorderRadius,
-                          ),
-                          elevation: 10,
-                          animationDuration: const Duration(seconds: 2)),
-                      onPressed: () {},
-                      child: Text(
-                        'Complete',
-                        style: context.textTheme.headline6!
-                            .copyWith(color: Colors.white),
-                      )),
-                ],
-              ))
-            ],
-          ),
-        ),
-        isActive: _currentStep >= 2,
-        state: _currentStep <= 2 ? StepState.indexed : StepState.complete,
-      ),
+      _step1(_viewModel),
+      _step2(_viewModel),
+      _step3(_viewModel),
     ];
     return _steps;
   }
-}
 
-/* 
- class ScanBarcodeView extends StatefulWidget {
-  ScanBarcodeView({Key? key}) : super(key: key);
-
-  @override
-  _ScanBarcodeViewState createState() => _ScanBarcodeViewState();
-}
-
-class _ScanBarcodeViewState extends State<ScanBarcodeView> {
-  int _currentStep = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('deneme'),
+  Step _step3(ScanBarcodeViewModel _viewModel) {
+    return Step(
+      title: Text(
+        'Step 3',
+        style: context.textTheme.headline5!.copyWith(
+            fontWeight: FontWeight.bold, color: context.colors.surface),
       ),
-      body:
+      subtitle: Text(
+        'Throw in recycle bin',
+        style: context.textTheme.headline6!
+            .copyWith(color: context.colors.surface),
+      ),
+      content: Container(
+        alignment: Alignment.centerLeft,
+        height: context.height * 0.15,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Spacer(flex: 1),
+            Expanded(
+              child: Text(
+                'Now you can put your recycling waste in the box \n and your points will be loaded on your card',
+                style: context.textTheme.subtitle1!
+                    .copyWith(color: context.colors.surface),
+              ),
+            ),
+            Expanded(
+                child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.black87,
+                        primary: context.colors.primaryVariant,
+                        minimumSize:
+                            Size(context.width * 0.1, context.height * 0.5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: context.normalBorderRadius,
+                        ),
+                        elevation: 10,
+                        animationDuration: const Duration(seconds: 2)),
+                    onPressed: () => _viewModel.isSuccessService(),
+                    child: Text(
+                      'Complete',
+                      style: context.textTheme.headline6!
+                          .copyWith(color: Colors.white),
+                    )),
+              ],
+            ))
+          ],
+        ),
+      ),
+      isActive: _currentStep >= 2,
+      state: _currentStep <= 2 ? StepState.indexed : StepState.complete,
     );
   }
 
-  List<Step> _mySteps() {
-    List<Step> _steps = [
-      Step(
-          title: Text('Step 1'),
-          content: TextField(),
-          isActive: _currentStep >= 0,
-          state: _currentStep <= 0 ? StepState.editing : StepState.complete),
-      Step(
-        title: Text('Step 2'),
-        content: TextField(),
-        isActive: _currentStep >= 1,
+  Step _step2(ScanBarcodeViewModel _viewModel) {
+    return Step(
+      title: Text(
+        'Step 2',
+        style: context.textTheme.headline5!.copyWith(
+            fontWeight: FontWeight.bold, color: context.colors.surface),
       ),
-      Step(
-        title: Text('Step 3'),
-        content: TextField(),
-        isActive: _currentStep >= 2,
-      )
-    ];
-    return _steps;
+      subtitle: Text(
+        'Scan the recycle bin',
+        style: context.textTheme.headline6!
+            .copyWith(color: context.colors.surface),
+      ),
+      content: Container(
+        alignment: Alignment.centerLeft,
+        height: context.height * 0.15,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Spacer(flex: 1),
+            Expanded(
+              child: Text(
+                'Now scan the QR code of the\n recycling bin that matches\n the type of recycling waste',
+                style: context.textTheme.subtitle1!
+                    .copyWith(color: context.colors.surface),
+              ),
+            ),
+            Expanded(
+                child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.black87,
+                        primary: context.colors.primaryVariant,
+                        minimumSize:
+                            Size(context.width * 0.1, context.height * 0.5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: context.normalBorderRadius,
+                        ),
+                        elevation: 10,
+                        animationDuration: const Duration(seconds: 2)),
+                    onPressed: () => _viewModel.setContainerBarcodeScan(),
+                    child: Text(
+                      'SCAN',
+                      style: context.textTheme.headline6!
+                          .copyWith(color: Colors.white),
+                    )),
+              ],
+            ))
+          ],
+        ),
+      ),
+      isActive: _currentStep >= 1,
+      state: _currentStep <= 1 ? StepState.indexed : StepState.complete,
+    );
   }
-} */
+
+  Step _step1(ScanBarcodeViewModel _viewModel) {
+    return Step(
+      title: Text(
+        'Step 1',
+        style: context.textTheme.headline5!.copyWith(
+            fontWeight: FontWeight.bold, color: context.colors.surface),
+      ),
+      subtitle: Text(
+        'Scan recycling waste',
+        style: context.textTheme.headline6!
+            .copyWith(color: context.colors.surface),
+      ),
+      content: Container(
+        alignment: Alignment.centerLeft,
+        height: context.height * 0.15,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 3,
+              child: Text(
+                'Scan the QR code of the \n recycling waste',
+                style: context.textTheme.subtitle1!
+                    .copyWith(color: context.colors.surface),
+              ),
+            ),
+            Expanded(
+                child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Spacer(),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        onPrimary: Colors.black87,
+                        primary: context.colors.primaryVariant,
+                        minimumSize:
+                            Size(context.width * 0.1, context.height * 0.5),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: context.normalBorderRadius,
+                        ),
+                        elevation: 10,
+                        animationDuration: const Duration(seconds: 2)),
+                    onPressed: () => _viewModel.setBarcodeScan(),
+                    child: Text(
+                      'SCAN',
+                      style: context.textTheme.headline6!
+                          .copyWith(color: Colors.white),
+                    )),
+              ],
+            ))
+          ],
+        ),
+      ),
+      isActive: _currentStep >= 0,
+      state: _currentStep <= 0 ? StepState.indexed : StepState.complete,
+    );
+  }
+}
