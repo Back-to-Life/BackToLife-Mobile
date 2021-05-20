@@ -49,5 +49,13 @@
         "emailnotification": "Email Gönderme İzni",
         "camerapermissons": "Kamera İzni",
         "locationpermissons": "Konum İzni"
+    },
+    "errorDialog": {
+        "error1": "QR Code Okunamadı !!",
+        "error1Description": "Qr Code okunamadı. \n Lütfen Tekrar Deneyin.",
+        "eror2": "Puan Eklenemedi",
+        "error2Description": "Serviste oluşan bir hata dolayısıyla puanınız eklenemedi.\n Lütfen Tekrar deneyiniz.",
+        "error3": "QR Kodlar Aynı Değil !!",
+        "error3Description": "Çöp kutusu ile atığın QR kodları aynı değil !!"
     }
 }

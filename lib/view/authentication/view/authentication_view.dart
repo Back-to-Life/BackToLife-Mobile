@@ -1,4 +1,5 @@
-import '../../../core/init/image/lottie_constants.dart';
+import '../../../core/init/svgPath/lottie_path.dart';
+
 import '../../widgets/loading/loading_page.dart';
 import 'package:lottie/lottie.dart';
 
@@ -151,7 +152,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
           ? context.height * 0.35
           : context.height * 0.4,
       margin: EdgeInsets.only(bottom: context.mediumValue),
-      child: Center(child: Lottie.asset(LottiePaths.instance!.loginPageLottie)),
+      child: Center(child: Lottie.asset(LottiePaths.instance.loginPageLottie)),
     );
   }
 

@@ -30,6 +30,8 @@ class HeroesModel {
   final int? heroesModelId;
   final int? v;
   final String? imageUrl;
+
+  
   factory HeroesModel.fromJson(Map<String, dynamic> json) =>
       _$HeroesModelFromJson(json);
 
