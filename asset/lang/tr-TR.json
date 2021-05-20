@@ -57,5 +57,20 @@
         "error2Description": "Serviste oluşan bir hata dolayısıyla puanınız eklenemedi.\n Lütfen Tekrar deneyiniz.",
         "error3": "QR Kodlar Aynı Değil !!",
         "error3Description": "Çöp kutusu ile atığın QR kodları aynı değil !!"
+    },
+    "scanBarcodeView": {
+        "mainName": "Hadi ! Birkaç adımla geri dönüşümü sağlayalım.",
+        "step1": "Adım 1",
+        "step1Title": "Çöpü Taratın",
+        "step1Description": "Çöp kutusu üzerindeki QR kodu taratın",
+        "step1Button": "TARAT",
+        "step2": "Adım 2",
+        "step2Title": "Çöp Kutusundaki QR kodu",
+        "step2Description": "Çöp kutusu üzerindeki QR kodu taratın",
+        "step2Button": "TARAT",
+        "step3": "Adım 3",
+        "step3Title": "Çöp kutusuna atın ve Bekleyin",
+        "step3Description": "Çöp kutusuna atın ve birkaç saniye bekleyin, sonrasında tamamla diyerek puanı kazanın.",
+        "step3Button": "TAMAMLA"
     }
 }

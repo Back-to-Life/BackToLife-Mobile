@@ -1,3 +1,6 @@
+import 'package:backtolife/core/extension/string_extension.dart';
+import 'package:backtolife/core/init/lang/locale_keys.g.dart';
+
 import '../../../core/base/view/base_view.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/init/svgPath/image_path_svg.dart';
@@ -161,12 +164,12 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
   Step _step3(ScanBarcodeViewModel _viewModel) {
     return Step(
       title: Text(
-        'Step 3',
+        LocaleKeys.scanBarcodeView_step3.locale,
         style: context.textTheme.headline5!.copyWith(
             fontWeight: FontWeight.bold, color: context.colors.surface),
       ),
       subtitle: Text(
-        'Throw in recycle bin',
+        LocaleKeys.scanBarcodeView_step3Title.locale,
         style: context.textTheme.headline6!
             .copyWith(color: context.colors.surface),
       ),
@@ -179,7 +182,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
             Spacer(flex: 1),
             Expanded(
               child: Text(
-                'Now you can put your recycling waste in the box \n and your points will be loaded on your card',
+                LocaleKeys.scanBarcodeView_step3Description.locale,
                 style: context.textTheme.subtitle1!
                     .copyWith(color: context.colors.surface),
               ),
@@ -202,7 +205,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                         animationDuration: const Duration(seconds: 2)),
                     onPressed: () => _viewModel.isSuccessService(),
                     child: Text(
-                      'Complete',
+                      LocaleKeys.scanBarcodeView_step3Button.locale,
                       style: context.textTheme.headline6!
                           .copyWith(color: Colors.white),
                     )),
@@ -219,12 +222,12 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
   Step _step2(ScanBarcodeViewModel _viewModel) {
     return Step(
       title: Text(
-        'Step 2',
+        LocaleKeys.scanBarcodeView_step2.locale,
         style: context.textTheme.headline5!.copyWith(
             fontWeight: FontWeight.bold, color: context.colors.surface),
       ),
       subtitle: Text(
-        'Scan the recycle bin',
+        LocaleKeys.scanBarcodeView_step2Title.locale,
         style: context.textTheme.headline6!
             .copyWith(color: context.colors.surface),
       ),
@@ -237,7 +240,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
             Spacer(flex: 1),
             Expanded(
               child: Text(
-                'Now scan the QR code of the\n recycling bin that matches\n the type of recycling waste',
+                LocaleKeys.scanBarcodeView_step2Description.locale,
                 style: context.textTheme.subtitle1!
                     .copyWith(color: context.colors.surface),
               ),
@@ -260,7 +263,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                         animationDuration: const Duration(seconds: 2)),
                     onPressed: () => _viewModel.setContainerBarcodeScan(),
                     child: Text(
-                      'SCAN',
+                      LocaleKeys.scanBarcodeView_step2Button.locale,
                       style: context.textTheme.headline6!
                           .copyWith(color: Colors.white),
                     )),
@@ -277,12 +280,12 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
   Step _step1(ScanBarcodeViewModel _viewModel) {
     return Step(
       title: Text(
-        'Step 1',
+        LocaleKeys.scanBarcodeView_step1.locale,
         style: context.textTheme.headline5!.copyWith(
             fontWeight: FontWeight.bold, color: context.colors.surface),
       ),
       subtitle: Text(
-        'Scan recycling waste',
+        LocaleKeys.scanBarcodeView_step1Title.locale,
         style: context.textTheme.headline6!
             .copyWith(color: context.colors.surface),
       ),
@@ -295,7 +298,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
             Expanded(
               flex: 3,
               child: Text(
-                'Scan the QR code of the \n recycling waste',
+                LocaleKeys.scanBarcodeView_step1Description.locale,
                 style: context.textTheme.subtitle1!
                     .copyWith(color: context.colors.surface),
               ),
@@ -319,7 +322,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                         animationDuration: const Duration(seconds: 2)),
                     onPressed: () => _viewModel.setBarcodeScan(),
                     child: Text(
-                      'SCAN',
+                      LocaleKeys.scanBarcodeView_step1Button.locale,
                       style: context.textTheme.headline6!
                           .copyWith(color: Colors.white),
                     )),

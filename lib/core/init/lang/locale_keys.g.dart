@@ -52,5 +52,19 @@ abstract class  LocaleKeys {
   static const errorDialog_error3 = 'errorDialog.error3';
   static const errorDialog_error3Description = 'errorDialog.error3Description';
   static const errorDialog = 'errorDialog';
+  static const scanBarcodeView_mainName = 'scanBarcodeView.mainName';
+  static const scanBarcodeView_step1 = 'scanBarcodeView.step1';
+  static const scanBarcodeView_step1Title = 'scanBarcodeView.step1Title';
+  static const scanBarcodeView_step1Description = 'scanBarcodeView.step1Description';
+  static const scanBarcodeView_step1Button = 'scanBarcodeView.step1Button';
+  static const scanBarcodeView_step2 = 'scanBarcodeView.step2';
+  static const scanBarcodeView_step2Title = 'scanBarcodeView.step2Title';
+  static const scanBarcodeView_step2Description = 'scanBarcodeView.step2Description';
+  static const scanBarcodeView_step2Button = 'scanBarcodeView.step2Button';
+  static const scanBarcodeView_step3 = 'scanBarcodeView.step3';
+  static const scanBarcodeView_step3Title = 'scanBarcodeView.step3Title';
+  static const scanBarcodeView_step3Description = 'scanBarcodeView.step3Description';
+  static const scanBarcodeView_step3Button = 'scanBarcodeView.step3Button';
+  static const scanBarcodeView = 'scanBarcodeView';
 
 }
