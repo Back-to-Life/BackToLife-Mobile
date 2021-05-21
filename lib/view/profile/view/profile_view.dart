@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:backtolife/core/init/notifier/theme_notifier.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../widgets/star/star_rating.dart';
@@ -37,13 +38,18 @@ class ProfileView extends StatelessWidget {
                         Spacer(flex: 1),
                         Expanded(
                           flex: 2,
-                          child: Text(
-                            'Fatih Kurçenli',
-                            style: context.textTheme.headline4!.copyWith(
-                              color: context.colors.secondary,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          child: Observer(builder: (_) {
+                            return _viewModel.isLoadingPageData
+                                ? Center(child: CircularProgressIndicator())
+                                : Text(
+                                    _viewModel.userProfileModel.name ?? '',
+                                    style:
+                                        context.textTheme.headline4!.copyWith(
+                                      color: context.colors.secondary,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  );
+                          }),
                         ),
                         Spacer(flex: 1),
                         Expanded(
@@ -80,21 +86,27 @@ class ProfileView extends StatelessWidget {
                       ),
                     ],
                   )),
-                  CircularPercentIndicator(
-                    radius: context.height * 0.2,
-                    lineWidth: 10,
-                    percent: 0.7,
-                    center: Text('+60',
-                        style: context.textTheme.headline3!.copyWith(
-                            color: Color(0xFFC4C0FF),
-                            fontWeight: FontWeight.bold)),
-                    progressColor: Color(0xFFC4C0FF),
-                    animation: true,
-                    animationDuration: 3,
-                    backgroundColor: context.read<ThemeNotifier>().isLight
-                        ? Color(0xFF908F8F)
-                        : Color(0xFFD3D3D3),
-                  ),
+                  Observer(builder: (_) {
+                    return _viewModel.isLoadingPageData
+                        ? Center(child: CircularProgressIndicator())
+                        : CircularPercentIndicator(
+                            radius: context.height * 0.2,
+                            lineWidth: 10,
+                            percent: 0.7,
+                            center: Text(
+                                '+${_viewModel.userProfileModel.point}',
+                                style: context.textTheme.headline3!.copyWith(
+                                    color: Color(0xFFC4C0FF),
+                                    fontWeight: FontWeight.bold)),
+                            progressColor: Color(0xFFC4C0FF),
+                            animation: true,
+                            animationDuration: 3,
+                            backgroundColor:
+                                context.read<ThemeNotifier>().isLight
+                                    ? Color(0xFF908F8F)
+                                    : Color(0xFFD3D3D3),
+                          );
+                  }),
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
@@ -160,24 +172,28 @@ class ProfileView extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: Padding(
             padding: EdgeInsets.only(top: context.height * 0.15),
-            child: Avatar(
-              shape: AvatarShape.circle(context.highValue),
-              placeholderColors: [context.colors.primaryVariant],
-              sources: [
-                // NetworkSource('https://picsum.photos/200/300')
-                GitHubSource('fatihkurcenli')
-              ],
-              loader: Shimmer.fromColors(
-                  child: CircleAvatar(radius: context.highValue),
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!),
-              name: 'Fatih Kurçenli',
-              elevation: 20,
-              border: Border.all(
-                  color: context.colors.secondary,
-                  width: context.lowValue * 0.6),
-              textStyle: TextStyle(fontSize: context.mediumValue),
-            ),
+            child: Observer(builder: (_) {
+              return CircleAvatar(
+                radius: context.highValue,
+                backgroundColor: Colors.transparent,
+                child: _viewModel.isLoading
+                    ? Shimmer.fromColors(
+                        child: CircleAvatar(radius: context.highValue),
+                        baseColor: Colors.grey[300]!,
+                        highlightColor: Colors.grey[100]!)
+                    : ClipOval(
+                        child: Image.network(
+                          (_viewModel.downloadUrl == null &&
+                                  _viewModel.userProfileModel.imageUrl == '')
+                              ? 'https://picsum.photos/200/300'
+                              : '${_viewModel.userProfileModel.imageUrl}',
+                          width: double.infinity,
+                          height: double.infinity,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+              );
+            }),
           ),
         ),
         GestureDetector(
@@ -209,3 +225,32 @@ class ProfileView extends StatelessWidget {
     );
   }
 }
+
+
+/*
+
+
+Avatar(
+                shape: AvatarShape.circle(context.highValue),
+                placeholderColors: [context.colors.primaryVariant],
+                sources: [
+                  // NetworkSource('https://picsum.photos/200/300')
+                  _viewModel.downloadUrl == null
+                      ? GitHubSource('fatihkurcenli')
+                      : NetworkSource('${_viewModel.downloadUrl}')
+                  //
+                ],
+                loader: Shimmer.fromColors(
+                    child: CircleAvatar(radius: context.highValue),
+                    baseColor: Colors.grey[300]!,
+                    highlightColor: Colors.grey[100]!),
+                name: 'Fatih Kurçenli',
+                elevation: 20,
+                border: Border.all(
+                    color: context.colors.secondary,
+                    width: context.lowValue * 0.6),
+                textStyle: TextStyle(fontSize: context.mediumValue),
+              );
+
+
+              */

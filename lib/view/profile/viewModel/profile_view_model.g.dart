@@ -39,6 +39,37 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     });
   }
 
+  final _$isLoadingAtom = Atom(name: '_ProfileViewModelBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  final _$isLoadingPageDataAtom =
+      Atom(name: '_ProfileViewModelBase.isLoadingPageData');
+
+  @override
+  bool get isLoadingPageData {
+    _$isLoadingPageDataAtom.reportRead();
+    return super.isLoadingPageData;
+  }
+
+  @override
+  set isLoadingPageData(bool value) {
+    _$isLoadingPageDataAtom.reportWrite(value, super.isLoadingPageData, () {
+      super.isLoadingPageData = value;
+    });
+  }
+
   final _$uploadImageFirebaseAsyncAction =
       AsyncAction('_ProfileViewModelBase.uploadImageFirebase');
 
@@ -48,11 +79,55 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
         .run(() => super.uploadImageFirebase());
   }
 
+  final _$_changeDatabaseUrlAsyncAction =
+      AsyncAction('_ProfileViewModelBase._changeDatabaseUrl');
+
+  @override
+  Future<void> _changeDatabaseUrl(String downloadUrl) {
+    return _$_changeDatabaseUrlAsyncAction
+        .run(() => super._changeDatabaseUrl(downloadUrl));
+  }
+
+  final _$_getProfileDataAsyncAction =
+      AsyncAction('_ProfileViewModelBase._getProfileData');
+
+  @override
+  Future<void> _getProfileData() {
+    return _$_getProfileDataAsyncAction.run(() => super._getProfileData());
+  }
+
+  final _$_ProfileViewModelBaseActionController =
+      ActionController(name: '_ProfileViewModelBase');
+
+  @override
+  void _changeLoading() {
+    final _$actionInfo = _$_ProfileViewModelBaseActionController.startAction(
+        name: '_ProfileViewModelBase._changeLoading');
+    try {
+      return super._changeLoading();
+    } finally {
+      _$_ProfileViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void _changeLoadingData() {
+    final _$actionInfo = _$_ProfileViewModelBaseActionController.startAction(
+        name: '_ProfileViewModelBase._changeLoadingData');
+    try {
+      return super._changeLoadingData();
+    } finally {
+      _$_ProfileViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 pickedFile: ${pickedFile},
-downloadUrl: ${downloadUrl}
+downloadUrl: ${downloadUrl},
+isLoading: ${isLoading},
+isLoadingPageData: ${isLoadingPageData}
     ''';
   }
 }
