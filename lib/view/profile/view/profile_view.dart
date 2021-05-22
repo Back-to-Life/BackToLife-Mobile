@@ -101,7 +101,7 @@ class ProfileView extends StatelessWidget {
                         : CircularPercentIndicator(
                             radius: context.height * 0.2,
                             lineWidth: 10,
-                            percent: 0.7,
+                            percent: _viewModel.percentValue ?? 0,
                             center: Text(
                                 '+${_viewModel.userProfileModel.point}',
                                 style: context.textTheme.headline3!.copyWith(
@@ -109,7 +109,7 @@ class ProfileView extends StatelessWidget {
                                     fontWeight: FontWeight.bold)),
                             progressColor: Color(0xFFC4C0FF),
                             animation: true,
-                            animationDuration: 3,
+                            animationDuration: 5000,
                             backgroundColor:
                                 context.read<ThemeNotifier>().isLight
                                     ? Color(0xFF908F8F)

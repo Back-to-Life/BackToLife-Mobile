@@ -5,6 +5,7 @@ import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
 import 'package:backtolife/core/init/cache/locale_manager.dart';
 import 'package:backtolife/view/heroes/view/heroes_view.dart';
 import 'package:lottie/lottie.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 import '../../settings/view/settings_view.dart';
@@ -78,11 +79,6 @@ class _HomeViewState extends State<HomeView>
             curve: Interval(0.5, 1, curve: Curves.fastOutSlowIn)));
 
     _animationController.forward();
-   /*  WidgetsBinding.instance!.addPostFrameCallback((_) {
-      Future.delayed(const Duration(seconds: 3), () {
-        _layout(_);
-      });
-    }); */
   }
 
   @override
@@ -99,7 +95,7 @@ class _HomeViewState extends State<HomeView>
           model.setContext(context);
           model.init();
         },
-        onPageBuilder: (context, viewModel) => Scaffold(
+        onPageBuilder: (context, _viewModel) => Scaffold(
               body: Padding(
                 padding: context.paddingLow,
                 child: Column(
@@ -108,10 +104,10 @@ class _HomeViewState extends State<HomeView>
                   children: [
                     Expanded(
                       flex: 2,
-                      child: _profileAvatar(context, viewModel),
+                      child: _profileAvatar(context, _viewModel),
                     ),
-                    Expanded(flex: 3, child: helloName(context)),
-                    build4Container(context, viewModel),
+                    Expanded(flex: 3, child: helloName(context, _viewModel)),
+                    build4Container(context, _viewModel),
                   ],
                 ),
               ),
@@ -124,32 +120,45 @@ class _HomeViewState extends State<HomeView>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          OpenContainer(
-              key: _viewModel.key1,
-              transitionType: ContainerTransitionType.fade,
-              transitionDuration: Duration(seconds: 3),
-              closedColor: context.colors.primary,
-              closedElevation: 0,
-              closedShape: CircleBorder(),
-              openBuilder: (context, _) => ProfileView(),
-              closedBuilder: (context, VoidCallback openContainer) => Avatar(
-                  shape: AvatarShape.circle(context.mediumValue),
-                  placeholderColors: [context.colors.primaryVariant],
-                  name: 'Fatih Kurçenli',
-                  elevation: 10,
-                  // onTap: showTutorial,
-                  sources: [
-                    // NetworkSource(
-                    // 'https://firebasestorage.googleapis.com/v0/b/backtolife-recycling.appspot.com/o/A-binary-input-image-size-40X40-px.png?alt=media&token=0173d664-fa76-46d1-bf70-574584c01284')
-                    GitHubSource('fatihkurcenli'),
-                  ],
-                  loader: Shimmer.fromColors(
-                      child: CircleAvatar(radius: context.mediumValue),
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!),
-                  border: Border.all(
-                      color: Colors.green, width: context.lowValue * 0.35),
-                  textStyle: TextStyle(fontSize: context.mediumValue))),
+          Observer(builder: (_) {
+            return _viewModel.isLoadingProfileImage
+                ? Center(
+                    child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Color(0xFF4E5F49))))
+                : OpenContainer(
+                    key: _viewModel.key1,
+                    transitionType: ContainerTransitionType.fade,
+                    transitionDuration: Duration(seconds: 3),
+                    closedColor: context.colors.primary,
+                    closedElevation: 0,
+                    closedShape: CircleBorder(),
+                    openBuilder: (context, _) => ProfileView(),
+                    closedBuilder: (context, VoidCallback openContainer) =>
+                        Avatar(
+                            shape: AvatarShape.circle(context.mediumValue),
+                            placeholderColors: [context.colors.primaryVariant],
+                            name: _viewModel.homeUserModel.name,
+                            elevation: 10,
+                            // onTap: showTutorial,
+                            sources: [
+                              // NetworkSource(
+                              // 'https://firebasestorage.googleapis.com/v0/b/backtolife-recycling.appspot.com/o/A-binary-input-image-size-40X40-px.png?alt=media&token=0173d664-fa76-46d1-bf70-574584c01284')
+                              // GitHubSource('fatihkurcenli'),
+                              NetworkSource(
+                                  _viewModel.homeUserModel.imageUrl ?? '')
+                            ],
+                            loader: Shimmer.fromColors(
+                                child:
+                                    CircleAvatar(radius: context.mediumValue),
+                                baseColor: Colors.grey[300]!,
+                                highlightColor: Colors.grey[100]!),
+                            border: Border.all(
+                                color: Colors.green,
+                                width: context.lowValue * 0.35),
+                            textStyle:
+                                TextStyle(fontSize: context.mediumValue)));
+          }),
           Spacer(flex: 1),
           Expanded(
             child: DefaultTextStyle(
@@ -185,25 +194,35 @@ class _HomeViewState extends State<HomeView>
     );
   }
 
-  Stack helloName(BuildContext context) {
+  Stack helloName(BuildContext context, HomeViewModel _viewModel) {
     return Stack(
       children: [
         Positioned(
           left: context.width * 0.05,
-          child: AnimatedBuilder(
-            animation: _worldAnimation,
-            builder: (BuildContext context, Widget? child) {
-              return Transform(
-                transform: Matrix4.translationValues(
-                    0, _rightSecondSlidingAnimation.value * context.height, 0),
-                child: Text(
-                  LocaleKeys.home_hello.tr() + '\nFatih Kurçenli',
-                  style: context.textTheme.headline4!
-                      .copyWith(color: context.colors.surface),
-                ),
-              );
-            },
-          ),
+          child: Observer(builder: (_) {
+            return _viewModel.isLoadingProfileImage
+                ? Center(
+                    child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Color(0xFF4E5F49))))
+                : AnimatedBuilder(
+                    animation: _worldAnimation,
+                    builder: (BuildContext context, Widget? child) {
+                      return Transform(
+                        transform: Matrix4.translationValues(
+                            0,
+                            _rightSecondSlidingAnimation.value * context.height,
+                            0),
+                        child: Text(
+                          LocaleKeys.home_hello.tr() +
+                              '\n${_viewModel.homeUserModel.name}',
+                          style: context.textTheme.headline4!
+                              .copyWith(color: context.colors.surface),
+                        ),
+                      );
+                    },
+                  );
+          }),
         ),
         buildWorldContainer(context),
         Positioned(
