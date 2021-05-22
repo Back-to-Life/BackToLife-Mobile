@@ -1,3 +1,5 @@
+import 'package:backtolife/view/settings/subsettings/language_settings/view/language_settings_view.dart';
+
 import '../../../core/base/model/base_view_model.dart';
 import '../../../core/constants/navigation/navigation_constants.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
@@ -17,6 +19,56 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) => this.context = context;
   @override
   void init() {
+    addName();
+  }
+
+
+
+  selectedItem(int index) async {
+    print('$index');
+
+    switch (index) {
+      case 1:
+        settingArgumans.clear();
+        String received = await Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) => LanguageSettingsView(
+                      string: 'foo',
+                    )));
+        if (received == 'bar') {
+          addName();
+        }
+        break;
+      case 2:
+        await navigation.navigateToPage(
+            path: NavigationConstants.NOTIFICATION_SETTINGS);
+        break;
+      case 3:
+        await navigation.navigateToPage(
+            path: NavigationConstants.PERMISSIONS_SETTINGS);
+        break;
+      case 4:
+        await navigation.navigateToPage(
+            path: NavigationConstants.THEMEMODE_SETTINGS);
+        break;
+      case 5:
+        await navigation.navigateToPage(
+            path: NavigationConstants.ABOUT_SETTINGS);
+        break;
+      case 6:
+        await navigation.navigateToPage(
+            path: NavigationConstants.LOGOUT_SETTINGS);
+        break;
+      default:
+    }
+  }
+
+  void backButtonLanguage() {
+    navigation.navigateToPage(path: NavigationConstants.HOME_VIEW);
+  }
+
+  void addName() {
     settingArgumans.add(SettingArgumansModel(
         title: LocaleKeys.settings_account.tr(),
         imagePath: SVGImagePaths.instance.accountSettings));
@@ -38,36 +90,5 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
     settingArgumans.add(SettingArgumansModel(
         title: LocaleKeys.settings_logout.tr(),
         imagePath: SVGImagePaths.instance.logoutsettings));
-  }
-
-  selectedItem(int index) {
-    print('$index');
-    switch (index) {
-      case 1:
-        navigation.navigateToPage(path: NavigationConstants.LANGUAGE_SETTINGS);
-        break;
-      case 2:
-        navigation.navigateToPage(
-            path: NavigationConstants.NOTIFICATION_SETTINGS);
-        break;
-      case 3:
-        navigation.navigateToPage(
-            path: NavigationConstants.PERMISSIONS_SETTINGS);
-        break;
-      case 4:
-        navigation.navigateToPage(path: NavigationConstants.THEMEMODE_SETTINGS);
-        break;
-      case 5:
-        navigation.navigateToPage(path: NavigationConstants.ABOUT_SETTINGS);
-        break;
-      case 6:
-        navigation.navigateToPage(path: NavigationConstants.LOGOUT_SETTINGS);
-        break;
-      default:
-    }
-  }
-
-  void backButtonLanguage() {
-    navigation.navigateToPage(path: NavigationConstants.HOME_VIEW);
   }
 }

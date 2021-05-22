@@ -140,11 +140,7 @@ class _HomeViewState extends State<HomeView>
                             placeholderColors: [context.colors.primaryVariant],
                             name: _viewModel.homeUserModel.name,
                             elevation: 10,
-                            // onTap: showTutorial,
                             sources: [
-                              // NetworkSource(
-                              // 'https://firebasestorage.googleapis.com/v0/b/backtolife-recycling.appspot.com/o/A-binary-input-image-size-40X40-px.png?alt=media&token=0173d664-fa76-46d1-bf70-574584c01284')
-                              // GitHubSource('fatihkurcenli'),
                               NetworkSource(
                                   _viewModel.homeUserModel.imageUrl ?? '')
                             ],

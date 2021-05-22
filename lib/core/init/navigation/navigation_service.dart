@@ -16,6 +16,12 @@ class NavigationService implements INavigationService {
     await navigatorKey.currentState!.pushNamed(path!, arguments: data);
   }
 
+/*   @override
+  Future<String> navigateToPageReturnString({String? path}) async {
+    var comeData = await navigatorKey.currentState!.pushNamed(path!);
+    return comeData ?? '';
+  } */
+
   @override
   Future<void> navigateToPageClear({String? path, Object? data}) async {
     await navigatorKey.currentState!
