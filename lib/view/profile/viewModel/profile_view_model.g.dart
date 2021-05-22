@@ -70,6 +70,52 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     });
   }
 
+  final _$imageProfileUrlAtom =
+      Atom(name: '_ProfileViewModelBase.imageProfileUrl');
+
+  @override
+  String? get imageProfileUrl {
+    _$imageProfileUrlAtom.reportRead();
+    return super.imageProfileUrl;
+  }
+
+  @override
+  set imageProfileUrl(String? value) {
+    _$imageProfileUrlAtom.reportWrite(value, super.imageProfileUrl, () {
+      super.imageProfileUrl = value;
+    });
+  }
+
+  final _$starValueAtom = Atom(name: '_ProfileViewModelBase.starValue');
+
+  @override
+  int? get starValue {
+    _$starValueAtom.reportRead();
+    return super.starValue;
+  }
+
+  @override
+  set starValue(int? value) {
+    _$starValueAtom.reportWrite(value, super.starValue, () {
+      super.starValue = value;
+    });
+  }
+
+  final _$isLoadingStarAtom = Atom(name: '_ProfileViewModelBase.isLoadingStar');
+
+  @override
+  bool get isLoadingStar {
+    _$isLoadingStarAtom.reportRead();
+    return super.isLoadingStar;
+  }
+
+  @override
+  set isLoadingStar(bool value) {
+    _$isLoadingStarAtom.reportWrite(value, super.isLoadingStar, () {
+      super.isLoadingStar = value;
+    });
+  }
+
   final _$uploadImageFirebaseAsyncAction =
       AsyncAction('_ProfileViewModelBase.uploadImageFirebase');
 
@@ -122,12 +168,26 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
   }
 
   @override
+  void _changeLoadingStar() {
+    final _$actionInfo = _$_ProfileViewModelBaseActionController.startAction(
+        name: '_ProfileViewModelBase._changeLoadingStar');
+    try {
+      return super._changeLoadingStar();
+    } finally {
+      _$_ProfileViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 pickedFile: ${pickedFile},
 downloadUrl: ${downloadUrl},
 isLoading: ${isLoading},
-isLoadingPageData: ${isLoadingPageData}
+isLoadingPageData: ${isLoadingPageData},
+imageProfileUrl: ${imageProfileUrl},
+starValue: ${starValue},
+isLoadingStar: ${isLoadingStar}
     ''';
   }
 }

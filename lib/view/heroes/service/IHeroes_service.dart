@@ -7,5 +7,5 @@ abstract class IHeroesService {
 
   IHeroesService(this.dio);
 
-  Future<List<HeroesModel>> fetchUserControl();
+  Future<HeroesModel?> fetchUserControl();
 }

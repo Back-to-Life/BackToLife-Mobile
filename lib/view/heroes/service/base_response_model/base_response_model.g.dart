@@ -8,9 +8,9 @@ part of 'base_response_model.dart';
 
 BaseResponseHeroes _$BaseResponseHeroesFromJson(Map<String, dynamic> json) {
   return BaseResponseHeroes(
-    data: (json['data'] as List<dynamic>?)
-        ?.map((e) => HeroesModel.fromJson(e as Map<String, dynamic>))
-        .toList(),
+    data: json['data'] == null
+        ? null
+        : HeroesModel.fromJson(json['data'] as Map<String, dynamic>),
   );
 }
 

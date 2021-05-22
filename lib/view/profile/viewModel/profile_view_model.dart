@@ -21,7 +21,7 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
   late final _fireStorage = FirebaseStorage.instance;
   late final image = ImagePicker();
   late final ProfileService service;
-  late final UserProfileModel userProfileModel;
+  late UserProfileModel userProfileModel = UserProfileModel();
 
   @observable
   late PickedFile pickedFile;
@@ -34,6 +34,15 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
 
   @observable
   bool isLoadingPageData = false;
+
+  @observable
+  String? imageProfileUrl;
+
+  @observable
+  int? starValue;
+
+  @observable
+  bool isLoadingStar = false;
 
   @override
   void setContext(BuildContext context) => this.context = context;
@@ -87,6 +96,11 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
   }
 
   @action
+  void _changeLoadingStar() {
+    isLoadingStar = !isLoadingStar;
+  }
+
+  @action
   Future<void> _changeDatabaseUrl(String downloadUrl) async {
     var responseSuccess = await service.updateProfilePictureUrl(
         ImageUpdateRequestModel(imageUrl: downloadUrl));
@@ -103,9 +117,26 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
   @action
   Future<void> _getProfileData() async {
     _changeLoadingData();
+    _changeLoadingStar();
     final _getResponse = await service.getDataProfile();
     if (_getResponse != null) {
       userProfileModel = _getResponse;
+      print(userProfileModel.refreshToken);
+      if ((userProfileModel.point! >= 0) && (userProfileModel.point! <= 49)) {
+        starValue = 1;
+      } else if ((userProfileModel.point! >= 50) &&
+          (userProfileModel.point! < 60)) {
+        starValue = 2;
+      } else if ((userProfileModel.point! >= 60) &&
+          (userProfileModel.point! < 70)) {
+        starValue = 3;
+      } else if ((userProfileModel.point! >= 70) &&
+          (userProfileModel.point! < 85)) {
+        starValue = 4;
+      } else if ((userProfileModel.point! >= 85) &&
+          (userProfileModel.point! <= 100)) {
+        starValue = 5;
+      }
     } else {
       await showDialog(
           context: context,
@@ -114,6 +145,8 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
               description: 'Servisteten veriler Çekilemedi !!',
               jsonPath: LottiePaths.instance.errorLottie));
     }
+
     _changeLoadingData();
+    _changeLoadingStar();
   }
 }

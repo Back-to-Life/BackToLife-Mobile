@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:backtolife/core/constants/app/app_constants.dart';
 import 'package:backtolife/core/init/notifier/theme_notifier.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -53,17 +54,25 @@ class ProfileView extends StatelessWidget {
                         ),
                         Spacer(flex: 1),
                         Expanded(
-                          child: StarDisplayWidget(
-                            value: 4,
-                            filledStar: Icon(Icons.star,
-                                color: Color(0xFFFFC107),
-                                size: context.mediumValue),
-                            unfilledStar: Icon(Icons.star_border_rounded,
-                                color: context.read<ThemeNotifier>().isLight
-                                    ? Color(0xFF989B9B)
-                                    : Color(0xFFFCFCEC).withOpacity(0.9),
-                                size: context.mediumValue),
-                          ),
+                          child: Observer(builder: (_) {
+                            return _viewModel.isLoadingStar
+                                ? Center(child: CircularProgressIndicator())
+                                : StarDisplayWidget(
+                                    value: _viewModel.starValue ?? 0,
+                                    filledStar: Icon(Icons.star,
+                                        color: Color(0xFFFFC107),
+                                        size: context.mediumValue),
+                                    unfilledStar: Icon(
+                                        Icons.star_border_rounded,
+                                        color: context
+                                                .read<ThemeNotifier>()
+                                                .isLight
+                                            ? Color(0xFF989B9B)
+                                            : Color(0xFFFCFCEC)
+                                                .withOpacity(0.9),
+                                        size: context.mediumValue),
+                                  );
+                          }),
                         ),
                         Spacer(flex: 2),
                       ],
@@ -183,15 +192,12 @@ class ProfileView extends StatelessWidget {
                         highlightColor: Colors.grey[100]!)
                     : ClipOval(
                         child: Image.network(
-                          (_viewModel.downloadUrl == null &&
-                                  _viewModel.userProfileModel.imageUrl == '')
-                              ? 'https://picsum.photos/200/300'
-                              : '${_viewModel.userProfileModel.imageUrl}',
-                          width: double.infinity,
-                          height: double.infinity,
-                          fit: BoxFit.fill,
-                        ),
-                      ),
+                        _viewModel.userProfileModel.imageUrl ??
+                            ApplicationConstants.ImageProfileIsNot,
+                        width: double.infinity,
+                        height: double.infinity,
+                        fit: BoxFit.fill,
+                      )),
               );
             }),
           ),

@@ -10,9 +10,16 @@ class HeroesViewModel = _HeroesViewModelBase with _$HeroesViewModel;
 abstract class _HeroesViewModelBase with Store, BaseViewModel {
   late HeroesService heroesService;
   // final _baseUrl = 'http://10.0.2.2:5000/';
+  late HeroesModel heroesModel;
 
   @observable
-  List<HeroesModel> heroes = [];
+  List<String> heroesImageUrl = [];
+
+  @observable
+  List<String> heroesName = [];
+
+  @observable
+  List<int> heroesPoint = [];
 
   @observable
   bool isLoading = false;
@@ -30,7 +37,13 @@ abstract class _HeroesViewModelBase with Store, BaseViewModel {
   Future<void> getDataHeroes() async {
     changedLoading();
     final responseData = await heroesService.fetchUserControl();
-    heroes = responseData;
+    if (responseData != null) {
+      heroesImageUrl = responseData.imageUrls!;
+      heroesName = responseData.names!;
+      heroesPoint = responseData.points!;
+      print(responseData.names);
+    }
+
     changedLoading();
   }
 

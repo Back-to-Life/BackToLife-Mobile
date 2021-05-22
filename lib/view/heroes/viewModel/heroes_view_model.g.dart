@@ -9,18 +9,49 @@ part of 'heroes_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$HeroesViewModel on _HeroesViewModelBase, Store {
-  final _$heroesAtom = Atom(name: '_HeroesViewModelBase.heroes');
+  final _$heroesImageUrlAtom =
+      Atom(name: '_HeroesViewModelBase.heroesImageUrl');
 
   @override
-  List<HeroesModel> get heroes {
-    _$heroesAtom.reportRead();
-    return super.heroes;
+  List<String> get heroesImageUrl {
+    _$heroesImageUrlAtom.reportRead();
+    return super.heroesImageUrl;
   }
 
   @override
-  set heroes(List<HeroesModel> value) {
-    _$heroesAtom.reportWrite(value, super.heroes, () {
-      super.heroes = value;
+  set heroesImageUrl(List<String> value) {
+    _$heroesImageUrlAtom.reportWrite(value, super.heroesImageUrl, () {
+      super.heroesImageUrl = value;
+    });
+  }
+
+  final _$heroesNameAtom = Atom(name: '_HeroesViewModelBase.heroesName');
+
+  @override
+  List<String> get heroesName {
+    _$heroesNameAtom.reportRead();
+    return super.heroesName;
+  }
+
+  @override
+  set heroesName(List<String> value) {
+    _$heroesNameAtom.reportWrite(value, super.heroesName, () {
+      super.heroesName = value;
+    });
+  }
+
+  final _$heroesPointAtom = Atom(name: '_HeroesViewModelBase.heroesPoint');
+
+  @override
+  List<int> get heroesPoint {
+    _$heroesPointAtom.reportRead();
+    return super.heroesPoint;
+  }
+
+  @override
+  set heroesPoint(List<int> value) {
+    _$heroesPointAtom.reportWrite(value, super.heroesPoint, () {
+      super.heroesPoint = value;
     });
   }
 
@@ -64,7 +95,9 @@ mixin _$HeroesViewModel on _HeroesViewModelBase, Store {
   @override
   String toString() {
     return '''
-heroes: ${heroes},
+heroesImageUrl: ${heroesImageUrl},
+heroesName: ${heroesName},
+heroesPoint: ${heroesPoint},
 isLoading: ${isLoading}
     ''';
   }

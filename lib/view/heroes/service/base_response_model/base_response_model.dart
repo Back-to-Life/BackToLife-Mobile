@@ -5,7 +5,7 @@ part 'base_response_model.g.dart';
 
 @JsonSerializable()
 class BaseResponseHeroes {
-  List<HeroesModel>? data;
+  final HeroesModel? data;
 
   BaseResponseHeroes({this.data});
 
