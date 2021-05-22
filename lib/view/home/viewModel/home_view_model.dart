@@ -1,21 +1,19 @@
+import 'package:backtolife/view/home/model/user_response_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
-
-import '../../../core/constants/enum/locale_keys_enum.dart';
-import '../../../core/init/cache/locale_manager.dart';
-
-import '../../profile/view/profile_view.dart';
-
-import '../../../core/constants/navigation/navigation_constants.dart';
-
-import '../../../core/base/model/base_view_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 
+import '../../../core/base/model/base_view_model.dart';
 import '../../../core/constants/enum/app_theme_enum.dart';
+import '../../../core/constants/enum/locale_keys_enum.dart';
+import '../../../core/constants/navigation/navigation_constants.dart';
+import '../../../core/init/cache/locale_manager.dart';
 import '../../../core/init/notifier/theme_notifier.dart';
+import '../../profile/view/profile_view.dart';
+import '../service/home_service.dart';
 
 part 'home_view_model.g.dart';
 
@@ -23,6 +21,8 @@ class HomeViewModel = _HomeViewModelBase with _$HomeViewModel;
 
 abstract class _HomeViewModelBase with Store, BaseViewModel {
   late TutorialCoachMark tutorialCoachMark;
+  late final HomeService homeService;
+  late HomeUserModel homeUserModel;
   @observable
   List<TargetFocus> targets = [];
   GlobalKey key1 = GlobalKey();
@@ -39,6 +39,8 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
 
   @override
   void init() {
+    homeService = HomeService(dio);
+    getHomeUserModel();
     initTargets();
     getTutorialSuccess();
     changeToggleButtonInit();
@@ -72,11 +74,28 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   @observable
   bool isLoading = false;
   @observable
+  bool isLoadingProfileImage = false;
+  @observable
   int number = 0;
 
   @action
   void increment() {
     number++;
+  }
+
+  @action
+  void changedLoading() {
+    isLoadingProfileImage = !isLoadingProfileImage;
+  }
+
+  @action
+  Future<void> getHomeUserModel() async {
+    changedLoading();
+    var responseData = await homeService.getHomeProfile();
+    if (responseData != null) {
+      homeUserModel = responseData;
+    }
+    changedLoading();
   }
 
   @action

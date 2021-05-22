@@ -70,6 +70,23 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     });
   }
 
+  final _$isLoadingProfileImageAtom =
+      Atom(name: '_HomeViewModelBase.isLoadingProfileImage');
+
+  @override
+  bool get isLoadingProfileImage {
+    _$isLoadingProfileImageAtom.reportRead();
+    return super.isLoadingProfileImage;
+  }
+
+  @override
+  set isLoadingProfileImage(bool value) {
+    _$isLoadingProfileImageAtom.reportWrite(value, super.isLoadingProfileImage,
+        () {
+      super.isLoadingProfileImage = value;
+    });
+  }
+
   final _$numberAtom = Atom(name: '_HomeViewModelBase.number');
 
   @override
@@ -83,6 +100,14 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
     _$numberAtom.reportWrite(value, super.number, () {
       super.number = value;
     });
+  }
+
+  final _$getHomeUserModelAsyncAction =
+      AsyncAction('_HomeViewModelBase.getHomeUserModel');
+
+  @override
+  Future<void> getHomeUserModel() {
+    return _$getHomeUserModelAsyncAction.run(() => super.getHomeUserModel());
   }
 
   final _$getTutorialSuccessAsyncAction =
@@ -114,6 +139,17 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
         name: '_HomeViewModelBase.increment');
     try {
       return super.increment();
+    } finally {
+      _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void changedLoading() {
+    final _$actionInfo = _$_HomeViewModelBaseActionController.startAction(
+        name: '_HomeViewModelBase.changedLoading');
+    try {
+      return super.changedLoading();
     } finally {
       _$_HomeViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -169,6 +205,7 @@ mixin _$HomeViewModel on _HomeViewModelBase, Store {
 targets: ${targets},
 isSelectedToggle: ${isSelectedToggle},
 isLoading: ${isLoading},
+isLoadingProfileImage: ${isLoadingProfileImage},
 number: ${number}
     ''';
   }

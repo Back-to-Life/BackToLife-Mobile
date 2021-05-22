@@ -101,6 +101,21 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     });
   }
 
+  final _$percentValueAtom = Atom(name: '_ProfileViewModelBase.percentValue');
+
+  @override
+  double? get percentValue {
+    _$percentValueAtom.reportRead();
+    return super.percentValue;
+  }
+
+  @override
+  set percentValue(double? value) {
+    _$percentValueAtom.reportWrite(value, super.percentValue, () {
+      super.percentValue = value;
+    });
+  }
+
   final _$isLoadingStarAtom = Atom(name: '_ProfileViewModelBase.isLoadingStar');
 
   @override
@@ -187,6 +202,7 @@ isLoading: ${isLoading},
 isLoadingPageData: ${isLoadingPageData},
 imageProfileUrl: ${imageProfileUrl},
 starValue: ${starValue},
+percentValue: ${percentValue},
 isLoadingStar: ${isLoadingStar}
     ''';
   }

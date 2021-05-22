@@ -42,6 +42,9 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
   int? starValue;
 
   @observable
+  double? percentValue;
+
+  @observable
   bool isLoadingStar = false;
 
   @override
@@ -124,18 +127,23 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
       print(userProfileModel.refreshToken);
       if ((userProfileModel.point! >= 0) && (userProfileModel.point! <= 49)) {
         starValue = 1;
+        percentValue = 0.2;
       } else if ((userProfileModel.point! >= 50) &&
           (userProfileModel.point! < 60)) {
         starValue = 2;
+        percentValue = 0.4;
       } else if ((userProfileModel.point! >= 60) &&
           (userProfileModel.point! < 70)) {
         starValue = 3;
+        percentValue = 0.6;
       } else if ((userProfileModel.point! >= 70) &&
           (userProfileModel.point! < 85)) {
         starValue = 4;
+        percentValue = 0.8;
       } else if ((userProfileModel.point! >= 85) &&
           (userProfileModel.point! <= 100)) {
         starValue = 5;
+        percentValue = 1.0;
       }
     } else {
       await showDialog(
