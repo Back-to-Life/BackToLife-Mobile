@@ -9,10 +9,12 @@ import 'package:dio/src/dio.dart';
 
 class HeroesService extends IHeroesService {
   HeroesService(Dio dio) : super(dio);
+
   List<HeroesModel> heroes = [];
+  HeroesModel? heroesModel;
 
   @override
-  Future<List<HeroesModel>> fetchUserControl() async {
+  Future<HeroesModel?> fetchUserControl() async {
     try {
       final response = await dio.get('sort');
       if (response.statusCode == 200) {
@@ -24,14 +26,15 @@ class HeroesService extends IHeroesService {
           final data = response.data;
           if (data is Map<String, dynamic>) {
             final baseCharacterModel = BaseResponseHeroes.fromJson(data);
-            heroes = baseCharacterModel.data ?? [];
+            heroesModel = baseCharacterModel.data!;
+            // heroes = baseCharacterModel.data ?? [];
           } else if (data is List) {
             heroes = data.map((e) => HeroesModel.fromJson(e)).toList();
           }
         }
-        return heroes;
+        return heroesModel;
       } else {
-        return [];
+        return null;
       }
     } on DioError catch (e) {
       print(e.message);

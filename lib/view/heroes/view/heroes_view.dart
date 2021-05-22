@@ -84,7 +84,7 @@ class HeroesView extends StatelessWidget {
                                   Expanded(
                                       flex: 4,
                                       child: Observer(builder: (_) {
-                                        return _viewModel.heroes.isEmpty
+                                        return _viewModel.heroesImageUrl.isEmpty
                                             ? Center(
                                                 child: CircularProgressIndicator(
                                                     valueColor:
@@ -113,12 +113,12 @@ class HeroesView extends StatelessWidget {
                                                               // // NetworkSource('https://picsum.photos/200/300')
                                                               // GitHubSource(
                                                               //     'fatihkurcenli')
-                                                              NetworkSource(_viewModel
-                                                                      .heroes
-                                                                      .elementAt(
-                                                                          index)
-                                                                      .imageUrl ??
-                                                                  '')
+                                                              //NetworkSource(
+                                                              //    'https://firebasestorage.googleapis.com/v0/b/backtolife-recycling.appspot.com/o/images%2F149497119-avatar-woman-cartoon-with-brown-hair-design-girl-female-person-people-human-and-social-media-theme-v.jpeg?alt=media&token=1cc3c9d8-1edc-4f57-9425-11abb13853e8')
+                                                              NetworkSource(
+                                                                  _viewModel
+                                                                          .heroesImageUrl[
+                                                                      index])
                                                             ],
                                                             loader: Shimmer.fromColors(
                                                                 child: CircleAvatar(
@@ -140,11 +140,8 @@ class HeroesView extends StatelessWidget {
                                                                     CircularProgressIndicator())
                                                             : Text(
                                                                 _viewModel
-                                                                        .heroes
-                                                                        .elementAt(
-                                                                            index)
-                                                                        .name ??
-                                                                    'Null',
+                                                                        .heroesName[
+                                                                    index],
                                                                 style: context
                                                                     .textTheme
                                                                     .headline6!
@@ -157,10 +154,8 @@ class HeroesView extends StatelessWidget {
                                                         trailing: Text(
                                                             ('+' +
                                                                 _viewModel
-                                                                    .heroes
-                                                                    .elementAt(
-                                                                        index)
-                                                                    .point!
+                                                                    .heroesPoint[
+                                                                        index]
                                                                     .toString()),
                                                             style: context
                                                                 .textTheme
