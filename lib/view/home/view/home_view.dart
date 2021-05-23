@@ -1,36 +1,25 @@
 import 'dart:ui';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animations/animations.dart';
-import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
-import 'package:backtolife/core/init/cache/locale_manager.dart';
-import 'package:backtolife/view/heroes/view/heroes_view.dart';
-import 'package:lottie/lottie.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:avatars/avatars.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
-import '../../settings/view/settings_view.dart';
-import '../../barcode/view/scan_barcode_view.dart';
-import '../../profile/view/profile_view.dart';
-
-import '../../widgets/star/star_background.dart';
-
-import '../../../core/init/lang/locale_keys.g.dart';
 
 import '../../../core/base/view/base_view.dart';
 import '../../../core/extension/context_extension.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/svgPath/image_path_svg.dart';
-import '../viewModel/home_view_model.dart';
+import '../../barcode/view/scan_barcode_view.dart';
+import '../../heroes/view/heroes_view.dart';
+import '../../profile/view/profile_view.dart';
+import '../../settings/view/settings_view.dart';
 import '../../widgets/ImageContainer/image_container.dart';
 import '../../widgets/ToggleButton/toggle_button_container.dart';
-import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
-import '../../../core/extension/string_extension.dart';
-
-import 'package:easy_localization/easy_localization.dart';
-
-import 'package:avatars/avatars.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import '../viewModel/home_view_model.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -163,17 +152,17 @@ class _HomeViewState extends State<HomeView>
               child: AnimatedTextKit(
                 stopPauseOnTap: true,
                 animatedTexts: [
-                  TypewriterAnimatedText('We are building',
+                  TypewriterAnimatedText(LocaleKeys.home_animationText1.tr(),
                       speed: Duration(milliseconds: 150),
                       textStyle: context.textTheme.headline6!.copyWith(
                           fontWeight: FontWeight.bold,
                           color: context.colors.surface)),
-                  TypewriterAnimatedText('We are the best',
+                  TypewriterAnimatedText(LocaleKeys.home_animationText2.tr(),
                       speed: Duration(milliseconds: 150),
                       textStyle: context.textTheme.headline6!.copyWith(
                           fontWeight: FontWeight.bold,
                           color: context.colors.surface)),
-                  TypewriterAnimatedText('Back TO LIFE',
+                  TypewriterAnimatedText(LocaleKeys.home_animationText3.tr(),
                       speed: Duration(milliseconds: 150),
                       textStyle: context.textTheme.headline6!.copyWith(
                           fontWeight: FontWeight.bold,

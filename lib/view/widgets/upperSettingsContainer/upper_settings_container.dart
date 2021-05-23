@@ -27,14 +27,14 @@ class UpperContainerSettings extends StatelessWidget {
               Expanded(
                   flex: 1,
                   child: IconButton(
-                      icon: Icon(Icons.arrow_back_ios,
-                          color: context.colors.surface),
+                      //surface context'deki olmazsa
+                      icon: Icon(Icons.arrow_back_ios, color: Colors.white),
                       onPressed: () => Navigator.pop(context))),
               Expanded(
                   flex: 3,
                   child: Text(title,
                       style: context.textTheme.headline5!
-                          .copyWith(color: context.colors.surface))),
+                          .copyWith(color: Colors.white))),
             ],
           ),
         ),

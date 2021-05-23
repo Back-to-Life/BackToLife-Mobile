@@ -30,7 +30,10 @@
         "scancode": "QR Code Okutucu",
         "profile": "Profil",
         "heroes": "Kahramanlar",
-        "settings": "Ayarlar"
+        "settings": "Ayarlar",
+        "animationText1": "Beraber İnşa Ediyoruz",
+        "animationText2": "Çünkü Biz En iyisiyiz",
+        "animationText3": "Back TO LIFE"
     },
     "settings": {
         "settings": "Ayarlar",
@@ -72,5 +75,10 @@
         "step3Title": "Çöp kutusuna atın ve Bekleyin",
         "step3Description": "Çöp kutusuna atın ve birkaç saniye bekleyin, sonrasında tamamla diyerek puanı kazanın.",
         "step3Button": "TAMAMLA"
+    },
+    "profileView": {
+        "sconboard": "Puan Tablosu",
+        "score": "Geri Dönüşüm Puanınız",
+        "description": "Puanınızın karşılığını öğrenmek için \n lütfen web sitemizi ziyaret edin"
     }
 }

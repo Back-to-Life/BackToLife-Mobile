@@ -11,43 +11,53 @@ class ToggleButtonNotificationContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 500),
-      width: context.width * 0.15,
-      height: context.height * 0.04,
-      decoration: BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.circular(context.mediumValue)),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          AnimatedPositioned(
-            curve: Curves.easeIn,
-            top: 3.0,
-            left: isSelected! ? 60.0 : 0.0,
-            right: isSelected! ? 0.0 : 60.0,
+    return Column(
+      children: [
+        Spacer(),
+        Expanded(
+          flex: 3,
+          child: AnimatedContainer(
             duration: const Duration(milliseconds: 500),
-            child: InkWell(
-              onTap: callback as void Function()?,
-              child: Padding(
-                padding: context.paddingLowHorizontal,
-                child: AnimatedSwitcher(
-                  duration: Duration(milliseconds: 5000),
-                  transitionBuilder:
-                      (Widget child, Animation<double> animation) {
-                    return RotationTransition(child: child, turns: animation);
-                  },
-                  child: isSelected!
-                      ? Icon(Icons.check,
-                          color: Color(0xFFE0E1BE), key: UniqueKey())
-                      : Icon(Icons.close,
-                          color: Color(0xFFE0E1BE), key: UniqueKey()),
-                ),
-              ),
+            width: context.width * 0.18,
+            height: context.height * 0.04,
+            decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(context.mediumValue)),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                AnimatedPositioned(
+                  curve: Curves.easeIn,
+                  top: 3.0,
+                  left: isSelected! ? 40.0 : 0.0,
+                  right: isSelected! ? 0.0 : 40.0,
+                  duration: const Duration(milliseconds: 500),
+                  child: InkWell(
+                    onTap: callback as void Function()?,
+                    child: Padding(
+                      padding: context.paddingLowHorizontal,
+                      child: AnimatedSwitcher(
+                        duration: Duration(milliseconds: 5000),
+                        transitionBuilder:
+                            (Widget child, Animation<double> animation) {
+                          return RotationTransition(
+                              child: child, turns: animation);
+                        },
+                        child: isSelected!
+                            ? Icon(Icons.check,
+                                color: Color(0xFFE0E1BE), key: UniqueKey())
+                            : Icon(Icons.close,
+                                color: Color(0xFFE0E1BE), key: UniqueKey()),
+                      ),
+                    ),
+                  ),
+                )
+              ],
             ),
-          )
-        ],
-      ),
+          ),
+        ),
+        Spacer(),
+      ],
     );
   }
 }

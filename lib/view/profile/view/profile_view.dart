@@ -1,22 +1,20 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:backtolife/core/constants/app/app_constants.dart';
-import 'package:backtolife/core/init/notifier/theme_notifier.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:provider/provider.dart';
-import 'package:shimmer/shimmer.dart';
-import '../../widgets/star/star_rating.dart';
-
-import '../../../core/base/view/base_view.dart';
-import '../../../core/extension/context_extension.dart';
-import '../../../core/init/svgPath/image_path_svg.dart';
-import '../viewModel/profile_view_model.dart';
-import '../../widgets/loading/loading_page.dart';
-import '../../widgets/star/star_background.dart';
+import 'package:backtolife/core/extension/string_extension.dart';
+import 'package:backtolife/core/init/lang/locale_keys.g.dart';
 import 'package:flutter/material.dart';
-
-import 'package:avatars/avatars.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../core/base/view/base_view.dart';
+import '../../../core/constants/app/app_constants.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/init/notifier/theme_notifier.dart';
+import '../../../core/init/svgPath/image_path_svg.dart';
+import '../../widgets/star/star_rating.dart';
+import '../viewModel/profile_view_model.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -82,13 +80,13 @@ class ProfileView extends StatelessWidget {
                       child: Column(
                     children: [
                       Text(
-                        'Scorboard',
+                        LocaleKeys.profileView_sconboard.locale,
                         style: context.textTheme.headline4!.copyWith(
                             color: context.colors.secondary,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        'Your Recycling Score',
+                        LocaleKeys.profileView_score.locale,
                         style: context.textTheme.headline5!.copyWith(
                             color: Color(0xFFFFCD00),
                             fontWeight: FontWeight.bold),
@@ -124,7 +122,7 @@ class ProfileView extends StatelessWidget {
                       child: Padding(
                           padding: context.paddingMedium,
                           child: AutoSizeText(
-                            'To find out the equivalent of your score,\n please visit our website',
+                            LocaleKeys.profileView_description.locale,
                             maxLines: 2,
                             style: context.textTheme.headline2!.copyWith(
                                 color: context.colors.surface.withOpacity(0.6),

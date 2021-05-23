@@ -1,3 +1,5 @@
+import 'package:backtolife/core/init/notifier/settings_notifier.dart';
+
 import 'language_notifier.dart';
 
 import '../internet_connection/connectivity_provider.dart';
@@ -25,6 +27,8 @@ class ApplicationProvider {
         create: (context) => ConnectivityProvider(), lazy: true),
     ChangeNotifierProvider<LanguageNotifier>(
         create: (context) => LanguageNotifier(), lazy: true),
+    ChangeNotifierProvider<SettingsNotifier>(
+        create: (context) => SettingsNotifier(), lazy: true),
     Provider.value(value: NavigationService.instance)
   ];
   List<SingleChildWidget> uiChangesItems = [];

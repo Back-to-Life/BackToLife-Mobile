@@ -1,16 +1,18 @@
 import 'dart:ui';
 
-import '../../../../../core/init/svgPath/image_path_svg.dart';
-import '../../../../widgets/ToggleButton/toggle_button_container.dart';
-import '../../../../widgets/ToggleButton/toggle_button_notifications_container.dart';
-import '../../../../widgets/upperSettingsContainer/upper_settings_container.dart';
+import 'package:backtolife/core/init/notifier/settings_notifier.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../core/base/view/base_view.dart';
 import '../../../../../core/extension/context_extension.dart';
 import '../../../../../core/init/lang/locale_keys.g.dart';
+import '../../../../../core/init/svgPath/image_path_svg.dart';
+import '../../../../widgets/ToggleButton/toggle_button_notifications_container.dart';
+import '../../../../widgets/upperSettingsContainer/upper_settings_container.dart';
 import '../viewModel/notification_view_model.dart';
 
 class NotificationsSettingsView extends StatelessWidget {
@@ -53,10 +55,15 @@ class NotificationsSettingsView extends StatelessWidget {
                                 ),
                                 title: Text(
                                     LocaleKeys.settings_pushnotification.tr()),
-                                trailing: ToggleButtonNotificationContainer(
-                                  callback: () {},
-                                  isSelected: false,
-                                ),
+                                trailing: Observer(builder: (_) {
+                                  return GestureDetector(
+                                    onTap: _viewModel.changeNotificationButton,
+                                    child: ToggleButtonNotificationContainer(
+                                      isSelected:
+                                          _viewModel.isNotificationChange,
+                                    ),
+                                  );
+                                }),
                               )),
                         ),
                         Padding(
@@ -82,10 +89,10 @@ class NotificationsSettingsView extends StatelessWidget {
                                 ),
                               )),
                         ),
-                        ElevatedButton(
+                        /*   ElevatedButton(
                             onPressed: () =>
                                 _viewModel.subscribeToNotification(),
-                            child: Text('okey')),
+                            child: Text('okey')), */
                         Spacer(flex: 4),
                       ],
                     ),

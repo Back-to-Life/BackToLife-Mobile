@@ -30,7 +30,10 @@
     "scancode": "Scan The QR Code",
     "profile": "Profile",
     "heroes": "Heroes",
-    "settings": "Settings"
+    "settings": "Settings",
+    "animationText1": "We are building",
+    "animationText2": "We are the best",
+    "animationText3": "Back TO LIFE"
   },
   "settings": {
     "settings": "Settings",
@@ -59,7 +62,7 @@
     "error3Description": "The name and garbage container QR Code is not equal !!"
   },
   "scanBarcodeView": {
-    "mainName": "Let's recycle in a few steps.",
+    "mainName": "Let's recycle in \n a few steps.",
     "step1": "Step 1",
     "step1Title": "Scan recycling waste",
     "step1Description": "Scan the QR code of the recycling waste",
@@ -72,5 +75,10 @@
     "step3Title": "Throw in recycle bin",
     "step3Description": "Now you can put your recycling waste in the box and your points will be loaded on your card",
     "step3Button": "COMPLETE"
+  },
+  "profileView": {
+    "sconboard": "Scoreboard",
+    "score": "Your Recycling Score",
+    "description": "To find out the equivalent of your score,\n please visit our website"
   }
 }
