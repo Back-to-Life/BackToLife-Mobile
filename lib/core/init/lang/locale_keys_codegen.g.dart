@@ -46,7 +46,10 @@ class CodegenLoader extends AssetLoader{
     "scancode": "Scan The QR Code",
     "profile": "Profile",
     "heroes": "Heroes",
-    "settings": "Settings"
+    "settings": "Settings",
+    "animationText1": "We are building",
+    "animationText2": "We are the best",
+    "animationText3": "Back TO LIFE"
   },
   "settings": {
     "settings": "Settings",
@@ -75,7 +78,7 @@ class CodegenLoader extends AssetLoader{
     "error3Description": "The name and garbage container QR Code is not equal !!"
   },
   "scanBarcodeView": {
-    "mainName": "Let's recycle in a few steps.",
+    "mainName": "Let's recycle in \n a few steps.",
     "step1": "Step 1",
     "step1Title": "Scan recycling waste",
     "step1Description": "Scan the QR code of the recycling waste",
@@ -88,6 +91,11 @@ class CodegenLoader extends AssetLoader{
     "step3Title": "Throw in recycle bin",
     "step3Description": "Now you can put your recycling waste in the box and your points will be loaded on your card",
     "step3Button": "COMPLETE"
+  },
+  "profileView": {
+    "sconboard": "Scoreboard",
+    "score": "Your Recycling Score",
+    "description": "To find out the equivalent of your score,\n please visit our website"
   }
 };
 static const Map<String,dynamic> tr_TR = {
@@ -122,7 +130,10 @@ static const Map<String,dynamic> tr_TR = {
     "scancode": "QR Code Okutucu",
     "profile": "Profil",
     "heroes": "Kahramanlar",
-    "settings": "Ayarlar"
+    "settings": "Ayarlar",
+    "animationText1": "Beraber İnşa Ediyoruz",
+    "animationText2": "Çünkü Biz En iyisiyiz",
+    "animationText3": "Back TO LIFE"
   },
   "settings": {
     "settings": "Ayarlar",
@@ -164,6 +175,11 @@ static const Map<String,dynamic> tr_TR = {
     "step3Title": "Çöp kutusuna atın ve Bekleyin",
     "step3Description": "Çöp kutusuna atın ve birkaç saniye bekleyin, sonrasında tamamla diyerek puanı kazanın.",
     "step3Button": "TAMAMLA"
+  },
+  "profileView": {
+    "sconboard": "Puan Tablosu",
+    "score": "Geri Dönüşüm Puanınız",
+    "description": "Puanınızın karşılığını öğrenmek için \n lütfen web sitemizi ziyaret edin"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US, "tr_TR": tr_TR};

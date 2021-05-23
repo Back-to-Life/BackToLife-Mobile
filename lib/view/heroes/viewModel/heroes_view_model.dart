@@ -28,7 +28,6 @@ abstract class _HeroesViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) => this.context = context;
   @override
   void init() {
-    // final dio = Dio(BaseOptions(baseUrl: _baseUrl));
     heroesService = HeroesService(dio);
     getDataHeroes();
   }
@@ -43,7 +42,6 @@ abstract class _HeroesViewModelBase with Store, BaseViewModel {
       heroesPoint = responseData.points!;
       print(responseData.names);
     }
-
     changedLoading();
   }
 

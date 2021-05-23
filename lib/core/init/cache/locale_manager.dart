@@ -80,4 +80,13 @@ class LocaleManager {
   //get the token string
   String getToken() =>
       _preferences!.getString(PreferencesKeys.TOKEN.toString()) ?? '';
+
+  //set the push notification Settings
+  Future<void> setPushNotification(PreferencesKeys key, bool value) async {
+    await _preferences!.setBool(key.toString(), value);
+  }
+
+  //get pushnotification settings
+  bool getPushNotifation(PreferencesKeys key) =>
+      _preferences!.getBool(key.toString()) ?? false;
 }

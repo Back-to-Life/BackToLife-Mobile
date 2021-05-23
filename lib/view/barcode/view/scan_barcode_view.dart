@@ -48,7 +48,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                           Padding(
                             padding: EdgeInsets.only(left: context.mediumValue),
                             child: Text(
-                              "Let's recycle in\n a few steps.",
+                              LocaleKeys.scanBarcodeView_mainName.locale,
                               textAlign: TextAlign.start,
                               style: context.textTheme.headline4!
                                   .copyWith(color: context.colors.surface),

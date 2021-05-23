@@ -22,8 +22,6 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
     addName();
   }
 
-
-
   selectedItem(int index) async {
     print('$index');
 
@@ -33,9 +31,7 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
         String received = await Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (_) => LanguageSettingsView(
-                      string: 'foo',
-                    )));
+                builder: (_) => LanguageSettingsView(string: 'foo')));
         if (received == 'bar') {
           addName();
         }

@@ -27,6 +27,9 @@ abstract class  LocaleKeys {
   static const home_profile = 'home.profile';
   static const home_heroes = 'home.heroes';
   static const home_settings = 'home.settings';
+  static const home_animationText1 = 'home.animationText1';
+  static const home_animationText2 = 'home.animationText2';
+  static const home_animationText3 = 'home.animationText3';
   static const home = 'home';
   static const settings_settings = 'settings.settings';
   static const settings_account = 'settings.account';
@@ -66,5 +69,9 @@ abstract class  LocaleKeys {
   static const scanBarcodeView_step3Description = 'scanBarcodeView.step3Description';
   static const scanBarcodeView_step3Button = 'scanBarcodeView.step3Button';
   static const scanBarcodeView = 'scanBarcodeView';
+  static const profileView_sconboard = 'profileView.sconboard';
+  static const profileView_score = 'profileView.score';
+  static const profileView_description = 'profileView.description';
+  static const profileView = 'profileView';
 
 }

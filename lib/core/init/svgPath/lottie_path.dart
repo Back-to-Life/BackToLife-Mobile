@@ -18,4 +18,5 @@ class LottiePaths {
   final barcodeScan = 'barcode-scan'.toLottie;
   final darkModeFirst = 'dark-mode-first-open'.toLottie;
   final qrCodeError = 'qr-code-check'.toLottie;
+  final pushNotificationSuccess = 'push-notification-success'.toLottie;
 }
