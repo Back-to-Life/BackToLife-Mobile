@@ -1,6 +1,6 @@
-import 'package:backtolife/core/base/model/base_view_model.dart';
-import 'package:backtolife/view/heroes/model/heroes_model.dart';
-import 'package:backtolife/view/heroes/service/heroes_service.dart';
+import '../../../core/base/model/base_view_model.dart';
+import '../model/heroes_model.dart';
+import '../service/heroes_service.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 part 'heroes_view_model.g.dart';

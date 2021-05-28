@@ -1,8 +1,8 @@
-import 'package:backtolife/core/init/lang/locale_keys.g.dart';
-import 'package:backtolife/core/init/svgPath/lottie_path.dart';
-import 'package:backtolife/view/barcode/model/scan_request_model.dart';
-import 'package:backtolife/view/barcode/service/scan_service.dart';
-import 'package:backtolife/view/widgets/showAlertDialog/alert_dialog.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../core/init/svgPath/lottie_path.dart';
+import '../model/scan_request_model.dart';
+import '../service/scan_service.dart';
+import '../../widgets/showAlertDialog/alert_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import '../../../core/base/model/base_view_model.dart';

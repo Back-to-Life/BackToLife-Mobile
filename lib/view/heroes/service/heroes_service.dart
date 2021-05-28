@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:backtolife/view/heroes/model/heroes_model.dart';
-import 'package:backtolife/view/heroes/service/IHeroes_service.dart';
-import 'package:backtolife/view/heroes/service/base_response_model/base_response_model.dart';
+import '../model/heroes_model.dart';
+import 'IHeroes_service.dart';
+import 'base_response_model/base_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/src/dio.dart';
 

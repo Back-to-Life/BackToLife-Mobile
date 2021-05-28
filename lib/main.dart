@@ -1,31 +1,20 @@
-import 'package:backtolife/core/init/notification/firebase_notification_handler.dart';
-import 'package:backtolife/view/barcode/view/scan_barcode_view.dart';
-import 'package:backtolife/view/heroes/view/heroes_view.dart';
-import 'package:backtolife/view/home/view/home_view.dart';
-import 'package:backtolife/view/profile/view/profile_view.dart';
-import 'package:backtolife/view/settings/subsettings/notifications_settings/view/notifications_view.dart';
-import 'package:backtolife/view/settings/view/settings_view.dart';
-import 'package:backtolife/view/splash/view/splash_view.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-
-import 'core/init/notifier/theme_notifier.dart';
-import 'core/init/theme/app_theme_dark.dart';
-
-import 'core/init/lang/locale_keys_codegen.g.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'core/constants/app/app_constants.dart';
 import 'core/init/cache/locale_manager.dart';
+import 'core/init/lang/locale_keys_codegen.g.dart';
 import 'core/init/language/language_manager.dart';
 import 'core/init/navigation/navigation_route.dart';
 import 'core/init/navigation/navigation_service.dart';
+import 'core/init/notification/firebase_notification_handler.dart';
 import 'core/init/notifier/provider.dart';
-import 'view/authentication/view/authentication_view.dart';
-import 'view/widgets/deneme_page.dart';
+import 'core/init/notifier/theme_notifier.dart';
+import 'core/init/theme/app_theme_dark.dart';
+import 'view/settings/view/settings_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

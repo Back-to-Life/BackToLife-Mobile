@@ -1,4 +1,4 @@
-import 'package:backtolife/view/home/model/user_response_model.dart';
+import '../user_response_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'home_base_response_model.g.dart';

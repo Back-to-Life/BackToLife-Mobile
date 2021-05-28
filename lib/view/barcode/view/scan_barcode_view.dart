@@ -1,5 +1,5 @@
-import 'package:backtolife/core/extension/string_extension.dart';
-import 'package:backtolife/core/init/lang/locale_keys.g.dart';
+import '../../../core/extension/string_extension.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
 
 import '../../../core/base/view/base_view.dart';
 import '../../../core/extension/context_extension.dart';

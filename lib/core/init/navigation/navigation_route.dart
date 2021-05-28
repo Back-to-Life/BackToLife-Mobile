@@ -1,4 +1,4 @@
-import 'package:backtolife/view/heroes/view/heroes_view.dart';
+import '../../../view/heroes/view/heroes_view.dart';
 
 import '../../../view/settings/subsettings/notifications_settings/view/notifications_view.dart';
 import '../../../view/settings/subsettings/permissions_settings/view/permissions_settings_view.dart';

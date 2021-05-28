@@ -1,4 +1,4 @@
-import 'package:backtolife/view/heroes/model/heroes_model.dart';
+import '../model/heroes_model.dart';
 import 'package:dio/dio.dart';
 
 abstract class IHeroesService {
