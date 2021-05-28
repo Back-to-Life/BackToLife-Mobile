@@ -1,8 +1,7 @@
-import 'package:backtolife/core/init/notifier/settings_notifier.dart';
+import '../../components/internet_connection/connectivity_provider.dart';
+import 'settings_notifier.dart';
 
 import 'language_notifier.dart';
-
-import '../internet_connection/connectivity_provider.dart';
 
 import '../navigation/navigation_service.dart';
 import 'theme_notifier.dart';

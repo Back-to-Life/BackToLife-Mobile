@@ -1,5 +1,5 @@
-import 'package:backtolife/core/extension/sized-box/space_sized_height_box.dart';
-import 'package:backtolife/core/extension/sized-box/space_sized_width_box.dart';
+import 'sized-box/space_sized_height_box.dart';
+import 'sized-box/space_sized_width_box.dart';
 import 'package:flutter/material.dart';
 
 extension ContextExtension on BuildContext {

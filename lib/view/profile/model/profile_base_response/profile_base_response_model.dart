@@ -1,4 +1,4 @@
-import 'package:backtolife/view/profile/model/profile_model/profile_model.dart';
+import '../profile_model/profile_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'profile_base_response_model.g.dart';

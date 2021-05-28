@@ -1,4 +1,4 @@
-import 'package:backtolife/view/heroes/model/heroes_model.dart';
+import '../../model/heroes_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'base_response_model.g.dart';

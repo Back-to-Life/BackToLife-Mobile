@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:backtolife/core/extension/string_extension.dart';
+import '../../../../../core/extension/string_extension.dart';
 
 import '../../../../../core/init/notifier/language_notifier.dart';
 import '../../../../widgets/upperSettingsContainer/upper_settings_container.dart';

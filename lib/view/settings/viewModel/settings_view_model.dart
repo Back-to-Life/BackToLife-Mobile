@@ -1,4 +1,4 @@
-import 'package:backtolife/view/settings/subsettings/language_settings/view/language_settings_view.dart';
+import '../subsettings/language_settings/view/language_settings_view.dart';
 
 import '../../../core/base/model/base_view_model.dart';
 import '../../../core/constants/navigation/navigation_constants.dart';

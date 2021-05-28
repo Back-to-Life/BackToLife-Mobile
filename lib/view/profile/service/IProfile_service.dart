@@ -1,4 +1,4 @@
-import 'package:backtolife/view/profile/model/profile_model/profile_model.dart';
+import '../model/profile_model/profile_model.dart';
 import 'package:dio/dio.dart';
 
 import '../model/profile_update_request_model.dart';

@@ -1,6 +1,3 @@
-import '../../constants/enum/locale_keys_enum.dart';
-import '../cache/locale_manager.dart';
-
 import '../../constants/app/app_constants.dart';
 
 import 'app_theme.dart';

@@ -1,8 +1,8 @@
-import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
-import 'package:backtolife/core/init/lang/locale_keys.g.dart';
-import 'package:backtolife/core/init/notifier/settings_notifier.dart';
-import 'package:backtolife/core/init/svgPath/lottie_path.dart';
-import 'package:backtolife/view/widgets/showAlertDialog/alert_dialog.dart';
+import '../../../../../core/constants/enum/locale_keys_enum.dart';
+import '../../../../../core/init/lang/locale_keys.g.dart';
+import '../../../../../core/init/notifier/settings_notifier.dart';
+import '../../../../../core/init/svgPath/lottie_path.dart';
+import '../../../../widgets/showAlertDialog/alert_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:provider/provider.dart';

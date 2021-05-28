@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:backtolife/view/profile/model/profile_base_response/profile_base_response_model.dart';
-import 'package:backtolife/view/profile/model/profile_model/profile_model.dart';
-import 'package:backtolife/view/profile/model/profile_update_request_model.dart';
-import 'package:backtolife/view/profile/model/profile_update_response_model.dart';
+import '../model/profile_base_response/profile_base_response_model.dart';
+import '../model/profile_model/profile_model.dart';
+import '../model/profile_update_request_model.dart';
+import '../model/profile_update_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/src/dio.dart';
 

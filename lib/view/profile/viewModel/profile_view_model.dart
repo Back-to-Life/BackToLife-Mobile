@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:backtolife/core/extension/string_extension.dart';
-import 'package:backtolife/core/init/lang/locale_keys.g.dart';
-import 'package:backtolife/core/init/svgPath/lottie_path.dart';
-import 'package:backtolife/view/profile/model/profile_model/profile_model.dart';
-import 'package:backtolife/view/profile/model/profile_update_request_model.dart';
-import 'package:backtolife/view/profile/service/profile_service.dart';
-import 'package:backtolife/view/widgets/showAlertDialog/alert_dialog.dart';
+import '../../../core/extension/string_extension.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../core/init/svgPath/lottie_path.dart';
+import '../model/profile_model/profile_model.dart';
+import '../model/profile_update_request_model.dart';
+import '../service/profile_service.dart';
+import '../../widgets/showAlertDialog/alert_dialog.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 

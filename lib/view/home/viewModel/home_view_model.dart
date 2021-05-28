@@ -1,4 +1,4 @@
-import 'package:backtolife/view/home/model/user_response_model.dart';
+import '../model/user_response_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';

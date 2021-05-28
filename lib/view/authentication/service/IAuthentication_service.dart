@@ -1,5 +1,5 @@
-import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_model.dart';
-import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_response_model.dart';
+import '../model/register/register_withCode/register_code_model.dart';
+import '../model/register/register_withCode/register_code_response_model.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../model/register/authentication_register_model.dart';

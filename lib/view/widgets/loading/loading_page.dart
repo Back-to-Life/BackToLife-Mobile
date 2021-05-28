@@ -1,4 +1,4 @@
-import 'package:backtolife/core/init/svgPath/lottie_path.dart';
+import '../../../core/init/svgPath/lottie_path.dart';
 
 import '../../../core/extension/context_extension.dart';
 

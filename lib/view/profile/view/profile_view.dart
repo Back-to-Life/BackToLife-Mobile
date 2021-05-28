@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:backtolife/core/extension/string_extension.dart';
-import 'package:backtolife/core/init/lang/locale_keys.g.dart';
+import '../../../core/extension/string_extension.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';

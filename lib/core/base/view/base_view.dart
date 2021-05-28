@@ -1,8 +1,9 @@
-import '../../init/internet_connection/connectivity_provider.dart';
-import '../../init/internet_connection/no_internet_connection.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
+
+import '../../components/internet_connection/connectivity_provider.dart';
+import '../../components/internet_connection/no_internet_connection.dart';
 
 class BaseView<T extends Store> extends StatefulWidget {
   final Widget Function(BuildContext context, T value) onPageBuilder;

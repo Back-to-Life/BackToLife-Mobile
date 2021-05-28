@@ -1,13 +1,9 @@
-import 'dart:io';
-
-import 'package:backtolife/core/init/navigation/INavigation_service.dart';
-import 'package:backtolife/core/init/navigation/navigation_route.dart';
-import 'package:backtolife/core/init/navigation/navigation_service.dart';
-import 'package:backtolife/core/init/notification/notification_handler.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+import '../navigation/navigation_service.dart';
 
 class FirebaseNotifications {
   late NavigationService navigationRoute = NavigationService.instance;
@@ -25,6 +21,7 @@ class FirebaseNotifications {
   }
 
   void firebaseCloudMessageListener(BuildContext context) async {
+    // ignore: omit_local_variable_types
     NotificationSettings settigs = await _messaging.requestPermission(
         alert: true,
         announcement: true,

@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/init/cache/locale_manager.dart';
-import 'package:backtolife/view/authentication/model/register/register_withCode/register_code_model.dart';
+import '../../../core/constants/enum/locale_keys_enum.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/init/cache/locale_manager.dart';
+import '../model/register/register_withCode/register_code_model.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:lottie/lottie.dart';
 
