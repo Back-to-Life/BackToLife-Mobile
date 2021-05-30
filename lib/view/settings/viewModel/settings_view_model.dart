@@ -22,10 +22,14 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
     addName();
   }
 
-  selectedItem(int index) async {
+  void selectedItem(int index) async {
     print('$index');
 
     switch (index) {
+      case 0:
+        await navigation.navigateToPage(
+            path: NavigationConstants.ACCOUNT_SETTING);
+        break;
       case 1:
         settingArgumans.clear();
         String received = await Navigator.push(

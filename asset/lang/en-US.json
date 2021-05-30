@@ -51,7 +51,14 @@
     "pushnotification": "Push Notification",
     "emailnotification": "Email Notification",
     "camerapermissons": "Camera",
-    "locationpermissons": "Location"
+    "locationpermissons": "Location",
+    "accountSettings": {
+      "title1": "Enter the information",
+      "title2": "You want to change",
+      "userName": "UserName",
+      "email": "Email",
+      "submit": "Submit"
+    }
   },
   "errorDialog": {
     "error1": "QR Code couldn't be Read !!",

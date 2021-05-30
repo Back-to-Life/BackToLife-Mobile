@@ -189,68 +189,6 @@ class _AuthenticationViewState extends State<AuthenticationView>
     );
   }
 
-  /*  showAlertDialog(BuildContext context, AuthenticationViewModel viewModel) {
-    // set up the button
-    Widget okButton = TextButton(
-      child: Text('OK', style: TextStyle(color: context.colors.primaryVariant)),
-      onPressed: () {
-        print('ok success coming buttonu');
-        Navigator.of(context).pop();
-      },
-    );
-
-    Widget errorButton = TextButton(
-      child: Observer(builder: (_) {
-        return Visibility(
-          visible: viewModel.isLoading ? false : true,
-          child: Text('Upps..',
-              style: TextStyle(color: context.colors.primaryVariant)),
-        );
-      }),
-      onPressed: () {
-        print('error coming buttonu');
-        Navigator.of(context).pop();
-      },
-    );
-
-    Widget listenerButton = Observer(
-      builder: (_) {
-        return (viewModel.isSuccess && !viewModel.isLoading)
-            ? okButton
-            : errorButton;
-      },
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      elevation: context.mediumValue,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(context.mediumValue)),
-      title: Observer(builder: (_) {
-        return viewModel.isLoading
-            ? Text('Loading')
-            : Text('Upps.. Something Went Wrong');
-      }),
-      content: Observer(builder: (_) {
-        return viewModel.isLoading
-            ? Lottie.asset(LottiePaths.instance!.loadingPageContainer)
-            : Lottie.asset(LottiePaths.instance!.errorLottie);
-      }),
-      actions: [
-        listenerButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      barrierDismissible: false,
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  } */
-
   Positioned buildOrSignUpWith(
       BuildContext context, AuthenticationViewModel viewModel) {
     return Positioned(

@@ -67,7 +67,14 @@ class CodegenLoader extends AssetLoader{
     "pushnotification": "Push Notification",
     "emailnotification": "Email Notification",
     "camerapermissons": "Camera",
-    "locationpermissons": "Location"
+    "locationpermissons": "Location",
+    "accountSettings": {
+      "title1": "Enter the information",
+      "title2": "You want to change",
+      "userName": "UserName",
+      "email": "Email",
+      "submit": "Submit"
+    }
   },
   "errorDialog": {
     "error1": "QR Code couldn't be Read !!",
@@ -151,7 +158,14 @@ static const Map<String,dynamic> tr_TR = {
     "pushnotification": "Bildirim Gönderme İzni",
     "emailnotification": "Email Gönderme İzni",
     "camerapermissons": "Kamera İzni",
-    "locationpermissons": "Konum İzni"
+    "locationpermissons": "Konum İzni",
+    "accountSettings": {
+      "title1": "Değiştirmek istediğiniz",
+      "title2": "Bilgilerinizi Girin",
+      "userName": "Adınız Soyadınız",
+      "email": "Email",
+      "submit": "Gönder"
+    }
   },
   "errorDialog": {
     "error1": "QR Code Okunamadı !!",
