@@ -1,3 +1,5 @@
+import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
+
 import '../../../core/base/model/base_view_model.dart';
 import '../model/heroes_model.dart';
 import '../service/heroes_service.dart';
@@ -48,5 +50,9 @@ abstract class _HeroesViewModelBase with Store, BaseViewModel {
   @action
   void changedLoading() {
     isLoading = !isLoading;
+  }
+
+  void goToFullList() {
+    navigation.navigateToPage(path: NavigationConstants.FULLHEROES);
   }
 }

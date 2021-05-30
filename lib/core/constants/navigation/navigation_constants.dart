@@ -12,4 +12,5 @@ class NavigationConstants {
   static const ABOUT_SETTINGS = '/about_settings';
   static const LOGOUT_SETTINGS = '/logout_setting';
   static const HEROES = '/heroes';
+  static const FULLHEROES = '/fullheroes';
 }
