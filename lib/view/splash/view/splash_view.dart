@@ -31,20 +31,23 @@ class _SplashViewState extends State<SplashView>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                     Spacer(),
-                    Expanded(
-                        child: Center(
-                            child: Text('BACK TO LIFE',
-                                style: context.textTheme.headline4!.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Color(0xFF72A863))))),
-                    Expanded(
-                        child: Center(
-                            child: SvgPicture.asset(
-                                SVGImagePaths.instance.splashIcon))),
+                    Expanded(child: _centerText(context)),
+                    Expanded(child: _centerIcon()),
                     Spacer(flex: 2),
                   ])),
               _bottomStack(context)
             ])));
+  }
+
+  Center _centerText(BuildContext context) {
+    return Center(
+        child: Text('BACK TO LIFE',
+            style: context.textTheme.headline4!.copyWith(
+                fontWeight: FontWeight.bold, color: Color(0xFF72A863))));
+  }
+
+  Center _centerIcon() {
+    return Center(child: SvgPicture.asset(SVGImagePaths.instance.splashIcon));
   }
 
   Positioned _bottomUpper(BuildContext context) {

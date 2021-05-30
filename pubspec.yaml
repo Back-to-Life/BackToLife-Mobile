@@ -55,6 +55,7 @@ dependencies:
   tutorial_coach_mark: ^1.0.0
   http: ^0.13.3
   image_picker: ^0.7.5+2
+  flutter_blue: ^0.8.0
 
 dev_dependencies:
   flutter_test:

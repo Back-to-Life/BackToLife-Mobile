@@ -107,14 +107,7 @@ class HeroesView extends StatelessWidget {
                                                               context.colors
                                                                   .primaryVariant
                                                             ],
-                                                            // name: _viewModel
-                                                            //     .heroes[index].imageUrl == '' ? _viewModel.heroes[index].name :'',
                                                             sources: [
-                                                              // // NetworkSource('https://picsum.photos/200/300')
-                                                              // GitHubSource(
-                                                              //     'fatihkurcenli')
-                                                              //NetworkSource(
-                                                              //    'https://firebasestorage.googleapis.com/v0/b/backtolife-recycling.appspot.com/o/images%2F149497119-avatar-woman-cartoon-with-brown-hair-design-girl-female-person-people-human-and-social-media-theme-v.jpeg?alt=media&token=1cc3c9d8-1edc-4f57-9425-11abb13853e8')
                                                               NetworkSource(
                                                                   _viewModel
                                                                           .heroesImageUrl[
@@ -122,8 +115,7 @@ class HeroesView extends StatelessWidget {
                                                             ],
                                                             loader: Shimmer.fromColors(
                                                                 child: CircleAvatar(
-                                                                    radius: context
-                                                                            .mediumValue *
+                                                                    radius: context.mediumValue *
                                                                         0.7),
                                                                 baseColor: Colors
                                                                     .grey[300]!,
@@ -133,24 +125,17 @@ class HeroesView extends StatelessWidget {
                                                             textStyle: TextStyle(
                                                                 fontSize: context
                                                                     .mediumValue)),
-                                                        title: _viewModel
-                                                                .isLoading
-                                                            ? Center(
-                                                                child:
-                                                                    CircularProgressIndicator())
-                                                            : Text(
-                                                                _viewModel
-                                                                        .heroesName[
-                                                                    index],
-                                                                style: context
-                                                                    .textTheme
-                                                                    .headline6!
-                                                                    .copyWith(
-                                                                        fontSize:
-                                                                            14,
-                                                                        color: Color(
-                                                                            0xFF4E5F49)),
-                                                              ),
+                                                        title: Text(
+                                                          _viewModel.heroesName[
+                                                              index],
+                                                          style: context
+                                                              .textTheme
+                                                              .headline6!
+                                                              .copyWith(
+                                                                  fontSize: 14,
+                                                                  color: Color(
+                                                                      0xFF4E5F49)),
+                                                        ),
                                                         trailing: Text(
                                                             ('+' +
                                                                 _viewModel
@@ -177,9 +162,7 @@ class HeroesView extends StatelessWidget {
                                   Expanded(
                                       flex: 1,
                                       child: GestureDetector(
-                                        onTap: () {
-                                          print('okey');
-                                        },
+                                        onTap: _viewModel.goToFullList,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,
@@ -245,35 +228,3 @@ class HeroesView extends StatelessWidget {
     );
   }
 }
-
-
-/*
-
-Expanded(
-                      flex: 5,
-                      child: SvgPicture.asset(
-                          SVGImagePaths.instance.heroesofworld)),
-                  Expanded(
-                    flex: 2,
-                    child: ClipRRect(
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 16.0, sigmaY: 16.0),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                              color: context.colors.primaryVariant,
-                              border: Border.all(
-                                  width: 1.5,
-                                  color: context.colors.primaryVariant)),
-                          child: Center(
-                            child: Text('Heroes Of The World',
-                                style: context.textTheme.headline4!.copyWith(
-                                    color: Color(0xFFFCFCEC),
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-
-*/

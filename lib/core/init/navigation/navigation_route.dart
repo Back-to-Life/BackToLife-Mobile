@@ -1,3 +1,5 @@
+import 'package:backtolife/view/heroes/view/full_list_heroes.dart';
+
 import '../../../view/heroes/view/heroes_view.dart';
 
 import '../../../view/settings/subsettings/notifications_settings/view/notifications_view.dart';
@@ -53,6 +55,8 @@ class NavigationRoute {
         return simpleNavigate(LanguageSettingsView());
       case NavigationConstants.HEROES:
         return simpleNavigate(HeroesView());
+      case NavigationConstants.FULLHEROES:
+        return simpleNavigate(FullListHeroes());
 
       default:
         return MaterialPageRoute(builder: (context) => NotFoundNavigation());
