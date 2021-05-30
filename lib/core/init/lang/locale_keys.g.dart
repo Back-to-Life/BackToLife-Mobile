@@ -47,6 +47,12 @@ abstract class  LocaleKeys {
   static const settings_emailnotification = 'settings.emailnotification';
   static const settings_camerapermissons = 'settings.camerapermissons';
   static const settings_locationpermissons = 'settings.locationpermissons';
+  static const settings_accountSettings_title1 = 'settings.accountSettings.title1';
+  static const settings_accountSettings_title2 = 'settings.accountSettings.title2';
+  static const settings_accountSettings_userName = 'settings.accountSettings.userName';
+  static const settings_accountSettings_email = 'settings.accountSettings.email';
+  static const settings_accountSettings_submit = 'settings.accountSettings.submit';
+  static const settings_accountSettings = 'settings.accountSettings';
   static const settings = 'settings';
   static const errorDialog_error1 = 'errorDialog.error1';
   static const errorDialog_error1Description = 'errorDialog.error1Description';

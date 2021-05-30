@@ -148,7 +148,10 @@ class _HomeViewState extends State<HomeView>
           Expanded(
             child: DefaultTextStyle(
               textAlign: TextAlign.right,
-              style: TextStyle(fontSize: 30.0, fontFamily: 'Agne'),
+              style: TextStyle(
+                  fontSize: 30.0,
+                  fontFamily: 'Agne',
+                  color: context.colors.surface),
               child: AnimatedTextKit(
                 stopPauseOnTap: true,
                 animatedTexts: [

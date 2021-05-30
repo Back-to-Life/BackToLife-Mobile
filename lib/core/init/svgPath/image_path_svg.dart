@@ -46,4 +46,6 @@ class SVGImagePaths {
   final upperstack = 'upperstack'.toSVG;
   final bottomStack = 'boottom-stack'.toSVG;
   final splashIcon = 'icon'.toSVG;
+  final workerIcon = 'worker'.toSVG;
+  final emailAccountIcon = 'emailAccount'.toSVG;
 }

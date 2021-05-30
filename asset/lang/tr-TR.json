@@ -51,7 +51,14 @@
         "pushnotification": "Bildirim Gönderme İzni",
         "emailnotification": "Email Gönderme İzni",
         "camerapermissons": "Kamera İzni",
-        "locationpermissons": "Konum İzni"
+        "locationpermissons": "Konum İzni",
+        "accountSettings": {
+            "title1": "Değiştirmek istediğiniz",
+            "title2": "Bilgilerinizi Girin",
+            "userName": "Adınız Soyadınız",
+            "email": "Email",
+            "submit": "Gönder"
+        }
     },
     "errorDialog": {
         "error1": "QR Code Okunamadı !!",

@@ -1,4 +1,5 @@
 import 'package:backtolife/view/heroes/view/full_list_heroes.dart';
+import 'package:backtolife/view/settings/subsettings/account_settings/view/account_settings_view.dart';
 
 import '../../../view/heroes/view/heroes_view.dart';
 
@@ -57,6 +58,8 @@ class NavigationRoute {
         return simpleNavigate(HeroesView());
       case NavigationConstants.FULLHEROES:
         return simpleNavigate(FullListHeroes());
+      case NavigationConstants.ACCOUNT_SETTING:
+        return simpleNavigate(AccountSettings());
 
       default:
         return MaterialPageRoute(builder: (context) => NotFoundNavigation());

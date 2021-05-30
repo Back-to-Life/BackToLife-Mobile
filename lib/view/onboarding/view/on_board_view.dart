@@ -83,7 +83,7 @@ class OnBoardView extends StatelessWidget {
                                               color: viewModel.currentIndex == 1
                                                   ? context.theme.colorScheme
                                                       .primaryVariant
-                                                  : context.colors.surface));
+                                                  : Colors.white));
                                 }),
                               ),
                               Expanded(
@@ -100,11 +100,13 @@ class OnBoardView extends StatelessWidget {
                                         style: context.textTheme.subtitle1!
                                             .copyWith(
                                                 fontWeight: FontWeight.bold,
-                                                color: viewModel.currentIndex ==
-                                                        1
-                                                    ? context.theme.colorScheme
-                                                        .primaryVariant
-                                                    : context.colors.surface)),
+                                                color:
+                                                    viewModel.currentIndex == 1
+                                                        ? context
+                                                            .theme
+                                                            .colorScheme
+                                                            .primaryVariant
+                                                        : Colors.white)),
                                   );
                                 }),
                               ),
@@ -149,7 +151,7 @@ class OnBoardView extends StatelessWidget {
                                                 color: viewModel.currentIndex ==
                                                         1
                                                     ? context.colors.onPrimary
-                                                    : context.colors.surface,
+                                                    : Colors.white,
                                                 shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.only(
