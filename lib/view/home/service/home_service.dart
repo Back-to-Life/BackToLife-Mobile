@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:backtolife/core/init/cache/locale_manager.dart';
 import 'package:dio/dio.dart';
 
 import '../model/home_base_model/home_base_response_model.dart';
@@ -8,11 +9,12 @@ import 'IHomeService.dart';
 
 class HomeService extends IHomeService {
   HomeService(Dio dio) : super(dio);
+  late final String getUnicId = LocaleManager.instance.getUnicId();
 
   @override
   Future<HomeUserModel?> getHomeProfile() async {
     try {
-      final response = await dio.get('$path/609fccfac1b2200658fa4b05');
+      final response = await dio.get('$path/$getUnicId');
       if (response.statusCode == HttpStatus.ok) {
         if (response.data is Map<String, dynamic>) {
           final profileBaseResponse =

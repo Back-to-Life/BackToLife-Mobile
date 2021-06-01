@@ -6,6 +6,7 @@ import '../../../core/init/cache/locale_manager.dart';
 import '../model/register/register_withCode/register_code_model.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
 import '../../../core/constants/navigation/navigation_constants.dart';
 import '../model/register/authentication_register_model.dart';
@@ -92,6 +93,9 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   @observable
   bool isSuccess = false;
 
+  @observable
+  String mobilePermissions = '';
+
   @override
   void init() {}
 
@@ -117,6 +121,47 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
 
   void setTranslate() {
     Locale('tr', 'TR');
+  }
+
+  @action
+  Future<void> setUserPermissions() async {
+    mobilePermissions =
+        await rootBundle.loadString('asset/permissons/permissions.txt');
+  }
+
+  @action
+  showPermissions(BuildContext context) async {
+    await setUserPermissions();
+    // set up the button
+    Widget okButton = ElevatedButton(
+      child: Text('OK',
+          style: context.textTheme.headline5!.copyWith(color: Colors.black)),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+
+    // set up the AlertDialog
+    // ignore: omit_local_variable_types
+    AlertDialog alert = AlertDialog(
+      title: Text('Kullanıcı verileri Sözleşmesi'),
+      content: Scrollbar(
+          isAlwaysShown: true,
+          child: SingleChildScrollView(child: Text('$mobilePermissions'))),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    // ignore: unawaited_futures
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
   }
 
   void disposeMethod() {
