@@ -23,11 +23,13 @@ class BaseView<T extends Store> extends StatefulWidget {
   _BaseViewState<T> createState() => _BaseViewState<T>();
 }
 
-class _BaseViewState<T extends Store> extends State<BaseView<T>> {
+class _BaseViewState<T extends Store> extends State<BaseView<T>>
+      {
   late T model;
 
   @override
   void initState() {
+  
     Provider.of<ConnectivityProvider>(context, listen: false).startMonitoring();
     model = widget.viewModel;
     widget.onModelReady(model);

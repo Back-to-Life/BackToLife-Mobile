@@ -102,6 +102,22 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
     });
   }
 
+  final _$mobilePermissionsAtom =
+      Atom(name: '_AuthenticationViewModelBase.mobilePermissions');
+
+  @override
+  String get mobilePermissions {
+    _$mobilePermissionsAtom.reportRead();
+    return super.mobilePermissions;
+  }
+
+  @override
+  set mobilePermissions(String value) {
+    _$mobilePermissionsAtom.reportWrite(value, super.mobilePermissions, () {
+      super.mobilePermissions = value;
+    });
+  }
+
   final _$timerCountAtom =
       Atom(name: '_AuthenticationViewModelBase.timerCount');
 
@@ -116,6 +132,24 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
     _$timerCountAtom.reportWrite(value, super.timerCount, () {
       super.timerCount = value;
     });
+  }
+
+  final _$setUserPermissionsAsyncAction =
+      AsyncAction('_AuthenticationViewModelBase.setUserPermissions');
+
+  @override
+  Future<void> setUserPermissions() {
+    return _$setUserPermissionsAsyncAction
+        .run(() => super.setUserPermissions());
+  }
+
+  final _$showPermissionsAsyncAction =
+      AsyncAction('_AuthenticationViewModelBase.showPermissions');
+
+  @override
+  Future showPermissions(BuildContext context) {
+    return _$showPermissionsAsyncAction
+        .run(() => super.showPermissions(context));
   }
 
   final _$fetchLoginServiceAsyncAction =
@@ -232,6 +266,7 @@ isEyeOpen: ${isEyeOpen},
 isLoading: ${isLoading},
 isLoginOrSignUp: ${isLoginOrSignUp},
 isSuccess: ${isSuccess},
+mobilePermissions: ${mobilePermissions},
 timerCount: ${timerCount}
     ''';
   }

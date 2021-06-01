@@ -14,6 +14,21 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView>
     with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 4),
+      lowerBound: 0.5,
+      upperBound: 1.5,
+    );
+
+    animationController.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseView<SplashViewModel>(
@@ -46,8 +61,11 @@ class _SplashViewState extends State<SplashView>
                 fontWeight: FontWeight.bold, color: Color(0xFF72A863))));
   }
 
-  Center _centerIcon() {
-    return Center(child: SvgPicture.asset(SVGImagePaths.instance.splashIcon));
+  Widget _centerIcon() {
+    return ScaleTransition(
+        scale: animationController,
+        child:
+            Center(child: SvgPicture.asset(SVGImagePaths.instance.splashIcon)));
   }
 
   Positioned _bottomUpper(BuildContext context) {
@@ -76,5 +94,11 @@ class _SplashViewState extends State<SplashView>
                     image: AssetImage(
                       'asset/images/bottomStack.png',
                     )))));
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 }

@@ -1,3 +1,4 @@
+import 'package:backtolife/view/authentication/view/authentication_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -18,6 +19,7 @@ import 'view/heroes/view/full_list_heroes.dart';
 import 'view/home/view/home_view.dart';
 import 'view/onboarding/view/on_board_view.dart';
 import 'view/settings/subsettings/account_settings/view/account_settings_view.dart';
+import 'view/splash/view/splash_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -58,7 +60,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: HomeView(),
+      home: AuthenticationView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

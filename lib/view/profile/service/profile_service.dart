@@ -1,22 +1,23 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
+import 'package:dio/src/dio.dart';
+
+import '../../../core/init/cache/locale_manager.dart';
 import '../model/profile_base_response/profile_base_response_model.dart';
 import '../model/profile_model/profile_model.dart';
 import '../model/profile_update_request_model.dart';
 import '../model/profile_update_response_model.dart';
-import 'package:dio/dio.dart';
-import 'package:dio/src/dio.dart';
-
 import 'IProfile_service.dart';
 
 class ProfileService extends IProfileService {
   ProfileService(Dio dio) : super(dio);
-
+  late final String getUnicId = LocaleManager.instance.getUnicId();
   @override
   Future<bool> updateProfilePictureUrl(ImageUpdateRequestModel model) async {
     try {
-      final response = await dio.put('$path/609fccfac1b2200658fa4b05/updateUrl',
-          data: model.toJson());
+      final response =
+          await dio.put('$path/$getUnicId/updateUrl', data: model.toJson());
       if (response.statusCode == HttpStatus.ok) {
         print(response.data);
         var responseData = ImageUpdateResponseModel.fromJson(response.data);
