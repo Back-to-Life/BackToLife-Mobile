@@ -39,7 +39,7 @@ class ProfileService extends IProfileService {
   @override
   Future<UserProfileModel?> getDataProfile() async {
     try {
-      final response = await dio.get('$path/609fccfac1b2200658fa4b05');
+      final response = await dio.get('$path/$getUnicId');
       if (response.statusCode == HttpStatus.ok) {
         if (response.data is Map<String, dynamic>) {
           final profileBaseResponse =
