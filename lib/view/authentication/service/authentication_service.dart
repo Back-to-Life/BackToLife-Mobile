@@ -1,16 +1,13 @@
-import '../model/register/register_withCode/register_code_response_model.dart';
-
-import '../model/register/register_withCode/register_code_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-
-import '../model/register/authentication_register_response_model.dart';
-import '../model/register/authentication_register_model.dart';
 import 'package:vexana/vexana.dart';
 
 import '../model/login/authentication_model.dart';
 import '../model/login/authentication_response_model.dart';
+import '../model/register/authentication_register_model.dart';
+import '../model/register/authentication_register_response_model.dart';
+import '../model/register/register_withCode/register_code_model.dart';
+import '../model/register/register_withCode/register_code_response_model.dart';
 import 'IAuthentication_service.dart';
 
 class AuthenticationService extends IAuthenticationService {
@@ -51,19 +48,6 @@ class AuthenticationService extends IAuthenticationService {
         print('işte geliyor erorr ${e.response!.statusCode}');
       }
     }
-    /*  var dio = Dio();
-    
-    try {
-      final response =
-          await dio.post('http://10.0.2.2:5000/signup', data: model);
-      print(response.data);
-      print(response);
-    } on DioError catch (e) {
-      if (e.response!.statusCode == 401) {
-        print('işte geliyor erorr $e.response!.statusCode');
-      }
-      return 
-    } */
   }
 
   @override

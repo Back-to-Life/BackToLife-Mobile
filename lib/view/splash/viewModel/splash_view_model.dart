@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:backtolife/core/init/cache/locale_manager.dart';
 import 'package:backtolife/view/splash/model/date_request_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
   void setContext(BuildContext context) => this.context = context;
   @override
   void init() {
+    isTheFirstOpen();
     _splashService = SplashService(dio);
     var formatter = DateFormat('dd-MM-yyyy');
     thisToday = formatter.format(now);
@@ -32,6 +34,7 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
 
   Future<void> _tokenCheck() async {
     var _response = await _splashService.getTokenSuccess();
+
     if (_response) {
       Future.delayed(Duration(seconds: 5), () {
         navigation.navigateToPageClear(path: NavigationConstants.HOME_VIEW);
@@ -40,6 +43,15 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
       Future.delayed(Duration(seconds: 5), () {
         navigation.navigateToPageClear(
             path: NavigationConstants.AUTHENTICATION_VIEW);
+      });
+    }
+  }
+
+  void isTheFirstOpen() {
+    var firstOpen = localeManager.getTutorialManager();
+    if (firstOpen) {
+      Future.delayed(Duration(seconds: 5), () {
+        navigation.navigateToPageClear(path: NavigationConstants.HOME_VIEW);
       });
     }
   }
@@ -53,6 +65,6 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
           content: Text('Tarih Alımında Hata oluştu'),
         ),
       );
-    } 
+    }
   }
 }

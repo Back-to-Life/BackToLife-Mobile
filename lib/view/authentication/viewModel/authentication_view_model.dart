@@ -130,14 +130,69 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   }
 
   @action
+  void changeCheckBox(bool? value) {
+    if (value != null) {
+      isChecked = !isChecked;
+      print('isChecked $isChecked');
+    }
+  }
+
+  @observable
+  bool isChecked = false;
+
+  Color getColor(Set<MaterialState> states) {
+    // ignore: omit_local_variable_types
+    const Set<MaterialState> interactiveStates = <MaterialState>{
+      MaterialState.pressed,
+      MaterialState.hovered,
+      MaterialState.focused,
+    };
+    if (states.any(interactiveStates.contains)) {
+      return Colors.blue;
+    }
+    return Colors.red;
+  }
+
+  @action
   showPermissions(BuildContext context) async {
     await setUserPermissions();
     // set up the button
     Widget okButton = ElevatedButton(
-      child: Text('OK',
-          style: context.textTheme.headline5!.copyWith(color: Colors.black)),
-      onPressed: () {
-        Navigator.pop(context);
+      child: Text('Kabul ediyorum',
+          style: context.textTheme.subtitle1!.copyWith(color: Colors.black)),
+      onPressed: () async {
+        if (!isChecked) {
+          await showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Kullanıcı Sözleşmesi kabul edilmelidir.'),
+                content: Text(
+                    'Uygulamaya devam etmek için lütfen sözleşmemizi okuyup kabul ediyorum işaretlemeniz gerekmektedir.'),
+                actions: [
+                  ElevatedButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: Text('Tamam',
+                          style: context.textTheme.subtitle1!
+                              .copyWith(color: Colors.black)))
+                ],
+              );
+            },
+          );
+        } else {
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                'Sözleşme kabul edildi. Lütfen kayıt olurken bekleyeyiniz',
+                style:
+                    context.textTheme.headline5!.copyWith(color: Colors.white),
+              ),
+            ),
+          );
+          await fetchSignUpService();
+        }
+        //
       },
     );
 
@@ -147,7 +202,33 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
       title: Text('Kullanıcı verileri Sözleşmesi'),
       content: Scrollbar(
           isAlwaysShown: true,
-          child: SingleChildScrollView(child: Text('$mobilePermissions'))),
+          child: SingleChildScrollView(
+              child: Column(
+            children: [
+              Text('$mobilePermissions'),
+              Observer(builder: (_) {
+                return Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Checkbox(
+                          fillColor:
+                              MaterialStateProperty.resolveWith(getColor),
+                          value: isChecked,
+                          onChanged: (bool? value) {
+                            changeCheckBox(value);
+                            print(value);
+                          }),
+                    ),
+                    Expanded(
+                        flex: 4,
+                        child: Text(
+                            'Kullanıcı sözleşmesini okudum ve kabul ediyorum.'))
+                  ],
+                );
+              })
+            ],
+          ))),
       actions: [
         okButton,
       ],
@@ -157,7 +238,6 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     // ignore: unawaited_futures
     showDialog(
       context: context,
-      barrierDismissible: false,
       builder: (BuildContext context) {
         return alert;
       },
@@ -473,7 +553,6 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     });
   }
 }
-
 
 /*
 

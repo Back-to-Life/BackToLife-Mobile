@@ -220,7 +220,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
           onTap: () {
             viewModel.isLoginOrSignUp
                 ? viewModel.fetchLoginService()
-                : viewModel.fetchSignUpService();
+                : viewModel.showPermissions(context);
           },
           child: Center(
             child: Container(
