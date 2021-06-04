@@ -9,7 +9,7 @@ import 'IHomeService.dart';
 
 class HomeService extends IHomeService {
   HomeService(Dio dio) : super(dio);
-  late final String getUnicId = LocaleManager.instance.getUnicId();
+  final String getUnicId = LocaleManager.instance.getUnicId();
 
   @override
   Future<HomeUserModel?> getHomeProfile() async {

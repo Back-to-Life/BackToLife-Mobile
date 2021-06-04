@@ -118,6 +118,21 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
     });
   }
 
+  final _$isCheckedAtom = Atom(name: '_AuthenticationViewModelBase.isChecked');
+
+  @override
+  bool get isChecked {
+    _$isCheckedAtom.reportRead();
+    return super.isChecked;
+  }
+
+  @override
+  set isChecked(bool value) {
+    _$isCheckedAtom.reportWrite(value, super.isChecked, () {
+      super.isChecked = value;
+    });
+  }
+
   final _$timerCountAtom =
       Atom(name: '_AuthenticationViewModelBase.timerCount');
 
@@ -225,6 +240,17 @@ mixin _$AuthenticationViewModel on _AuthenticationViewModelBase, Store {
   }
 
   @override
+  void changeCheckBox(bool? value) {
+    final _$actionInfo = _$_AuthenticationViewModelBaseActionController
+        .startAction(name: '_AuthenticationViewModelBase.changeCheckBox');
+    try {
+      return super.changeCheckBox(value);
+    } finally {
+      _$_AuthenticationViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic showLoginNumberCode(BuildContext context) {
     final _$actionInfo = _$_AuthenticationViewModelBaseActionController
         .startAction(name: '_AuthenticationViewModelBase.showLoginNumberCode');
@@ -267,6 +293,7 @@ isLoading: ${isLoading},
 isLoginOrSignUp: ${isLoginOrSignUp},
 isSuccess: ${isSuccess},
 mobilePermissions: ${mobilePermissions},
+isChecked: ${isChecked},
 timerCount: ${timerCount}
     ''';
   }

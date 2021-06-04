@@ -1,14 +1,12 @@
-import '../model/register/register_withCode/register_code_model.dart';
-import '../model/register/register_withCode/register_code_response_model.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../model/register/authentication_register_model.dart';
-import '../model/register/authentication_register_response_model.dart';
+import 'package:vexana/vexana.dart';
 
 import '../model/login/authentication_model.dart';
 import '../model/login/authentication_response_model.dart';
-
-import 'package:vexana/vexana.dart';
+import '../model/register/authentication_register_model.dart';
+import '../model/register/authentication_register_response_model.dart';
+import '../model/register/register_withCode/register_code_model.dart';
+import '../model/register/register_withCode/register_code_response_model.dart';
 
 abstract class IAuthenticationService {
   final INetworkManager manager;

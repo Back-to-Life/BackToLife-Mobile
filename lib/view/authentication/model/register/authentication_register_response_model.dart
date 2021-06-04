@@ -8,6 +8,7 @@ class AuthenticationRegisterResponseModel
     extends INetworkModel<AuthenticationRegisterResponseModel> {
   final String? message;
   final bool? register;
+  //TODO final string id ve token gelip shared'de yapılacak
 
   AuthenticationRegisterResponseModel({this.message, this.register});
 

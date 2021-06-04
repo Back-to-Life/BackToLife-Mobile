@@ -12,7 +12,6 @@ class HomeUserModel {
     this.password,
     this.login,
     this.randomCode,
-    this.v,
     this.userProfileModelId,
     this.refreshToken,
     this.unicId,
@@ -26,7 +25,6 @@ class HomeUserModel {
   final String? password;
   final bool? login;
   final int? randomCode;
-  final int? v;
   final int? userProfileModelId;
   final String? refreshToken;
   final String? unicId;
