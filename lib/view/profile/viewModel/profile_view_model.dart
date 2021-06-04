@@ -125,7 +125,11 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
     if (_getResponse != null) {
       userProfileModel = _getResponse;
       print(userProfileModel.refreshToken);
-      if ((userProfileModel.point! >= 0) && (userProfileModel.point! <= 49)) {
+      if (userProfileModel.point! == 0) {
+        starValue = 1;
+        percentValue = 0;
+      }
+      if ((userProfileModel.point! >= 1) && (userProfileModel.point! <= 49)) {
         starValue = 1;
         percentValue = 0.2;
       } else if ((userProfileModel.point! >= 50) &&

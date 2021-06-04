@@ -33,6 +33,8 @@ Future<void> main() async {
         child: MyApp(),
         fallbackLocale: Locale('en', 'US'),
         assetLoader: CodegenLoader(),
+        startLocale:
+            LanguageManager.instance.enLocale, //eğer hata verirse kaldır
         supportedLocales: LanguageManager.instance.supportedLocales,
         path: ApplicationConstants.LANG_ASSET_PATH),
   ));
@@ -60,7 +62,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: AuthenticationView(),
+      home: SplashView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

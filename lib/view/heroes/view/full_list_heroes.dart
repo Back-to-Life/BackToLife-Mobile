@@ -123,53 +123,61 @@ class _FullListHeroesState extends State<FullListHeroes>
                                       child: Column(
                                         children: [
                                           context.emptySizedHeightBoxLow,
-                                          ListTile(
-                                            leading: Avatar(
-                                                shape: AvatarShape.circle(
-                                                    context.mediumValue * 0.7),
-                                                placeholderColors: [
-                                                  context.colors.primaryVariant
-                                                ],
-                                                sources: [
-                                                  NetworkSource(_viewModel
-                                                      .heroesImageUrl[index])
-                                                ],
-                                                loader: Shimmer.fromColors(
-                                                    child: CircleAvatar(
-                                                        radius: context
-                                                                .mediumValue *
-                                                            0.7),
-                                                    baseColor:
-                                                        Colors.grey[300]!,
-                                                    highlightColor:
-                                                        Colors.grey[100]!),
-                                                textStyle: TextStyle(
-                                                    fontSize:
-                                                        context.mediumValue)),
-                                            title: _viewModel.isLoading
-                                                ? Center(
-                                                    child:
-                                                        CircularProgressIndicator())
-                                                : Text(
-                                                    _viewModel
-                                                        .heroesName[index],
-                                                    style: context
-                                                        .textTheme.headline6!
-                                                        .copyWith(
-                                                            fontSize: 14,
-                                                            color: Color(
-                                                                0xFF4E5F49)),
-                                                  ),
-                                            trailing: Text(
-                                                ('+' +
-                                                    _viewModel
-                                                        .heroesPoint[index]
-                                                        .toString()),
+                                          Padding(
+                                            padding: context.paddingLow,
+                                            child: ListTile(
+                                              leading: Avatar(
+                                                  shape: AvatarShape.circle(
+                                                      context.mediumValue *
+                                                          0.7),
+                                                  placeholderColors: [
+                                                    context
+                                                        .colors.primaryVariant
+                                                  ],
+                                                  sources: [
+                                                    NetworkSource(_viewModel
+                                                        .heroesImageUrl[index])
+                                                  ],
+                                                  loader: Shimmer.fromColors(
+                                                      child: CircleAvatar(
+                                                          radius: context
+                                                                  .mediumValue *
+                                                              0.7),
+                                                      baseColor:
+                                                          Colors.grey[300]!,
+                                                      highlightColor:
+                                                          Colors.grey[100]!),
+                                                  textStyle: TextStyle(
+                                                      fontSize:
+                                                          context.mediumValue)),
+                                              /*    CircleAvatar(
+                                                radius:
+                                                    context.mediumValue * 0.7,
+                                                backgroundImage: NetworkImage(
+                                                    '${_viewModel.heroesImageUrl[index]}'),
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                              ), */
+                                              title: Text(
+                                                _viewModel.heroesName[index],
                                                 style: context
                                                     .textTheme.headline6!
                                                     .copyWith(
+                                                        fontSize: 14,
                                                         color:
-                                                            Color(0xFFC4C0FF))),
+                                                            Color(0xFF4E5F49)),
+                                              ),
+                                              trailing: Text(
+                                                  ('+' +
+                                                      _viewModel
+                                                          .heroesPoint[index]
+                                                          .toString()),
+                                                  style: context
+                                                      .textTheme.headline6!
+                                                      .copyWith(
+                                                          color: Color(
+                                                              0xFFC4C0FF))),
+                                            ),
                                           ),
                                           Divider(
                                               height: 1.5,

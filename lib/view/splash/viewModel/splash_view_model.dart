@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:backtolife/view/splash/model/date_request_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
@@ -15,6 +16,8 @@ class SplashViewModel = _SplashViewModelBase with _$SplashViewModel;
 abstract class _SplashViewModelBase with Store, BaseViewModel {
   late SplashService _splashService;
   late final DateTime now = DateTime.now();
+  @observable
+  String? thisToday;
 
   @override
   void setContext(BuildContext context) => this.context = context;
@@ -22,8 +25,8 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
   void init() {
     _splashService = SplashService(dio);
     var formatter = DateFormat('dd-MM-yyyy');
-    var formattedDate = formatter.format(now);
-    print(formattedDate);
+    thisToday = formatter.format(now);
+    _putDate();
     _tokenCheck();
   }
 
@@ -39,5 +42,17 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
             path: NavigationConstants.AUTHENTICATION_VIEW);
       });
     }
+  }
+
+  Future<void> _putDate() async {
+    var _response = await _splashService
+        .putDataToday(DateRequestModel(loginDate: thisToday));
+    if (!_response) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Tarih Alımında Hata oluştu'),
+        ),
+      );
+    } 
   }
 }
