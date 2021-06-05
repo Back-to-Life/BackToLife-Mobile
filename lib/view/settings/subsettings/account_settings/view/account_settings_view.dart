@@ -199,8 +199,8 @@ class AccountSettings extends StatelessWidget {
                 decoration: InputDecoration(
                     hintStyle: context.textTheme.headline5!.copyWith(
                         color: context.read<ThemeNotifier>().isDark
-                            ? Colors.white
-                            : Color(0xFF4E5F49)),
+                            ? Color(0xFF4E5F49)
+                            : Colors.white),
                     hintText: LocaleKeys.settings_accountSettings_email.locale,
                     border: InputBorder.none,
                     focusedBorder: InputBorder.none,

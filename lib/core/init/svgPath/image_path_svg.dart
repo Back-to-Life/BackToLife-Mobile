@@ -48,4 +48,6 @@ class SVGImagePaths {
   final splashIcon = 'icon'.toSVG;
   final workerIcon = 'worker'.toSVG;
   final emailAccountIcon = 'emailAccount'.toSVG;
+  final forgottoken = 'forgottoken'.toSVG;
+  final newpassword = 'passwordnew'.toSVG;
 }

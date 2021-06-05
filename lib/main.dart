@@ -1,3 +1,4 @@
+import 'package:backtolife/view/authentication/forgotpassword/view/change_password_view.dart';
 import 'package:backtolife/view/authentication/view/authentication_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,6 +16,7 @@ import 'core/init/notification/firebase_notification_handler.dart';
 import 'core/init/notifier/provider.dart';
 import 'core/init/notifier/theme_notifier.dart';
 import 'core/init/theme/app_theme_dark.dart';
+import 'view/authentication/forgotpassword/view/forgot_password_view.dart';
 import 'view/heroes/view/full_list_heroes.dart';
 import 'view/home/view/home_view.dart';
 import 'view/onboarding/view/on_board_view.dart';
@@ -62,7 +64,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: AuthenticationView(),
+      home: ForgotPasswordView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );
