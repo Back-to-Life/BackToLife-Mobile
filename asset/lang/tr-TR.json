@@ -21,6 +21,7 @@
         "orSignUpWith": "Kayıt Olun",
         "email": "Email",
         "password": "Şifre",
+        "passwordA": "Şifre Tekrarı",
         "forgotText": "Şifreyi Unuttum",
         "name": "Adınız ve Soyadınız"
     },

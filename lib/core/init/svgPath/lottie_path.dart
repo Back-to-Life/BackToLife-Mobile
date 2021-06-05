@@ -19,4 +19,6 @@ class LottiePaths {
   final darkModeFirst = 'dark-mode-first-open'.toLottie;
   final qrCodeError = 'qr-code-check'.toLottie;
   final pushNotificationSuccess = 'push-notification-success'.toLottie;
+  final forgotPassword = 'forgot-password'.toLottie;
+  final passwordChange = 'password-change'.toLottie;
 }

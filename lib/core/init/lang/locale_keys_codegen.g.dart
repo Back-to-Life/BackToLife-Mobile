@@ -37,6 +37,7 @@ class CodegenLoader extends AssetLoader{
     "orSignUpWith": "Or Sign-Up With",
     "email": "Email",
     "password": "Password",
+    "passwordA": "Password Again",
     "forgotText": "Forgot Password",
     "name": "Name and Surname"
   },
@@ -47,7 +48,7 @@ class CodegenLoader extends AssetLoader{
     "profile": "Profile",
     "heroes": "Heroes",
     "settings": "Settings",
-    "animationText1": "We are building",
+    "animationText1": "We are building together",
     "animationText2": "We are the best",
     "animationText3": "Back TO LIFE"
   },
@@ -128,6 +129,7 @@ static const Map<String,dynamic> tr_TR = {
     "orSignUpWith": "Kayıt Olun",
     "email": "Email",
     "password": "Şifre",
+    "passwordA": "Şifre Tekrarı",
     "forgotText": "Şifreyi Unuttum",
     "name": "Adınız ve Soyadınız"
   },
