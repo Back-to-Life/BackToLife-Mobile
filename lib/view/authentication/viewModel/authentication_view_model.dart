@@ -184,9 +184,9 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                'Sözleşme kabul edildi. Lütfen kayıt olurken bekleyeyiniz',
+                'Sözleşme kabul edildi. Lütfen kayıt olurken bekleyiniz..',
                 style:
-                    context.textTheme.headline5!.copyWith(color: Colors.white),
+                    context.textTheme.headline5!.copyWith(color: Colors.black),
               ),
             ),
           );
