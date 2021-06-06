@@ -35,4 +35,8 @@ class NavigationService implements INavigationService {
         },
         opaque: false));
   }
+
+  Future<void> pop() async {
+    await navigatorKey.currentState!.maybePop();
+  }
 }

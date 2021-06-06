@@ -40,6 +40,95 @@ mixin _$ForgotPasswordViewModel on _ForgotPasswordViewModelBase, Store {
     });
   }
 
+  final _$emailStringAtom =
+      Atom(name: '_ForgotPasswordViewModelBase.emailString');
+
+  @override
+  String? get emailString {
+    _$emailStringAtom.reportRead();
+    return super.emailString;
+  }
+
+  @override
+  set emailString(String? value) {
+    _$emailStringAtom.reportWrite(value, super.emailString, () {
+      super.emailString = value;
+    });
+  }
+
+  final _$passwordStringAtom =
+      Atom(name: '_ForgotPasswordViewModelBase.passwordString');
+
+  @override
+  String? get passwordString {
+    _$passwordStringAtom.reportRead();
+    return super.passwordString;
+  }
+
+  @override
+  set passwordString(String? value) {
+    _$passwordStringAtom.reportWrite(value, super.passwordString, () {
+      super.passwordString = value;
+    });
+  }
+
+  final _$tokenIntAtom = Atom(name: '_ForgotPasswordViewModelBase.tokenInt');
+
+  @override
+  int? get tokenInt {
+    _$tokenIntAtom.reportRead();
+    return super.tokenInt;
+  }
+
+  @override
+  set tokenInt(int? value) {
+    _$tokenIntAtom.reportWrite(value, super.tokenInt, () {
+      super.tokenInt = value;
+    });
+  }
+
+  final _$tokenSendServiceAtom =
+      Atom(name: '_ForgotPasswordViewModelBase.tokenSendService');
+
+  @override
+  bool get tokenSendService {
+    _$tokenSendServiceAtom.reportRead();
+    return super.tokenSendService;
+  }
+
+  @override
+  set tokenSendService(bool value) {
+    _$tokenSendServiceAtom.reportWrite(value, super.tokenSendService, () {
+      super.tokenSendService = value;
+    });
+  }
+
+  final _$firstEmailGetTokenAsyncAction =
+      AsyncAction('_ForgotPasswordViewModelBase.firstEmailGetToken');
+
+  @override
+  Future<void> firstEmailGetToken() {
+    return _$firstEmailGetTokenAsyncAction
+        .run(() => super.firstEmailGetToken());
+  }
+
+  final _$sendPasswordAndTokenAsyncAction =
+      AsyncAction('_ForgotPasswordViewModelBase.sendPasswordAndToken');
+
+  @override
+  Future<void> sendPasswordAndToken() {
+    return _$sendPasswordAndTokenAsyncAction
+        .run(() => super.sendPasswordAndToken());
+  }
+
+  final _$showSuccessAsyncAction =
+      AsyncAction('_ForgotPasswordViewModelBase.showSuccess');
+
+  @override
+  Future showSuccess() {
+    return _$showSuccessAsyncAction.run(() => super.showSuccess());
+  }
+
   final _$_ForgotPasswordViewModelBaseActionController =
       ActionController(name: '_ForgotPasswordViewModelBase');
 
@@ -55,11 +144,22 @@ mixin _$ForgotPasswordViewModel on _ForgotPasswordViewModelBase, Store {
   }
 
   @override
-  void firstEmailGetToken() {
+  void changePage() {
     final _$actionInfo = _$_ForgotPasswordViewModelBaseActionController
-        .startAction(name: '_ForgotPasswordViewModelBase.firstEmailGetToken');
+        .startAction(name: '_ForgotPasswordViewModelBase.changePage');
     try {
-      return super.firstEmailGetToken();
+      return super.changePage();
+    } finally {
+      _$_ForgotPasswordViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void navigate() {
+    final _$actionInfo = _$_ForgotPasswordViewModelBaseActionController
+        .startAction(name: '_ForgotPasswordViewModelBase.navigate');
+    try {
+      return super.navigate();
     } finally {
       _$_ForgotPasswordViewModelBaseActionController.endAction(_$actionInfo);
     }
@@ -69,7 +169,11 @@ mixin _$ForgotPasswordViewModel on _ForgotPasswordViewModelBase, Store {
   String toString() {
     return '''
 opacityValue: ${opacityValue},
-visible: ${visible}
+visible: ${visible},
+emailString: ${emailString},
+passwordString: ${passwordString},
+tokenInt: ${tokenInt},
+tokenSendService: ${tokenSendService}
     ''';
   }
 }

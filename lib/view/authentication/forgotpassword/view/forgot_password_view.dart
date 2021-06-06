@@ -46,6 +46,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView>
       viewModel: ForgotPasswordViewModel(),
       onModelReady: (model) {
         model.setContext(context);
+        model.init();
       },
       onPageBuilder:
           (BuildContext context, ForgotPasswordViewModel _viewModel) =>
@@ -58,56 +59,56 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView>
               ),
             )),
         body: SingleChildScrollView(
-          child: Form(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: Container(
-              height: context.height * 1,
-              width: context.width * 1,
-              child: Column(
-                children: [
-                  Expanded(
-                      flex: 5,
-                      child: Center(
-                        child: Container(
-                            width: context.width * 0.8,
-                            child: LottieBuilder.asset(
-                                LottiePaths.instance.forgotPassword)),
-                      )),
-                  Spacer(flex: 1),
-                  Expanded(
-                      flex: 1,
-                      child: Text(
-                        'Forgot your password ?',
-                        style: context.textTheme.headline5!.copyWith(
-                            color: Color(0xFF578B49),
-                            fontWeight: FontWeight.bold),
-                      )),
-                  Spacer(flex: 1),
-                  Expanded(flex: 2, child: _buildEmail(context, _viewModel)),
-                  Spacer(flex: 1),
-                  Expanded(
-                      flex: 2,
-                      child: Observer(builder: (_) {
-                        return AnimatedBuilder(
-                          animation: _rightSecondSlidingAnimation,
-                          child: AnimatedOpacity(
-                              opacity: _viewModel.opacityValue,
-                              duration: const Duration(seconds: 6),
-                              child: _buildToken(context, _viewModel)),
-                          builder: (BuildContext context, Widget? child) {
-                            return Transform(
-                                transform: Matrix4.translationValues(
-                                    _rightSecondSlidingAnimation.value *
-                                        context.width,
-                                    0,
-                                    0),
-                                child: child);
-                          },
-                        );
-                      })),
-                  Spacer(flex: 2),
-                  Expanded(
-                      child: Visibility(
+          child: Container(
+            height: context.height * 1,
+            width: context.width * 1,
+            child: Column(
+              children: [
+                Expanded(
+                    flex: 5,
+                    child: _upperContainerLottie(context)),
+                Expanded(
+                    flex: 1,
+                    child: Text(
+                      'Forgot your password ?',
+                      style: context.textTheme.headline5!.copyWith(
+                          color: Color(0xFF578B49),
+                          fontWeight: FontWeight.bold),
+                    )),
+                Expanded(
+                    flex: 2,
+                    child: Form(
+                        key: _viewModel.formStateEmail,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        child: _buildEmail(context, _viewModel))),
+                Spacer(flex: 1),
+                Expanded(
+                    flex: 2,
+                    child: Observer(builder: (_) {
+                      return AnimatedBuilder(
+                        animation: _rightSecondSlidingAnimation,
+                        child: AnimatedOpacity(
+                            opacity: _viewModel.opacityValue,
+                            duration: const Duration(seconds: 4),
+                            child: Form(
+                                key: _viewModel.formStateToken,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                child: _buildToken(context, _viewModel))),
+                        builder: (BuildContext context, Widget? child) {
+                          return Transform(
+                              transform: Matrix4.translationValues(
+                                  _rightSecondSlidingAnimation.value *
+                                      context.width,
+                                  0,
+                                  0),
+                              child: child);
+                        },
+                      );
+                    })),
+                Spacer(flex: 1),
+                Expanded(child: Observer(builder: (_) {
+                  return Visibility(
                     visible:
                         context.mediaQuery.viewInsets.bottom > 0 ? false : true,
                     child: ElevatedButton(
@@ -126,23 +127,42 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView>
                       ),
                       onPressed: () {
                         _animationController.forward();
-                        _viewModel.firstEmailGetToken();
-                        _viewModel.navigate();
+                        if (!_viewModel.tokenSendService) {
+                          _viewModel.firstEmailGetToken();
+                        }
+                        if (_viewModel.tokenSendService) {
+                          if (_viewModel.formStateToken.currentState!
+                              .validate()) {
+                            _viewModel.navigate();
+                            _viewModel.tokenSendService = false;
+                          } else {
+                            return null;
+                          }
+                        }
                       },
                       child: Text(
                           LocaleKeys.settings_accountSettings_submit.locale,
                           style: context.textTheme.headline6!
                               .copyWith(color: Colors.white)),
                     ),
-                  )),
-                  Spacer(flex: 1)
-                ],
-              ),
+                  );
+                })),
+                Spacer(flex: 2)
+              ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Center _upperContainerLottie(BuildContext context) {
+    return Center(
+                    child: Container(
+                        width: context.width * 0.8,
+                        child: LottieBuilder.asset(
+                            LottiePaths.instance.forgotPassword)),
+                  );
   }
 
   Widget _buildEmail(BuildContext context, ForgotPasswordViewModel _viewModel) {
@@ -166,7 +186,13 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView>
                 style: context.textTheme.headline5!
                     .copyWith(color: Color(0xFF4E5F49)),
                 controller: _viewModel.email,
-                validator: (value) => value!.isValidEmail,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter email address';
+                  } else if (value.isNotEmpty) {
+                    return value.isValidEmail;
+                  }
+                },
                 decoration: InputDecoration(
                     hintStyle: context.textTheme.headline5!.copyWith(
                       color: Color(0xFF4E5F49),
@@ -202,6 +228,7 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView>
             child: Padding(
               padding: context.paddingNormal,
               child: TextFormField(
+                keyboardType: TextInputType.phone, //number bak
                 enableSuggestions: true,
                 style: context.textTheme.headline5!
                     .copyWith(color: Color(0xFF4E5F49)),
@@ -209,6 +236,8 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView>
                 validator: (value) {
                   if (value!.isEmpty) {
                     return 'Token boş olamaz';
+                  } else if (value.length < 6) {
+                    return '6 karakterden az olamaz';
                   }
                 },
                 decoration: InputDecoration(

@@ -1,3 +1,5 @@
+import 'package:backtolife/core/init/notifier/forgot_password.dart';
+
 import '../../components/internet_connection/connectivity_provider.dart';
 import 'settings_notifier.dart';
 
@@ -28,6 +30,8 @@ class ApplicationProvider {
         create: (context) => LanguageNotifier(), lazy: true),
     ChangeNotifierProvider<SettingsNotifier>(
         create: (context) => SettingsNotifier(), lazy: true),
+    ChangeNotifierProvider<ForgotPasswordNotifier>(
+        create: (context) => ForgotPasswordNotifier(), lazy: true),
     Provider.value(value: NavigationService.instance)
   ];
   List<SingleChildWidget> uiChangesItems = [];

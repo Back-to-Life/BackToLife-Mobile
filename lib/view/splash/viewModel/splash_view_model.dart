@@ -26,7 +26,7 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
   void init() {
     isTheFirstOpen();
     _splashService = SplashService(dio);
-    var formatter = DateFormat('dd-MM-yyyy');
+    var formatter = DateFormat('dd.MM.yyyy');
     thisToday = formatter.format(now);
     _putDate();
     _tokenCheck();
