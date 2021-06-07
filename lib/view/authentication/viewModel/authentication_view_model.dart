@@ -129,6 +129,10 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
         await rootBundle.loadString('asset/permissons/permissions.txt');
   }
 
+  void goToForgotPassword() {
+    navigation.navigateToPage(path: NavigationConstants.FORGOT_PASSWORD);
+  }
+
   @action
   void changeCheckBox(bool? value) {
     if (value != null) {
