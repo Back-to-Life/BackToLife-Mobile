@@ -1,19 +1,17 @@
-import '../../../core/init/svgPath/lottie_path.dart';
-
-import '../../widgets/loading/loading_page.dart';
-import 'package:lottie/lottie.dart';
-
-import '../../../core/extension/string_extension.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../core/base/view/base_view.dart';
 import '../../../core/extension/context_extension.dart';
-import '../../../core/init/svgPath/image_path_svg.dart';
-import '../viewModel/authentication_view_model.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import '../../../core/extension/string_extension.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../core/init/svgPath/image_path_svg.dart';
+import '../../../core/init/svgPath/lottie_path.dart';
+import '../../widgets/loading/loading_page.dart';
+import '../viewModel/authentication_view_model.dart';
 
 class AuthenticationView extends StatefulWidget {
   const AuthenticationView({Key? key}) : super(key: key);
@@ -262,7 +260,7 @@ class _AuthenticationViewState extends State<AuthenticationView>
           Expanded(flex: 2, child: buildNameSign(context, viewModel)),
           Expanded(flex: 2, child: buildSignEmail(context, viewModel)),
           Expanded(flex: 2, child: buildSignPassword(context, viewModel)),
-          Expanded(flex: 1, child: buildForgotPassword(context)),
+          Expanded(flex: 1, child: buildForgotPassword(context, viewModel)),
           Spacer(flex: 1),
         ],
       ),
@@ -331,20 +329,19 @@ class _AuthenticationViewState extends State<AuthenticationView>
           Spacer(flex: 1),
           Expanded(flex: 2, child: buildEmail(context, viewModel)),
           Expanded(flex: 2, child: buildPassword(context, viewModel)),
-          Expanded(flex: 1, child: buildForgotPassword(context)),
+          Expanded(flex: 1, child: buildForgotPassword(context, viewModel)),
           Spacer(flex: 1),
         ],
       ),
     );
   }
 
-  Column buildForgotPassword(BuildContext context) {
+  Column buildForgotPassword(
+      BuildContext context, AuthenticationViewModel viewModel) {
     return Column(
       children: [
         GestureDetector(
-            onTap: () {
-              print('forgat password Button');
-            },
+            onTap: _viewModel.goToForgotPassword,
             child: Align(
               alignment: Alignment.centerRight,
               child: Text(

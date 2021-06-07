@@ -14,5 +14,6 @@ class NavigationConstants {
   static const HEROES = '/heroes';
   static const FULLHEROES = '/fullheroes';
   static const ACCOUNT_SETTING = '/accountsettings';
+  static const FORGOT_PASSWORD = '/forgotpassword';
   static const PASSOWRD_CHANGE = '/passwordchange';
 }

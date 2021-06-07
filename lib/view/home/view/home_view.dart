@@ -3,10 +3,12 @@ import 'dart:ui';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animations/animations.dart';
 import 'package:avatars/avatars.dart';
+import 'package:backtolife/core/init/notifier/theme_notifier.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../core/base/view/base_view.dart';
@@ -302,7 +304,7 @@ class _HomeViewState extends State<HomeView>
                 return ToggleButtonContainer(
                   key: _viewModel.key6,
                   callback: _viewModel.changedToggle,
-                  isSelected: _viewModel.isSelectedToggle,
+                  isSelected: context.watch<ThemeNotifier>().isDark,
                 );
               }),
             ],

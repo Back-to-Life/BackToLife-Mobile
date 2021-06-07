@@ -21,4 +21,5 @@ class LottiePaths {
   final pushNotificationSuccess = 'push-notification-success'.toLottie;
   final forgotPassword = 'forgot-password'.toLottie;
   final passwordChange = 'password-change'.toLottie;
+  final successPasswordChange = 'success-password'.toLottie;
 }

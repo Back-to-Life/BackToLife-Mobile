@@ -121,14 +121,6 @@ mixin _$ForgotPasswordViewModel on _ForgotPasswordViewModelBase, Store {
         .run(() => super.sendPasswordAndToken());
   }
 
-  final _$showSuccessAsyncAction =
-      AsyncAction('_ForgotPasswordViewModelBase.showSuccess');
-
-  @override
-  Future showSuccess() {
-    return _$showSuccessAsyncAction.run(() => super.showSuccess());
-  }
-
   final _$_ForgotPasswordViewModelBaseActionController =
       ActionController(name: '_ForgotPasswordViewModelBase');
 
@@ -160,6 +152,17 @@ mixin _$ForgotPasswordViewModel on _ForgotPasswordViewModelBase, Store {
         .startAction(name: '_ForgotPasswordViewModelBase.navigate');
     try {
       return super.navigate();
+    } finally {
+      _$_ForgotPasswordViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic showSuccess() {
+    final _$actionInfo = _$_ForgotPasswordViewModelBaseActionController
+        .startAction(name: '_ForgotPasswordViewModelBase.showSuccess');
+    try {
+      return super.showSuccess();
     } finally {
       _$_ForgotPasswordViewModelBaseActionController.endAction(_$actionInfo);
     }

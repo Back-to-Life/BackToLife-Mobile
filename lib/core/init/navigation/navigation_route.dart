@@ -1,4 +1,5 @@
 import 'package:backtolife/view/authentication/forgotpassword/view/change_password_view.dart';
+import 'package:backtolife/view/authentication/forgotpassword/view/forgot_password_view.dart';
 import 'package:backtolife/view/heroes/view/full_list_heroes.dart';
 import 'package:backtolife/view/settings/subsettings/account_settings/view/account_settings_view.dart';
 
@@ -61,6 +62,8 @@ class NavigationRoute {
         return simpleNavigate(FullListHeroes());
       case NavigationConstants.ACCOUNT_SETTING:
         return simpleNavigate(AccountSettings());
+      case NavigationConstants.FORGOT_PASSWORD:
+        return simpleNavigate(ForgotPasswordView());
       case NavigationConstants.PASSOWRD_CHANGE:
         return simpleNavigate(PasswordChangeView());
 

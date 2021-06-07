@@ -7,6 +7,7 @@ import 'package:backtolife/view/authentication/forgotpassword/model/email_toke_m
 import 'package:backtolife/view/authentication/forgotpassword/service/forgot_service.dart';
 import 'package:backtolife/view/widgets/showAlertDialog/alert_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 part 'forgot_password_view_model.g.dart';
@@ -64,8 +65,10 @@ abstract class _ForgotPasswordViewModelBase with Store, BaseViewModel {
       } else if (_response is bool) {
         emailString = email.text.toString();
 
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('E-mail başarıyla gönderildi')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text('E-mail başarıyla gönderildi',
+                style: context.textTheme.headline5!
+                    .copyWith(color: Colors.black))));
         changedOpacity();
         tokenSendService = true;
       }
@@ -87,33 +90,34 @@ abstract class _ForgotPasswordViewModelBase with Store, BaseViewModel {
   @action
   Future<void> sendPasswordAndToken() async {
     if (formState2.currentState!.validate()) {
-      /*  print(Provider.of<ForgotPasswordNotifier>(context, listen: false).email);
+      print(Provider.of<ForgotPasswordNotifier>(context, listen: false).email);
 
-      print(Provider.of<ForgotPasswordNotifier>(context, listen: false).token); */
+      print(Provider.of<ForgotPasswordNotifier>(context, listen: false).token);
       passwordString = returnPassword.text.toString();
       print(passwordString);
       var _lastresponse = await forgotService.emailTokenPassword(
-          /* EmailTokenRequestModel(
+          EmailTokenRequestModel(
               email: Provider.of<ForgotPasswordNotifier>(context, listen: false)
                   .email,
               forgotCode:
                   Provider.of<ForgotPasswordNotifier>(context, listen: false)
                       .token,
-              password: passwordString!) */
-          EmailTokenRequestModel(
-              email:
-                  'fatihkur53@hotmail.com', //verileri üsttekiler ile değiştirilmesi gerekmektedir.
-              forgotCode: 597739,
               password: passwordString!));
       if (_lastresponse is bool) {
         showSuccess();
-        //TODO 3 saniye sonrasında geçilcek ve authenticationview geçmesi sağlanacaktır.
+        Future.delayed(const Duration(seconds: 2), () {
+          navigation.navigateToPageClear(
+              path: NavigationConstants.AUTHENTICATION_VIEW);
+        });
       } else if (_lastresponse is String) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(
           _lastresponse,
           style: context.textTheme.headline5!.copyWith(color: Colors.black),
         )));
+        Future.delayed(const Duration(seconds: 2), () {
+          navigation.pop();
+        });
       }
     }
   }
@@ -129,36 +133,13 @@ abstract class _ForgotPasswordViewModelBase with Store, BaseViewModel {
   }
 
   @action
-  showSuccess() async {
-    // set up the button
-    Widget okButton = ElevatedButton(
-        child: Text('Kabul ediyorum',
-            style: context.textTheme.subtitle1!.copyWith(color: Colors.black)),
-        onPressed: () async {
-          Navigator.pop(context);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Sözleşme kabul edildi. Lütfen kayıt olurken bekleyeyiniz',
-                style:
-                    context.textTheme.headline5!.copyWith(color: Colors.black),
-              ),
-            ),
-          );
-        }
-        //
-
-        );
-
+  showSuccess() {
     // set up the AlertDialog
     // ignore: omit_local_variable_types
     AlertDialog alert = AlertDialog(
-      title: Text('Kullanıcı verileri Sözleşmesi'),
-      content: Text('başarılı'),
-      actions: [
-        okButton,
-      ],
-    );
+        title: Text('Şifre Başarıyla Değiştirildi'),
+        content: Lottie.asset(LottiePaths.instance.successPasswordChange,
+            repeat: false, reverse: false));
 
     // show the dialog
     // ignore: unawaited_futures
