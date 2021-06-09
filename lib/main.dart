@@ -18,6 +18,7 @@ import 'core/init/notifier/theme_notifier.dart';
 import 'core/init/theme/app_theme_dark.dart';
 import 'view/authentication/forgotpassword/view/forgot_password_view.dart';
 import 'view/heroes/view/full_list_heroes.dart';
+import 'view/heroes/view/heroes_view.dart';
 import 'view/home/view/home_view.dart';
 import 'view/onboarding/view/on_board_view.dart';
 import 'view/settings/subsettings/account_settings/view/account_settings_view.dart';

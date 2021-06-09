@@ -50,7 +50,22 @@ class CodegenLoader extends AssetLoader{
     "settings": "Settings",
     "animationText1": "We are building together",
     "animationText2": "We are the best",
-    "animationText3": "Back TO LIFE"
+    "animationText3": "Back TO LIFE",
+    "tutorial": {
+      "profilePictureTitle": "Profile Picture",
+      "profilePictureDescription": "You can see your profile photo here and change it by going to the profile page.",
+      "barcodeTitle": "QR Code Scanning",
+      "barcodeDescription": "Scan the QR code and earn your points after passing the control stage.",
+      "prfofilePageTitle": "Profile Page",
+      "profilePageDescription": "You can see the points you have earned on the profile page.",
+      "heroesPageTitle": "Heroes Page",
+      "heroesPageDescription": "View the top list organized each week.",
+      "settingsTitle": "Settings Page",
+      "settingsDescription": "You can manage app settings and account settings from the settings page.",
+      "themeTitle": "Light and Dark Theme Mode",
+      "themeDescription": "You can set the theme mode with a single button without going to the settings section of the light and dark mode.",
+      "skip": "SKIP"
+    }
   },
   "settings": {
     "settings": "Settings",
@@ -142,7 +157,22 @@ static const Map<String,dynamic> tr_TR = {
     "settings": "Ayarlar",
     "animationText1": "Beraber İnşa Ediyoruz",
     "animationText2": "Çünkü Biz En iyisiyiz",
-    "animationText3": "Back TO LIFE"
+    "animationText3": "Back TO LIFE",
+    "tutorial": {
+      "profilePictureTitle": "Profil Fotoğrafınız",
+      "profilePictureDescription": "Profil fotoğrafınızı buradan görebilir ve profil sayfasına giderek değiştirebilirsiniz.",
+      "barcodeTitle": "QR Kodu Taratma",
+      "barcodeDescription": "QR code okutun ve kontrol aşamasından geçtikten sonra puanınıza kazanın.",
+      "prfofilePageTitle": "Profil Sayfasınız",
+      "profilePageDescription": "Profil sayfasını kazandığınız puanları görebilirsiniz.",
+      "heroesPageTitle": "Kahramanlar Sayfası",
+      "heroesPageDescription": "Her hafta düzenlenen top listesini görüntüleyin.",
+      "settingsTitle": "Ayarlar Sayfası",
+      "settingsDescription": "Ayarlar sayfasından uygulama ayarlarını ve hesap ayarlarınızı yönetebilirsiniz.",
+      "themeTitle": "Açık ve Koyu Tema Modu",
+      "themeDescription": "Açık ve koyu modunu ayarlar kısmına gitmeden tek bir buton ile tema modunu ayarlayabilirsiniz.",
+      "skip": "GEÇ"
+    }
   },
   "settings": {
     "settings": "Ayarlar",
