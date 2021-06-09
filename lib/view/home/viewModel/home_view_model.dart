@@ -1,3 +1,6 @@
+import 'package:backtolife/core/extension/string_extension.dart';
+import 'package:backtolife/core/init/lang/locale_keys.g.dart';
+
 import '../model/user_response_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -140,7 +143,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10.0),
                       child: Text(
-                        'Profil Fotorağfınız',
+                        LocaleKeys.home_tutorial_profilePictureTitle.locale,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -150,7 +153,8 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                     Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: Text(
-                        'Profil fotoğrafınızı burdan görebilir ve profil sayafasına gidip değiştirebilirsiniz.',
+                        LocaleKeys
+                            .home_tutorial_profilePictureDescription.locale,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
@@ -192,7 +196,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                     ),
                   ),
                   Text(
-                    'Barcode Okutma',
+                    LocaleKeys.home_tutorial_barcodeTitle.locale,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -201,7 +205,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Text(
-                      'Barcode okutun ve kontrol aşamasından geçtikten sonra puanınıza kavuşun',
+                      LocaleKeys.home_tutorial_barcodeDescription.locale,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: Colors.white,
@@ -238,7 +242,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10.0),
                     child: Text(
-                      'Profil Sayfanız',
+                      LocaleKeys.home_tutorial_prfofilePageTitle.locale,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -248,7 +252,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(
-                      'Profil Sayfanızda Kazandığınız puanları görüntüleyebilirsiniz.',
+                      LocaleKeys.home_tutorial_profilePageDescription.locale,
                       style: TextStyle(
                           fontWeight: FontWeight.w500,
                           color: Colors.white,
@@ -285,23 +289,23 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 5.0),
                     child: Text(
-                      'Kahramanlar Sayfası',
+                      LocaleKeys.home_tutorial_heroesPageTitle.locale,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF4E5F49),
-                          fontSize: 20.0),
+                          color: Colors.white,
+                          fontSize: 22.0),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(
-                      'Her hafta düzenlenen top listesini görüntüleyin',
+                      LocaleKeys.home_tutorial_heroesPageDescription.locale,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 16.0,
-                        color: Color(0xFF4E5F49),
+                        color: Colors.white,
                       ),
                     ),
                   )
@@ -335,19 +339,19 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
-                      'Settings Sayfası',
+                      LocaleKeys.home_tutorial_settingsTitle.locale,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF4E5F49),
+                          color: Colors.white,
                           fontSize: 20.0),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(
-                      'Ayarlar sayfasından uygulama ayarlarını ve hesap ayarlarınızı yönetebilirsiniz.',
+                      LocaleKeys.home_tutorial_settingsDescription.locale,
                       style: TextStyle(
-                          color: Color(0xFF4E5F49),
+                          color: Colors.white,
                           fontWeight: FontWeight.w300,
                           fontSize: 16.0),
                     ),
@@ -379,7 +383,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
-                      'Açık ve Koyu Tema Modu Ayarlama',
+                      LocaleKeys.home_tutorial_themeTitle.locale,
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -387,7 +391,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
                     ),
                   ),
                   Text(
-                    'Açık ve Koyu modunu ayarlar kısmına gitmeden alt taraftan basit bir şekilde ayarlayabilirsiniz.',
+                    LocaleKeys.home_tutorial_themeDescription.locale,
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w400,
@@ -422,22 +426,16 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
     tutorialCoachMark = TutorialCoachMark(
       context,
       targets: targets,
-      textSkip: 'SKIP',
+      textSkip: LocaleKeys.home_tutorial_skip.locale,
       paddingFocus: 10,
       opacityShadow: 0.8,
       onFinish: () async {
         await LocaleManager.instance
             .setTutorialManager(PreferencesKeys.TUTORIAL, true);
       },
-      onClickTarget: (target) {
-        print('onClickTarget: $target');
-      },
       onSkip: () async {
         await LocaleManager.instance
             .setTutorialManager(PreferencesKeys.TUTORIAL, true);
-      },
-      onClickOverlay: (target) {
-        // print('onClickOverlay: $target');
       },
     )..show();
   }

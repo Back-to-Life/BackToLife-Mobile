@@ -34,7 +34,22 @@
         "settings": "Ayarlar",
         "animationText1": "Beraber İnşa Ediyoruz",
         "animationText2": "Çünkü Biz En iyisiyiz",
-        "animationText3": "Back TO LIFE"
+        "animationText3": "Back TO LIFE",
+        "tutorial": {
+            "profilePictureTitle": "Profil Fotoğrafınız",
+            "profilePictureDescription": "Profil fotoğrafınızı buradan görebilir ve profil sayfasına giderek değiştirebilirsiniz.",
+            "barcodeTitle": "QR Kodu Taratma",
+            "barcodeDescription": "QR code okutun ve kontrol aşamasından geçtikten sonra puanınıza kazanın.",
+            "prfofilePageTitle": "Profil Sayfasınız",
+            "profilePageDescription": "Profil sayfasını kazandığınız puanları görebilirsiniz.",
+            "heroesPageTitle": "Kahramanlar Sayfası",
+            "heroesPageDescription": "Her hafta düzenlenen top listesini görüntüleyin.",
+            "settingsTitle": "Ayarlar Sayfası",
+            "settingsDescription": "Ayarlar sayfasından uygulama ayarlarını ve hesap ayarlarınızı yönetebilirsiniz.",
+            "themeTitle": "Açık ve Koyu Tema Modu",
+            "themeDescription": "Açık ve koyu modunu ayarlar kısmına gitmeden tek bir buton ile tema modunu ayarlayabilirsiniz.",
+            "skip": "GEÇ"
+        }
     },
     "settings": {
         "settings": "Ayarlar",

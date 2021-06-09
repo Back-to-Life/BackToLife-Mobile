@@ -100,7 +100,8 @@ class _AuthenticationViewState extends State<AuthenticationView>
                     child: InkWell(
                       onTap: () async {
                         print('facebook');
-                        _viewModel.showPermissions(context);
+                        // _viewModel.showPermissions(context);
+                        _viewModel.showLoginNumberCode(context);
                       },
                       child: Visibility(
                         visible: context.mediaQuery.viewInsets.bottom > 0
