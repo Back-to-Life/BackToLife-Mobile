@@ -1,19 +1,23 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animations/animations.dart';
 import 'package:avatars/avatars.dart';
-import 'package:backtolife/core/init/notifier/theme_notifier.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../core/base/view/base_view.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../core/init/notifier/theme_notifier.dart';
 import '../../../core/init/svgPath/image_path_svg.dart';
 import '../../barcode/view/scan_barcode_view.dart';
 import '../../heroes/view/heroes_view.dart';
@@ -68,7 +72,7 @@ class _HomeViewState extends State<HomeView>
         CurvedAnimation(
             parent: _animationController,
             curve: Interval(0.5, 1, curve: Curves.fastOutSlowIn)));
-
+    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
     _animationController.forward();
   }
 
@@ -154,33 +158,85 @@ class _HomeViewState extends State<HomeView>
                   fontSize: 30.0,
                   fontFamily: 'Agne',
                   color: context.colors.surface),
-              child: AnimatedTextKit(
-                stopPauseOnTap: true,
-                animatedTexts: [
-                  TypewriterAnimatedText(LocaleKeys.home_animationText1.tr(),
-                      speed: Duration(milliseconds: 150),
-                      textStyle: context.textTheme.headline6!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: context.colors.surface)),
-                  TypewriterAnimatedText(LocaleKeys.home_animationText2.tr(),
-                      speed: Duration(milliseconds: 150),
-                      textStyle: context.textTheme.headline6!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: context.colors.surface)),
-                  TypewriterAnimatedText(LocaleKeys.home_animationText3.tr(),
-                      speed: Duration(milliseconds: 150),
-                      textStyle: context.textTheme.headline6!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: context.colors.surface)),
-                ],
-                onTap: () {
-                  print('Tap Event');
-                },
-              ),
+              child: _getAnimationText(true),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _getAnimationText(bool _onTapOkey) {
+    return AnimatedTextKit(
+      stopPauseOnTap: true,
+      animatedTexts: [
+        TypewriterAnimatedText(LocaleKeys.home_animationText1.tr(),
+            speed: Duration(milliseconds: 150),
+            textStyle: context.textTheme.headline6!.copyWith(
+                fontWeight: FontWeight.bold, color: context.colors.surface)),
+        TypewriterAnimatedText(LocaleKeys.home_animationText2.tr(),
+            speed: Duration(milliseconds: 150),
+            textStyle: context.textTheme.headline6!.copyWith(
+                fontWeight: FontWeight.bold, color: context.colors.surface)),
+        TypewriterAnimatedText(LocaleKeys.home_animationText3.tr(),
+            speed: Duration(milliseconds: 150),
+            textStyle: context.textTheme.headline6!.copyWith(
+                fontWeight: FontWeight.bold, color: context.colors.surface)),
+      ],
+      onTap: () {
+        if (_onTapOkey) {
+          showModalBottomSheet<void>(
+            isScrollControlled: true,
+            context: context,
+            builder: (BuildContext context) {
+              return Column(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Center(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                              onPressed: () => Navigator.pop(context),
+                              icon: Icon(Icons.close)),
+                          Padding(
+                            padding:
+                                EdgeInsets.only(right: context.width * 0.04),
+                            child: _getAnimationText(false),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 8,
+                    child: Container(
+                      child: WebView(
+                        initialUrl: 'https://flutter.dev',
+                        debuggingEnabled: true,
+                        javascriptMode: JavascriptMode.unrestricted,
+                        // ignore: prefer_collection_literals
+                        gestureRecognizers: Set()
+                          ..add(
+                            Factory<VerticalDragGestureRecognizer>(
+                              () => VerticalDragGestureRecognizer(),
+                            ), // or null
+                          ),
+                        onProgress: (int progress) {
+                          // Center(child: CircularProgressIndicator());
+                          // print('WebView is loading (progress : $progress%)');
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          );
+        }
+      },
     );
   }
 
