@@ -40,10 +40,10 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
   @action
   Future<void> setBarcodeScan() async {
     // ignore: omit_local_variable_types
-/*     barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-        '#ff6666', 'Cancel', false, ScanMode.QR); */
+     barcodeScan = await FlutterBarcodeScanner.scanBarcode(
+        '#ff6666', 'Cancel', false, ScanMode.QR); 
 
-    barcodeScan = 'Paper';
+    //barcodeScan = 'Paper';
     print(barcodeScan);
     if (barcodeScan == '-1') {
       await scanBarcodeDialog();
