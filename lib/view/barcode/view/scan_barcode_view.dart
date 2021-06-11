@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '../../../core/extension/string_extension.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 
@@ -18,6 +20,7 @@ class ScanBarcodeView extends StatefulWidget {
 
 class _ScanBarcodeViewState extends State<ScanBarcodeView> {
   int _currentStep = 0;
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -203,7 +206,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                         ),
                         elevation: 10,
                         animationDuration: const Duration(seconds: 2)),
-                    onPressed: () => _viewModel.isSuccessService(),
+                    onPressed: () => _viewModel.showMyDialog(),
                     child: Text(
                       LocaleKeys.scanBarcodeView_step3Button.locale,
                       style: context.textTheme.headline6!
