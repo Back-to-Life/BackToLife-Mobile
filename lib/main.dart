@@ -1,6 +1,7 @@
 import 'package:backtolife/view/authentication/forgotpassword/view/change_password_view.dart';
 import 'package:backtolife/view/authentication/view/authentication_view.dart';
 import 'package:backtolife/view/barcode/view/scan_barcode_view.dart';
+import 'package:backtolife/view/profile/view/profile_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -66,7 +67,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: ScanBarcodeView(),
+      home: HomeView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

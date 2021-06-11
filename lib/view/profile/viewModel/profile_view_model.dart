@@ -1,5 +1,8 @@
 import 'dart:io';
 
+import 'package:backtolife/core/init/notifier/changed_profile_picture.dart';
+import 'package:provider/provider.dart';
+
 import '../../../core/extension/string_extension.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/svgPath/lottie_path.dart';
@@ -103,11 +106,32 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
     isLoadingStar = !isLoadingStar;
   }
 
+  @observable
+  bool isChangingProfilePicture = false;
+
+  @action
+  void photoChanging() {
+    isChangingProfilePicture = true;
+  }
+
+  @observable
+  String newImage = '';
+
   @action
   Future<void> _changeDatabaseUrl(String downloadUrl) async {
+    photoChanging();
+    newImage = downloadUrl;
+    _changeLoading();
     var responseSuccess = await service.updateProfilePictureUrl(
         ImageUpdateRequestModel(imageUrl: downloadUrl));
+    if (responseSuccess) {
+      Provider.of<ChangedProfileHomeNotifier>(context, listen: false)
+          .changedProfileNotifier(downloadUrl);
+      _changeLoading();
+    }
+
     if (!responseSuccess) {
+      _changeLoading();
       await showDialog(
           context: context,
           builder: (context) => CustomConfirmDialog(

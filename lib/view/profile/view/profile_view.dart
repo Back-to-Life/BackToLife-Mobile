@@ -1,4 +1,8 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import '../../../core/extension/string_extension.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 import 'package:flutter/material.dart';
@@ -116,9 +120,7 @@ class ProfileView extends StatelessWidget {
                   }),
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {
-                        print('web sitesi açılcak');
-                      },
+                      onTap: () => _getAnimationText(context),
                       child: Padding(
                           padding: context.paddingMedium,
                           child: AutoSizeText(
@@ -134,6 +136,82 @@ class ProfileView extends StatelessWidget {
                 ],
               ),
             ));
+  }
+
+  void _getAnimationText(BuildContext context) {
+    showModalBottomSheet<void>(
+      isScrollControlled: true,
+      context: context,
+      builder: (BuildContext context) {
+        return Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Center(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: Icon(Icons.close)),
+                    Padding(
+                        padding: EdgeInsets.only(right: context.width * 0.04),
+                        child: AnimatedTextKit(
+                          stopPauseOnTap: true,
+                          animatedTexts: [
+                            TypewriterAnimatedText(
+                                LocaleKeys.home_animationText1.locale,
+                                speed: Duration(milliseconds: 150),
+                                textStyle: context.textTheme.headline6!
+                                    .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: context.colors.surface)),
+                            TypewriterAnimatedText(
+                                LocaleKeys.home_animationText2.locale,
+                                speed: Duration(milliseconds: 150),
+                                textStyle: context.textTheme.headline6!
+                                    .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: context.colors.surface)),
+                            TypewriterAnimatedText(
+                                LocaleKeys.home_animationText3.locale,
+                                speed: Duration(milliseconds: 150),
+                                textStyle: context.textTheme.headline6!
+                                    .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: context.colors.surface)),
+                          ],
+                        ))
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 8,
+              child: Container(
+                child: WebView(
+                  initialUrl: 'https://flutter.dev',
+                  debuggingEnabled: true,
+                  javascriptMode: JavascriptMode.unrestricted,
+                  // ignore: prefer_collection_literals
+                  gestureRecognizers: Set()
+                    ..add(
+                      Factory<VerticalDragGestureRecognizer>(
+                        () => VerticalDragGestureRecognizer(),
+                      ), // or null
+                    ),
+                  onProgress: (int progress) {
+                    // Center(child: CircularProgressIndicator());
+                    // print('WebView is loading (progress : $progress%)');
+                  },
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Stack upperStack(BuildContext context, ProfileViewModel _viewModel) {
@@ -190,8 +268,10 @@ class ProfileView extends StatelessWidget {
                         highlightColor: Colors.grey[100]!)
                     : ClipOval(
                         child: Image.network(
-                        _viewModel.userProfileModel.imageUrl ??
-                            ApplicationConstants.ImageProfileIsNot,
+                        (true ^ _viewModel.isChangingProfilePicture)
+                            ? _viewModel.userProfileModel.imageUrl ??
+                                ApplicationConstants.ImageProfileIsNot
+                            : _viewModel.newImage,
                         width: double.infinity,
                         height: double.infinity,
                         fit: BoxFit.fill,

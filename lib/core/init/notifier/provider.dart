@@ -1,20 +1,18 @@
-import 'package:backtolife/core/init/notifier/forgot_password.dart';
-
-import '../../components/internet_connection/connectivity_provider.dart';
-import 'settings_notifier.dart';
-
-import 'language_notifier.dart';
-
-import '../navigation/navigation_service.dart';
-import 'theme_notifier.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+
+import '../../components/internet_connection/connectivity_provider.dart';
+import '../navigation/navigation_service.dart';
+import 'changed_profile_picture.dart';
+import 'forgot_password.dart';
+import 'language_notifier.dart';
+import 'settings_notifier.dart';
+import 'theme_notifier.dart';
 
 class ApplicationProvider {
   static ApplicationProvider? _instance;
   static ApplicationProvider get instance {
     _instance ??= ApplicationProvider._init();
-
     return _instance!;
   }
 
@@ -32,6 +30,8 @@ class ApplicationProvider {
         create: (context) => SettingsNotifier(), lazy: true),
     ChangeNotifierProvider<ForgotPasswordNotifier>(
         create: (context) => ForgotPasswordNotifier(), lazy: true),
+    ChangeNotifierProvider<ChangedProfileHomeNotifier>(
+        create: (context) => ChangedProfileHomeNotifier(), lazy: true),
     Provider.value(value: NavigationService.instance)
   ];
   List<SingleChildWidget> uiChangesItems = [];

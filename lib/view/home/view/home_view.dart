@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animations/animations.dart';
 import 'package:avatars/avatars.dart';
+import 'package:backtolife/core/init/notifier/changed_profile_picture.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -115,41 +116,41 @@ class _HomeViewState extends State<HomeView>
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Observer(builder: (_) {
-            return _viewModel.isLoadingProfileImage
-                ? Center(
-                    child: CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Color(0xFF4E5F49))))
-                : OpenContainer(
-                    key: _viewModel.key1,
-                    transitionType: ContainerTransitionType.fade,
-                    transitionDuration: Duration(seconds: 3),
-                    closedColor: context.colors.primary,
-                    closedElevation: 0,
-                    closedShape: CircleBorder(),
-                    openBuilder: (context, _) => ProfileView(),
-                    closedBuilder: (context, VoidCallback openContainer) =>
-                        Avatar(
-                            shape: AvatarShape.circle(context.mediumValue),
-                            placeholderColors: [context.colors.primaryVariant],
-                            name: _viewModel.homeUserModel.name,
-                            elevation: 10,
-                            sources: [
-                              NetworkSource(
-                                  _viewModel.homeUserModel.imageUrl ?? '')
-                            ],
-                            loader: Shimmer.fromColors(
-                                child:
-                                    CircleAvatar(radius: context.mediumValue),
+          OpenContainer(
+              key: _viewModel.key1,
+              transitionType: ContainerTransitionType.fade,
+              transitionDuration: Duration(seconds: 3),
+              closedColor: context.colors.primary,
+              closedElevation: 0,
+              closedShape: CircleBorder(),
+              openBuilder: (context, _) => ProfileView(),
+              closedBuilder: (context, VoidCallback openContainer) =>
+                  Observer(builder: (_) {
+                    return CircleAvatar(
+                      radius: (context.mediumValue) * 1.2,
+                      backgroundColor: Colors.green,
+                      child: CircleAvatar(
+                        radius: ((context.mediumValue) * 1.2) * 0.9,
+                        backgroundColor: Colors.transparent,
+                        child: _viewModel.isLoadingProfileImage
+                            ? Shimmer.fromColors(
+                                child: CircleAvatar(
+                                    radius: (context.mediumValue) * 1.2),
                                 baseColor: Colors.grey[300]!,
-                                highlightColor: Colors.grey[100]!),
-                            border: Border.all(
-                                color: Colors.green,
-                                width: context.lowValue * 0.35),
-                            textStyle:
-                                TextStyle(fontSize: context.mediumValue)));
-          }),
+                                highlightColor: Colors.grey[100]!)
+                            : ClipOval(
+                                child: Image.network(
+                                Provider.of<ChangedProfileHomeNotifier>(context,
+                                            listen: false)
+                                        .imageProfileUrl ??
+                                    '',
+                                width: double.infinity,
+                                height: double.infinity,
+                                fit: BoxFit.fill,
+                              )),
+                      ),
+                    );
+                  })),
           Spacer(flex: 1),
           Expanded(
             child: DefaultTextStyle(
@@ -165,6 +166,31 @@ class _HomeViewState extends State<HomeView>
       ),
     );
   }
+
+  /*
+  Avatar(
+                            shape: AvatarShape.circle(context.mediumValue),
+                            placeholderColors: [context.colors.primaryVariant],
+                            name: _viewModel.homeUserModel.name,
+                            elevation: 10,
+                            sources: [
+                              NetworkSource(
+                                  Provider.of<ChangedProfileHomeNotifier>(
+                                              context,
+                                              listen: false)
+                                          .imageProfileUrl ??
+                                      '')
+                            ],
+                            loader: Shimmer.fromColors(
+                                child:
+                                    CircleAvatar(radius: context.mediumValue),
+                                baseColor: Colors.grey[300]!,
+                                highlightColor: Colors.grey[100]!),
+                            border: Border.all(
+                                color: Colors.green,
+                                width: context.lowValue * 0.35),
+                            textStyle:
+                                TextStyle(fontSize: context.mediumValue))*/
 
   Widget _getAnimationText(bool _onTapOkey) {
     return AnimatedTextKit(
