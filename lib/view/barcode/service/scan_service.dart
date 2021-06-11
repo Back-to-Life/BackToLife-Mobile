@@ -49,7 +49,7 @@ class ScanService extends IScanService {
     if (response.statusCode == 200) {
       var _varBackResponse = CheckArduinoModel.fromJson(response.data);
       if (_varBackResponse.ktu) {
-        print(response.data);
+        // print(response.data);
         return true;
       } else {
         return false;

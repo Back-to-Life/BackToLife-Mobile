@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:backtolife/core/extension/context_extension.dart';
+import 'package:lottie/lottie.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../core/init/svgPath/lottie_path.dart';
 import '../model/scan_request_model.dart';
@@ -32,6 +36,9 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
 
   @observable
   int stepNumber = 0;
+
+  @observable
+  int counter = 0;
 
   @override
   void setContext(BuildContext context) => this.context = context;
@@ -128,122 +135,137 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
     }
   }
 
-  void getServiceBro() {
-    scanService.fetchFirebaseRealTime();
+  @action
+  void updateCounter() {
+    counter++;
   }
 
   Stream<bool> productsStream() async* {
-    while (true) {
-      await Future.delayed(Duration(seconds: 5));
+    while (counter < 10) {
+      updateCounter();
+      await Future.delayed(Duration(seconds: 6));
       yield await scanService.fetchFirebaseRealTime();
     }
   }
 
+  @action
   Future<void> showMyDialog() async {
     // ignore: omit_local_variable_types
-    final Stream<int> _bids = (() async* {
-      await Future<void>.delayed(const Duration(seconds: 1));
+    /*  final Stream<int> _bids = (() async* {
+      await Future<void>.delayed(const Duration(seconds: 5));
       yield 1;
-      await Future<void>.delayed(const Duration(seconds: 1));
-    })();
+      await Future<void>.delayed(const Duration(seconds: 5));
+    })(); */
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('AlertDialog Title'),
-          content: StreamBuilder<bool>(
-            stream: productsStream(),
-            builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-              List<Widget> children;
-              if (snapshot.hasError) {
-                children = <Widget>[
-                  const Icon(
-                    Icons.error_outline,
-                    color: Colors.red,
-                    size: 60,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text('Error: ${snapshot.error}'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text('Stack trace: ${snapshot.stackTrace}'),
-                  ),
-                ];
-              } else {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.none:
-                    children = const <Widget>[
-                      Icon(
-                        Icons.info,
-                        color: Colors.blue,
-                        size: 60,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 16),
-                        child: Text('Select a lot'),
-                      )
-                    ];
-                    break;
-                  case ConnectionState.waiting:
-                    children = const <Widget>[
-                      SizedBox(
-                        child: CircularProgressIndicator(),
-                        width: 60,
-                        height: 60,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 16),
-                        child: Text('Awaiting bids...'),
-                      )
-                    ];
-                    break;
-                  case ConnectionState.active:
-                    children = <Widget>[
-                      const Icon(
-                        Icons.check_circle_outline,
-                        color: Colors.green,
-                        size: 60,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: Text('\$${snapshot.data}'),
-                      )
-                    ];
-                    break;
-                  case ConnectionState.done:
-                    children = <Widget>[
-                      const Icon(
-                        Icons.info,
-                        color: Colors.blue,
-                        size: 60,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: Text('\$${snapshot.data} (closed)'),
-                      )
-                    ];
-                    break;
-                }
-              }
+          title: const Text('Please Wait..'),
+          content: Container(
+            height: context.height * 0.3,
+            child: StreamBuilder<bool>(
+              stream: productsStream(),
+              builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                List<Widget> children;
+                if (snapshot.hasError) {
+                  children = [
+                    const Icon(
+                      Icons.error_outline,
+                      color: Colors.red,
+                      size: 60,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: Text('Error: ${snapshot.error}'),
+                    ),
+                  ];
+                } else {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.none:
+                      children = [
+                        Text('connection None'),
+                      ];
+                      break;
+                    case ConnectionState.waiting:
+                      children = [
+                        Expanded(
+                            flex: 6,
+                            child: LottieBuilder.asset(
+                                LottiePaths.instance.serviceFirebase)),
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            'Please wait.. Your trash is being analyzed.',
+                            textAlign: TextAlign.center,
+                          ),
+                        )
+                      ];
+                      break;
+                    case ConnectionState.active:
+                      children = [
+                        Expanded(
+                            flex: 6,
+                            child: LottieBuilder.asset(
+                                LottiePaths.instance.serviceFirebase)),
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            'Please wait.. Your trash is being analyzed.',
+                            textAlign: TextAlign.center,
+                          ),
+                        )
+                      ];
 
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: children,
-              );
-            },
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Approve'),
-              onPressed: () {
-                Navigator.of(context).pop();
+                      break;
+                    case ConnectionState.done:
+                      children = [
+                        Expanded(
+                            flex: 5,
+                            child: LottieBuilder.asset(
+                                LottiePaths.instance.tryAgain)),
+                        Spacer(),
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            'Please try again as it has been over a minute.',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        Expanded(
+                            flex: 1,
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: context.colors.primaryVariant,
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop(context);
+                                },
+                                child: Text('Okey',
+                                    style: context.textTheme.headline5!
+                                        .copyWith(
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.white))))
+                      ];
+                      break;
+                  }
+                  if (snapshot.hasData) {
+                    if (snapshot.data!) {
+                      print('hi');
+                      counter = 10;
+                    } else {
+                      print('burası yokustur');
+                    }
+                  }
+                }
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: children,
+                );
               },
             ),
-          ],
+          ),
         );
       },
     );
