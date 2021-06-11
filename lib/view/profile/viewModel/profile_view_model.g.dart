@@ -131,6 +131,38 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
     });
   }
 
+  final _$isChangingProfilePictureAtom =
+      Atom(name: '_ProfileViewModelBase.isChangingProfilePicture');
+
+  @override
+  bool get isChangingProfilePicture {
+    _$isChangingProfilePictureAtom.reportRead();
+    return super.isChangingProfilePicture;
+  }
+
+  @override
+  set isChangingProfilePicture(bool value) {
+    _$isChangingProfilePictureAtom
+        .reportWrite(value, super.isChangingProfilePicture, () {
+      super.isChangingProfilePicture = value;
+    });
+  }
+
+  final _$newImageAtom = Atom(name: '_ProfileViewModelBase.newImage');
+
+  @override
+  String get newImage {
+    _$newImageAtom.reportRead();
+    return super.newImage;
+  }
+
+  @override
+  set newImage(String value) {
+    _$newImageAtom.reportWrite(value, super.newImage, () {
+      super.newImage = value;
+    });
+  }
+
   final _$uploadImageFirebaseAsyncAction =
       AsyncAction('_ProfileViewModelBase.uploadImageFirebase');
 
@@ -194,6 +226,17 @@ mixin _$ProfileViewModel on _ProfileViewModelBase, Store {
   }
 
   @override
+  void photoChanging() {
+    final _$actionInfo = _$_ProfileViewModelBaseActionController.startAction(
+        name: '_ProfileViewModelBase.photoChanging');
+    try {
+      return super.photoChanging();
+    } finally {
+      _$_ProfileViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 pickedFile: ${pickedFile},
@@ -203,7 +246,9 @@ isLoadingPageData: ${isLoadingPageData},
 imageProfileUrl: ${imageProfileUrl},
 starValue: ${starValue},
 percentValue: ${percentValue},
-isLoadingStar: ${isLoadingStar}
+isLoadingStar: ${isLoadingStar},
+isChangingProfilePicture: ${isChangingProfilePicture},
+newImage: ${newImage}
     ''';
   }
 }

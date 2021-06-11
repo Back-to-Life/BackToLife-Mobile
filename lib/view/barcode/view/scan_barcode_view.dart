@@ -323,7 +323,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                         ),
                         elevation: 10,
                         animationDuration: const Duration(seconds: 2)),
-                    onPressed: () => _viewModel.setBarcodeScan(),
+                    onPressed: () => _viewModel.showMyDialog(),
                     child: Text(
                       LocaleKeys.scanBarcodeView_step1Button.locale,
                       style: context.textTheme.headline6!

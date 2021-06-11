@@ -71,6 +71,21 @@ mixin _$ScanBarcodeViewModel on _ScanBarcodeViewModelBase, Store {
     });
   }
 
+  final _$counterAtom = Atom(name: '_ScanBarcodeViewModelBase.counter');
+
+  @override
+  int get counter {
+    _$counterAtom.reportRead();
+    return super.counter;
+  }
+
+  @override
+  set counter(int value) {
+    _$counterAtom.reportWrite(value, super.counter, () {
+      super.counter = value;
+    });
+  }
+
   final _$setBarcodeScanAsyncAction =
       AsyncAction('_ScanBarcodeViewModelBase.setBarcodeScan');
 
@@ -121,13 +136,36 @@ mixin _$ScanBarcodeViewModel on _ScanBarcodeViewModelBase, Store {
     return _$isSuccessServiceAsyncAction.run(() => super.isSuccessService());
   }
 
+  final _$showMyDialogAsyncAction =
+      AsyncAction('_ScanBarcodeViewModelBase.showMyDialog');
+
+  @override
+  Future<void> showMyDialog() {
+    return _$showMyDialogAsyncAction.run(() => super.showMyDialog());
+  }
+
+  final _$_ScanBarcodeViewModelBaseActionController =
+      ActionController(name: '_ScanBarcodeViewModelBase');
+
+  @override
+  void updateCounter() {
+    final _$actionInfo = _$_ScanBarcodeViewModelBaseActionController
+        .startAction(name: '_ScanBarcodeViewModelBase.updateCounter');
+    try {
+      return super.updateCounter();
+    } finally {
+      _$_ScanBarcodeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 barcodeScan: ${barcodeScan},
 containerQr: ${containerQr},
 goToContainerSuccess: ${goToContainerSuccess},
-stepNumber: ${stepNumber}
+stepNumber: ${stepNumber},
+counter: ${counter}
     ''';
   }
 }

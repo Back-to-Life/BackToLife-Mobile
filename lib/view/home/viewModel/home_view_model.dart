@@ -1,5 +1,6 @@
 import 'package:backtolife/core/extension/string_extension.dart';
 import 'package:backtolife/core/init/lang/locale_keys.g.dart';
+import 'package:backtolife/core/init/notifier/changed_profile_picture.dart';
 
 import '../model/user_response_model.dart';
 import 'package:flutter/cupertino.dart';
@@ -89,6 +90,7 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
   @action
   void changedLoading() {
     isLoadingProfileImage = !isLoadingProfileImage;
+    print(isLoadingProfileImage);
   }
 
   @action
@@ -97,6 +99,8 @@ abstract class _HomeViewModelBase with Store, BaseViewModel {
     var responseData = await homeService.getHomeProfile();
     if (responseData != null) {
       homeUserModel = responseData;
+      Provider.of<ChangedProfileHomeNotifier>(context, listen: false)
+          .changedProfileNotifier(homeUserModel.imageUrl!);
     }
     changedLoading();
   }
