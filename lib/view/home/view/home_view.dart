@@ -363,8 +363,6 @@ class _HomeViewState extends State<HomeView>
                   isSelected: context.watch<ThemeNotifier>().isDark,
                 );
               }),
-              /* ElevatedButton(
-                  onPressed: _viewModel.showTutorial, child: Text('okey')) */
             ],
           ),
         ],
