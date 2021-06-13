@@ -68,6 +68,11 @@ abstract class  LocaleKeys {
   static const settings_accountSettings_email = 'settings.accountSettings.email';
   static const settings_accountSettings_submit = 'settings.accountSettings.submit';
   static const settings_accountSettings = 'settings.accountSettings';
+  static const settings_dialogLogout_logout = 'settings.dialogLogout.logout';
+  static const settings_dialogLogout_description = 'settings.dialogLogout.description';
+  static const settings_dialogLogout_yes = 'settings.dialogLogout.yes';
+  static const settings_dialogLogout_no = 'settings.dialogLogout.no';
+  static const settings_dialogLogout = 'settings.dialogLogout';
   static const settings = 'settings';
   static const errorDialog_error1 = 'errorDialog.error1';
   static const errorDialog_error1Description = 'errorDialog.error1Description';

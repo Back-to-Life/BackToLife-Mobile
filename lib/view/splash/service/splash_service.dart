@@ -13,7 +13,7 @@ class SplashService extends ISplashService {
   SplashService(Dio dio) : super(dio);
 
   final String _getUnicId = LocaleManager.instance.getUnicId();
-  final String _getToken = LocaleManager.instance.getToken();
+  final String? _getToken = LocaleManager.instance.getToken();
 
   // http://localhost:5000/logins/60b3bbb9ee719429fcece0bc/increaseCounter
 

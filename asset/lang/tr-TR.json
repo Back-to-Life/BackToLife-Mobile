@@ -74,6 +74,12 @@
             "userName": "Adınız Soyadınız",
             "email": "Email",
             "submit": "Gönder"
+        },
+        "dialogLogout": {
+            "logout": "Çıkış",
+            "description": "Gerçekten çıkış yapmak istiyor musunuz ?",
+            "yes": "Evet",
+            "no": "Hayır"
         }
     },
     "errorDialog": {

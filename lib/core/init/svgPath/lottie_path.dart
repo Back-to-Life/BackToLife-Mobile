@@ -24,4 +24,5 @@ class LottiePaths {
   final successPasswordChange = 'success-password'.toLottie;
   final serviceFirebase = 'scan-firebase'.toLottie;
   final loadingFirebase = 'loading-firebase'.toLottie;
+  final logout = 'logout'.toLottie;
 }

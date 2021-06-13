@@ -11,7 +11,6 @@ class HeroesViewModel = _HeroesViewModelBase with _$HeroesViewModel;
 
 abstract class _HeroesViewModelBase with Store, BaseViewModel {
   late HeroesService heroesService;
-  // final _baseUrl = 'http://10.0.2.2:5000/';
   late HeroesModel heroesModel;
 
   @observable

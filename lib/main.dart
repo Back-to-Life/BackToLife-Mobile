@@ -23,7 +23,10 @@ import 'view/heroes/view/full_list_heroes.dart';
 import 'view/heroes/view/heroes_view.dart';
 import 'view/home/view/home_view.dart';
 import 'view/onboarding/view/on_board_view.dart';
+import 'view/settings/subsettings/about_settings/view/about_view.dart';
 import 'view/settings/subsettings/account_settings/view/account_settings_view.dart';
+import 'view/settings/view/settings_view.dart';
+import 'view/splash/service/splash_service.dart';
 import 'view/splash/view/splash_view.dart';
 
 Future<void> main() async {
@@ -67,7 +70,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: HomeView(),
+      home: SplashView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

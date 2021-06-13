@@ -99,55 +99,19 @@ class HeroesView extends StatelessWidget {
                                                       context
                                                           .emptySizedHeightBoxLow,
                                                       ListTile(
-                                                        leading: Avatar(
-                                                            shape: AvatarShape.circle(
-                                                                context.mediumValue *
-                                                                    0.7),
-                                                            placeholderColors: [
-                                                              context.colors
-                                                                  .primaryVariant
-                                                            ],
-                                                            sources: [
-                                                              NetworkSource(
-                                                                  _viewModel
-                                                                          .heroesImageUrl[
-                                                                      index])
-                                                            ],
-                                                            loader: Shimmer.fromColors(
-                                                                child: CircleAvatar(
-                                                                    radius: context.mediumValue *
-                                                                        0.7),
-                                                                baseColor: Colors
-                                                                    .grey[300]!,
-                                                                highlightColor:
-                                                                    Colors.grey[
-                                                                        100]!),
-                                                            textStyle: TextStyle(
-                                                                fontSize: context
-                                                                    .mediumValue)),
-                                                        title: Text(
-                                                          _viewModel.heroesName[
-                                                              index],
-                                                          style: context
-                                                              .textTheme
-                                                              .headline6!
-                                                              .copyWith(
-                                                                  fontSize: 14,
-                                                                  color: Color(
-                                                                      0xFF4E5F49)),
-                                                        ),
-                                                        trailing: Text(
-                                                            ('+' +
-                                                                _viewModel
-                                                                    .heroesPoint[
-                                                                        index]
-                                                                    .toString()),
-                                                            style: context
-                                                                .textTheme
-                                                                .headline6!
-                                                                .copyWith(
-                                                                    color: Color(
-                                                                        0xFFC4C0FF))),
+                                                        leading:
+                                                            _pictureProfile(
+                                                                context,
+                                                                _viewModel,
+                                                                index),
+                                                        title: _heroesName(
+                                                            _viewModel,
+                                                            index,
+                                                            context),
+                                                        trailing: _heroesPoint(
+                                                            _viewModel,
+                                                            index,
+                                                            context),
                                                       ),
                                                       Divider(
                                                           height: 1.5,
@@ -192,6 +156,34 @@ class HeroesView extends StatelessWidget {
                 ],
               ),
             ));
+  }
+
+  Text _heroesPoint(
+      HeroesViewModel _viewModel, int index, BuildContext context) {
+    return Text(('+' + _viewModel.heroesPoint[index].toString()),
+        style: context.textTheme.headline6!.copyWith(color: Color(0xFFC4C0FF)));
+  }
+
+  Text _heroesName(
+      HeroesViewModel _viewModel, int index, BuildContext context) {
+    return Text(
+      _viewModel.heroesName[index],
+      style: context.textTheme.headline6!
+          .copyWith(fontSize: 14, color: Color(0xFF4E5F49)),
+    );
+  }
+
+  Avatar _pictureProfile(
+      BuildContext context, HeroesViewModel _viewModel, int index) {
+    return Avatar(
+        shape: AvatarShape.circle(context.mediumValue * 0.7),
+        placeholderColors: [context.colors.primaryVariant],
+        sources: [NetworkSource(_viewModel.heroesImageUrl[index])],
+        loader: Shimmer.fromColors(
+            child: CircleAvatar(radius: context.mediumValue * 0.7),
+            baseColor: Colors.grey[300]!,
+            highlightColor: Colors.grey[100]!),
+        textStyle: TextStyle(fontSize: context.mediumValue));
   }
 
   Positioned _heroesSvgImage(BuildContext context) {

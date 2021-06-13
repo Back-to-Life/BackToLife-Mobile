@@ -74,6 +74,12 @@
       "userName": "UserName",
       "email": "Email",
       "submit": "Submit"
+    },
+    "dialogLogout": {
+      "logout": "Logout",
+      "description": "Do you really want to logout ?",
+      "yes": "Yes",
+      "no": "No"
     }
   },
   "errorDialog": {
