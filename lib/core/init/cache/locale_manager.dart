@@ -22,6 +22,10 @@ class LocaleManager {
     await _preferences!.clear();
   }
 
+  Future<void> clearOnly(PreferencesKeys key) async {
+    await _preferences!.remove(key.toString());
+  }
+
   Future<void> setString(PreferencesKeys key, String value) async {
     await _preferences!.setString(key.toString(), value);
   }
@@ -78,8 +82,8 @@ class LocaleManager {
   }
 
   //get the token string
-  String getToken() =>
-      _preferences!.getString(PreferencesKeys.TOKEN.toString()) ?? '';
+  String? getToken() =>
+      _preferences!.getString(PreferencesKeys.TOKEN.toString());
 
   //set the push notification Settings
   Future<void> setPushNotification(PreferencesKeys key, bool value) async {

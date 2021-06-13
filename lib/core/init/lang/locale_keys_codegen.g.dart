@@ -90,6 +90,12 @@ class CodegenLoader extends AssetLoader{
       "userName": "UserName",
       "email": "Email",
       "submit": "Submit"
+    },
+    "dialogLogout": {
+      "logout": "Logout",
+      "description": "Do you really want to logout ?",
+      "yes": "Yes",
+      "no": "No"
     }
   },
   "errorDialog": {
@@ -197,6 +203,12 @@ static const Map<String,dynamic> tr_TR = {
       "userName": "Adınız Soyadınız",
       "email": "Email",
       "submit": "Gönder"
+    },
+    "dialogLogout": {
+      "logout": "Çıkış",
+      "description": "Gerçekten çıkış yapmak istiyor musunuz ?",
+      "yes": "Evet",
+      "no": "Hayır"
     }
   },
   "errorDialog": {

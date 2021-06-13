@@ -1,21 +1,16 @@
 import 'dart:ui';
 
-import '../../../../../core/extension/string_extension.dart';
-
-import '../../../../../core/init/notifier/language_notifier.dart';
-import '../../../../widgets/upperSettingsContainer/upper_settings_container.dart';
-import 'package:provider/provider.dart';
-
-import '../../../../../core/init/lang/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../core/base/view/base_view.dart';
 import '../../../../../core/extension/context_extension.dart';
+import '../../../../../core/extension/string_extension.dart';
+import '../../../../../core/init/lang/locale_keys.g.dart';
+import '../../../../../core/init/notifier/language_notifier.dart';
 import '../../../../../core/init/svgPath/image_path_svg.dart';
-import '../../../../widgets/slideAnimation/slide_animation_list.dart';
 import '../viewModel/language_settings_view_model.dart';
 
 class LanguageSettingsView extends StatefulWidget {
@@ -49,42 +44,7 @@ class _LanguageSettingsViewState extends State<LanguageSettingsView>
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                      flex: 2,
-                      child: ClipRRect(
-                        borderRadius: context.highOnlyBottomRadius,
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 16.0, sigmaY: 16.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: context.colors.primaryVariant,
-                                borderRadius: context.highOnlyBottomRadius,
-                                border: Border.all(
-                                    width: 1.5,
-                                    color: context.colors.primaryVariant
-                                        .withOpacity(0.3))),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                    flex: 1,
-                                    child: IconButton(
-                                        icon: Icon(Icons.arrow_back_ios,
-                                            color: context.colors.surface),
-                                        onPressed: () =>
-                                            Navigator.pop(context, 'bar'))),
-                                Expanded(
-                                    flex: 3,
-                                    child: Text(
-                                        LocaleKeys.settings_language.locale,
-                                        style: context.textTheme.headline5!
-                                            .copyWith(
-                                                color:
-                                                    context.colors.surface))),
-                              ],
-                            ),
-                          ),
-                        ),
-                      )),
+                  Expanded(flex: 2, child: _topContainer(context)),
                   Expanded(
                     flex: 9,
                     child: Column(
@@ -99,6 +59,37 @@ class _LanguageSettingsViewState extends State<LanguageSettingsView>
                 ],
               ),
             ));
+  }
+
+  ClipRRect _topContainer(BuildContext context) {
+    return ClipRRect(
+      borderRadius: context.highOnlyBottomRadius,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 16.0, sigmaY: 16.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: context.colors.primaryVariant,
+              borderRadius: context.highOnlyBottomRadius,
+              border: Border.all(
+                  width: 1.5,
+                  color: context.colors.primaryVariant.withOpacity(0.3))),
+          child: Row(
+            children: [
+              Expanded(
+                  flex: 1,
+                  child: IconButton(
+                      icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+                      onPressed: () => Navigator.pop(context, 'bar'))),
+              Expanded(
+                  flex: 3,
+                  child: Text(LocaleKeys.settings_language.locale,
+                      style: context.textTheme.headline5!
+                          .copyWith(color: Colors.white))),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Container _englishLanguage(

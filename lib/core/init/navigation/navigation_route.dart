@@ -1,6 +1,7 @@
 import 'package:backtolife/view/authentication/forgotpassword/view/change_password_view.dart';
 import 'package:backtolife/view/authentication/forgotpassword/view/forgot_password_view.dart';
 import 'package:backtolife/view/heroes/view/full_list_heroes.dart';
+import 'package:backtolife/view/settings/subsettings/about_settings/view/about_view.dart';
 import 'package:backtolife/view/settings/subsettings/account_settings/view/account_settings_view.dart';
 
 import '../../../view/heroes/view/heroes_view.dart';
@@ -53,7 +54,7 @@ class NavigationRoute {
       case NavigationConstants.THEMEMODE_SETTINGS:
         return simpleNavigate(ThemeSettingsView());
       case NavigationConstants.ABOUT_SETTINGS:
-        return simpleNavigate(LanguageSettingsView());
+        return simpleNavigate(AboutUsSettingsView());
       case NavigationConstants.LOGOUT_SETTINGS:
         return simpleNavigate(LanguageSettingsView());
       case NavigationConstants.HEROES:

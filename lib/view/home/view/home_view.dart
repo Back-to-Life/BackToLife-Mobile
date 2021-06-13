@@ -126,20 +126,20 @@ class _HomeViewState extends State<HomeView>
               openBuilder: (context, _) => ProfileView(),
               closedBuilder: (context, VoidCallback openContainer) =>
                   Observer(builder: (_) {
-                    return CircleAvatar(
-                      radius: (context.mediumValue) * 1.2,
-                      backgroundColor: Colors.green,
-                      child: CircleAvatar(
-                        radius: ((context.mediumValue) * 1.2) * 0.9,
-                        backgroundColor: Colors.transparent,
-                        child: _viewModel.isLoadingProfileImage
-                            ? Shimmer.fromColors(
-                                child: CircleAvatar(
-                                    radius: (context.mediumValue) * 1.2),
-                                baseColor: Colors.grey[300]!,
-                                highlightColor: Colors.grey[100]!)
-                            : ClipOval(
-                                child: Image.network(
+                    return _viewModel.isLoadingProfileImage
+                        ? Shimmer.fromColors(
+                            child: CircleAvatar(
+                                radius: (context.mediumValue) * 1.2),
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!)
+                        : CircleAvatar(
+                            radius: (context.mediumValue) * 1.2,
+                            backgroundColor: Colors.green,
+                            child: CircleAvatar(
+                              radius: ((context.mediumValue) * 1.2) * 0.9,
+                              backgroundColor: Colors.transparent,
+                              child: ClipOval(
+                                  child: Image.network(
                                 Provider.of<ChangedProfileHomeNotifier>(context,
                                             listen: false)
                                         .imageProfileUrl ??
@@ -148,8 +148,8 @@ class _HomeViewState extends State<HomeView>
                                 height: double.infinity,
                                 fit: BoxFit.fill,
                               )),
-                      ),
-                    );
+                            ),
+                          );
                   })),
           Spacer(flex: 1),
           Expanded(

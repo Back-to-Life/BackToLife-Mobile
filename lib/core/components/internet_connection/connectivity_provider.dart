@@ -8,7 +8,7 @@ class ConnectivityProvider with ChangeNotifier {
   bool? _isOnline;
   bool? get isOnline => _isOnline;
 
-  startMonitoring() async {
+  void startMonitoring() async {
     await initConnectivity();
     _connectivity.onConnectivityChanged.listen((event) {
       if (event == ConnectivityResult.none) {
