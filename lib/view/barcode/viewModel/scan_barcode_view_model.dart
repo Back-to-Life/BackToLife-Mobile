@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
 import 'package:backtolife/core/extension/context_extension.dart';
 import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -53,7 +54,6 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
     barcodeScan = await FlutterBarcodeScanner.scanBarcode(
         '#ff6666', 'Cancel', false, ScanMode.QR);
 
-    //barcodeScan = 'Paper';
     print(barcodeScan);
     if (barcodeScan == '-1') {
       await scanBarcodeDialog();
@@ -66,38 +66,39 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
   @action
   Future<void> setContainerBarcodeScan() async {
     // ignore: omit_local_variable_types
-/*     barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-        '#ff6666', 'Cancel', false, ScanMode.QR); */
+    containerQr = await FlutterBarcodeScanner.scanBarcode(
+        '#ff6666', 'Cancel', false, ScanMode.QR);
 
-    containerQr = 'Paper';
     print(containerQr);
     if (containerQr == '-1') {
       await scanBarcodeDialog();
     } else {
-      stepNumber += 1;
-      containerQr = containerQr; //fonksiyondan gelen değerle eşitle
+      if (containerQr == barcodeScan) {
+        stepNumber += 1;
+      } else {
+        stepNumber = 0;
+        barcodeScan = null;
+        containerQr = null;
+        await isNotSameName();
+      }
     }
   }
 
   @action
   Future<void> completePointServiceCall() async {
-    if (barcodeScan == containerQr) {
-      if (!goToContainerSuccess) {
-        //true gelmesi lazım ancak ben şuanlık false ters yaptırıyorum..
-        var responseBool = await scanService
-            .fetchScanService(ScanRequestModel(pointName: '$barcodeScan'));
-        if (!responseBool) {
-          //eğer serviste bir hata var ise bunu show diolog ile gösteriyorum
-          await showDialog(
-              context: context,
-              builder: (context) => CustomConfirmDialog(
-                  title: LocaleKeys.errorDialog_eror2.tr(),
-                  description: LocaleKeys.errorDialog_error2Description.tr(),
-                  jsonPath: LottiePaths.instance.errorLottie));
-        }
+    if (!goToContainerSuccess) {
+      //true gelmesi lazım ancak ben şuanlık false ters yaptırıyorum..
+      var responseBool = await scanService
+          .fetchScanService(ScanRequestModel(pointName: '$barcodeScan'));
+      if (!responseBool) {
+        //eğer serviste bir hata var ise bunu show diolog ile gösteriyorum
+        await showDialog(
+            context: context,
+            builder: (context) => CustomConfirmDialog(
+                title: LocaleKeys.errorDialog_eror2.tr(),
+                description: LocaleKeys.errorDialog_error2Description.tr(),
+                jsonPath: LottiePaths.instance.errorLottie));
       }
-    } else {
-      await isNotSameName();
     }
   }
 
@@ -251,8 +252,12 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
                   }
                   if (snapshot.hasData) {
                     if (snapshot.data!) {
-                      print('hi');
+                      print('başarılı bir şekilde puan eklendi');
+                      completePointServiceCall();
                       counter = 10;
+                      //TODO burda hata alıyorum...
+                      /*      navigation.navigateToPageClear(
+                          path: NavigationConstants.HOME_VIEW); */
                     } else {
                       print('burası yokustur');
                     }

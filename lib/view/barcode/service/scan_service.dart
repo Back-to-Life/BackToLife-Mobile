@@ -21,7 +21,7 @@ class ScanService extends IScanService {
   Future<bool> fetchScanService(ScanRequestModel model) async {
     try {
       final response =
-          await dio.post('${path}/$getUnicId/point', data: model.toJson());
+          await dio.put('${path}/$getUnicId/point', data: model.toJson());
 
       if (response.statusCode == HttpStatus.ok) {
         print(response.data);

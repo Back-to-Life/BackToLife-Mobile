@@ -83,7 +83,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                               currentStep: _viewModel.stepNumber,
                               onStepTapped: (step) {
                                 setState(() {
-                                  _currentStep = step;
+                                  _currentStep = _viewModel.stepNumber;
                                   _viewModel.stepNumber = step;
                                 });
                               },
@@ -217,8 +217,9 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
           ],
         ),
       ),
-      isActive: _currentStep >= 2,
-      state: _currentStep <= 2 ? StepState.indexed : StepState.complete,
+      isActive: _viewModel.stepNumber >= 2,
+      state:
+          _viewModel.stepNumber <= 2 ? StepState.indexed : StepState.complete,
     );
   }
 
@@ -275,8 +276,9 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
           ],
         ),
       ),
-      isActive: _currentStep >= 1,
-      state: _currentStep <= 1 ? StepState.indexed : StepState.complete,
+      isActive: _viewModel.stepNumber >= 1,
+      state:
+          _viewModel.stepNumber <= 1 ? StepState.indexed : StepState.complete,
     );
   }
 
@@ -323,7 +325,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                         ),
                         elevation: 10,
                         animationDuration: const Duration(seconds: 2)),
-                    onPressed: () => _viewModel.showMyDialog(),
+                    onPressed: () => _viewModel.setBarcodeScan(),
                     child: Text(
                       LocaleKeys.scanBarcodeView_step1Button.locale,
                       style: context.textTheme.headline6!
@@ -334,8 +336,9 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
           ],
         ),
       ),
-      isActive: _currentStep >= 0,
-      state: _currentStep <= 0 ? StepState.indexed : StepState.complete,
+      isActive: _viewModel.stepNumber >= 0,
+      state:
+          _viewModel.stepNumber <= 0 ? StepState.indexed : StepState.complete,
     );
   }
 }

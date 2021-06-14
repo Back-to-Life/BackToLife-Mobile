@@ -53,7 +53,8 @@ abstract class _OnBoardViewModelBase with Store, BaseViewModel {
   Future<void> completeToOnBoard() async {
     if (currentIndex == 2) {
       changeLoading();
-      await localeManager.setBooleanValue(PreferencesKeys.IS_FIRST_APP, true);
+      await localeManager.setOnBoardingValue(
+          PreferencesKeys.IS_FIRST_APP, true);
       changeLoading();
       await navigation.navigateToPageClear(
           path: NavigationConstants.AUTHENTICATION_VIEW);
