@@ -28,8 +28,8 @@ class ToggleButtonContainer extends StatelessWidget {
           AnimatedPositioned(
             curve: Curves.easeIn,
             top: 3.0,
-            left: isSelected! ? 60.0 : 0.0,
-            right: isSelected! ? 0.0 : 60.0,
+            left: isSelected! ? 40 : 0.0,
+            right: isSelected! ? 0.0 : 40,
             duration: const Duration(milliseconds: 500),
             child: InkWell(
               onTap: callback as void Function()?,

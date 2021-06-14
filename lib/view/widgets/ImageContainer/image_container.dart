@@ -28,7 +28,13 @@ class ImageContainerCustom extends StatelessWidget {
                 Spacer(flex: 1),
                 Expanded(
                     flex: 1,
-                    child: Text(title!, style: TextStyle(color: Colors.white)))
+                    child: Text(
+                      title!,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    ))
               ]),
               decoration: BoxDecoration(
                   boxShadow: [

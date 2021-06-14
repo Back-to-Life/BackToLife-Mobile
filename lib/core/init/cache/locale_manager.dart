@@ -30,7 +30,7 @@ class LocaleManager {
     await _preferences!.setString(key.toString(), value);
   }
 
-  Future<void> setBooleanValue(PreferencesKeys key, bool value) async {
+  Future<void> setOnBoardingValue(PreferencesKeys key, bool value) async {
     await _preferences!.setBool(key.toString(), value);
   }
 
@@ -39,6 +39,9 @@ class LocaleManager {
 
   bool getBoolValue(PreferencesKeys key) =>
       _preferences!.getBool(key.toString()) ?? false;
+
+  bool getOnBoradingValue() =>
+      _preferences!.getBool(PreferencesKeys.IS_FIRST_APP.toString()) ?? false;
 
   //Saved Locale English-Turkish Language Manager
   Future<void> setLanguageManager(PreferencesKeys key, bool value) async {

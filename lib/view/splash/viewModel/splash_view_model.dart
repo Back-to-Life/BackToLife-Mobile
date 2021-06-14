@@ -57,7 +57,7 @@ abstract class _SplashViewModelBase with Store, BaseViewModel {
   }
 
   void isTheFirstOpen() async {
-    var firstOpen = localeManager.getTutorialManager();
+    var firstOpen = localeManager.getOnBoradingValue();
     if (!firstOpen) {
       await Future.delayed(Duration(seconds: 5));
       await navigation.navigateToPageClear(
