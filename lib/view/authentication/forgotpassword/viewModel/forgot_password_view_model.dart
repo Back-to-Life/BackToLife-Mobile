@@ -1,6 +1,8 @@
 import 'package:backtolife/core/base/model/base_view_model.dart';
 import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
 import 'package:backtolife/core/extension/context_extension.dart';
+import 'package:backtolife/core/extension/string_extension.dart';
+import 'package:backtolife/core/init/lang/locale_keys.g.dart';
 import 'package:backtolife/core/init/notifier/forgot_password.dart';
 import 'package:backtolife/core/init/svgPath/lottie_path.dart';
 import 'package:backtolife/view/authentication/forgotpassword/model/email_toke_model/email_token_request_model.dart';
@@ -66,7 +68,7 @@ abstract class _ForgotPasswordViewModelBase with Store, BaseViewModel {
         emailString = email.text.toString();
 
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('E-mail başarıyla gönderildi',
+            content: Text(LocaleKeys.login_emailsend.locale,
                 style: context.textTheme.headline5!
                     .copyWith(color: Colors.black))));
         changedOpacity();
@@ -137,7 +139,7 @@ abstract class _ForgotPasswordViewModelBase with Store, BaseViewModel {
     // set up the AlertDialog
     // ignore: omit_local_variable_types
     AlertDialog alert = AlertDialog(
-        title: Text('Şifre Başarıyla Değiştirildi'),
+        title: Text(LocaleKeys.login_passwordchangesuccess.locale),
         content: Lottie.asset(LottiePaths.instance.successPasswordChange,
             repeat: false, reverse: false));
 

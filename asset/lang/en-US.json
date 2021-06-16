@@ -23,7 +23,9 @@
     "password": "Password",
     "passwordA": "Password Again",
     "forgotText": "Forgot Password",
-    "name": "Name and Surname"
+    "name": "Name and Surname",
+    "emailsend": "Email sent successfully",
+    "passwordchangesuccess": "Password changed successfully"
   },
   "home": {
     "hello": "Hello!",

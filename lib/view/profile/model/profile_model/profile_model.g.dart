@@ -20,7 +20,7 @@ UserProfileModel _$UserProfileModelFromJson(Map<String, dynamic> json) {
     v: json['v'] as int?,
     userProfileModelId: json['userProfileModelId'] as int?,
     refreshToken: json['refreshToken'] as String?,
-    unicId: json['unicId'] as String?,
+    unicID: json['unicID'] as String?,
     imageUrl: json['imageUrl'] as String?,
   );
 }
@@ -37,6 +37,6 @@ Map<String, dynamic> _$UserProfileModelToJson(UserProfileModel instance) =>
       'v': instance.v,
       'userProfileModelId': instance.userProfileModelId,
       'refreshToken': instance.refreshToken,
-      'unicId': instance.unicId,
+      'unicID': instance.unicID,
       'imageUrl': instance.imageUrl,
     };

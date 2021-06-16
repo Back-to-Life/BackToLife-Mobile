@@ -39,7 +39,9 @@ class CodegenLoader extends AssetLoader{
     "password": "Password",
     "passwordA": "Password Again",
     "forgotText": "Forgot Password",
-    "name": "Name and Surname"
+    "name": "Name and Surname",
+    "emailsend": "Email sent successfully",
+    "passwordchangesuccess": "Password changed successfully"
   },
   "home": {
     "hello": "Hello!",
@@ -152,7 +154,9 @@ static const Map<String,dynamic> tr_TR = {
     "password": "Şifre",
     "passwordA": "Şifre Tekrarı",
     "forgotText": "Şifreyi Unuttum",
-    "name": "Adınız ve Soyadınız"
+    "name": "Adınız ve Soyadınız",
+    "emailsend": "Email başarıyla gönderildi",
+    "passwordchangesuccess": "Şifre başarıyla değiştirildi"
   },
   "home": {
     "hello": "Merhaba!",
