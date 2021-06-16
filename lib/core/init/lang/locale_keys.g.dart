@@ -21,6 +21,8 @@ abstract class  LocaleKeys {
   static const login_passwordA = 'login.passwordA';
   static const login_forgotText = 'login.forgotText';
   static const login_name = 'login.name';
+  static const login_emailsend = 'login.emailsend';
+  static const login_passwordchangesuccess = 'login.passwordchangesuccess';
   static const login = 'login';
   static const home_hello = 'home.hello';
   static const home_homedescription = 'home.homedescription';

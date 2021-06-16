@@ -69,7 +69,7 @@ abstract class _ProfileViewModelBase with Store, BaseViewModel {
       // Uploading Image to FirebaseStorage
       var filePath = await _fireStorage
           .ref()
-          .child('demo/$fileName')
+          .child('images/${userProfileModel.name}-> ${userProfileModel.unicID}')
           .putFile(file)
           .then((value) {
         return value;

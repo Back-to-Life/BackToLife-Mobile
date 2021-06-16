@@ -151,12 +151,6 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
 
   @action
   Future<void> showMyDialog() async {
-    // ignore: omit_local_variable_types
-    /*  final Stream<int> _bids = (() async* {
-      await Future<void>.delayed(const Duration(seconds: 5));
-      yield 1;
-      await Future<void>.delayed(const Duration(seconds: 5));
-    })(); */
     return showDialog<void>(
       context: context,
       barrierDismissible: false, // user must tap button!

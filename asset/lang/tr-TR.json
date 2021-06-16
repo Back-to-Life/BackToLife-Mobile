@@ -23,7 +23,9 @@
         "password": "Şifre",
         "passwordA": "Şifre Tekrarı",
         "forgotText": "Şifreyi Unuttum",
-        "name": "Adınız ve Soyadınız"
+        "name": "Adınız ve Soyadınız",
+        "emailsend": "Email başarıyla gönderildi",
+        "passwordchangesuccess": "Şifre başarıyla değiştirildi"
     },
     "home": {
         "hello": "Merhaba!",

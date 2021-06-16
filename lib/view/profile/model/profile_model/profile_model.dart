@@ -15,7 +15,7 @@ class UserProfileModel {
     this.v,
     this.userProfileModelId,
     this.refreshToken,
-    this.unicId,
+    this.unicID,
     this.imageUrl,
   });
 
@@ -29,7 +29,7 @@ class UserProfileModel {
   final int? v;
   final int? userProfileModelId;
   final String? refreshToken;
-  final String? unicId;
+  final String? unicID;
   final String? imageUrl;
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) =>
