@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:backtolife/core/constants/app/api_constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -191,7 +192,7 @@ class ProfileView extends StatelessWidget {
               flex: 8,
               child: Container(
                 child: WebView(
-                  initialUrl: 'https://flutter.dev',
+                  initialUrl: 'http://${ApiConstants.instance.localHost}:3000',
                   debuggingEnabled: true,
                   javascriptMode: JavascriptMode.unrestricted,
                   // ignore: prefer_collection_literals

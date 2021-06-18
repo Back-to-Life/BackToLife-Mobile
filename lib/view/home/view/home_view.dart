@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animations/animations.dart';
 import 'package:avatars/avatars.dart';
+import 'package:backtolife/core/constants/app/api_constants.dart';
 import 'package:backtolife/core/init/notifier/changed_profile_picture.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
@@ -240,7 +241,8 @@ class _HomeViewState extends State<HomeView>
                     flex: 8,
                     child: Container(
                       child: WebView(
-                        initialUrl: 'https://flutter.dev',
+                        initialUrl:
+                            'http://${ApiConstants.instance.localHost}:3000',
                         debuggingEnabled: true,
                         javascriptMode: JavascriptMode.unrestricted,
                         // ignore: prefer_collection_literals

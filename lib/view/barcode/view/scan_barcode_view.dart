@@ -81,12 +81,12 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                               },
                               steps: _mySteps(_viewModel),
                               currentStep: _viewModel.stepNumber,
-                              onStepTapped: (step) {
+                             /*  onStepTapped: (step) {
                                 setState(() {
                                   _currentStep = _viewModel.stepNumber;
                                   _viewModel.stepNumber = step;
                                 });
-                              },
+                              }, */
                               onStepContinue: () {
                                 switch (_viewModel.stepNumber) {
                                   case 0:
@@ -125,15 +125,7 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
                                   default:
                                 }
                               },
-                              /*  onStepCancel: () {
-                              setState(() {
-                                if (_currentStep > 0) {
-                                  _currentStep = _currentStep - 1;
-                                } else {
-                                  _currentStep = 0;
-                                }
-                              });
-                            }, */
+                             
                             );
                           }),
                         ),
