@@ -10,12 +10,16 @@ class VexanaManager {
 
   VexanaManager._init();
 
-  INetworkManager networkManager = NetworkManager(
+/*   INetworkManager networkManager = NetworkManager(
       isEnableLogger: true,
-      options: BaseOptions(baseUrl: 'http://10.0.2.2:5000/'));
+      options: BaseOptions(baseUrl: 'http://10.0.2.2:5000/')); */
 
 /*   INetworkManager networkManager = NetworkManager(
       isEnableLogger: true,
+      options: BaseOptions(baseUrl: '${ApiConstants.instance.herokuApi}')); */
+
+   INetworkManager networkManager = NetworkManager(
+      isEnableLogger: true,
       options: BaseOptions(
-          baseUrl: 'http://${ApiConstants.instance.localHost}:5000/')); */
+          baseUrl: 'http://${ApiConstants.instance.localHost}:5000/')); 
 }
