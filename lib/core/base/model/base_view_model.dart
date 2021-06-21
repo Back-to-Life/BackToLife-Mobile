@@ -11,11 +11,11 @@ abstract class BaseViewModel {
   late BuildContext context;
   ICoreDio? coreDio = NetworkManager.instance!.coreDio;
   //final Dio dio = Dio(BaseOptions(baseUrl: 'http://10.0.2.2:5000/'));
-/*   final Dio dio =
-      Dio(BaseOptions(baseUrl: '${ApiConstants.instance.herokuApi}')); */
+  final Dio dio =
+      Dio(BaseOptions(baseUrl: '${ApiConstants.instance.herokuApi}'));
   // final Dio dio = Dio(BaseOptions(baseUrl: 'http://localhost:5000/'));
-  final Dio dio = Dio(
-      BaseOptions(baseUrl: 'http://${ApiConstants.instance.localHost}:5000/'));
+/*   final Dio dio = Dio(
+      BaseOptions(baseUrl: 'http://${ApiConstants.instance.localHost}:5000/')); */
 
   LocaleManager localeManager = LocaleManager.instance;
   NavigationService navigation = NavigationService.instance;

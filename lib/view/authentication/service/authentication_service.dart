@@ -45,7 +45,7 @@ class AuthenticationService extends IAuthenticationService {
       }
     } on DioError catch (e) {
       if (e.response!.statusCode == 401) {
-        print('işte geliyor erorr ${e.response!.statusCode}');
+        print('erorr ${e.response!.statusCode}');
       }
     }
   }

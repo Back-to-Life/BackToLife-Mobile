@@ -8,9 +8,12 @@ class AuthenticationRegisterResponseModel
     extends INetworkModel<AuthenticationRegisterResponseModel> {
   final String? message;
   final bool? register;
+  final String? unicID;
+  final String? rtoken;
   //TODO final string id ve token gelip shared'de yapılacak
 
-  AuthenticationRegisterResponseModel({this.message, this.register});
+  AuthenticationRegisterResponseModel(
+      {this.unicID, this.rtoken, this.message, this.register});
 
   @override
   AuthenticationRegisterResponseModel fromJson(Map<String, Object?> json) {

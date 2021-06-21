@@ -299,6 +299,10 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
               email: emailSignUpController!.text,
               password: passwordSignUpController!.text));
       if (response != null) {
+        await localeManager.setTokenManager(
+            PreferencesKeys.TOKEN, response.rtoken.toString());
+        await localeManager.setTokenManager(
+            PreferencesKeys.ID, response.unicID.toString());
         successChanged();
         changedLoading();
         timerCount = 60;
@@ -319,10 +323,10 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
               email: emailSignUpController!.text,
               password: passwordSignUpController!.text,
               randomCodeReq: int.parse(randomCodeInput)));
-      print(nameSurnameController!.text);
-      print(emailSignUpController!.text);
-      print(passwordSignUpController!.text);
-      print(int.parse(randomCodeInput));
+      // print(nameSurnameController!.text);
+      // print(emailSignUpController!.text);
+      // print(passwordSignUpController!.text);
+      // print(int.parse(randomCodeInput));
       if (response != null) {
         successChanged();
         changedLoading();
