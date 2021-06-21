@@ -80,7 +80,7 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
         backgroundColor: MaterialStateProperty.all(Color(0xFF72A863)),
       ),
       child: Text(LocaleKeys.settings_dialogLogout_yes.locale,
-          style: context.textTheme.headline6!.copyWith(color: Colors.red)),
+          style: context.textTheme.headline5!.copyWith(color: Colors.red)),
       onPressed: () async {
         await _logout();
       },
@@ -90,7 +90,7 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
         backgroundColor: MaterialStateProperty.all(Color(0xFF72A863)),
       ),
       child: Text(LocaleKeys.settings_dialogLogout_no.locale,
-          style: context.textTheme.headline6!.copyWith(color: Colors.white)),
+          style: context.textTheme.headline5!.copyWith(color: Colors.white)),
       onPressed: () {
         navigation.pop();
       },
@@ -118,25 +118,24 @@ abstract class _SettingsViewModelBase with Store, BaseViewModel {
       actions: <Widget>[
         Row(
           children: [
-            // Spacer(),
             Expanded(
+                flex: 2,
                 child: Padding(
-              padding: EdgeInsets.only(left: context.width * 0.09),
-              child: noButton,
-            )),
+                  padding: EdgeInsets.only(left: context.width * 0.09),
+                  child: noButton,
+                )),
             Spacer(),
             Expanded(
+                flex: 2,
                 child: Padding(
-              padding: EdgeInsets.only(right: context.width * 0.09),
-              child: yesButton,
-            )),
-            // Spacer(),
+                  padding: EdgeInsets.only(right: context.width * 0.09),
+                  child: yesButton,
+                )),
           ],
         )
       ],
     );
 
-    // show the dialog
     showDialog(
       context: context,
       builder: (BuildContext context) {
