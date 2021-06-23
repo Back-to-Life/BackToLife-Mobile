@@ -13,6 +13,7 @@ class FirebaseNotifications {
 
   void setupFirebase(BuildContext context) {
     _messaging = FirebaseMessaging.instance;
+    // FirebaseMessaging.instance.getInitialMessage();
     firebaseCloudMessageListener(context);
     var initAndroid = AndroidInitializationSettings('@mipmap/ic_notification');
     var initSettings = InitializationSettings(android: initAndroid);
@@ -38,6 +39,7 @@ class FirebaseNotifications {
         .whenComplete(() => print('subscribe ok'));
 
     FirebaseMessaging.onMessage.listen((remoteMessage) {
+      // ignore: unawaited_futures
       flutterNotificationPlugin.show(
           remoteMessage.notification.hashCode,
           remoteMessage.notification!.title,
@@ -53,16 +55,23 @@ class FirebaseNotifications {
                   largeIcon: DrawableResourceAndroidBitmap('icon_notification'),
                   importance: Importance.max,
                   priority: Priority.high)));
+
       var gelenMesaj = remoteMessage.data;
       print(gelenMesaj);
     });
+
+    //kullanici eger background'dan tiklanmis ise bu kisim calismaktadir.
     FirebaseMessaging.onMessageOpenedApp.listen((remoteMessage) async {
       await navigationRoute.navigateToPage(
           path: remoteMessage.data['navigation']);
+    });
+  }
 
-      /* showDialog(
+  /*  static void showNotification(RemoteMessage remoteMessage) async {
+
+    await showDialog(
         context: myContext,
-        builder: (context) => CupertinoAlertDialog(
+        builder: (myContext) => CupertinoAlertDialog(
           title: Text(remoteMessage.notification!.title!),
           content: Text(remoteMessage.notification!.body!),
           actions: [
@@ -73,11 +82,7 @@ class FirebaseNotifications {
             )
           ],
         ),
-      ); */
-    });
-  }
-
-  /*  static void showNotification(RemoteMessage remoteMessage) async {
+      );
     flutterNotificationPlugin.show(
         remoteMessage.notification.hashCode,
         remoteMessage.notification!.title,
