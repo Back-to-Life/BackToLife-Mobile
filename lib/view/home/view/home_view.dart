@@ -3,9 +3,6 @@ import 'dart:ui';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animations/animations.dart';
-import 'package:avatars/avatars.dart';
-import 'package:backtolife/core/constants/app/api_constants.dart';
-import 'package:backtolife/core/init/notifier/changed_profile_picture.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -17,8 +14,10 @@ import 'package:shimmer/shimmer.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../core/base/view/base_view.dart';
+import '../../../core/constants/app/api_constants.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../core/init/notifier/changed_profile_picture.dart';
 import '../../../core/init/notifier/theme_notifier.dart';
 import '../../../core/init/svgPath/image_path_svg.dart';
 import '../../barcode/view/scan_barcode_view.dart';
@@ -168,31 +167,6 @@ class _HomeViewState extends State<HomeView>
     );
   }
 
-  /*
-  Avatar(
-                            shape: AvatarShape.circle(context.mediumValue),
-                            placeholderColors: [context.colors.primaryVariant],
-                            name: _viewModel.homeUserModel.name,
-                            elevation: 10,
-                            sources: [
-                              NetworkSource(
-                                  Provider.of<ChangedProfileHomeNotifier>(
-                                              context,
-                                              listen: false)
-                                          .imageProfileUrl ??
-                                      '')
-                            ],
-                            loader: Shimmer.fromColors(
-                                child:
-                                    CircleAvatar(radius: context.mediumValue),
-                                baseColor: Colors.grey[300]!,
-                                highlightColor: Colors.grey[100]!),
-                            border: Border.all(
-                                color: Colors.green,
-                                width: context.lowValue * 0.35),
-                            textStyle:
-                                TextStyle(fontSize: context.mediumValue))*/
-
   Widget _getAnimationText(bool _onTapOkey) {
     return AnimatedTextKit(
       stopPauseOnTap: true,
@@ -300,7 +274,7 @@ class _HomeViewState extends State<HomeView>
         ),
         buildWorldContainer(context),
         Positioned(
-          right: context.lowValue * 0.2,
+          right: context.lowValue * 0.1,
           child: AnimatedBuilder(
               animation: _worldAnimation,
               builder: (BuildContext context, Widget? child) {

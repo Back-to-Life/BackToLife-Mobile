@@ -10,7 +10,6 @@ class AuthenticationRegisterResponseModel
   final bool? register;
   final String? unicID;
   final String? rtoken;
-  //TODO final string id ve token gelip shared'de yapılacak
 
   AuthenticationRegisterResponseModel(
       {this.unicID, this.rtoken, this.message, this.register});

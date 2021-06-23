@@ -4,11 +4,10 @@ part 'account_settings_request_model.g.dart';
 
 @JsonSerializable()
 class AccountSettingsModel {
-  final String? username;
+  final String? name;
   final String? email;
-  final String? password;
 
-  AccountSettingsModel({this.username, this.email, this.password});
+  AccountSettingsModel({this.name, this.email});
 
   factory AccountSettingsModel.fromJson(Map<String, dynamic> json) =>
       _$AccountSettingsModelFromJson(json);
