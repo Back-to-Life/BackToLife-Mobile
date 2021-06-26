@@ -234,7 +234,8 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
                                   primary: context.colors.primaryVariant,
                                 ),
                                 onPressed: () {
-                                  Navigator.of(context).pop(context);
+                                  // Navigator.of(context).pop(context);
+                                  navigation.pop();
                                 },
                                 child: Text('Okey',
                                     style: context.textTheme.headline5!
@@ -250,7 +251,8 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
                       completePointServiceCall();
                       counter = 10;
                       //TODO burda hata alıyorum...
-                      /*      navigation.navigateToPageClear(
+                      navigation.pop();
+                      /*          navigation.navigateToPageClear(
                           path: NavigationConstants.HOME_VIEW); */
                     } else {
                       print('burası yokustur');
