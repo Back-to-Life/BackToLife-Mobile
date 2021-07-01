@@ -23,6 +23,14 @@ abstract class  LocaleKeys {
   static const login_name = 'login.name';
   static const login_emailsend = 'login.emailsend';
   static const login_passwordchangesuccess = 'login.passwordchangesuccess';
+  static const login_accept = 'login.accept';
+  static const login_errorAccept = 'login.errorAccept';
+  static const login_errorAcceptDescription = 'login.errorAcceptDescription';
+  static const login_acceptRegister = 'login.acceptRegister';
+  static const login_useragreement = 'login.useragreement';
+  static const login_userAgreementOkey = 'login.userAgreementOkey';
+  static const login_okey = 'login.okey';
+  static const login_signUpCode = 'login.signUpCode';
   static const login = 'login';
   static const home_hello = 'home.hello';
   static const home_homedescription = 'home.homedescription';

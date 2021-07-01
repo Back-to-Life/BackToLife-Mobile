@@ -25,7 +25,15 @@
     "forgotText": "Forgot Password",
     "name": "Name and Surname",
     "emailsend": "Email sent successfully",
-    "passwordchangesuccess": "Password changed successfully"
+    "passwordchangesuccess": "Password changed successfully",
+    "accept": "I agree",
+    "errorAccept": "The user agreement must be accepted.",
+    "errorAcceptDescription": "In order to continue the application, you must read our agreement and mark it as I accept.",
+    "acceptRegister": "Contract accepted. Please wait while registering.",
+    "useragreement": "User Agreement",
+    "userAgreementOkey": "I have read and accept the user agreement.",
+    "okey": "Okey",
+    "signUpCode": "Please Enter Incoming Code"
   },
   "home": {
     "hello": "Hello!",
