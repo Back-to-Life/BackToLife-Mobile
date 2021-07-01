@@ -5,12 +5,12 @@ part 'register_code_model.g.dart';
 
 @JsonSerializable()
 class RegisterCode extends INetworkModel<RegisterCode> {
-  final String? name;
+  // final String? name;
   final String? email;
-  final String? password;
+  // final String? password;
   final int? randomCodeReq;
 
-  RegisterCode({this.name, this.email, this.password, this.randomCodeReq});
+  RegisterCode({this.email, this.randomCodeReq});
 
   @override
   RegisterCode fromJson(Map<String, dynamic> json) {

@@ -41,7 +41,15 @@ class CodegenLoader extends AssetLoader{
     "forgotText": "Forgot Password",
     "name": "Name and Surname",
     "emailsend": "Email sent successfully",
-    "passwordchangesuccess": "Password changed successfully"
+    "passwordchangesuccess": "Password changed successfully",
+    "accept": "I agree",
+    "errorAccept": "The user agreement must be accepted.",
+    "errorAcceptDescription": "In order to continue the application, you must read our agreement and mark it as I accept.",
+    "acceptRegister": "Contract accepted. Please wait while registering.",
+    "useragreement": "User Agreement",
+    "userAgreementOkey": "I have read and accept the user agreement.",
+    "okey": "Okey",
+    "signUpCode": "Please Enter Incoming Code"
   },
   "home": {
     "hello": "Hello!",
@@ -156,7 +164,15 @@ static const Map<String,dynamic> tr_TR = {
     "forgotText": "Şifreyi Unuttum",
     "name": "Adınız ve Soyadınız",
     "emailsend": "Email başarıyla gönderildi",
-    "passwordchangesuccess": "Şifre başarıyla değiştirildi"
+    "passwordchangesuccess": "Şifre başarıyla değiştirildi",
+    "accept": "Kabul ediyorum",
+    "errorAccept": "Kullanıcı Sözleşmesi kabul edilmelidir.",
+    "errorAcceptDescription": "Uygulamaya devam etmek için lütfen sözleşmemizi okuyup kabul ediyorum işaretlemeniz gerekmektedir.",
+    "acceptRegister": "Sözleşme kabul edildi. Lütfen kayıt olurken bekleyiniz.",
+    "useragreement": "Kullanıcı veri sözleşmesi",
+    "userAgreementOkey": "Kullanıcı sözleşmesini okudum ve kabul ediyorum",
+    "okey": "Tamam",
+    "signUpCode": "Lütfen Gelen Kodu Giriniz."
   },
   "home": {
     "hello": "Merhaba!",

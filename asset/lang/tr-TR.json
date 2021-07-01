@@ -25,7 +25,15 @@
         "forgotText": "Şifreyi Unuttum",
         "name": "Adınız ve Soyadınız",
         "emailsend": "Email başarıyla gönderildi",
-        "passwordchangesuccess": "Şifre başarıyla değiştirildi"
+        "passwordchangesuccess": "Şifre başarıyla değiştirildi",
+        "accept": "Kabul ediyorum",
+        "errorAccept": "Kullanıcı Sözleşmesi kabul edilmelidir.",
+        "errorAcceptDescription": "Uygulamaya devam etmek için lütfen sözleşmemizi okuyup kabul ediyorum işaretlemeniz gerekmektedir.",
+        "acceptRegister": "Sözleşme kabul edildi. Lütfen kayıt olurken bekleyiniz.",
+        "useragreement": "Kullanıcı veri sözleşmesi",
+        "userAgreementOkey": "Kullanıcı sözleşmesini okudum ve kabul ediyorum",
+        "okey": "Tamam",
+        "signUpCode": "Lütfen Gelen Kodu Giriniz."
     },
     "home": {
         "hello": "Merhaba!",

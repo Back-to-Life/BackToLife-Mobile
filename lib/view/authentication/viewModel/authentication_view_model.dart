@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:backtolife/core/extension/string_extension.dart';
+import 'package:backtolife/core/init/lang/locale_keys.g.dart';
+
 import '../../../core/constants/enum/locale_keys_enum.dart';
 import '../../../core/extension/context_extension.dart';
 import '../../../core/init/cache/locale_manager.dart';
@@ -162,7 +165,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     await setUserPermissions();
     // set up the button
     Widget okButton = ElevatedButton(
-      child: Text('Kabul ediyorum',
+      child: Text(LocaleKeys.login_accept.locale,
           style: context.textTheme.subtitle1!.copyWith(color: Colors.black)),
       onPressed: () async {
         if (!isChecked) {
@@ -170,13 +173,12 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Kullanıcı Sözleşmesi kabul edilmelidir.'),
-                content: Text(
-                    'Uygulamaya devam etmek için lütfen sözleşmemizi okuyup kabul ediyorum işaretlemeniz gerekmektedir.'),
+                title: Text(LocaleKeys.login_errorAccept.locale),
+                content: Text(LocaleKeys.login_errorAcceptDescription.locale),
                 actions: [
                   ElevatedButton(
                       onPressed: () => Navigator.pop(context),
-                      child: Text('Tamam',
+                      child: Text(LocaleKeys.login_okey.locale,
                           style: context.textTheme.subtitle1!
                               .copyWith(color: Colors.black)))
                 ],
@@ -188,7 +190,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                'Sözleşme kabul edildi. Lütfen kayıt olurken bekleyiniz..',
+                LocaleKeys.login_useragreement.locale,
                 style:
                     context.textTheme.headline5!.copyWith(color: Colors.black),
               ),
@@ -203,7 +205,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     // set up the AlertDialog
     // ignore: omit_local_variable_types
     AlertDialog alert = AlertDialog(
-      title: Text('Kullanıcı verileri Sözleşmesi'),
+      title: Text(LocaleKeys.login_useragreement.locale),
       content: Scrollbar(
           isAlwaysShown: true,
           child: SingleChildScrollView(
@@ -226,8 +228,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
                     ),
                     Expanded(
                         flex: 4,
-                        child: Text(
-                            'Kullanıcı sözleşmesini okudum ve kabul ediyorum.'))
+                        child: Text(LocaleKeys.login_userAgreementOkey.locale))
                   ],
                 );
               })
@@ -319,14 +320,10 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     if (codeFormState.currentState!.validate()) {
       final response = await authenticationService
           .registerSuccessWithCodeControl(RegisterCode(
-              name: nameSurnameController!.text,
               email: emailSignUpController!.text,
-              password: passwordSignUpController!.text,
               randomCodeReq: int.parse(randomCodeInput)));
-      // print(nameSurnameController!.text);
-      // print(emailSignUpController!.text);
-      // print(passwordSignUpController!.text);
-      // print(int.parse(randomCodeInput));
+      print(emailSignUpController!.text);
+      print(int.parse(randomCodeInput));
       if (response != null) {
         successChanged();
         changedLoading();
@@ -346,7 +343,8 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
   showLoginNumberCode(BuildContext context) {
     // set up the button
     Widget okButton = FlatButton(
-      child: Text('OK', style: TextStyle(color: Colors.black)),
+      child: Text(LocaleKeys.login_okey.locale,
+          style: TextStyle(color: Colors.black)),
       onPressed: () async {
         Navigator.pop(context);
         changedLoading();
@@ -362,7 +360,8 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
       },
     );
     Widget ok2Button = FlatButton(
-      child: Text('OK', style: TextStyle(color: Colors.black)),
+      child: Text(LocaleKeys.login_okey.locale,
+          style: TextStyle(color: Colors.black)),
       onPressed: () {
         Navigator.pop(context);
         changedLoading();
@@ -390,7 +389,7 @@ abstract class _AuthenticationViewModelBase with Store, BaseViewModel {
     // set up the AlertDialog
     // ignore: omit_local_variable_types
     AlertDialog alert = AlertDialog(
-      title: Text('Lütfen Gelen Kodu Giriniz'),
+      title: Text(LocaleKeys.login_signUpCode.locale),
       content: Form(
         child: Container(
           height: context.height * 0.15,
