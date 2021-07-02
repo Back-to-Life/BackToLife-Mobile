@@ -1,3 +1,4 @@
+import 'package:backtolife/view/home/view/home_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -14,6 +15,7 @@ import 'core/init/notification/firebase_notification_handler.dart';
 import 'core/init/notifier/provider.dart';
 import 'core/init/notifier/theme_notifier.dart';
 import 'core/init/theme/app_theme_dark.dart';
+import 'view/barcode/view/scan_barcode_view.dart';
 import 'view/splash/view/splash_view.dart';
 
 Future<void> main() async {
@@ -57,7 +59,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: SplashView(),
+      home: HomeView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );
