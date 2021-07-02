@@ -30,121 +30,116 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
           model.setContext(context);
           model.init();
         },
-        onPageBuilder: (BuildContext context,
-                ScanBarcodeViewModel _viewModel) =>
-            Scaffold(
-              appBar: AppBar(
-                iconTheme: IconThemeData(color: context.colors.surface),
-              ),
-              body: Padding(
-                padding: EdgeInsets.only(top: context.mediumValue),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: context.mediumValue),
-                            child: Text(
-                              LocaleKeys.scanBarcodeView_mainName.locale,
-                              textAlign: TextAlign.start,
-                              style: context.textTheme.headline4!
-                                  .copyWith(color: context.colors.surface),
-                            ),
-                          ),
-                        ],
-                      ),
+        onPageBuilder:
+            (BuildContext context, ScanBarcodeViewModel _viewModel) => Scaffold(
+                  appBar: AppBar(
+                    iconTheme: IconThemeData(color: context.colors.surface),
+                  ),
+                  body: Padding(
+                    padding: EdgeInsets.only(top: context.mediumValue),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        /* Expanded(
+                        child: ElevatedButton(
+                            child: Text('bas'),
+                            onPressed: () => _viewModel.notificationConfeti())), */
+                        Expanded(flex: 2, child: _upperContainerText(context)),
+                        Expanded(
+                            flex: 6,
+                            child: _stepperFunction(theme, _viewModel)),
+                        Expanded(flex: 2, child: _konfetiSvg())
+                      ],
                     ),
-                    Expanded(
-                      flex: 6,
-                      child: Theme(
-                        data: ThemeData(
-                            accentColor: Colors.orange,
-                            primarySwatch: Colors.green,
-                            colorScheme:
-                                ColorScheme.light(primary: Colors.orange),
-                            iconTheme: theme.iconTheme.copyWith(size: 30)),
-                        child: Center(
-                          child: Observer(builder: (_) {
-                            return Stepper(
-                              controlsBuilder: (BuildContext context,
-                                  {VoidCallback? onStepContinue,
-                                  VoidCallback? onStepCancel}) {
-                                return Row(
-                                  children: <Widget>[],
-                                );
-                              },
-                              steps: _mySteps(_viewModel),
-                              currentStep: _viewModel.stepNumber,
-                             /*  onStepTapped: (step) {
-                                setState(() {
-                                  _currentStep = _viewModel.stepNumber;
-                                  _viewModel.stepNumber = step;
-                                });
-                              }, */
-                              onStepContinue: () {
-                                switch (_viewModel.stepNumber) {
-                                  case 0:
-                                    setState(() {
-                                      if (_viewModel.stepNumber <
-                                          _mySteps(_viewModel).length - 1) {
-                                        _currentStep = _currentStep + 1;
-                                        _currentStep = _viewModel.stepNumber;
-                                      } else {
-                                        print('Completed, check fields.');
-                                      }
-                                    });
-                                    break;
-                                  case 1:
-                                    setState(() {
-                                      if (_viewModel.stepNumber <
-                                          _mySteps(_viewModel).length - 1) {
-                                        _currentStep = _currentStep + 1;
-                                        _currentStep = _viewModel.stepNumber;
-                                      } else {
-                                        print('Completed, check fields.');
-                                      }
-                                    });
-                                    break;
-                                  case 2:
-                                    setState(() {
-                                      if (_viewModel.stepNumber <
-                                          _mySteps(_viewModel).length - 1) {
-                                        _currentStep = _currentStep + 1;
-                                        _currentStep = _viewModel.stepNumber;
-                                      } else {
-                                        print('Completed, check fields.');
-                                      }
-                                    });
-                                    break;
-                                  default:
-                                }
-                              },
-                             
-                            );
-                          }),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(SVGImagePaths.instance.konfeti)
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ));
+                  ),
+                ));
+  }
+
+  Theme _stepperFunction(ThemeData theme, ScanBarcodeViewModel _viewModel) {
+    return Theme(
+      data: ThemeData(
+          accentColor: Colors.orange,
+          primarySwatch: Colors.green,
+          colorScheme: ColorScheme.light(primary: Colors.orange),
+          iconTheme: theme.iconTheme.copyWith(size: 30)),
+      child: Center(
+        child: Observer(builder: (_) {
+          return Stepper(
+            controlsBuilder: (BuildContext context,
+                {VoidCallback? onStepContinue, VoidCallback? onStepCancel}) {
+              return Row(
+                children: <Widget>[],
+              );
+            },
+            steps: _mySteps(_viewModel),
+            currentStep: _viewModel.stepNumber,
+            /*  onStepTapped: (step) {
+                              setState(() {
+                                _currentStep = _viewModel.stepNumber;
+                                _viewModel.stepNumber = step;
+                              });
+                            }, */
+            onStepContinue: () {
+              switch (_viewModel.stepNumber) {
+                case 0:
+                  setState(() {
+                    if (_viewModel.stepNumber <
+                        _mySteps(_viewModel).length - 1) {
+                      _currentStep = _currentStep + 1;
+                      _currentStep = _viewModel.stepNumber;
+                    } else {
+                      print('Completed, check fields.');
+                    }
+                  });
+                  break;
+                case 1:
+                  setState(() {
+                    if (_viewModel.stepNumber <
+                        _mySteps(_viewModel).length - 1) {
+                      _currentStep = _currentStep + 1;
+                      _currentStep = _viewModel.stepNumber;
+                    } else {
+                      print('Completed, check fields.');
+                    }
+                  });
+                  break;
+                case 2:
+                  setState(() {
+                    if (_viewModel.stepNumber <
+                        _mySteps(_viewModel).length - 1) {
+                      _currentStep = _currentStep + 1;
+                      _currentStep = _viewModel.stepNumber;
+                    } else {
+                      print('Completed, check fields.');
+                    }
+                  });
+                  break;
+                default:
+              }
+            },
+          );
+        }),
+      ),
+    );
+  }
+
+  Column _upperContainerText(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: context.mediumValue),
+          child: Text(
+            LocaleKeys.scanBarcodeView_mainName.locale,
+            textAlign: TextAlign.start,
+            style: context.textTheme.headline4!
+                .copyWith(color: context.colors.surface),
+          ),
+        ),
+      ],
+    );
   }
 
   List<Step> _mySteps(ScanBarcodeViewModel _viewModel) {
@@ -331,6 +326,14 @@ class _ScanBarcodeViewState extends State<ScanBarcodeView> {
       isActive: _viewModel.stepNumber >= 0,
       state:
           _viewModel.stepNumber <= 0 ? StepState.indexed : StepState.complete,
+    );
+  }
+
+  Row _konfetiSvg() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [SvgPicture.asset(SVGImagePaths.instance.konfeti)],
     );
   }
 }

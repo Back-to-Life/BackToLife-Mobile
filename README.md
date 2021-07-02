@@ -61,8 +61,27 @@ flutter run
 
 <br>
 
+## ⚙️ How To Work - Demo  
 
+| Splash  Screen | Onboarding    |
+| ------------- | ------------- |
+|![splash-screen](https://user-images.githubusercontent.com/34714108/124153260-e5cb6e80-da9c-11eb-9c7a-7f722b6cea89.gif)|  ![onboarding](https://user-images.githubusercontent.com/34714108/124158690-e535d680-daa2-11eb-91d9-e38e5b51019d.gif)|
 
+| Sign Up       | Log In        |
+| ------------- | ------------- |
+|![sign-up](https://user-images.githubusercontent.com/34714108/124151993-c849d500-da9b-11eb-8ccc-d7022dab1bc8.gif) | ![login-backtolife](https://user-images.githubusercontent.com/34714108/124153910-a2bdcb00-da9d-11eb-9ad4-6a1d197d6179.gif)|
+
+| Home  | Dark-Light Mode|
+| ------------- | ------------- |
+|![home-tutorial](https://user-images.githubusercontent.com/34714108/124156246-0d700600-daa0-11eb-9f2f-954dd565f864.gif)|![light-dark](https://user-images.githubusercontent.com/34714108/124160489-faac0000-daa4-11eb-8d3a-788bfc8da7ea.gif)|
+
+| Scan QR Code   | Profile|
+| ------------- | ------------- |
+||![profile-page](https://user-images.githubusercontent.com/34714108/124158016-17930400-daa2-11eb-9196-d9cdd799b1a6.gif)|
+
+| Heroes   | Settings|
+| ------------- | ------------- |
+|![heroes-page](https://user-images.githubusercontent.com/34714108/124159673-1662d680-daa4-11eb-9f1f-27ae69766e40.gif)|![settings-page](https://user-images.githubusercontent.com/34714108/124160000-73f72300-daa4-11eb-8db2-9af1269a7ca1.gif)|
 # License & Copyright
 
 MIT License

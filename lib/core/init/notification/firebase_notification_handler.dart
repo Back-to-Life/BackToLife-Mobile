@@ -1,3 +1,4 @@
+import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +66,42 @@ class FirebaseNotifications {
       await navigationRoute.navigateToPage(
           path: remoteMessage.data['navigation']);
     });
+  }
+
+  void successScanQrCode(
+      BuildContext contextScan, String? qrCode, int randomCode) {
+    flutterNotificationPlugin.show(
+        randomCode,
+        'Congratulations, Transaction Successful',
+        'You have successfully discarded $qrCode',
+        NotificationDetails(
+            android: AndroidNotificationDetails(
+                'com.amazingengineerskt.backtolife',
+                'Back To Life',
+                'Geri Dönüşüm Uygulamsı',
+                icon: 'icon_notification',
+                color: Color(0xFF72A863),
+                playSound: true,
+                largeIcon: DrawableResourceAndroidBitmap('icon_notification'),
+                importance: Importance.max,
+                priority: Priority.high)));
+
+    showDialog(
+      context: contextScan,
+      builder: (contextScan) => CupertinoAlertDialog(
+        insetAnimationCurve: Curves.easeIn,
+        title: Text('Congratulations, Transaction Successful'),
+        content: Text(
+            'You have succesfully discarded $qrCode . You change the world thank you'),
+        actions: [
+          CupertinoDialogAction(
+              isDefaultAction: true,
+              child: Text('ok'),
+              onPressed: () => Navigator.of(contextScan)
+                  .pushReplacementNamed(NavigationConstants.HOME_VIEW))
+        ],
+      ),
+    );
   }
 
   /*  static void showNotification(RemoteMessage remoteMessage) async {

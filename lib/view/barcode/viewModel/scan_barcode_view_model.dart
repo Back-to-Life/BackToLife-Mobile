@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
 import 'package:backtolife/core/extension/context_extension.dart';
+import 'package:backtolife/core/init/notification/firebase_notification_handler.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -25,6 +28,9 @@ class ScanBarcodeViewModel = _ScanBarcodeViewModelBase
 
 abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
   late ScanService scanService;
+  late final FirebaseNotifications _firebaseNotifications =
+      FirebaseNotifications();
+  late final Random _random = Random();
 
   @observable
   String? barcodeScan;
@@ -247,13 +253,11 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
                   }
                   if (snapshot.hasData) {
                     if (snapshot.data!) {
-                      print('başarılı bir şekilde puan eklendi');
                       completePointServiceCall();
-                      counter = 10;
-                      //TODO burda hata alıyorum...
+                      print('başarılı bir şekilde puan eklendi');
                       navigation.pop();
-                      /*          navigation.navigateToPageClear(
-                          path: NavigationConstants.HOME_VIEW); */
+                      counter = 10;
+                      notificationConfeti();
                     } else {
                       print('burası yokustur');
                     }
@@ -270,5 +274,11 @@ abstract class _ScanBarcodeViewModelBase with Store, BaseViewModel {
         );
       },
     );
+  }
+
+  Future<void> notificationConfeti() async {
+    var randomCode = _random.nextInt(999999);
+    await Future.delayed(Duration(seconds: 1));
+    _firebaseNotifications.successScanQrCode(context, containerQr, randomCode);
   }
 }
