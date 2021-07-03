@@ -116,22 +116,6 @@ kararname, yönetmelik, vb. gibi hukuk kurallarının getirdiği zorunluluklara 
 7.2.3) Yetkili idari ve adli otorite tarafından usulüne göre yürütülen bir araştırma veya soruşturmanın yürütümü amacıyla üyelerle ilgili bilgi talep edilmesinin,
 7.2.4) Kullanıcıların hakları veya güvenliklerini korumak için bilgi verilmesinin gerekli olduğu hallerdir.
 7.2.5) BackToLife A.Ş. 7.1. hükmü saklı tutulmak koşulu ile, kişisel bilgileri kesinlikle özel ve gizli tutmayı, bunu bir sır saklama yükümü olarak addetmeyi ve gizliliğin sağlanması ve sürdürülmesi, gizli bilginin tamamının veya herhangi bir kısmının kamu alanına girmesini veya yetkisiz kullanımını veya üçüncü bir kişiye ifşasını önlemek için gerekli tüm tedbirleri almayı ve gerekli özeni göstermeyi beyan ve taahhüt etmektedir. BackToLife A.Ş.’nin gerekli bilgi güvenliği önlemlerini almasına karşın Uygulama'ya ve sisteme yapılan saldırılar sonucunda gizli bilgilerin zarar görmesi veya üçüncü kişilerin eline geçmesi durumunda BackToLife A.Ş.’nin herhangi bir sorumluluğu olmayacaktır
-MADDE 8- MESAFELİ SATIŞ HİZMETİ
-8.1. BackToLife A.Ş.’nin uygulama ile sunduğu hizmetlerden biri de uygulama kapsamında hazırlanan
-ürünlerin satışıdır. Taraflar arasındaki alım-satım ilişkisi 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği’ne tabidir. BackToLife A.Ş. işbu sözleşme ve ilgili mevzuat kapsamında satış öncesi ürünle ilgili ön bilgilendirme yapmayı taahhüt etmektedir.
-8.2. İşbu sözleşme kapsamında satışa sunulan ürün kullanıcının istek veya kişisel ihtiyaçları
-doğrultusunda kişiye özel olarak üretilmekte olup bu nedenle 6502 sayılı Tüketicinin Korunması
-Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği’nde düzenlenen cayma hakkı bu ürünler için
-geçerli olmayacaktır. Ancak, kişisel ihtiyaç veya istek doğrultusunda özel olarak üretilmeyen ürünler
-için, alıcı, on dört gün içinde herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin satış
-sözleşmesinden cayma hakkında sahiptir. Cayma hakkı, alıcının malı teslim aldığı gün başlar. Ancak
-alıcı, sözleşmenin kurulmasından malın teslimine kadar olan süre içinde de cayma hakkını
-kullanabilir. Cayma hakkını kullanmak isteyen alıcının, süresi içerisinde yazılı olarak veya kalıcı veri saklayıcısı ile BackToLife A.Ş.’ye bildirmesi yeterlidir.
-8.3. BackToLife A.Ş., ürün siparişi üzerine, ürünün niteliği ve hazırlama koşullarına uygun şekilde
-makul bir süre içerisinde edimini yerine getirir. Bu süre her halükarda otuz günü geçemez. Bu
-yükümlülük yerine getirilmediği takdirde alıcı satış sözleşmesini feshedebilir.
-8.4. BackToLife A.Ş. sipariş edilen ürünlerle ilgili, cayma hakkı, bilgilendirme, teslimat ve diğer
-hususlardaki yükümlülüklerine dair her bir işleme ilişkin bilgi ve belgeyi üç yıl boyunca saklayacaktır.
 MADDE 9- UYGULANACAK HUKUK VE YETKİLİ MAHKEME
 İşbu Sözleşme'nin uygulanmasında ve yorumlanmasında Türkiye Cumhuriyeti Kanunları
 uygulanacaktır. İşbu Sözleşme'den dolayı doğan veya doğabilecek her türlü ihtilafın hallinde İstanbul
@@ -184,18 +168,7 @@ iii-
 Kullanıcının, üçüncü kişilerin haklarına tecavüz eden ve/veya etme tehlikesi bulunan
 fillerde bulunması.
 
-MADDE 15- TEBLİGAT ADRESLERİ
-15.1 BACK TO LIFE uygulaması üyelerden peşinen posta adreslerini istememektedir. Ancak
-kullanıcıların BackToLife A.Ş.’ye bildirdiği elektronik posta adresi, bu sözleşme ile ilgili olarak
-yapılacak her türlü bildirim için yasal adresin isteneceği elektronik posta olarak kabul edilmektedir.
-15.2 Taraflar, mevcut elektronik postalarındaki değişiklikleri yazılı olarak diğer tarafa 3 (üç) gün
-içinde bildirmedikçe, eski elektronik postalara yapılacak isteklerin geçerli olacağını ve kendilerine
-yapılmış sayılacağını kabul etmiştir.
-15.3 Yine BackToLife A.Ş.’nin kullanıcıların kayıtlı elektronik posta adresini kullanarak yapacağı her
-türlü bildirimin elektronik postanın BackToLife A.Ş. tarafından yollanmasından 1 (bir) gün sonra
-üyelere ulaştığı kabul edilecektir.
-15.4 Alıcıların, uygulama aracılığıyla BackToLife A.Ş.’ye fatura gönderimi için bildirmiş oldukları
-adresleri aynı zamanda tebligat adresi olarak kabul edilecektir.
+
 MADDE 16- YÜRÜRLÜLÜK
 16.1. Kullanıcı, işbu sözleşmede yer alan maddelerin tümünü okuduğunu, anladığını, kabul ettiğini ve
 kendisiyle ilgili olarak verdiği bilgilerin doğruluğunu onayladığını beyan, kabul ve taahhüt etmiştir.

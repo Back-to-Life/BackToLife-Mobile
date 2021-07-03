@@ -1,6 +1,6 @@
-import '../../constants/app/app_constants.dart';
+import '../../../constants/app/app_constants.dart';
 
-import 'app_theme.dart';
+import '../app_theme.dart';
 import 'package:flutter/material.dart';
 
 class AppThemeDark extends AppTheme {
