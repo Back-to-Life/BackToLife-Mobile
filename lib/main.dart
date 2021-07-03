@@ -14,7 +14,7 @@ import 'core/init/navigation/navigation_service.dart';
 import 'core/init/notification/firebase_notification_handler.dart';
 import 'core/init/notifier/provider.dart';
 import 'core/init/notifier/theme_notifier.dart';
-import 'core/init/theme/app_theme_dark.dart';
+import 'core/init/theme/dark/app_theme_dark.dart';
 import 'view/barcode/view/scan_barcode_view.dart';
 import 'view/splash/view/splash_view.dart';
 
@@ -30,8 +30,7 @@ Future<void> main() async {
         child: MyApp(),
         fallbackLocale: Locale('en', 'US'),
         assetLoader: CodegenLoader(),
-        startLocale:
-            LanguageManager.instance.enLocale, //eğer hata verirse kaldır
+        startLocale: LanguageManager.instance.enLocale,
         supportedLocales: LanguageManager.instance.supportedLocales,
         path: ApplicationConstants.LANG_ASSET_PATH),
   ));
@@ -59,7 +58,7 @@ class _MyAppState extends State<MyApp> {
       locale: context.locale,
       darkTheme: AppThemeDark.instance.theme,
       theme: Provider.of<ThemeNotifier>(context).currentTheme,
-      home: HomeView(),
+      home: SplashView(),
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
     );

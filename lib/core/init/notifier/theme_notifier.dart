@@ -1,7 +1,7 @@
 import '../../constants/enum/locale_keys_enum.dart';
 import '../cache/locale_manager.dart';
 
-import '../theme/app_theme_dark.dart';
+import '../theme/dark/app_theme_dark.dart';
 
 import '../../constants/enum/app_theme_enum.dart';
 import '../theme/app_theme_light.dart';
