@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:backtolife/core/init/cache/locale_manager.dart';
+import '../../../core/init/cache/locale_manager.dart';
 import 'package:dio/dio.dart';
 
 import '../model/home_base_model/home_base_response_model.dart';

@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/init/notification/firebase_notification_handler.dart';
+import '../../../core/constants/navigation/navigation_constants.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/init/notification/firebase_notification_handler.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:lottie/lottie.dart';
 import 'package:percent_indicator/percent_indicator.dart';

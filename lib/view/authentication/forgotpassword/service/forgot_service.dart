@@ -1,9 +1,10 @@
 import 'dart:io';
 
-import 'package:backtolife/view/authentication/forgotpassword/model/email_toke_model/email_token_request_model.dart';
-import 'package:backtolife/view/authentication/forgotpassword/service/IForgotService.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/src/dio.dart';
+
+import '../model/email_toke_model/email_token_request_model.dart';
+import 'IForgotService.dart';
 
 class ForgotService extends IForgotService {
   ForgotService(Dio dio) : super(dio);

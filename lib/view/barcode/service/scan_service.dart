@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:backtolife/core/constants/app/api_constants.dart';
-import 'package:backtolife/core/init/cache/locale_manager.dart';
-import 'package:backtolife/view/barcode/model/firebase_model/firebase_model.dart';
+import '../../../core/constants/app/api_constants.dart';
+import '../../../core/init/cache/locale_manager.dart';
+import '../model/firebase_model/firebase_model.dart';
 
 import '../model/scan_request_model.dart';
 import '../model/scan_response_model.dart';

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:backtolife/core/init/notifier/changed_profile_picture.dart';
+import '../../../core/init/notifier/changed_profile_picture.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/extension/string_extension.dart';

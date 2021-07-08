@@ -1,5 +1,6 @@
-import '../context_extension.dart';
 import 'package:flutter/material.dart';
+
+import '../context_extension.dart';
 
 class SpaceSizedWidthBox extends StatelessWidget {
   final double width;

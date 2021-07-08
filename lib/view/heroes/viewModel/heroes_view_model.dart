@@ -1,10 +1,11 @@
-import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
-
-import '../../../core/base/model/base_view_model.dart';
-import '../model/heroes_model.dart';
-import '../service/heroes_service.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../../core/base/model/base_view_model.dart';
+import '../../../core/constants/navigation/navigation_constants.dart';
+import '../model/heroes_model.dart';
+import '../service/heroes_service.dart';
+
 part 'heroes_view_model.g.dart';
 
 class HeroesViewModel = _HeroesViewModelBase with _$HeroesViewModel;

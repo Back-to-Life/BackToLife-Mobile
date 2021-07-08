@@ -1,6 +1,7 @@
+import 'package:flutter/widgets.dart';
+
 import '../../constants/enum/locale_keys_enum.dart';
 import '../cache/locale_manager.dart';
-import 'package:flutter/widgets.dart';
 
 class LanguageNotifier extends ChangeNotifier {
   bool? _isLanguageTurkish;

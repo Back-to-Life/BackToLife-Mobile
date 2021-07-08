@@ -1,8 +1,7 @@
-import '../../constants/app/app_constants.dart';
-
-import 'app_theme.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/app/app_constants.dart';
+import 'app_theme.dart';
 import 'light/light_theme_interface.dart';
 
 class AppThemeLight extends AppTheme with ILightTheme {

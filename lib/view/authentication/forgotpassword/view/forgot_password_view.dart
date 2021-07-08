@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:backtolife/core/init/lang/locale_keys.g.dart';
-import 'package:backtolife/core/init/svgPath/image_path_svg.dart';
+import '../../../../core/init/lang/locale_keys.g.dart';
+import '../../../../core/init/svgPath/image_path_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';

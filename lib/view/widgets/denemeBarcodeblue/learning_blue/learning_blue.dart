@@ -1,4 +1,4 @@
-import 'package:backtolife/core/base/view/base_view.dart';
+import '../../../../core/base/view/base_view.dart';
 import 'package:flutter/material.dart';
 
 import 'learning_blue_view_model.dart';

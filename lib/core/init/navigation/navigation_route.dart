@@ -1,8 +1,8 @@
-import 'package:backtolife/view/authentication/forgotpassword/view/change_password_view.dart';
-import 'package:backtolife/view/authentication/forgotpassword/view/forgot_password_view.dart';
-import 'package:backtolife/view/heroes/view/full_list_heroes.dart';
-import 'package:backtolife/view/settings/subsettings/about_settings/view/about_view.dart';
-import 'package:backtolife/view/settings/subsettings/account_settings/view/account_settings_view.dart';
+import '../../../view/authentication/forgotpassword/view/change_password_view.dart';
+import '../../../view/authentication/forgotpassword/view/forgot_password_view.dart';
+import '../../../view/heroes/view/full_list_heroes.dart';
+import '../../../view/settings/subsettings/about_settings/view/about_view.dart';
+import '../../../view/settings/subsettings/account_settings/view/account_settings_view.dart';
 
 import '../../../view/heroes/view/heroes_view.dart';
 

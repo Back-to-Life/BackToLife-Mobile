@@ -1,13 +1,13 @@
 import 'dart:ui';
 
 import 'package:avatars/avatars.dart';
-import 'package:backtolife/core/base/view/base_view.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/extension/string_extension.dart';
-import 'package:backtolife/core/init/lang/locale_keys.g.dart';
-import 'package:backtolife/core/init/notifier/theme_notifier.dart';
-import 'package:backtolife/view/heroes/viewModel/heroes_view_model.dart';
-import 'package:backtolife/view/widgets/slideAnimation/slide_animation_list.dart';
+import '../../../core/base/view/base_view.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/extension/string_extension.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../core/init/notifier/theme_notifier.dart';
+import '../viewModel/heroes_view_model.dart';
+import '../../widgets/slideAnimation/slide_animation_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';

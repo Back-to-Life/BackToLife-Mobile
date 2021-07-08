@@ -1,4 +1,4 @@
-import 'package:backtolife/view/home/view/home_view.dart';
+import 'view/home/view/home_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';

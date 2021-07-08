@@ -1,4 +1,4 @@
-import 'package:backtolife/view/splash/model/date_request_model.dart';
+import '../model/date_request_model.dart';
 import 'package:dio/dio.dart';
 
 abstract class ISplashService {
