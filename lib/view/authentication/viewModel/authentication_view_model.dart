@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:backtolife/core/extension/string_extension.dart';
-import 'package:backtolife/core/init/lang/locale_keys.g.dart';
+import '../../../core/extension/string_extension.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
 
 import '../../../core/constants/enum/locale_keys_enum.dart';
 import '../../../core/extension/context_extension.dart';

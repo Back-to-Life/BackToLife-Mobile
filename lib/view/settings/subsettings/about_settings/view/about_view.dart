@@ -1,11 +1,11 @@
 import 'dart:ui';
 
-import 'package:backtolife/core/base/view/base_view.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/extension/string_extension.dart';
-import 'package:backtolife/core/init/lang/locale_keys.g.dart';
-import 'package:backtolife/view/settings/subsettings/about_settings/viewModel/about_settings_view_model.dart';
-import 'package:backtolife/view/widgets/upperSettingsContainer/upper_settings_container.dart';
+import '../../../../../core/base/view/base_view.dart';
+import '../../../../../core/extension/context_extension.dart';
+import '../../../../../core/extension/string_extension.dart';
+import '../../../../../core/init/lang/locale_keys.g.dart';
+import '../viewModel/about_settings_view_model.dart';
+import '../../../../widgets/upperSettingsContainer/upper_settings_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 

@@ -1,15 +1,14 @@
-import '../../../../../core/constants/enum/locale_keys_enum.dart';
-import '../../../../../core/init/lang/locale_keys.g.dart';
-import '../../../../../core/init/notifier/settings_notifier.dart';
-import '../../../../../core/init/svgPath/lottie_path.dart';
-import '../../../../widgets/showAlertDialog/alert_dialog.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
+import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../core/base/model/base_view_model.dart';
-import 'package:flutter/material.dart';
-import 'package:mobx/mobx.dart';
+import '../../../../../core/constants/enum/locale_keys_enum.dart';
+import '../../../../../core/init/notifier/settings_notifier.dart';
+import '../../../../../core/init/svgPath/lottie_path.dart';
+import '../../../../widgets/showAlertDialog/alert_dialog.dart';
+
 part 'notification_view_model.g.dart';
 
 class NotificationsViewModel = _NotificationsViewModelBase

@@ -1,9 +1,9 @@
-import 'package:backtolife/core/constants/enum/app_theme_enum.dart';
-import 'package:backtolife/core/constants/enum/locale_keys_enum.dart';
-import 'package:backtolife/core/extension/context_extension.dart';
-import 'package:backtolife/core/extension/string_extension.dart';
-import 'package:backtolife/core/init/notifier/theme_notifier.dart';
-import 'package:backtolife/core/init/svgPath/lottie_path.dart';
+import '../../../core/constants/enum/app_theme_enum.dart';
+import '../../../core/constants/enum/locale_keys_enum.dart';
+import '../../../core/extension/context_extension.dart';
+import '../../../core/extension/string_extension.dart';
+import '../../../core/init/notifier/theme_notifier.dart';
+import '../../../core/init/svgPath/lottie_path.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 

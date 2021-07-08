@@ -1,4 +1,4 @@
-import 'package:backtolife/core/constants/app/api_constants.dart';
+import '../../constants/app/api_constants.dart';
 import 'package:vexana/vexana.dart';
 
 class VexanaManager {

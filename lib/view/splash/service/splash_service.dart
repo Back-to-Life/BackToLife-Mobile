@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:backtolife/core/init/cache/locale_manager.dart';
-import 'package:backtolife/view/splash/model/date_request_model.dart';
-import 'package:backtolife/view/splash/model/date_response_model.dart';
-import 'package:backtolife/view/splash/model/token/token_request_model.dart';
+import '../../../core/init/cache/locale_manager.dart';
+import '../model/date_request_model.dart';
+import '../model/date_response_model.dart';
+import '../model/token/token_request_model.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/src/dio.dart';
 

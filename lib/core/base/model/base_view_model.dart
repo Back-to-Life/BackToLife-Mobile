@@ -1,7 +1,7 @@
-import 'package:backtolife/core/constants/app/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
+import '../../constants/app/api_constants.dart';
 import '../../init/cache/locale_manager.dart';
 import '../../init/navigation/navigation_service.dart';
 import '../../init/network/ICoreDio.dart';

@@ -1,5 +1,6 @@
-import '../model/heroes_model.dart';
 import 'package:dio/dio.dart';
+
+import '../model/heroes_model.dart';
 
 abstract class IHeroesService {
   final Dio dio;

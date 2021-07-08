@@ -1,4 +1,4 @@
-import 'package:vexana/vexana.dart';
+
 /* 
 class ErrorGetingDio extends INetworkModel<ErrorGetingDio> {
   final String error;

@@ -1,4 +1,4 @@
-import 'package:backtolife/core/constants/navigation/navigation_constants.dart';
+import '../../constants/navigation/navigation_constants.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

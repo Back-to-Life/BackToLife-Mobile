@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:backtolife/view/splash/model/date_request_model.dart';
+import '../model/date_request_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';

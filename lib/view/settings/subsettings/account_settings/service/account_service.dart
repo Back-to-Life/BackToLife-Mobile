@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:backtolife/view/settings/subsettings/account_settings/model/account_settings_request_model.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../../core/init/cache/locale_manager.dart';
+import '../model/account_settings_request_model.dart';
 import 'IAccountService.dart';
 
 class AccountSettingsService extends IAccountService {
